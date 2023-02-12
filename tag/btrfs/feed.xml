@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: btrfs</title>
+        <link>https://ouuan.moe/tag/btrfs</link>
+        <description>标签: btrfs - ouuan 的博客</description>
+        <lastBuildDate>Sat, 11 Feb 2023 20:25:49 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2023 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/btrfs/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Btrfs Quota 以及 Timeshift 导致的系统无响应问题解决过程记录]]></title>
+            <link>https://ouuan.moe/post/2022/07/btrfs-quota-timeshift-freeze</link>
+            <guid>https://ouuan.moe/post/2022/07/btrfs-quota-timeshift-freeze</guid>
+            <pubDate>Sat, 23 Jul 2022 05:03:23 GMT</pubDate>
+            <description><![CDATA[
+<p>记录一下之前困扰我近一年的 <a href="https://wiki.archlinux.org/title/Btrfs">Btrfs</a> 快照导致的系统无响应问题<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <content:encoded><![CDATA[
+<p>记录一下之前困扰我近一年的 <a href="https://wiki.archlinux.org/title/Btrfs">Btrfs</a> 快照导致的系统无响应问题<span class="mojikumi-line-end">。</span></p>
+
+<h2 id="系统无响应的具体表现" class="heading"><a href="#系统无响应的具体表现" class="heading-anchor" aria-label="章节： 系统无响应的具体表现" tabindex="-1"></a><span>系统无响应的具体表现</span></h2>
+<p>每次整点时有概率出现<span class="mojikumi-line-end">，</span>在一分钟左右的时间内<span class="mojikumi-line-end">，</span>和磁盘写入相关的操作都会卡死<span class="mojikumi-line-end">，</span>例如直接和文件操作相关的保存文件<span class="mojikumi-line-end">，</span>或者会写入 <code>~/.<wbr>zsh_history</code> 的在终端输入命令<span class="mojikumi-line-end">，</span>以及打开新的 GUI 应用等等<span class="mojikumi-line-end">，</span>基本上就是整个系统完全卡死<span class="mojikumi-line-end">。</span></p>
+<p>另外<span class="mojikumi-line-end">，</span>我有观察到<span class="mojikumi-line-end">，</span>在笔记本不使用外接电源时这一问题表现地更为严重<span class="mojikumi-line-end">，</span>即更容易被察觉到<span class="mojikumi-line-end">、</span>每次卡住的时间更长<span class="mojikumi-line-end">。</span></p>
+<h2 id="最初解决问题的尝试" class="heading"><a href="#最初解决问题的尝试" class="heading-anchor" aria-label="章节： 最初解决问题的尝试" tabindex="-1"></a><span>最初解决问题的尝试</span></h2>
+<p>遇到问题后不久<span class="mojikumi-line-end">，</span>我就怀疑上了一些每小时自动运行的任务<span class="mojikumi-line-end">，</span>包括 <a href="https://github.com/linuxmint/timeshift">Timeshift</a> 的快照以及一些自己写的 crontab<span class="mojikumi-line-end">。</span></p>
+<p>最值得怀疑的就是 Timeshift 的快照了<span class="mojikumi-line-end">，</span>然而<span class="mojikumi-line-end">，</span>当时我曾经尝试过暂时关闭自动快照<span class="mojikumi-line-end">，</span>但问题似乎没有得到解决<span class="mojikumi-line-end">，</span>具体原因已不可考了<span class="mojikumi-line-end">。</span>当时我还在一个群里提出了这个猜想<span class="mojikumi-line-end">，</span>然后群友说快照是原子级操作<span class="mojikumi-line-end">，</span>不应该卡住<span class="mojikumi-line-end">，</span>我感觉很有道理<span class="mojikumi-line-end">，</span>就在很长时间内没有怀疑自动快照的问题了<span class="mojikumi-line-end">。</span></p>
+<p>后来我又尝试着关闭各种 crontab<span class="mojikumi-line-end">，</span>当然也没有解决问题<span class="mojikumi-line-end">。</span></p>
+<p>有想过在整点时用 <code>htop</code> 查看进程信息<span class="mojikumi-line-end">，</span>但由于卡住时运行不了命令<span class="mojikumi-line-start">（</span>当然可以关闭终端的历史记录<span class="mojikumi-line-end">，</span>但关了也不见得不卡<span class="mojikumi-line-end">，</span>而且我懒啊x<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>需要提前打开 <code>htop</code><span class="mojikumi-line-end">，</span>而且也不是每小时都会遇到这个问题<span class="mojikumi-line-end">，</span>看到了进程信息也不一定能找到问题所在<span class="mojikumi-line-end">，</span>最后也没有成功<span class="mojikumi-line-end">。</span></p>
+<p>当时自然也尝试过各种搜索<span class="mojikumi-line-end">，</span>至于为什么没有搜索到或者注意到 <a href="https://forum.manjaro.org/t/freeze-issues-with-btrfs-and-timeshift/22005">Freeze issues with BTRFS and Timeshift</a> 也不可考了<span class="mojikumi-line-end">，</span>可能是搜索关键词不对吧<span class="mojikumi-line-end">，</span>毕竟当时我一定程度上排除了对快照的怀疑<span class="mojikumi-line-end">。</span></p>
+<p>由于问题的严重程度和是否外接电源有关<span class="mojikumi-line-end">，</span>我甚至一度怀疑过是硬件问题<span class="mojikumi-line-end">，</span>想换电脑<span class="mojikumi-line-start">（</span></p>
+<h2 id="最终问题的解决" class="heading"><a href="#最终问题的解决" class="heading-anchor" aria-label="章节： 最终问题的解决" tabindex="-1"></a><span>最终问题的解决</span></h2>
+<p>在被这一问题困扰了大半年后<span class="mojikumi-line-end">，</span>我又忍不住想搜索解决方法<span class="mojikumi-line-end">，</span>这一次很快就搜到了 <a href="https://forum.manjaro.org/t/freeze-issues-with-btrfs-and-timeshift/22005">Freeze issues with BTRFS and Timeshift</a><span class="mojikumi-line-end">，</span>然后按里面说的禁用了 quota: <code>sudo btrfs quota disable /</code><span class="mojikumi-line-end">。</span></p>
+<p>但过了几天<span class="mojikumi-line-end">，</span>我发现问题又出现了<span class="mojikumi-line-end">，</span>以为这个方法不管用<span class="mojikumi-line-end">。</span></p>
+<p>后来又过了一段时间<span class="mojikumi-line-end">，</span>我又忍不了了<span class="mojikumi-line-end">，</span>再仔细阅读了一下<span class="mojikumi-line-end">，</span>发现这个 thread 里有提到 Timeshift 会自动打开 quota<span class="mojikumi-line-end">，</span>要修改 Timeshift 的设置才行<span class="mojikumi-line-end">。</span>至此<span class="mojikumi-line-end">，</span>问题解决<span class="mojikumi-line-end">。</span></p>
+<a id="关于-brtfs-quota" name="关于-brtfs-quota" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3><div class="p-3 flex justify-between items-center" data-v-bb0e38b3><h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3></span><span data-v-bb0e38b3>关于 Brtfs Quota</span></h3><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3><p><a href="https://wiki.archlinux.org/title/Btrfs#Quota">Btrfs quota</a> 主要用于快速查看每个 subvolume 的磁盘用量<span class="mojikumi-line-start">（</span>可以用 <a href="https://github.com/nachoparker/btrfs-du">btrfs-du</a> 查看<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>如果没有启用的话<span class="mojikumi-line-end">，</span>每次查看就需要几十秒的时间来重新扫描<span class="mojikumi-line-end">。</span></p><p>但是<span class="mojikumi-line-end">，</span>这一功能有很多 <a href="https://btrfs.wiki.kernel.org/index.php/Quota_support#Known_issues">已知问题</a><span class="mojikumi-line-start">（</span>当然也包括本文描述的这个<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>所以目前不建议启用<span class="mojikumi-line-end">。</span></p></div></div></aside>
+<h2 id="后记-timeshift-已修复此问题" class="heading"><a href="#后记-timeshift-已修复此问题" class="heading-anchor" aria-label="章节： 后记: Timeshift 已修复此问题" tabindex="-1"></a><span>后记: Timeshift 已修复此问题</span></h2>
+<p>实际上<span class="mojikumi-line-end">，</span>Timeshift 已在我自己解决问题前不久就修复了这一问题: <a href="https://github.com/linuxmint/timeshift/commit/8d77b18fe7b725c11baefe721633561d755b3630">Fix #865, #839, #680: Do not create or remove Qgroups when snapshots are created or removed</a></p>
+<p>虽然 <a href="https://github.com/linuxmint/timeshift/releases/tag/v22.06.1">Timeshift 在 5 月 29 日就发布了修复</a><span class="mojikumi-line-end">，</span>但是 <a href="https://github.com/archlinuxcn/repo/commits/master/archlinuxcn/timeshift">archlinuxcn 在 7 月 1 日才更新</a><span class="mojikumi-line-end">，</span>于是我<span class="mojikumi-line-start">“</span>有幸<span class="mojikumi-line-end">”</span>在 Timeshift 更新的前一天自己解决了问题 🙃...</p>
+<p><picture><source type="image/webp" srcset="/assets/btrfs-quota-timeshift-message-screenshot.c8bc1cf1.webp"><img srcset="/assets/btrfs-quota-timeshift-message-screenshot.1f748705.png" loading="lazy" src="/assets/btrfs-quota-timeshift-message-screenshot.1f748705.png" width="642" height="227" alt="消息记录，发于 6 月 30 日: 前段时间听说关 quota 可以解决这个问题，但关了之后还是经常卡。今天才发现 timeshift 里设置了开 quota，得把 timeshift 的自动开 quota 关了才行 🌚 需要观察几天是否还会整点卡"></picture></p>
+<p>其实我还是写这篇博客的时候想看一眼 Timeshift 的 quota 设置发现没有这个设置项了才知道 Timeshift 已经修了...</p>]]></content:encoded>
+            <category domain="https://ouuan.moe/tag/btrfs">btrfs</category>
+            <category domain="https://ouuan.moe/tag/Arch%20Linux">Arch Linux</category>
+            <category domain="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95">问题解决记录</category>
+        </item>
+    </channel>
+</rss>

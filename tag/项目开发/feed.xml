@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: 项目开发</title>
+        <link>https://ouuan.moe/tag/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91</link>
+        <description>标签: 项目开发 - ouuan 的博客</description>
+        <lastBuildDate>Sat, 11 Feb 2023 20:25:50 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2023 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[另一种很新的中文字体网页嵌入方案]]></title>
+            <link>https://ouuan.moe/post/2023/01/glyph-segregator</link>
+            <guid>https://ouuan.moe/post/2023/01/glyph-segregator</guid>
+            <pubDate>Thu, 19 Jan 2023 13:15:05 GMT</pubDate>
+            <description><![CDATA[<p>当你看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>但是懒得优化 DP<span class="mojikumi-line-end">，</span>也不会进化算法<span class="mojikumi-line-end">，</span>你可以……</p>
+<p>整一个<a href="https://github.com/ouuan/glyph-segregator"><em>另</em>一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-start">（</span></p>
+]]></description>
+            <content:encoded><![CDATA[<p>当你看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>但是懒得优化 DP<span class="mojikumi-line-end">，</span>也不会进化算法<span class="mojikumi-line-end">，</span>你可以……</p>
+<p>整一个<a href="https://github.com/ouuan/glyph-segregator"><em>另</em>一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-start">（</span></p>
+
+<p><s>这就是你 <a href="/post/2023/01/ddpp">开坑 DDPP</a> 不填的理由吗</s></p>
+<h2 id="背景" class="heading"><a href="#背景" class="heading-anchor" aria-label="章节： 背景" tabindex="-1"></a><span>背景</span></h2>
+<p>前不久看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>还想着没必要做这种优化<span class="mojikumi-line-end">，</span>毕竟按 Google Fonts 进行子集化就可以做到每页 1MB 左右<span class="mojikumi-line-end">，</span>按现代的网速不会有太大问题<span class="mojikumi-line-end">，</span>用 devtools 开节流试了下看起来也还行<span class="mojikumi-line-end">。</span></p>
+<p>然后我回家了<span class="mojikumi-line-end">，</span>离开了校园网<span class="mojikumi-line-end">。</span>虽然自定义域名的 Cloudflare Pages 还能访问<span class="mojikumi-line-end">，</span>但速度暂且不论<span class="mojikumi-line-end">，</span>丢包率就很有点恐怖<span class="mojikumi-line-end">，</span>经常页面加载一半就卡住了<span class="mojikumi-line-end">。</span></p>
+<p>再然后<span class="mojikumi-line-end">，</span>Google Fonts 里 Noto Serif SC 的 unicode range 不含单引号<span class="mojikumi-line-start">（</span>和撇号是同一个字符<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>导致 <a href="/post/2023/01/ddpp">DDPP 序</a> 里引用的那段话的撇号在我的手机上显示成了很宽的另一种字体<span class="mojikumi-line-end">，</span>才让我<a href="https://github.com/ouuan/iles-blog/commit/080bd7112f88d2eae1e86594f8820c0c517e37ce">发现这个问题</a><span class="mojikumi-line-end">。</span>为了以后能及时发现这种问题<span class="mojikumi-line-end">，</span>我就设置了不使用本地字体直接使用 web font 的 Stylus<span class="mojikumi-line-end">。</span></p>
+<p>恐怖的丢包率<span class="mojikumi-line-end">，</span>加上自己亲身体验 web font 加载<span class="mojikumi-line-end">，</span>让我意识到了<span class="mojikumi-line-end">，</span>在国内普通网络环境下<span class="mojikumi-line-end">，</span>如果你的设备没有安装思源宋体<span class="mojikumi-line-end">，</span>访问我的博客会是多么难受<span class="mojikumi-line-start">（</span></p>
+<h2 id="主体思路" class="heading"><a href="#主体思路" class="heading-anchor" aria-label="章节： 主体思路" tabindex="-1"></a><span>主体思路</span></h2>
+<p><span class="mojikumi-line-start">“</span>另一种<span class="mojikumi-line-end">”</span>的主体思路<a href="https://ayu.land/webfont#principle">和<span class="mojikumi-line-start">“</span>一种<span class="mojikumi-line-end">”</span>是一样的</a><span class="mojikumi-line-end">，</span>就是把字体划分成常用字和非常用字<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-start">“</span>一种<span class="mojikumi-line-end">”</span>在这之后选择了使用动态规划 + 进化算法来对常用字进行进一步的拆分<span class="mojikumi">，</span><wbr><span class="mojikumi-line-start">“</span>另一种<span class="mojikumi-line-end">”</span>所做的优化则基于这样一个观察<span class="mojikumi-line-end">：</span>虽然一个博客有一堆页面<span class="mojikumi-line-end">，</span>但 80% 的人只会访问 20% 的页面<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>一个字体是否常用<span class="mojikumi-line-end">，</span>不仅要看出现在几个页面<span class="mojikumi-line-end">，</span>还要看出现在哪些页面<span class="mojikumi-line-end">。</span></p>
+<p>这时候<span class="mojikumi-line-end">，</span><s>一直充当<a href="https://busuanzi.ibruce.info/">不蒜子</a>平替<span class="mojikumi-line-start">（</span>哪平价了啊<span class="mojikumi-line-end">）</span>的</s> Plausible Analytics 就发挥作用了<span class="mojikumi-line-end">：</span>近段时间的页面访问量可以用来估计每个页面被访问的概率<span class="mojikumi-line-end">，</span>为常用字的划分提供可靠的数据支撑<span class="mojikumi-line-end">。</span></p>
+<p>一旦估计出了每个页面的被访问概率<span class="mojikumi-line-end">，</span>就可以对每个 glyph 分别计算出<span class="mojikumi-line-end">，</span>如果在每一个使用了它的页面上都加载一遍<span class="mojikumi-line-end">，</span>期望代价是多少<span class="mojikumi-line-end">，</span>也就是使用了它的所有页面的被访问概率之和<span class="mojikumi-line-end">。</span>如果这个数大于 1<span class="mojikumi-line-end">，</span>就设为常用<span class="mojikumi-line-end">，</span>否则设为不常用<span class="mojikumi-line-end">。</span></p>
+<p>这个思路还是非常简单的<span class="mojikumi-line-end">，</span>可以说只是<span class="mojikumi-line-start">“</span>结合实际<span class="mojikumi-line-end">，</span>采取启发式方法<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>也称不上是一种新的方案<span class="mojikumi-line-start">（</span></p>
+<h2 id="具体实现" class="heading"><a href="#具体实现" class="heading-anchor" aria-label="章节： 具体实现" tabindex="-1"></a><span>具体实现</span></h2>
+<p>虽然思路简单<span class="mojikumi-line-end">，</span>但实现起来还是有点复杂的<span class="mojikumi-line-end">，</span>坑有点多<span class="mojikumi-line-end">。</span></p>
+<h3 id="获取页面使用的字体" class="heading"><a href="#获取页面使用的字体" class="heading-anchor" aria-label="章节： 获取页面使用的字体" tabindex="-1"></a><span>获取页面使用的字体</span></h3>
+<p>如果整个页面都使用一种字体<span class="mojikumi-line-end">，</span>直接看 HTML 里有哪些中文就差不多了<span class="mojikumi-line-end">，</span>但我不仅<span class="font-sans">非正文用的是黑体</span><span class="mojikumi-line-end">，</span><span class="font-kai">引用块还是楷体</span><span class="mojikumi-line-end">，</span>说不定在哪冒出来个<code>等宽</code>或者 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX公式</mtext></mrow><annotation encoding="application/x-tex">\LaTeX\text{公式}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span><span class="mord text"><span class="mord cjk_fallback">公式</span></span></span></span></span></span><span class="mojikumi-line-end">，</span>有时候还会<strong>加粗</strong><span class="mojikumi-line-end">，</span>更别提心情好的时候会像这段一样直接塞 <code>&#x3C;span class=""></code> 来修改样式<span class="mojikumi-line-end">。</span></p>
+<p>一开始我通过 <a href="https://github.com/Munter/subfont">subfont</a> 找到了 <a href="https://github.com/assetgraph/font-tracer">assetgraph/font-tracer</a><span class="mojikumi-line-end">，</span>但这个 font-tracer 就两个 star<span class="mojikumi-line-end">，</span>没有文档<span class="mojikumi-line-end">，</span><a href="https://github.com/assetgraph/assetgraph">AssetGraph</a> 又是一个 12 年前的老项目<span class="mojikumi-line-end">，</span>连 Definitely Typed 都没有<span class="mojikumi-line-end">，</span>试了一下完全用不会<span class="mojikumi-line-end">。</span></p>
+<p>想了想<span class="mojikumi-line-end">，</span>最靠谱的还是直接交给浏览器来处理<span class="mojikumi-line-end">，</span>所以就用 <a href="https://github.com/puppeteer/puppeteer">puppeteer</a> 了<span class="mojikumi-line-end">。</span>目前采用的算法是<span class="mojikumi-line-end">：</span>遍历 <code>&#x3C;body></code><span class="mojikumi-line-end">，</span>跳过 <code>&#x3C;script></code> 和 <code>&#x3C;style></code> 子树<span class="mojikumi-line-end">，</span>找到所有 <a href="https://developer.mozilla.org/docs/Web/API/Text">Text 节点</a><span class="mojikumi-line-end">，</span>再加上所有 <code>&#x3C;img></code> 的 <code>alt</code> 属性<span class="mojikumi-line-end">。</span>找到节点后<span class="mojikumi-line-end">，</span>可以用 <a href="https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle"><code class="break-all">getComputedStyle</code></a> 获取 <code>font<wbr>-<wbr>family</code> 和 <code>font<wbr>-<wbr>weight</code> 等信息<span class="mojikumi-line-end">。</span></p>
+<p>因为要处理很多页面<span class="mojikumi-line-end">，</span>也要花一点时间<span class="mojikumi-line-end">，</span>所以用了 <a href="https://github.com/thomasdondorf/puppeteer-cluster">puppeteer-cluster</a> 来并行处理<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>不知道为什么<span class="mojikumi-line-end">，</span>在 vitest 和 iles 中运行时<span class="mojikumi-line-end">，</span>不加参数会报错<span class="mojikumi-line-end">，</span>而加了 <code>--<wbr>no<wbr>-<wbr>sandbox<wbr> --<wbr>no<wbr>-<wbr>zygote</code> 之后并行的优化效果就差一些<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/getPagesFontInfo.ts"><code class="break-all">getPagesFontInfo.ts</code></a></p>
+<h3 id="字体匹配" class="heading"><a href="#字体匹配" class="heading-anchor" aria-label="章节： 字体匹配" tabindex="-1"></a><span>字体匹配</span></h3>
+<p><a href="https://www.w3.org/TR/css-fonts-4/#font-style-matching">完整的字体匹配</a>是非常复杂的<span class="mojikumi-line-end">，</span>我也没找到相关的库<span class="mojikumi-line-end">，</span>就自己写了一个简陋的只匹配完整 <code>font<wbr>-<wbr>family</code> 和 <code>font<wbr>-<wbr>weight</code> 的算法<span class="mojikumi-line-end">。</span></p>
+<p>其实一般 <code>font<wbr>-<wbr>weight</code> 也就 400 和 700<span class="mojikumi-line-end">，</span>但我还是实现了一个 <a href="https://developer.mozilla.org/docs/Web/CSS/font-weight#fallback_weights">完整的 <code>font<wbr>-<wbr>weight</code> fallback</a><span class="mojikumi-line-end">。</span></p>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/matchFonts.ts"><code>matchFonts<wbr>.<wbr>ts</code></a></p>
+<h3 id="常用字体划分" class="heading"><a href="#常用字体划分" class="heading-anchor" aria-label="章节： 常用字体划分" tabindex="-1"></a><span>常用字体划分</span></h3>
+<p>最关键的这一步实现起来是最简单的<span class="mojikumi-line-end">，</span>因为是纯算法的<span class="mojikumi-line-end">，</span>不涉及到可怕的 Web<span class="mojikumi-line-start">（</span></p>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/getCommonGlyphs.ts"><code>getCommonGlyphs<wbr>.<wbr>ts</code></a></p>
+<h3 id="生成字体文件和-font-face" class="heading"><a href="#生成字体文件和-font-face" class="heading-anchor" aria-label="章节： 生成字体文件和 @font-face" tabindex="-1"></a><span>生成字体文件和 @font-face</span></h3>
+<p>我使用的是 <a href="https://github.com/papandreou/subset-font">subset-font</a> 来生成字体子集文件<span class="mojikumi-line-end">。</span></p>
+<p>这一步最大的困难<span class="mojikumi-line-end">，</span>是正确地写出 <code>@font-face</code><span class="mojikumi-line-end">。</span></p>
+<p>一开始我是给常用字 (common) 和非常用字 (unique) 不同的 <code>font<wbr>-<wbr>family</code><span class="mojikumi-line-end">，</span>然后发现<span class="mojikumi-line-end">，</span>在特殊情况下<span class="mojikumi-line-start">（</span>幸好我的博客文章列表就触发了这个问题<span class="mojikumi-line-end">，</span>不然真没想到<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>某个字的常规样式属于 common 而粗体属于 unique<span class="mojikumi-line-end">，</span>由于 <code>font<wbr>-<wbr>family</code> 里 common 排在 unique 前面<span class="mojikumi-line-end">，</span>就会匹配到常规样式<span class="mojikumi-line-end">，</span>而加载不出粗体<span class="mojikumi-line-end">。</span></p>
+<p>为了解决这个问题<span class="mojikumi-line-end">，</span>common 和 unique 需要使用同一个 <code>font<wbr>-<wbr>family</code><span class="mojikumi-line-end">。</span>因为用过 Google Fonts 子集划分方案<span class="mojikumi-line-end">，</span>我知道有不同 <code>unicode<wbr>-<wbr>range</code> 的 <code>@font-face</code> 是可以组合在一起的<span class="mojikumi-line-end">，</span>难道我需要计算出精确的 <code>unicode<wbr>-<wbr>range</code> 写在 CSS 里？</p>
+<p>为此<span class="mojikumi-line-end">，</span>我粗略地读了半天<span class="mojikumi-line-start">（</span><s>这两个词不冲突</s><span class="mojikumi-line-end">）</span><a href="https://www.w3.org/TR/css-fonts-4/">CSS Fonts Module Level 4 W3C Working Draft</a><span class="mojikumi-line-end">，</span>发现它说<span class="mojikumi-line-end">，</span><code>unicode<wbr>-<wbr>range</code> 可以比真实的 character map 大很多<span class="mojikumi-line-end">，</span>若干 <code>@font-face</code> 的 <code>unicode<wbr>-<wbr>range</code> 也可以相交<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>它没说两个 <code>@font-face</code> 能不能除了 <code>src</code> 啥都一样<span class="mojikumi-line-end">，</span><a href="https://www.w3.org/TR/css-fonts-4/#composite-fonts">而只说了</a><span class="mojikumi-line-end">：</span></p>
+<blockquote>
+<p>Multiple @font-face rules with different unicode ranges for the same family and style descriptor values can be used to create composite fonts that mix the glyphs from different fonts for different scripts.</p>
+</blockquote>
+<p>我也不敢依赖于实验结果<span class="mojikumi-line-end">，</span>就没做实验<span class="mojikumi-line-end">，</span>直接加上了粗略但是保证 common 和 unique 不相同的 <code>unicode<wbr>-<wbr>range</code><span class="mojikumi-line-end">，</span>具体来说就是 0 到最大的 code point<span class="mojikumi-line-end">。</span></p>
+<p>这里从 0 开始也是有一定原因的<span class="mojikumi-line-end">：</span>我在看 specification 的时候注意到一个奇怪的东西叫 <a href="https://www.w3.org/TR/css-fonts-4/#first-available-font"><i>first available font</i></a><span class="mojikumi-line-end">，</span>虽然没太看懂具体是什么意思<span class="mojikumi-line-end">，</span>但大致上感觉最好是让 <code>unicode<wbr>-<wbr>range</code> 包含空格<span class="mojikumi-line-end">，</span>为了保险就从 0 开始了<span class="mojikumi-line-end">。</span></p>
+<p>最后还有一个坑<span class="mojikumi-line-end">：</span>如果 composite font 中两个 <code>@font-face</code> 的 <code>unicode<wbr>-<wbr>range</code> 相交<span class="mojikumi-line-end">，</span>给交集内的字符匹配字体时<span class="mojikumi-line-end">，</span>会按出现位置的逆序进行匹配<span class="mojikumi-line-end">。</span></p>
+<p>这能有什么坑呢<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>如果不动手试一试真的很难想到.. 按照整体的设计<span class="mojikumi-line-end">，</span>访问一个页面时很有可能是 common 字体已经缓存好了<span class="mojikumi-line-end">，</span>需要下载 unique 字体<span class="mojikumi-line-end">，</span>如果 unique 的 <code>@font-face</code> 放在 common 的后面<span class="mojikumi-line-end">，</span>就会优先匹配<span class="mojikumi-line-end">，</span>从而阻塞住已经缓存的 common 字体<span class="mojikumi-line-end">，</span>整个页面都要等 unique 下载好才切换字体<span class="mojikumi-line-end">，</span>而不是先显示 common 再显示剩下的 unique<span class="mojikumi-line-end">。</span>当然<span class="mojikumi-line-end">，</span>反过来的话<span class="mojikumi-line-end">，</span>unique 也会等 common<span class="mojikumi-line-end">，</span>但这样一般来说是更好的<span class="mojikumi-line-end">。</span></p>
+<p>还有一些细节优化<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>生成 unique 字体文件时<span class="mojikumi-line-end">，</span>文件名里有 hash 就够了<span class="mojikumi-line-end">，</span>不要再添加和页面有关的信息<span class="mojikumi-line-end">，</span>这样的话如果两个页面刚好 unique glyph 集合相同就可以共用一个字体文件<span class="mojikumi-line-end">。</span></li>
+<li>如果一个页面一个 common glyph 都没用<span class="mojikumi-line-end">，</span>就可以不添加 common font 的 <code>@font-face</code><span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/generateFontFiles.ts"><code class="break-all">generateFontFiles.ts</code></a></p>
+<h3 id="将-css-写入-html-文件" class="heading"><a href="#将-css-写入-html-文件" class="heading-anchor" aria-label="章节： 将 CSS 写入 HTML 文件" tabindex="-1"></a><span>将 CSS 写入 HTML 文件</span></h3>
+<p>虽然也有想过直接找到 <code>&#x3C;/head></code> 文本替换<span class="mojikumi-line-end">，</span>但为了靠谱还是用的 <a href="https://github.com/jsdom/jsdom"><code>jsdom</code></a><span class="mojikumi-line-end">。</span></p>
+<p>这部分的代码是最短的<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/injectCSS.ts"><code>injectCSS<wbr>.<wbr>ts</code></a></p>
+<h3 id="给项目起名" class="heading"><a href="#给项目起名" class="heading-anchor" aria-label="章节： 给项目起名" tabindex="-1"></a><span>给项目起名</span></h3>
+<p>主体思路是把 glyph 分成两类分别对待<span class="mojikumi-line-end">，</span>就很有 segregate 的感觉<span class="mojikumi-line-start">（</span></p>
+<p>主要还是因为刚写了一个 <a href="/post/2022/11/csapp-9#segregated-fit">segregated fit</a> 印象比较深刻<span class="mojikumi-line-end">，</span>所以就取了这么个名字<span class="mojikumi-line-end">。</span></p>
+<h3 id="在博客中使用" class="heading"><a href="#在博客中使用" class="heading-anchor" aria-label="章节： 在博客中使用" tabindex="-1"></a><span>在博客中使用</span></h3>
+<p>就是 <a href="https://iles-docs.netlify.app/config#ssg-onsiterendered">从 iles 获取页面信息</a><span class="mojikumi-line-end">，</span>从 <a href="https://plausible.io/docs/stats-api#get-apiv1statsbreakdown">Plausible Stats API</a> 获取访问量<span class="mojikumi-line-end">，</span>调用 <a href="https://vitejs.dev/guide/api-javascript.html#preview">Vite API</a> 跑一个 preview server<span class="mojikumi-line-end">，</span>然后调用 <code>glyph<wbr>-<wbr>segregator</code><span class="mojikumi-line-end">。</span>直接看<a href="https://github.com/ouuan/iles-blog/commit/695f8b22ca3a791ceeb5440e81a6fa377b50bb3b#diff-ca899b3bf20a893bb3dfb058072a2b279953ce008f562727ad74a76d520be662">代码</a>吧<span class="mojikumi-line-end">。</span></p>
+<p>访问概率的计算方式是<span class="mojikumi-line-end">，</span>看每个页面近 90 天的访客数<span class="mojikumi-line-end">，</span>加一后除以其中最高的加二<span class="mojikumi-line-start">（</span>其实这个加一加二基本没啥用<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>用最高页面访客数而非实际总访客数作分母<span class="mojikumi-line-end">，</span>是想在算法的基础上更加偏向于划分到常用字一些<span class="mojikumi-line-end">，</span>稍微优化一点访问页面较多的访客的体验<span class="mojikumi-line-end">，</span>也可以少一次 API 查询<span class="mojikumi-line-end">。</span></p>
+<p>更新常用字集合用的是 <a href="https://github.com/ouuan/iles-blog/blob/master/.github/workflows/update-fonts.yml">scheduled GitHub Actions</a><span class="mojikumi-line-end">，</span>在 Docker 里跑是因为 <a href="https://stackoverflow.com/questions/74332455/connection-refused-for-local-server-in-github-actions-workflow/74341376">Connection refused for local server in github actions workflow</a><span class="mojikumi-line-end">。</span></p>
+<h2 id="实际效果" class="heading"><a href="#实际效果" class="heading-anchor" aria-label="章节： 实际效果" tabindex="-1"></a><span>实际效果</span></h2>
+<p>整个 <code>glyphSegregator</code> 用时 40s 左右<span class="mojikumi-line-end">，</span>glyph 数量和 common font file size (woff2) 如表所示<span class="mojikumi-line-end">：</span></p>
+<div class="overflow-auto my-6"><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Noto Serif SC Regular</th>
+<th align="center">Noto Serif SC Bold</th>
+<th align="center">LXGW WenKai Regular</th>
+<th align="center">LXGW WenKai Bold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><span class="whitespace-nowrap">common</span></td>
+<td align="center">575 (162.7KiB)</td>
+<td align="center">25 (8.5KiB)</td>
+<td align="center">37 (5.2KiB)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">unique</td>
+<td align="center">2311</td>
+<td align="center">1536</td>
+<td align="center">161</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>首页只需加载两个 Regular 的 common font<span class="mojikumi-line-end">，</span>每个页面需要加载的字体文件总大小缩减到了原来使用子集化的 1/4 左右<span class="mojikumi-line-end">，</span>并且加载的字体文件数量从 10~30 个缩减到了 2~6 个<span class="mojikumi-line-end">。</span></p>
+<p>作为对比<span class="mojikumi-line-end">，</span>如果出现在两个页面就设为常用字<span class="mojikumi-line-end">，</span>Noto Serif SC Regular 的 common 有 299KiB<span class="mojikumi-line-end">，</span>出现在三个页面则是 227KiB<span class="mojikumi-line-end">。</span></p>
+<h2 id="后记：font-subsetting-与-kerning" class="heading"><a href="#后记：font-subsetting-与-kerning" class="heading-anchor" aria-label="章节： 后记：font subsetting 与 kerning" tabindex="-1"></a><span>后记<span class="mojikumi-line-end">：</span>font subsetting 与 kerning</span></h2>
+<p>因为通过 Stylus 设置了不使用本地字体<span class="mojikumi-line-end">，</span>我可以轻松地在本地字体和 web font 之间切换<span class="mojikumi-line-end">。</span>然后我就偶然发现<span class="mojikumi-line-end">，</span>切换时一些标题发生了字符的偏移<span class="mojikumi-line-end">。</span>原因也很简单<span class="mojikumi-line-end">，</span>就是相邻的两个字符本来有 kerning (字距调整)<span class="mojikumi-line-end">，</span>但它们被划分到了不同的子集中<span class="mojikumi-line-end">，</span>生成字体子集时就丢失了 kerning 信息<span class="mojikumi-line-end">。</span></p>
+<p>我在 glyph-segregator 中 <a href="https://github.com/ouuan/glyph-segregator/commit/ae3ddd5cbb91f0eb6bbfec7071ee408c28b36dec">添加了 <code class="break-all">alwaysCommonGlyphs</code> 选项</a><span class="mojikumi-line-start">（</span>ASCII 字符总是设为 common<span class="mojikumi-line-end">，</span>如果需要处理非 ASCII 字符的 kerning 也可以修改设置<span class="mojikumi-line-end">，</span>但我的博客就假设只有 ASCII 字符会遇到这个问题<span class="mojikumi-line-end">）</span>来解决这一问题<span class="mojikumi-line-end">。</span>最好的解决方案是真的去看一下字体里有哪些 kerning 信息然后相应地处理<span class="mojikumi-line-end">，</span>但是差不多得了<span class="mojikumi-line-start">（</span></p>
+<a id="font-kerning-示例" name="font-kerning-示例" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3><div class="p-3 flex justify-between items-center" data-v-bb0e38b3><h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3></span><span data-v-bb0e38b3>font kerning 示例</span></h3><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3><ul>
+<li>有 kerning: <span style="font-kerning: normal; font-size: 2rem;">TAVeYoW</span></li>
+<li>没 kerning: <span style="font-kerning: none; font-size: 2rem;">TAVeYoW</span></li>
+</ul></div></div></aside>
+<p>后记的后记<span class="mojikumi-line-end">：</span>还是改成了<a href="https://github.com/ouuan/glyph-segregator/commit/e955eb1c935d77adf0e4bcb5c870fee0614801b6">即使未被使用也添加进 common glyph set</a><span class="mojikumi-line-end">，</span>否则如果新加一个 always common 的 glyph<span class="mojikumi-line-end">，</span>为了让它 common<span class="mojikumi-line-end">，</span>就会改变 common glyph set<span class="mojikumi-line-end">，</span>导致 cache 失效<span class="mojikumi-line-end">。</span>这里有一定的 trade-off<span class="mojikumi-line-end">，</span>要在 cache 失效 / 多塞一些未被使用的 glyph / kerning 挂掉之间进行选择<span class="mojikumi-line-end">，</span>我还是选择了多塞一些未被使用的 glyph<span class="mojikumi-line-end">，</span>毕竟整个 ASCII 也没多大<span class="mojikumi-line-end">。</span>最好是借助人类智慧来预测一下哪些 glyph 更有可能在未来被添加而放进 common glyph set 里<span class="mojikumi-line-end">，</span>其他 glyph 就只有使用了才放<span class="mojikumi-line-end">，</span>但是差不多得了<span class="mojikumi-line-start">（</span></p>]]></content:encoded>
+            <category domain="https://ouuan.moe/tag/blog">blog</category>
+            <category domain="https://ouuan.moe/tag/Web">Web</category>
+            <category domain="https://ouuan.moe/tag/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91">项目开发</category>
+        </item>
+    </channel>
+</rss>
