@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96</id>
     <title>ouuan's blog: 标签: 性能优化</title>
-    <updated>2023-02-11T20:25:50.619Z</updated>
+    <updated>2023-02-12T14:05:09.991Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>ouuan</name>
@@ -10,7 +10,7 @@
     </author>
     <link rel="alternate" href="https://ouuan.moe/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"/>
     <link rel="self" href="https://ouuan.moe/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/feed.atom"/>
-    <subtitle>标签: 性能优化 - ouuan 的博客</subtitle>
+    <subtitle>标签: 性能优化 - ouuan 的博客：以技术向内容为主，包括 Web、系统、Linux 等方面的学习笔记和经验分享。</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2023 ouuan
 Licensed under CC BY-SA 4.0</rights>
