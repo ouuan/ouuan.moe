@@ -1,828 +1,185 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta charset="UTF-8">
-  <title>有关 THU 选课的一些常见问题与注意事项 - ouuan's blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+<title>有关 THU 选课的一些常见问题与注意事项 - ouuan's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
 后来，我弄明白之后发现不记得自己以前为什么不明白了，写不出来了（
 再后来，我发现一些身边的同学到了选大二的课的时候还没弄明白选课流程（
 所以，虽然选课指南是写不出来了，姑且是列举一些常见问题与注意事项，供参考。
 ">
-  <meta property="og:url" content="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
-  <meta property="og:site_name" content="ouuan's blog">
-  <meta property="og:title" content="有关 THU 选课的一些常见问题与注意事项 · ouuan's blog">
-  <meta property="og:description" content="还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
+<meta property="og:url" content="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
+<meta property="og:site_name" content="ouuan's blog">
+<meta property="og:title" content="有关 THU 选课的一些常见问题与注意事项 · ouuan's blog">
+<meta property="og:description" content="还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
 后来，我弄明白之后发现不记得自己以前为什么不明白了，写不出来了（
 再后来，我发现一些身边的同学到了选大二的课的时候还没弄明白选课流程（
 所以，虽然选课指南是写不出来了，姑且是列举一些常见问题与注意事项，供参考。
 ">
-  <meta property="twitter:domain" content="ouuan.moe">
-  <meta property="twitter:title" content="有关 THU 选课的一些常见问题与注意事项 · ouuan's blog">
-  <meta property="twitter:description" content="还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
+<meta property="twitter:domain" content="ouuan.moe">
+<meta property="twitter:title" content="有关 THU 选课的一些常见问题与注意事项 · ouuan's blog">
+<meta property="twitter:description" content="还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
 后来，我弄明白之后发现不记得自己以前为什么不明白了，写不出来了（
 再后来，我发现一些身边的同学到了选大二的课的时候还没弄明白选课流程（
 所以，虽然选课指南是写不出来了，姑且是列举一些常见问题与注意事项，供参考。
 ">
-  <meta property="twitter:url" content="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
-  <style>
-    html:not(.dark):not(.light) {
-      visibility: hidden;
-    }
-
-    body {
-      visibility: hidden;
-    }
-  </style>
-  <script>
-    (() => {
-      let dark;
-      try {
-        const theme = localStorage && localStorage.getItem('vueuse-color-scheme');
-        if (theme === 'dark') dark = true;
-        else if (theme === 'light') dark = false;
-        else dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      } catch (e) {
-        dark = false;
-      }
-      document.documentElement.classList.add(dark ? 'dark' : 'light');
-    })()
-  </script>
-  <noscript>
-    <style>
-      @media (prefers-color-scheme: light) {
-        :root:not(.dark):not(.light) {
-          color-scheme: light;
-          --text-color: #232637;
-          --bg-color: #DEE6EE;
-          --card-color: #EFF3F7;
-          --link-color: #1E66B8;
-          --hover-color: #2E80DD;
-          --active-color: #164C89;
-          --bghover-color: #D6E0EA;
-          --popup-color: #F7F9FB;
-          --footer-color: #5F627B;
-          --area-color: #E1E2E8;
-          --nested-color: #F0F0F3;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not(.dark):not(.light) {
-          color-scheme: dark;
-          --text-color: #E6EDF2;
-          --bg-color: #0D0E15;
-          --card-color: #1F2130;
-          --link-color: #8BB8EC;
-          --hover-color: #A2C6F0;
-          --active-color: #74AAE8;
-          --bghover-color: #353853;
-          --popup-color: #2C2F45;
-          --footer-color: #9699AE;
-          --area-color: #2F313D;
-          --nested-color: #3C3E4E;
-        }
-      }
-
-      html {
-        visibility: visible !important;
-      }
-    </style>
-  </noscript>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
-  <link rel="canonical" href="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
-  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
-  <link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
-  <link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
-  <link rel="dns-prefetch" href="https://plausible.ouuan.moe">
-  <link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
-  <link rel="stylesheet" href="/vendors/katex/katex.css">
-  <link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
-  <meta name="author" content="ouuan">
-  <meta name="twitter:creator" content="@ouuan">
-  <meta name="twitter:card" content="summary">
-  <meta property="og:image" content="https://ouuan.moe/images/2022/07/all-in-wl.png">
-  <meta property="generator" content="îles">
-  <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2022-07-25T13:05:32.000Z">
-  <meta property="article:modified_time" content="2022-12-16T05:45:21.000Z">
-  <meta property="article:author" content="ouuan">
-  <meta property="article:tag" content="选课">
-  <meta property="article:tag" content="THU">
-  <meta property="article:tag" content="经验分享">
-  <link rel="preconnect" href="https://giscus.app">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
-
-  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/TableOfContents.3de486f5.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin="">
-  <style>
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.unique.62ad3bc4.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.cd2fd889.woff') format('woff');
-      unicode-range: U+0-ff1f;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff');
-      unicode-range: U+0-ff1b;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.unique.08102b22.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.unique.9458bb1e.woff') format('woff');
-      unicode-range: U+0-1f635;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff');
-      unicode-range: U+0-ff1f;
-    }
-
-    @font-face {
-      font-family: "LXGW WenKai Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/LXGWWenKai-Regular.unique.53b1013b.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.unique.f6056c5c.woff') format('woff');
-      unicode-range: U+0-987a;
-    }
-
-    @font-face {
-      font-family: "LXGW WenKai Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/LXGWWenKai-Regular.common.17c05e80.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.common.8d5b3f2b.woff') format('woff');
-      unicode-range: U+0-ff0c;
-    }
-  </style>
-</head>
-
-<body itemscope="" itemtype="https://schema.org/ItemPage">
-  <div id="app">
-    <header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader">
-      <div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center">
-        <div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div>
-        <nav class="flex">
-          <ul class="flex">
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li>
-          </ul>
-        </nav>
-        <div class="sm:basis-full"></div>
-        <ul class="flex">
-          <li class="flex"><ile-root id="ile-1">
-              <div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div>
-              <form role="search" class="hidden lg:flex items-stretch justify-center">
-                <div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a>
-              </form>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as a
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as m
-              } from "/assets/SearchBar.5e1dcbf6.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              r(a, m, "ile-1", {}, {});
-            </script>
-          </li>
-          <li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li>
-          <li class="flex"><ile-root id="ile-2">
-              <div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button>
-                <ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项">
-                  <li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li>
-                </ul>
-              </div>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              var p = (o, a) => () => (a || o((a = {
-                exports: {}
-              }).exports, a), a.exports);
-              var r = (o, a, _) => new Promise((c, n) => {
-                var f = t => {
-                    try {
-                      e(_.next(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  l = t => {
-                    try {
-                      e(_.throw(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-                e((_ = _.apply(o, a)).next())
-              });
-              import {
-                _ as d
-              } from "/assets/vite.5ce4fca4.js";
-              import {
-                a as s
-              } from "/assets/iles.5e82acba.js";
-              import "/assets/vendor-vue.075573a8.js";
-              var E = p(m => {
-                const u = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                  }),
-                  v = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/ThemeSwitcher.3f8d4c7e.js"), ["assets/ThemeSwitcher.3f8d4c7e.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js", "assets/useTheme.f1d4e689.js"])).default
-                  });
-                s(u, v, "ile-2", {}, {})
-              });
-              export default E();
-            </script>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement">
-      <div class="flex flex-row-reverse justify-center"><ile-root id="ile-3">
-          <div class="flex print:hidden">
-            <aside style="max-height:calc(100vh - 10rem);" id="__toc" class="sticky top-16 bg-card py-6 m-4 rd-2 w-72 2xl:w-84 3xl:w-96 shadow hidden xl:block" aria-label="文章目录" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPSideBar">
-              <div class="flex flex-wrap gap-2 justify-between items-center pr-4 pl-8 mb-3">
-                <div class="flex items-center">
-                  <h2 class="text-xl font-bold"> 文章目录 </h2><button id="__toc-close" class="px-1 text-xl flex items-center" title="关闭目录" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-close"></span></button>
-                </div>
-                <div><label class="ml-auto flex gap-1 items-center"><span>展开全部</span><input type="checkbox"></label></div>
-              </div>
-              <div style="max-height:calc(100% - 2rem);" class="overflow-auto overscroll-contain pr-4 pl-8">
-                <ol data-v-84d105d6="">
-                  <li id="__toc-item-选课入口------在哪选课啊，我找不到" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#选课入口------在哪选课啊，我找不到" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">选课入口 —— 在哪选课啊，我找不到</span></a></li>
-                  <li id="__toc-item-选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">选课流程 —— 什么是预选、正选、补退选？什么是抽签、抢课？</span></a></li>
-                  <li id="__toc-item-课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？</span></a></li>
-                  <li id="__toc-item-体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？</span></a></li>
-                </ol>
-              </div>
-            </aside><button style="display:none;" id="__toc-open" title="显示文章目录" class="floating-button text-lg bottom-24" aria-haspopup="dialog" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-menu"></span></button>
-          </div>
-        </ile-root>
-        <script></script>
-        <script type="module" async="">
-          import {
-            h,
-            c as F
-          } from "/assets/iles.5e82acba.js";
-          import {
-            _ as c
-          } from "/assets/TableOfContents.3de486f5.js";
-          import "/assets/vendor-vue.075573a8.js";
-          import "/assets/vite.5ce4fca4.js";
-          h(F, c, "ile-3", function(l, e, t, i, s, g, u, v, n, r, o, m, a, f, p, w, L, W, _) {
-            return {
-              headings: [{
-                level: t,
-                title: "选课入口 —— 在哪选课啊，我找不到",
-                slug: "选课入口------在哪选课啊，我找不到"
-              }, {
-                level: t,
-                title: "选课流程 —— 什么是预选、正选、补退选？什么是抽签、抢课？",
-                slug: "选课流程------什么是预选、正选、补退选？什么是抽签、抢课？"
-              }, {
-                level: e,
-                title: s,
-                slug: s
-              }, {
-                level: l,
-                title: g,
-                slug: g
-              }, {
-                level: l,
-                title: u,
-                slug: u
-              }, {
-                level: i,
-                title: v,
-                slug: v
-              }, {
-                level: l,
-                title: n,
-                slug: n
-              }, {
-                level: e,
-                title: r,
-                slug: r
-              }, {
-                level: l,
-                title: o,
-                slug: o
-              }, {
-                level: i,
-                title: "Waiting List 顺序与志愿优先级",
-                slug: "waiting-list-顺序与志愿优先级"
-              }, {
-                level: l,
-                title: "正选、补退选、Waiting List",
-                slug: "正选、补退选、waiting-list"
-              }, {
-                level: i,
-                title: "退出 WL",
-                slug: "退出-wl"
-              }, {
-                level: l,
-                title: m,
-                slug: m
-              }, {
-                level: l,
-                title: a,
-                slug: a
-              }, {
-                level: l,
-                title: "记 P/F",
-                slug: "记-pf"
-              }, {
-                level: l,
-                title: f,
-                slug: f
-              }, {
-                level: i,
-                title: "我到底是在退课，退课，还是退课 😵 —— 删课 vs 退选 vs 退课",
-                slug: "我到底是在退课，退课，还是退课------删课-vs-退选-vs-退课"
-              }, {
-                level: t,
-                title: "课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？",
-                slug: "课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？"
-              }, {
-                level: e,
-                title: p,
-                slug: p
-              }, {
-                level: e,
-                title: w,
-                slug: w
-              }, {
-                level: e,
-                title: L,
-                slug: L
-              }, {
-                level: e,
-                title: W,
-                slug: W
-              }, {
-                level: e,
-                title: _,
-                slug: _
-              }, {
-                level: t,
-                title: "体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？",
-                slug: "体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？"
-              }]
-            }
-          }(4, 3, 2, 6, "选课流程", "新生选课流程", "正常选课流程", "记得选课！", "夏季学期（小学期）选课流程", "选课环节", "预选", "二级选课", "特殊原因补选（手选）", "退课", "切换学期", "查看课程信息", "选课操作与课程属性", "教室位置查看", "关于上课时间"), {});
-        </script>
-        <div class="grow m-4 standard-card max-w-200">
-          <article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/BlogPosting">
-            <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author">
-              <meta itemprop="additionalName" content="ouuan">
-              <meta itemprop="givenName" content="Yufan">
-              <meta itemprop="familyName" content="You">
-              <meta itemprop="url" content="https://github.com/ouuan">
-              <link itemprop="gender" href="https://schema.org/Male">
-              <meta itemprop="image" content="/android-chrome-512x512.png">
-            </div>
-            <meta itemprop="mainEntityOfPage" content="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
-            <meta itemprop="image" content="https://ouuan.moe/images/2022/07/all-in-wl.png"><ile-root id="ile-4" class="my-12">
-              <header class="my-12" data-v-267f9ef7="">
-                <h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">有关 THU 选课的一些常见问题与注意事项</span></h1>
-                <div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2022-07-25 14:03:07 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/post/2022/07/thu-course-selection-tips.mdx?plain=1" data-v-267f9ef7=""><time datetime="2022-07-25T14:03:07+08:00" itemprop="dateCreated" data-v-267f9ef7="">2022-07-25 (7 个月前) </time></a></span><span class="flex items-center" title="修改于 2022-12-16 13:45:21 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/post/2022/07/thu-course-selection-tips.mdx" data-v-267f9ef7=""><time datetime="2022-12-16T13:45:21+08:00" itemprop="dateModified" data-v-267f9ef7="">2022-12-16 (大约 2 个月前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span><span class="flex flex-wrap justify-center gap-x-2 gap-y-1" data-v-267f9ef7=""><span title="标签: 选课" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/选课" class="hover:underline" data-v-267f9ef7="">选课</a></span><span title="标签: THU" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/THU" class="hover:underline" data-v-267f9ef7="">THU</a></span><span title="标签: 经验分享" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/经验分享" class="hover:underline" data-v-267f9ef7="">经验分享</a></span></span></div>
-              </header>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as t,
-                c as e
-              } from "/assets/iles.5e82acba.js";
-              import i from "/assets/PostHead.e82ef423.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              import "/assets/VisitorCount.c343552a.js";
-              import "/assets/site.1441102a.js";
-              t(e, i, "ile-4", {
-                class: "my-12",
-                href: "/post/2022/07/thu-course-selection-tips",
-                filename: "src/pages/post/2022/07/thu-course-selection-tips.mdx",
-                frontmatter: {
-                  title: "有关 THU 选课的一些常见问题与注意事项",
-                  date: new Date(1658728987e3),
-                  image: "/images/2022/07/all-in-wl.png",
-                  tags: ["选课", "THU", "经验分享"],
-                  lastUpdated: new Date(1671169521e3),
-                  published: new Date(1658754332e3),
-                  visitor: 666,
-                  description: `还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
+<meta property="twitter:url" content="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
+<style>html:not(.dark):not(.light) { visibility: hidden; } body { visibility: hidden; }</style>
+<script>(() => { let dark; try { const theme = localStorage && localStorage.getItem('vueuse-color-scheme'); if (theme === 'dark') dark = true; else if (theme === 'light') dark = false; else dark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { dark = false; } document.documentElement.classList.add(dark ? 'dark' : 'light'); })()</script>
+<noscript><style>@media (prefers-color-scheme: light) { :root:not(.dark):not(.light) { color-scheme: light; --text-color: #232637; --bg-color: #DEE6EE; --card-color: #EFF3F7; --link-color: #1E66B8; --hover-color: #2E80DD; --active-color: #164C89; --bghover-color: #D6E0EA; --popup-color: #F7F9FB; --footer-color: #5F627B; --area-color: #E1E2E8; --nested-color: #F0F0F3; } } @media (prefers-color-scheme: dark) { :root:not(.dark):not(.light) { color-scheme: dark; --text-color: #E6EDF2; --bg-color: #0D0E15; --card-color: #1F2130; --link-color: #8BB8EC; --hover-color: #A2C6F0; --active-color: #74AAE8; --bghover-color: #353853; --popup-color: #2C2F45; --footer-color: #9699AE; --area-color: #2F313D; --nested-color: #3C3E4E; } } html { visibility:visible !important; }</style></noscript>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
+<link rel="canonical" href="https://ouuan.moe/post/2022/07/thu-course-selection-tips">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
+<link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
+<link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
+<link rel="dns-prefetch" href="https://plausible.ouuan.moe">
+<link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
+<link rel="stylesheet" href="/vendors/katex/katex.css">
+<link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
+<meta name="author" content="ouuan">
+<meta name="twitter:creator" content="@ouuan">
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://ouuan.moe/images/2022/07/all-in-wl.png">
+<meta property="generator" content="îles">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-07-25T13:05:32.000Z">
+<meta property="article:modified_time" content="2022-12-16T05:45:21.000Z">
+<meta property="article:author" content="ouuan">
+<meta property="article:tag" content="选课">
+<meta property="article:tag" content="THU">
+<meta property="article:tag" content="经验分享">
+<link rel="preconnect" href="https://giscus.app">
+<link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
+    
+  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin=""><link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin=""><link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin=""><link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin=""><link rel="modulepreload" href="/assets/TableOfContents.3de486f5.js" crossorigin=""><link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin=""><link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin=""><link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin=""><link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin=""><link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin=""><link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin=""><style>@font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.unique.62ad3bc4.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.cd2fd889.woff') format('woff'); unicode-range: U+0-ff1f; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff'); unicode-range: U+0-ff1b; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.unique.08102b22.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.unique.9458bb1e.woff') format('woff'); unicode-range: U+0-1f635; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff'); unicode-range: U+0-ff1f; } @font-face { font-family: "LXGW WenKai Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/LXGWWenKai-Regular.unique.53b1013b.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.unique.f6056c5c.woff') format('woff'); unicode-range: U+0-987a; } @font-face { font-family: "LXGW WenKai Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/LXGWWenKai-Regular.common.17c05e80.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.common.8d5b3f2b.woff') format('woff'); unicode-range: U+0-ff0c; }</style></head>
+  <body itemscope="" itemtype="https://schema.org/ItemPage">
+    <div id="app"><header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader"><div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center"><div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div><nav class="flex"><ul class="flex"><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li></ul></nav><div class="sm:basis-full"></div><ul class="flex"><li class="flex"><ile-root id="ile-1"><div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div><form role="search" class="hidden lg:flex items-stretch justify-center"><div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></form></ile-root><script></script><script type="module" async="">import{h as r,c as a}from"/assets/iles.5e82acba.js";import{_ as m}from"/assets/SearchBar.5e1dcbf6.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";r(a,m,"ile-1",{},{});
+</script></li><li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li><li class="flex"><ile-root id="ile-2"><div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button><ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项"><li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li></ul></div></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/ThemeSwitcher.3f8d4c7e.js"),["assets/ThemeSwitcher.3f8d4c7e.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js","assets/useTheme.f1d4e689.js"])).default});s(u,v,"ile-2",{},{})});export default E();
+</script></li></ul></div></header><main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement"><div class="flex flex-row-reverse justify-center"><ile-root id="ile-3"><div class="flex print:hidden"><aside style="max-height:calc(100vh - 10rem);" id="__toc" class="sticky top-16 bg-card py-6 m-4 rd-2 w-72 2xl:w-84 3xl:w-96 shadow hidden xl:block" aria-label="文章目录" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPSideBar"><div class="flex flex-wrap gap-2 justify-between items-center pr-4 pl-8 mb-3"><div class="flex items-center"><h2 class="text-xl font-bold"> 文章目录 </h2><button id="__toc-close" class="px-1 text-xl flex items-center" title="关闭目录" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-close"></span></button></div><div><label class="ml-auto flex gap-1 items-center"><span>展开全部</span><input type="checkbox"></label></div></div><div style="max-height:calc(100% - 2rem);" class="overflow-auto overscroll-contain pr-4 pl-8"><ol data-v-84d105d6=""><li id="__toc-item-选课入口------在哪选课啊，我找不到" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#选课入口------在哪选课啊，我找不到" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">选课入口 —— 在哪选课啊，我找不到</span></a></li><li id="__toc-item-选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">选课流程 —— 什么是预选、正选、补退选？什么是抽签、抢课？</span></a></li><li id="__toc-item-课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？</span></a></li><li id="__toc-item-体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？</span></a></li></ol></div></aside><button style="display:none;" id="__toc-open" title="显示文章目录" class="floating-button text-lg bottom-24" aria-haspopup="dialog" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-menu"></span></button></div></ile-root><script></script><script type="module" async="">import{h,c as F}from"/assets/iles.5e82acba.js";import{_ as c}from"/assets/TableOfContents.3de486f5.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";h(F,c,"ile-3",function(l,e,t,i,s,g,u,v,n,r,o,m,a,f,p,w,L,W,_){return{headings:[{level:t,title:"选课入口 —— 在哪选课啊，我找不到",slug:"选课入口------在哪选课啊，我找不到"},{level:t,title:"选课流程 —— 什么是预选、正选、补退选？什么是抽签、抢课？",slug:"选课流程------什么是预选、正选、补退选？什么是抽签、抢课？"},{level:e,title:s,slug:s},{level:l,title:g,slug:g},{level:l,title:u,slug:u},{level:i,title:v,slug:v},{level:l,title:n,slug:n},{level:e,title:r,slug:r},{level:l,title:o,slug:o},{level:i,title:"Waiting List 顺序与志愿优先级",slug:"waiting-list-顺序与志愿优先级"},{level:l,title:"正选、补退选、Waiting List",slug:"正选、补退选、waiting-list"},{level:i,title:"退出 WL",slug:"退出-wl"},{level:l,title:m,slug:m},{level:l,title:a,slug:a},{level:l,title:"记 P/F",slug:"记-pf"},{level:l,title:f,slug:f},{level:i,title:"我到底是在退课，退课，还是退课 😵 —— 删课 vs 退选 vs 退课",slug:"我到底是在退课，退课，还是退课------删课-vs-退选-vs-退课"},{level:t,title:"课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？",slug:"课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？"},{level:e,title:p,slug:p},{level:e,title:w,slug:w},{level:e,title:L,slug:L},{level:e,title:W,slug:W},{level:e,title:_,slug:_},{level:t,title:"体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？",slug:"体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？"}]}}(4,3,2,6,"选课流程","新生选课流程","正常选课流程","记得选课！","夏季学期（小学期）选课流程","选课环节","预选","二级选课","特殊原因补选（手选）","退课","切换学期","查看课程信息","选课操作与课程属性","教室位置查看","关于上课时间"),{});
+</script><div class="grow m-4 standard-card max-w-200"><article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/BlogPosting"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><meta itemprop="mainEntityOfPage" content="https://ouuan.moe/post/2022/07/thu-course-selection-tips"><meta itemprop="image" content="https://ouuan.moe/images/2022/07/all-in-wl.png"><ile-root id="ile-4" class="my-12"><header class="my-12" data-v-267f9ef7=""><h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">有关 THU 选课的一些常见问题与注意事项</span></h1><div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2022-07-25 14:03:07 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/post/2022/07/thu-course-selection-tips.mdx?plain=1" data-v-267f9ef7=""><time datetime="2022-07-25T14:03:07+08:00" itemprop="dateCreated" data-v-267f9ef7="">2022-07-25  (7 个月前) </time></a></span><span class="flex items-center" title="修改于 2022-12-16 13:45:21 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/post/2022/07/thu-course-selection-tips.mdx" data-v-267f9ef7=""><time datetime="2022-12-16T13:45:21+08:00" itemprop="dateModified" data-v-267f9ef7="">2022-12-16  (大约 2 个月前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span><span class="flex flex-wrap justify-center gap-x-2 gap-y-1" data-v-267f9ef7=""><span title="标签: 选课" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/选课" class="hover:underline" data-v-267f9ef7="">选课</a></span><span title="标签: THU" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/THU" class="hover:underline" data-v-267f9ef7="">THU</a></span><span title="标签: 经验分享" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/经验分享" class="hover:underline" data-v-267f9ef7="">经验分享</a></span></span></div></header></ile-root><script></script><script type="module" async="">import{h as t,c as e}from"/assets/iles.5e82acba.js";import i from"/assets/PostHead.e82ef423.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/VisitorCount.c343552a.js";import"/assets/site.1441102a.js";t(e,i,"ile-4",{class:"my-12",href:"/post/2022/07/thu-course-selection-tips",filename:"src/pages/post/2022/07/thu-course-selection-tips.mdx",frontmatter:{title:"有关 THU 选课的一些常见问题与注意事项",date:new Date(1658728987e3),image:"/images/2022/07/all-in-wl.png",tags:["选课","THU","经验分享"],lastUpdated:new Date(1671169521e3),published:new Date(1658754332e3),visitor:666,description:`还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
 后来，我弄明白之后发现不记得自己以前为什么不明白了，写不出来了（
 再后来，我发现一些身边的同学到了选大二的课的时候还没弄明白选课流程（
 所以，虽然选课指南是写不出来了，姑且是列举一些常见问题与注意事项，供参考。
-`
-                },
-                "title-link": !1
-              }, {});
-            </script>
-            <section class="article-style" itemprop="articleBody">
-              <p>还记得刚入学的时候<span class="mojikumi-line-end">，</span>我一开始完全没弄明白要怎么选课<span class="mojikumi-line-end">，</span>当时就想着弄明白了要写一篇选课指南<span class="mojikumi-line-end">。</span></p>
-              <p>后来<span class="mojikumi-line-end">，</span>我弄明白之后发现不记得自己以前为什么不明白了<span class="mojikumi-line-end">，</span>写不出来了<span class="mojikumi-line-start">（</span></p>
-              <p>再后来<span class="mojikumi-line-end">，</span>我发现一些身边的同学到了选大二的课的时候还没弄明白选课流程<span class="mojikumi-line-start">（</span></p>
-              <p>所以<span class="mojikumi-line-end">，</span>虽然选课指南是写不出来了<span class="mojikumi-line-end">，</span>姑且是列举一些常见问题与注意事项<span class="mojikumi-line-end">，</span>供参考<span class="mojikumi-line-end">。</span></p>
+`},"title-link":!1},{});
+</script><section class="article-style" itemprop="articleBody"><p>还记得刚入学的时候<span class="mojikumi-line-end">，</span>我一开始完全没弄明白要怎么选课<span class="mojikumi-line-end">，</span>当时就想着弄明白了要写一篇选课指南<span class="mojikumi-line-end">。</span></p>
+<p>后来<span class="mojikumi-line-end">，</span>我弄明白之后发现不记得自己以前为什么不明白了<span class="mojikumi-line-end">，</span>写不出来了<span class="mojikumi-line-start">（</span></p>
+<p>再后来<span class="mojikumi-line-end">，</span>我发现一些身边的同学到了选大二的课的时候还没弄明白选课流程<span class="mojikumi-line-start">（</span></p>
+<p>所以<span class="mojikumi-line-end">，</span>虽然选课指南是写不出来了<span class="mojikumi-line-end">，</span>姑且是列举一些常见问题与注意事项<span class="mojikumi-line-end">，</span>供参考<span class="mojikumi-line-end">。</span></p>
 
-              <p>因为选课相关问题错综复杂<span class="mojikumi-line-end">，</span>下面的内容按顺序阅读可能会有困难<span class="mojikumi-line-end">，</span>因为有后文才介绍的概念前文已经出现的情况<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>这也是为什么我说这篇不是<span class="mojikumi-line-start">“</span>指南<span class="mojikumi-line-end">”</span>而是<span class="mojikumi-line-start">“</span>常见问题与注意事项<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span></p>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-orange-1 dark:bg-orange-9 b-orange" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h2 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span class="text-5 i-mdi-alert-circle-outline text-orange" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">Warning</span></h2><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <p>本文内容仅供参考<span class="mojikumi-line-end">，</span>可能因为规则具有时效性<span class="mojikumi-line-end">、</span>不同院系之间存在差别<span class="mojikumi-line-end">、</span>笔者的认识错误或笔误而与实际选课不符<span class="mojikumi-line-end">，</span>还请以实际的选课规则为准<span class="mojikumi-line-end">，</span>必要时向老师或辅导员咨询<span class="mojikumi-line-end">。</span></p>
-                  </div>
-                </div>
-              </aside>
-              <p>当然如果发现了什么错误可以评论区告诉我<span class="mojikumi-line-end">。</span></p>
-              <h2 id="选课入口------在哪选课啊，我找不到" class="heading"><a href="#选课入口------在哪选课啊，我找不到" class="heading-anchor" aria-label="章节： 选课入口 —— 在哪选课啊，我找不到" tabindex="-1"></a><span>选课入口 —— 在哪选课啊<span class="mojikumi-line-end">，</span>我找不到</span></h2>
-              <p><a href="https://zhjwxk.cic.tsinghua.edu.cn/xklogin.do">中文选课入口</a></p>
-              <p>反正我是每次在地址栏输入 <code>xk</code><span class="mojikumi-line-end">，</span>然后匹配到的第一个历史记录就是选课入口<span class="mojikumi-line-end">。</span></p>
-              <p>除此之外<span class="mojikumi-line-end">，</span>还可以在 <a href="https://academic.tsinghua.edu.cn">academic</a> 登录后点击 <a href="https://zhjw.cic.tsinghua.edu.cn/xkBks.vxkBksXkbBs.do?m=main"><span class="mojikumi-line-start">“</span>进入本科生选课<span class="mojikumi-line-end">”</span></a> 进入<span class="mojikumi-line-end">。</span></p>
-              <p>如果是在校外<span class="mojikumi-line-end">，</span>就要用 VPN 访问<span class="mojikumi-line-end">，</span>一般使用 <a href="https://webvpn.tsinghua.edu.cn/">webvpn</a><span class="mojikumi-line-end">，</span>登录进去后就会有选课入口的链接<span class="mojikumi-line-end">。</span></p>
-              <p>在抢课刚开始等热门时段<span class="mojikumi-line-end">，</span>选课系统一般会非常卡<span class="mojikumi-line-end">，</span>据说使用 <a href="https://zhjwxkyw.cic.tsinghua.edu.cn/xklogin.do">英文选课系统</a> 会不卡一些<span class="mojikumi-line-end">，</span>但不确定是不是真的<span class="mojikumi-line-end">。</span></p>
-              <h2 id="选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" class="heading"><a href="#选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" class="heading-anchor" aria-label="章节： 选课流程 —— 什么是预选、正选、补退选？什么是抽签、抢课？" tabindex="-1"></a><span>选课流程 —— 什么是预选<span class="mojikumi-line-end">、</span>正选<span class="mojikumi-line-end">、</span>补退选？什么是抽签<span class="mojikumi-line-end">、</span>抢课？</span></h2>
-              <h3 id="选课流程" class="heading"><a href="#选课流程" class="heading-anchor" aria-label="章节： 选课流程" tabindex="-1"></a><span>选课流程</span></h3>
-              <h4 id="新生选课流程" class="heading"><a href="#新生选课流程" class="heading-anchor" aria-label="章节： 新生选课流程" tabindex="-1"></a><span>新生选课流程</span></h4>
-              <p>刚入学时的第一次选课与后面的选课是有一定差异的<span class="mojikumi-line-end">，</span>如果不意识到这一点<span class="mojikumi-line-end">，</span>看到一个对正常选课流程的描述<span class="mojikumi-line-end">，</span>发现和新生选课不同<span class="mojikumi-line-end">，</span>就可能被搞晕<span class="mojikumi-line-end">。</span></p>
-              <p>新生选课主要有这些特点<span class="mojikumi-line-end">：</span></p>
-              <ul>
-                <li>没有正选环节</li>
-                <li>不分一二三志愿</li>
-                <li>老生已在上学期末完成了预选和正选<span class="mojikumi-line-end">，</span>而新生在入学时才会进行预选</li>
-                <li>一些课程会在老生选课时给新生预留部分课容量<span class="mojikumi-line-start">（</span>若新生没选满<span class="mojikumi-line-end">，</span>老生可以在补退选时再抢课<span class="mojikumi-line-end">）</span></li>
-              </ul>
-              <h4 id="正常选课流程" class="heading"><a href="#正常选课流程" class="heading-anchor" aria-label="章节： 正常选课流程" tabindex="-1"></a><span>正常选课流程</span></h4>
-              <p>在选课系统点击<span class="mojikumi-line-start">“</span>选课时间安排<span class="mojikumi-line-end">”</span>就能看到当前学期的完整选课时间安排<span class="mojikumi-line-end">。</span></p>
-              <p>一般来说<span class="mojikumi-line-end">，</span>选课的主体流程为: 预选 → 正选 → 补退选第一阶段 → 补退选第二阶段 &amp; 特殊原因补选</p>
-              <p>除此之外<span class="mojikumi-line-end">，</span>还会有二级选课<span class="mojikumi-line-end">、</span>重修体育课分项等特殊类型选课<span class="mojikumi-line-end">，</span>以及记 P/F 和退课<span class="mojikumi-line-end">。</span></p>
-              <a id="记得选课！" name="记得选课！" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-orange-1 dark:bg-orange-9 b-orange" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Warning: " class="text-5 i-mdi-alert-circle-outline text-orange" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">记得选课！</span></h5><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <p><s>你在说啥？我怎么会忘记选课<span class="mojikumi-line-end">，</span>不会有通知吗</s></p>
-                    <p>可能会和你想象中不同<span class="mojikumi-line-end">，</span>选课经常是没有通知的<span class="mojikumi-line-end">，</span>或者<span class="mojikumi-line-end">，</span>更准确地说<span class="mojikumi-line-end">，</span>你不一定关注了发布通知的渠道<span class="mojikumi-line-end">，</span>以及通知可能发布得比选课时间早很多<span class="mojikumi-line-end">，</span>等到选课时你可能已经忘了<span class="mojikumi-line-end">。</span></p>
-                    <p>运气好时<span class="mojikumi-line-end">，</span>你可能会收到通知<span class="mojikumi-line-end">，</span>或者看到群里有同学在讨论选课相关的话题<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>如果你运气不太好<span class="mojikumi-line-end">，</span>或者是你遇到的是 <strong>二级选课<span class="mojikumi-line-end">、</span>补退选<span class="mojikumi-line-end">、</span>记 P/F<span class="mojikumi-line-end">、</span>退课</strong> 等并非人人关注的选课环节<span class="mojikumi-line-end">，</span>可能真的没有任何人会来通知你<span class="mojikumi-line-end">。</span>所以<span class="mojikumi-line-end">，</span>一定要在选课期间关注选课时间安排<span class="mojikumi-line-end">，</span>不要错过选课<span class="mojikumi-line-end">。</span></p>
-                  </div>
-                </div>
-              </aside>
-              <h4 id="夏季学期（小学期）选课流程" class="heading"><a href="#夏季学期（小学期）选课流程" class="heading-anchor" aria-label="章节： 夏季学期（小学期）选课流程" tabindex="-1"></a><span>夏季学期<span class="mojikumi-line-start">（</span>小学期<span class="mojikumi-line-end">）</span>选课流程</span></h4>
-              <p>夏季学期没有预选也没有补退选<span class="mojikumi-line-end">，</span>也就是不抽签直接抢课<span class="mojikumi-line-end">。</span>具体差别请在夏季学期选课时查看选课系统中的<span class="mojikumi-line-start">“</span>选课时间安排<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p>
-              <h3 id="选课环节" class="heading"><a href="#选课环节" class="heading-anchor" aria-label="章节： 选课环节" tabindex="-1"></a><span>选课环节</span></h3>
-              <h4 id="预选" class="heading"><a href="#预选" class="heading-anchor" aria-label="章节： 预选" tabindex="-1"></a><span>预选</span></h4>
-              <p>所谓的<span class="mojikumi-line-start">“</span>抽签<span class="mojikumi">”</span> <s><span class="mojikumi-line-start">“</span>赌场<span class="mojikumi-line-end">”</span></s> 指的就是预选了<span class="mojikumi-line-end">。</span></p>
-              <p>对于每个课<span class="mojikumi-line-end">，</span>若选课人数超过课容量<span class="mojikumi-line-end">，</span>就会在预选结束后进行抽签<span class="mojikumi-line-end">，</span>在选了这个课的人里随机抽取课容量这么多的人<span class="mojikumi-line-end">，</span>他们就选上这门课了<span class="mojikumi-line-end">，</span>而其他人则按随机顺序加入 Waiting List<span class="mojikumi-line-end">。</span></p>
-              <p>但是<span class="mojikumi-line-end">，</span>这里的<span class="mojikumi-line-start">“</span>随机<span class="mojikumi-line-end">”</span>不是完全的随机<span class="mojikumi-line-end">，</span>而是有优先级的 —— 先看课程属性<span class="mojikumi-line-end">，</span>再看志愿优先级<span class="mojikumi-line-end">。</span>课程属性分为必修<span class="mojikumi-line-end">、</span>限选<span class="mojikumi-line-end">、</span>任选<span class="mojikumi-line-end">，</span>除新生选课外志愿分为一二三三档<span class="mojikumi-line-end">，</span>满足特殊条件的话还可以在任选课中拿到<span class="mojikumi-line-start">“</span>优先志愿<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>总的排序就是: 必修一志愿 &gt; 必修二志愿 &gt; 必修三志愿 &gt; 限选一志愿 &gt; 限选二志愿 &gt; 限选三志愿 &gt; 任选优先志愿 &gt; 任选一志愿 &gt; 任选二志愿 &gt; 任选三志愿<span class="mojikumi-line-end">。</span></p>
-              <p>抽签时<span class="mojikumi-line-end">，</span>会先依次让每个优先级的所有人选上课<span class="mojikumi-line-end">，</span>如果一个优先级的人数大于当前课余量<span class="mojikumi-line-end">，</span>就会在这一优先级内随机抽取课余量这么多人选上课<span class="mojikumi-line-end">，</span>而没有抽到的人以及更低优先级的人则会落选<span class="mojikumi-line-end">，</span>并按优先级顺序加入 Waiting List<span class="mojikumi-line-end">。</span>也可以理解为以优先级为第一关键字<span class="mojikumi-line-end">、</span>随机数为第二关键字进行排序<span class="mojikumi-line-end">，</span>然后取前课容量这么多的人选上课<span class="mojikumi-line-end">，</span>余下的人按原序加入 Waiting List<span class="mojikumi-line-end">。</span></p>
-              <a id="waiting-list-顺序与志愿优先级" name="waiting-list-顺序与志愿优先级" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">Waiting List 顺序与志愿优先级</span></h5><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <p>有一个流传甚广的传言<span class="mojikumi-line-end">，</span>是 Waiting List 顺序与志愿优先级无关<span class="mojikumi-line-end">。</span>这个传言能流传开来<span class="mojikumi-line-end">，</span>大概是因为实际抽到的 WL 位置不能 100% 证伪这个传言<span class="mojikumi-line-end">，</span>而每学期又只有最多那么几门课会进入 WL<span class="mojikumi-line-end">，</span>也很难收集足够多的数据以在大概率上证伪<span class="mojikumi-line-end">。</span>而一旦把中午 12:00 的志愿当作最终志愿<span class="mojikumi-line-end">，</span>把有人退出队列后的队列位置当作抽到的队列位置<span class="mojikumi-line-end">，</span>或者是怎么算错了<span class="mojikumi-line-end">，</span>就可能误以为<span class="mojikumi-line-start">“</span>证实<span class="mojikumi-line-end">”</span>了这个传言<span class="mojikumi-line-end">。</span></p>
-                    <p>实际上 <a href="https://announce.cic.tsinghua.edu.cn/node/26766">本科生选课系统Waiting List方案介绍</a> 就明确说了<span class="mojikumi-line-end">：</span></p>
-                    <blockquote>
-                      <p>未中签的学生<span class="mojikumi-line-end">，</span>系统根据抽签级别顺序进入该课程的WL中候选<span class="mojikumi-line-end">。</span>同一级别的学生随机排序<span class="mojikumi-line-end">。</span></p>
-                    </blockquote>
-                    <p>但大家看起来都没有看到这个方案介绍<span class="mojikumi-line-end">，</span>都靠口口相传来了解选课规则<span class="mojikumi-line-start">（</span></p>
-                  </div>
-                </div>
-              </aside>
-              <p>一二三志愿是选课者自行选择的<span class="mojikumi-line-end">，</span><strong>每个课程属性</strong>都可以选择至多 1 门一志愿<span class="mojikumi-line-end">、</span>至多 2 门二志愿<span class="mojikumi-line-end">、</span>任意门三志愿<span class="mojikumi-line-end">，</span>而不同课程属性的志愿之间互不影响<span class="mojikumi-line-end">，</span>也就是说必修一志愿和任选一志愿可以各有一个<span class="mojikumi-line-end">。</span>优先志愿一般是给相关院系/专业的学生<span class="mojikumi-line-end">，</span>需要满足的条件会写在<span class="mojikumi-line-start">“</span>选课文字说明<span class="mojikumi-line-end">”</span>中<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">，</span>课程<span class="mojikumi-line-start">“</span>计算机科学基础<span class="mojikumi-line-end">”</span>的选课文字说明为<span class="mojikumi-line-start">“</span>优先:计算机类<span class="mojikumi-line-end">、</span>信息与计算科学专业学生选课<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p>
-              <p>在预选期间<span class="mojikumi-line-end">，</span>可以多次修改所选的课程或志愿等级<span class="mojikumi-line-end">，</span>也可以在 选课查询 → 志愿填报情况查询 中查到所有课的志愿填报情况<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>这个志愿填报情况并非实时更新<span class="mojikumi-line-end">，</span>而是只会在每天 8<span class="mojikumi-line-end">、</span>12<span class="mojikumi-line-end">、</span>16<span class="mojikumi-line-end">、</span>20 点更新<span class="mojikumi-line-end">，</span>且预选阶段的最后一次更新会在预选结束前四小时左右<span class="mojikumi-line-end">，</span>所以<span class="mojikumi-line-end">，</span>你查到的志愿填报情况可能和最终的真实情况差别极大<span class="mojikumi-line-end">。</span>如何选择填报志愿的时机<span class="mojikumi-line-end">、</span>如何根据情报调整自己的志愿等级<span class="mojikumi-line-end">、</span>教师乃至课程选择<span class="mojikumi-line-end">，</span>都是一场惊心动魄的博弈 <s><span class="mojikumi-line-end">，</span>这也是预选被称作<span class="mojikumi-line-start">“</span>赌场<span class="mojikumi-line-end">”</span>的重要原因之一</s><span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>博弈有风险<span class="mojikumi-line-end">，</span>推荐同学们尽早填报真实志愿<span class="mojikumi-line-end">，</span>瞒报志愿可能害人害己<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
-              <p>抽签结果一般在预选结束后好几天才会公布<span class="mojikumi-line-start">（</span>可能是要安排教室<span class="mojikumi-line-end">、</span>必要时调整课容量之类的<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-              <p>在抽签完成后<span class="mojikumi-line-end">，</span>可以在选课系统的课表查询中查看抽签情况<span class="mojikumi-line-end">，</span>选上的课会和预选时一样是 <span style="color:#855512;">棕色</span> 的<span class="mojikumi-line-end">，</span>而掉了的课则会显示为<span class="mojikumi-line-start">“</span>候选<span class="mojikumi-line-end">”</span>并且是 <span style="color:#6684A5;">蓝色</span> 的<span class="mojikumi-line-end">。</span></p>
-              <h4 id="正选、补退选、waiting-list" class="heading"><a href="#正选、补退选、waiting-list" class="heading-anchor" aria-label="章节： 正选、补退选、Waiting List" tabindex="-1"></a><span>正选<span class="mojikumi-line-end">、</span>补退选<span class="mojikumi-line-end">、</span>Waiting List</span></h4>
-              <p>所谓的<span class="mojikumi-line-start">“</span>抢课<span class="mojikumi-line-end">”</span>主要指的就是正选<span class="mojikumi-line-end">，</span>以及补退选<span class="mojikumi-line-end">。</span></p>
-              <p>这两者在选课操作上基本上是一样的<span class="mojikumi-line-end">，</span>最大的区别就是正选在上学期末<span class="mojikumi-line-end">、</span>预选结束后不久进行<span class="mojikumi-line-end">，</span>而补退选在新学期开始上课后进行<span class="mojikumi-line-end">，</span>新生选课则没有正选环节<span class="mojikumi-line-end">。</span></p>
-              <p>在这一环节中<span class="mojikumi-line-end">，</span>选课不再以抽签进行<span class="mojikumi-line-end">，</span>而是先到先得<span class="mojikumi-line-end">。</span></p>
-              <p>在这一阶段中<span class="mojikumi-line-end">，</span>除了选课<span class="mojikumi-line-end">，</span>还可以退选<span class="mojikumi-line-end">。</span>这里就涉及到了 <i>Waiting List</i> 的概念<span class="mojikumi-line-end">。</span>顾名思义<span class="mojikumi-line-end">，</span>Waiting List<span class="mojikumi-line-start">（</span>简称 WL<span class="mojikumi-line-end">）</span>就是排队等待课程坑位空出来<span class="mojikumi-line-end">，</span>而空出坑位一般就是有人退选了<span class="mojikumi-line-start">（</span>也可能是课程扩容了<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>当出现新的课余量时<span class="mojikumi-line-end">，</span>排在 WL 最前端的人就会递补选上这门课<span class="mojikumi-line-end">。</span>可以选择退出 WL<span class="mojikumi-line-end">，</span>这也可以看作是退选的一种<span class="mojikumi-line-end">。</span></p>
-              <p>特别地<span class="mojikumi-line-end">，</span>补退选分为两个阶段<span class="mojikumi-line-end">，</span>分别位于上课第一周和上课第二周<span class="mojikumi-line-end">，</span>在第二阶段中只能退选不能补选<span class="mojikumi-line-end">。</span></p>
-              <a id="退出-wl" name="退出-wl" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">退出 WL</span></h5><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <p>想选的课只要苦苦等待就可能有机会选上<span class="mojikumi-line-end">，</span>为什么要退出呢？主要有两个原因<span class="mojikumi-line-end">：</span></p>
-                    <ol>
-                      <li>
-                        <p>同一个课程号的课只能选一个<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">，</span>你选了 A 老师的数学分析<span class="mojikumi-line-end">，</span>不幸进入 WL<span class="mojikumi-line-end">，</span>只有退出 WL 才能再选 B 老师的数学分析<span class="mojikumi-line-end">。</span></p>
-                      </li>
-                      <li>
-                        <p>WL 中的课程不受学分限制<span class="mojikumi-line-end">，</span>但递补时受学分限制<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">，</span>你已经选择了 24 学分的课程<span class="mojikumi-line-end">，</span>学分限制为 26<span class="mojikumi-line-end">，</span>你还有两门 2 学分的课程 A 和 B 在 WL 中<span class="mojikumi-line-end">，</span>你比起 B 更想选上 A<span class="mojikumi-line-end">，</span>并且两门课都排在 WL 前端<span class="mojikumi-line-end">，</span>有希望成功递补<span class="mojikumi-line-end">。</span>第二天早上<span class="mojikumi-line-end">，</span>你起来一看<span class="mojikumi-line-end">，</span>两门课都递补了<span class="mojikumi-line-end">，</span>但 B 先递补上<span class="mojikumi-line-end">，</span>占满了学分限制<span class="mojikumi-line-end">，</span>所以后递补的 A 就直接退出了 WL<span class="mojikumi-line-end">，</span>如果想选就得再排在 WL 尾部了<span class="mojikumi-line-end">。</span></p>
-                        <p>除了删除不必要的 WL<span class="mojikumi-line-end">，</span>若学分可能受限而递补希望大<span class="mojikumi-line-end">，</span>也可以考虑删除已经选上的课来为 WL 中的课留出学分<span class="mojikumi-line-end">。</span></p>
-                      </li>
-                    </ol>
-                    <p>如何退出 WL 也是困扰很多同学的一大难题<span class="mojikumi-line-start">（</span><s>选课系统的 UI 是谁设计的</s><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>在 选课查询 → 队列系统查询 里是只能查询队列信息不能退出队列的<span class="mojikumi-line-end">，</span>要在 选课操作 → 一级选课 → 队列信息 里退出<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>知道在哪退 WL 可能让你在新生第一次补退选中抢占先机<span class="mojikumi-line-start">（</span><s>也可能不止新生那一次<span class="mojikumi-line-end">，</span>直到选大二的课的时候我室友还在问我怎么退 WL</s></p>
-                  </div>
-                </div>
-              </aside>
-              <h4 id="二级选课" class="heading"><a href="#二级选课" class="heading-anchor" aria-label="章节： 二级选课" tabindex="-1"></a><span>二级选课</span></h4>
-              <p>二级选课也是先到先得<span class="mojikumi-line-end">，</span>一般是用来做实验之类的<span class="mojikumi-line-end">，</span>在课程信息中会标明一个课是否有二级选课<span class="mojikumi-line-end">，</span>但选课前不一定会告诉你有哪些时间段可以选<span class="mojikumi-line-end">，</span>所以可能需要预留出一些时间给二级课<span class="mojikumi-line-end">，</span>不能选太满或者太分散以至于没有大段的空余时间<span class="mojikumi-line-start">（</span>依具体课程而定<span class="mojikumi-line-end">，</span>可以考虑咨询学长学姐<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-              <p>数学课的习题课也可能会被标注成有二级选课<span class="mojikumi-line-end">，</span>但我目前上过的数学课都不会真的进行二级选课<span class="mojikumi-line-end">，</span>而是会和同学们一起协商出习题课的时间<span class="mojikumi-line-end">。</span></p>
-              <h4 id="特殊原因补选（手选）" class="heading"><a href="#特殊原因补选（手选）" class="heading-anchor" aria-label="章节： 特殊原因补选（手选）" tabindex="-1"></a><span>特殊原因补选<span class="mojikumi-line-start">（</span>手选<span class="mojikumi-line-end">）</span></span></h4>
-              <p>特殊原因补选<span class="mojikumi-line-end">，</span>也称手选<span class="mojikumi-line-start">（</span>手动选课<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>是一种无视其余选课规则的存在<span class="mojikumi-line-start">（</span>不受课程容量<span class="mojikumi-line-end">、</span>院系专业限制<span class="mojikumi-line-end">、</span>甚至上课时间冲突等条件制约<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>只要任课教师和开课院系同意<span class="mojikumi-line-start">（</span><s>这是可以<span class="mojikumi-line-start">“</span>只要<span class="mojikumi-line-end">”</span>的吗</s> 如果课容量满了<span class="mojikumi-line-end">，</span>可能需要说明具体原因<span class="mojikumi-line-end">，</span>但如果只是受到专业限制之类的而课容量没满<span class="mojikumi-line-end">，</span>还是很可能申请通过的<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>就能选上课<span class="mojikumi-line-end">。</span>申请流程详见 <a href="https://jwcbg.cic.tsinghua.edu.cn/download.jsp?attachSeq=2962">网上特殊原因补选课申请系统操作说明<span class="mojikumi-line-start">（</span>学生篇<span class="mojikumi-line-end">）</span>.docx</a></p>
-              <p>由于手选一般安排在开学后第二周<span class="mojikumi-line-end">，</span>最好是通过提前和老师发邮件等方式确定能否手选上<span class="mojikumi-line-end">，</span>也可以一并了解上课地点以及发布给选上课的同学的相关通知<span class="mojikumi-line-end">。</span></p>
-              <h4 id="记-pf" class="heading"><a href="#记-pf" class="heading-anchor" aria-label="章节： 记 P/F" tabindex="-1"></a><span>记 P/F</span></h4>
-              <p>记 P/F 即成绩以 P(ass) 或 F(ailure) 记录<span class="mojikumi-line-end">，</span>不记录具体等级<span class="mojikumi-line-end">，</span>只要过了就都一样<span class="mojikumi-line-end">。</span>记 P/F 的课不会有绩点<span class="mojikumi-line-end">，</span>也不会计入 GPA<span class="mojikumi-line-end">。</span></p>
-              <p>一般情况下<span class="mojikumi-line-end">，</span>只有任选课可以记 P/F<span class="mojikumi-line-end">，</span>必修和限选课不能记<span class="mojikumi-line-end">，</span>并且每学期最多只能选择一门课记 P/F<span class="mojikumi-line-end">。</span>实际操作中<span class="mojikumi-line-end">，</span>如果想记 P/F 的课完全是自己感兴趣而选的<span class="mojikumi-line-end">、</span>不在培养方案中<span class="mojikumi-line-end">，</span>应该就可以放心记 P/F<span class="mojikumi-line-end">；</span>而如果在培养方案中的话<span class="mojikumi-line-end">，</span>最好咨询一下<span class="mojikumi-line-start">（</span>教务<span class="mojikumi-line-end">）</span>老师或者辅导员<span class="mojikumi-line-end">，</span>以免对培养方案的完成或者保研等造成影响<span class="mojikumi-line-end">。</span></p>
-              <p>除了在记 P/F 阶段在选课系统中主动记 P/F<span class="mojikumi-line-end">，</span>有的课程<span class="mojikumi-line-start">（</span>一般是通识课<span class="mojikumi-line-end">、</span>选修课<span class="mojikumi-line-end">）</span>会自带 P/F<span class="mojikumi-line-end">，</span>即无需手动选择就以 P/F 记录成绩<span class="mojikumi-line-end">，</span>这样的 P/F 不会占用每学期一门课的名额<span class="mojikumi-line-end">，</span>也不会对培养方案的完成造成影响<span class="mojikumi-line-end">。</span>有的课程会在课程介绍中说明是否自带 P/F<span class="mojikumi-line-end">，</span>而有的课就需要咨询学长学姐或者等开课后才知道了<span class="mojikumi-line-end">。</span></p>
-              <h4 id="退课" class="heading"><a href="#退课" class="heading-anchor" aria-label="章节： 退课" tabindex="-1"></a><span>退课</span></h4>
-              <p>每学期会有两次退课阶段<span class="mojikumi-line-end">，</span>一般安排在期中附近以及期中后一个月左右<span class="mojikumi-line-end">。</span>在退课阶段退课<span class="mojikumi-line-end">，</span>除非退掉的是还没开课的课程<span class="mojikumi-line-start">（</span>一般是在第一次退课时退掉后八周开课的课程<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>会在成绩单上记一个 <span class="mojikumi">“</span>W<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span>W <s>onderful</s> ithdrew<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>这个 <span class="mojikumi">“</span>W<span class="mojikumi">”</span> 貌似不会有什么实际的影响<span class="mojikumi-line-end">，</span>但总之会显示在你的成绩单上<span class="mojikumi-line-end">。</span></p>
-              <p>大家一般会因为对课程不感兴趣<span class="mojikumi-line-end">、</span>对自己前半学期的学习情况不满意<span class="mojikumi-line-end">、</span>对期中考试的成绩不满意等原因而选择退课<span class="mojikumi-line-end">。</span>退课是一件需要慎重考虑的事<span class="mojikumi-line-end">，</span>如果退掉的是比较重要的课<span class="mojikumi-line-end">，</span>就要考虑到重修带来的各方面的影响<span class="mojikumi-line-end">。</span></p>
-              <a id="我到底是在退课，退课，还是退课------删课-vs-退选-vs-退课" name="我到底是在退课，退课，还是退课------删课-vs-退选-vs-退课" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">我到底是在退课，退课，还是退课 😵 —— 删课 vs 退选 vs 退课</span></h5><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <p>在预选<span class="mojikumi-line-end">、</span>正选/补退选<span class="mojikumi-line-end">、</span>退课三个不同的阶段<span class="mojikumi-line-end">，</span>都有类似<span class="mojikumi-line-start">“</span>退课<span class="mojikumi-line-end">”</span>的操作<span class="mojikumi-line-end">。</span>其实我也不知道这三个阶段中的<span class="mojikumi-line-start">“</span>退课<span class="mojikumi-line-end">”</span>分别应当叫做什么<span class="mojikumi-line-end">，</span>而在实际交谈中<span class="mojikumi-line-end">，</span>同学们可能会把这三种<span class="mojikumi-line-start">“</span>退课<span class="mojikumi-line-end">”</span>混为一谈<span class="mojikumi-line-end">。</span></p>
-                    <p>在预选阶段<span class="mojikumi-line-end">，</span>删除一门课是不会有任何负面影响的<span class="mojikumi-line-end">，</span>选一门课再删掉和从来没选过完全一样<span class="mojikumi-line-end">，</span>删掉再选和不删也完全一样<span class="mojikumi-line-start">（</span>当然<span class="mojikumi-line-end">，</span>你会需要多操作两次<span class="mojikumi-line-end">，</span>而且别人看到的志愿填报情况可能会不一样<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-                    <p>在正选/补退选阶段<span class="mojikumi-line-end">，</span>如果退选一门课<span class="mojikumi-line-end">，</span>空出来的位置就随时可能被他人抢走<span class="mojikumi-line-end">，</span>但成绩单上不会有 <span class="mojikumi">“</span>W<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p>
-                    <p>在退课阶段退课<span class="mojikumi-line-end">，</span>就是真正的退课了<span class="mojikumi-line-end">，</span>没有再选课的机会<span class="mojikumi-line-end">，</span>并且成绩单上也会有一个 <span class="mojikumi">“</span>W<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p>
-                  </div>
-                </div>
-              </aside>
-              <h2 id="课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" class="heading"><a href="#课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" class="heading-anchor" aria-label="章节： 课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？" tabindex="-1"></a><span>课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？</span></h2>
-              <h3 id="切换学期" class="heading"><a href="#切换学期" class="heading-anchor" aria-label="章节： 切换学期" tabindex="-1"></a><span>切换学期</span></h3>
-              <p>选课系统的左上角会有一个学期<span class="mojikumi-line-end">，</span>选课前需要先确认没有选错学期<span class="mojikumi-line-end">。</span></p>
-              <h3 id="查看课程信息" class="heading"><a href="#查看课程信息" class="heading-anchor" aria-label="章节： 查看课程信息" tabindex="-1"></a><span>查看课程信息</span></h3>
-              <p>在选课系统的 开课信息 → 一级课开课信息 中可以找到当前学期所有课程的信息<span class="mojikumi-line-end">，</span>可以在这搜索你想上的通识选修课有没有开课<span class="mojikumi-line-end">，</span>查看课程简介<span class="mojikumi-line-end">、</span>上课时间<span class="mojikumi-line-end">、</span>选课要求<span class="mojikumi-line-end">，</span>查看教师信息<span class="mojikumi-line-start">（</span>包括邮箱<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-              <h3 id="选课操作与课程属性" class="heading"><a href="#选课操作与课程属性" class="heading-anchor" aria-label="章节： 选课操作与课程属性" tabindex="-1"></a><span>选课操作与课程属性</span></h3>
-              <p>在 选课操作 → 一级选课 中<span class="mojikumi-line-end">，</span>首先看到的会是当前学期的必修课<span class="mojikumi-line-end">。</span>如果在必修课和限选课<span class="mojikumi-line-start">（</span>以及体育课<span class="mojikumi-line-end">）</span>中都没有看到想报的课<span class="mojikumi-line-end">，</span>就要在任选课中手动搜索<span class="mojikumi-line-end">。</span></p>
-              <p><s>这不是废话吗</s> 但是<span class="mojikumi-line-end">，</span>这里的课程属性可能和你想像中不一样<span class="mojikumi-line-end">，</span>因为同一个课程在不同地方会有不同的属性<span class="mojikumi-line-end">：</span></p>
-              <ul>
-                <li>在培养方案中会有课程属性<span class="mojikumi-line-end">，</span>你认为的课程该有的属性很可能就是培养方案中的课程属性<span class="mojikumi-line-end">。</span></li>
-                <li>选课系统中的课程属性取决于当前学期的指导性教学计划<span class="mojikumi-line-end">，</span>所以下学期的必修课很可能是当前学期的任选课<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span>外语课总是任选课<span class="mojikumi-line-end">，</span>大约是因为教学计划中虽然有外语课的位置<span class="mojikumi-line-end">，</span>但每人要上的外语课具体是哪一门是不一样的<span class="mojikumi-line-end">。</span></li>
-                <li>info 上的成绩单以及培养方案完成情况中会另有一套课程属性<span class="mojikumi-line-end">，</span>大致是限选课变成了必修<span class="mojikumi-line-end">，</span>任选课变成了限选<span class="mojikumi-line-end">。</span></li>
-              </ul>
-              <p>需要注意的是<span class="mojikumi-line-end">，</span>决定志愿优先级的课程属性也是由教学计划决定的<span class="mojikumi-line-end">，</span>这也是鼓励大家按教学计划选择必修课<span class="mojikumi-line-end">，</span>如果错过了必修课在教学计划的学期<span class="mojikumi-line-end">，</span>之后的志愿等级可能就是任选了<span class="mojikumi-line-end">。</span></p>
-              <h3 id="教室位置查看" class="heading"><a href="#教室位置查看" class="heading-anchor" aria-label="章节： 教室位置查看" tabindex="-1"></a><span>教室位置查看</span></h3>
-              <p>教室的位置在预选时是尚未安排好的<span class="mojikumi-line-end">，</span>要在预选结果出来后才能在课表等位置看到教室在哪<span class="mojikumi-line-end">。</span></p>
-              <p>在 <a href="https://tsinghua.app/courses">courseX</a> 上可以看到他人分享的教室位置信息<span class="mojikumi-line-end">，</span>但不一定全<span class="mojikumi-line-end">。</span>这些信息主要是 <a href="https://tsinghua.app/learnX">learnX</a> 在用户主动同意后自动收集的<span class="mojikumi-line-end">，</span>learnX 是对 <a href="https://learn.tsinghua.edu.cn">网络学堂</a> 非常好的补充<span class="mojikumi-line-end">，</span>推荐使用<span class="mojikumi-line-end">，</span>也希望大家能在设置中开启课程信息共享<span class="mojikumi-line-end">。</span></p>
-              <h3 id="关于上课时间" class="heading"><a href="#关于上课时间" class="heading-anchor" aria-label="章节： 关于上课时间" tabindex="-1"></a><span>关于上课时间</span></h3>
-              <p>上课时间一般会以大节编号和周数的形式呈现<span class="mojikumi-line-end">，</span>例如 <code>1<wbr>-<wbr>1<wbr>(全周),<wbr>3<wbr>-<wbr>4<wbr>(全周)</code> 表示每周一第一大节和每周三第四大节上课<span class="mojikumi-line-end">，</span><code>4-6(前八周)</code> 表示前八周周四第六大节上课<span class="mojikumi-line-end">。</span></p>
-              <p>每大节的具体时间可以在课表中查看<span class="mojikumi-line-end">。</span>一大节一般是两小节课各 45min 中间有 5min 休息<span class="mojikumi-line-end">，</span>但第二大节和第六大节都有三小节<span class="mojikumi-line-end">，</span>有的课会上满三小节<span class="mojikumi-line-end">，</span>而有的课会只上两小节<span class="mojikumi-line-end">，</span>而这一般可以通过课程的学分看出来<span class="mojikumi-line-end">，</span>每一学分对应全周的一小节课<span class="mojikumi-line-end">，</span>也就是八周的两小节课<span class="mojikumi-line-end">。</span>如果一个 4 学分的课在全周的一个第二大节和一个第三大节上<span class="mojikumi-line-end">，</span>那很有可能就是第二大节只上两小节<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span>思想道德与法治<span class="mojikumi-line-end">、</span>中国近现代史纲要<span class="mojikumi-line-end">、</span>马克思主义基本原理等课程会比学时对应的学分多一分<span class="mojikumi-line-end">，</span>这三节课分别是 3<span class="mojikumi-line-end">、</span>3<span class="mojikumi-line-end">、</span>4 学分<span class="mojikumi-line-end">，</span>但分别对应全周上 2<span class="mojikumi-line-end">、</span>2<span class="mojikumi-line-end">、</span>3 小节<span class="mojikumi-line-end">。</span></p>
-              <h2 id="体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" class="heading"><a href="#体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" class="heading-anchor" aria-label="章节： 体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？" tabindex="-1"></a><span>体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？</span></h2>
-              <p>体育课在选课中有一些特殊之处<span class="mojikumi-line-end">：</span></p>
-              <ol>
-                <li>体育课是不占用学分限制的</li>
-                <li>体育课在选课时具有单独的课程属性<span class="mojikumi-line-end">，</span>算在必限任之外<span class="mojikumi-line-start">（</span>这也是有人找不到或者忘记报体育课的一大原因<span class="mojikumi-line-end">）</span></li>
-                <li>体育课虽然只能上一门<span class="mojikumi-line-end">，</span>但预选时可以报很多门<span class="mojikumi-line-end">，</span>等级高的志愿优先选上<span class="mojikumi-line-end">，</span>等级低的志愿就会自动取消</li>
-                <li>如果体育课挂科了<span class="mojikumi-line-end">，</span>重修选课时会有特殊的流程<span class="mojikumi-line-end">，</span>详见<span class="mojikumi-line-start">“</span>选课时间安排<span class="mojikumi-line-end">”</span></li>
-              </ol>
-              <p>正因为前三点<span class="mojikumi-line-end">，</span>可以多报几门体育课<span class="mojikumi-line-end">，</span>提高选上想上的课的概率<span class="mojikumi-line-end">，</span>既不会占用学分限制也不会浪费一二志愿<span class="mojikumi-line-end">。</span></p>
-            </section>
-            <div class="article-style my-9">
-              <hr>
-            </div>
-            <footer>
-              <div class="my-6 bg-area shadow b-l-6 b-gray-4 dark:b-gray-11 p-6" itemprop="copyrightNotice">
-                <ul class="flex flex-col gap-1">
-                  <li class="flex gap-1"><span class="shrink-0">文章作者:</span><a href="https://github.com/ouuan" rel="author">ouuan</a></li>
-                  <li class="flex gap-1"><span class="shrink-0">原文链接:</span><a href="https://ouuan.moe/post/2022/07/thu-course-selection-tips" rel="canonical" class="break-all">https://ouuan.moe/post/2022/07/thu-course-selection-tips</a></li>
-                  <li class="flex gap-1"><span class="shrink-0">许可协议:</span><span> 本文采用 <span class="article-style"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="font-sans" itemprop="license">CC BY-SA 4.0</a></span> 许可协议进行授权，未满足 <span class="underline decoration-dotted" title="简而言之，转载时必须标明出处（本文的链接），标明是转载而非原创，标明作了哪些修改，并使用相同的许可协议，但无需私信征求许可">许可协议要求</span> 不得转载。 </span></li>
-                </ul>
-              </div>
-            </footer>
-          </article>
-          <div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-5"></ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as m
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as o
-              } from "/assets/GiscusCommentsInner.487fa077.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              import "/assets/useTheme.f1d4e689.js";
-              import "/assets/site.1441102a.js";
-              r(m, o, "ile-5", {
-                term: "有关 THU 选课的一些常见问题与注意事项"
-              }, {});
-            </script>
-          </div>
-          <nav class="my-6 flex justify-between gap-6 lg:text-justify print:hidden">
-            <div class="flex-1 flex"><a class="flex items-center gap-1 hover:text-hover" href="/post/2022/07/display-none-and-lazy-load"><span class="i-mdi-chevron-left" aria-label="上一篇"></span><span class="break-anywhere">display: none 与 loading="lazy"</span></a></div>
-            <div class="flex-1 flex justify-end"><a class="flex items-center gap-1 hover:text-hover flex-row-reverse" href="/post/2022/07/uptime-monitoring-under-caddy-security"><span class="i-mdi-chevron-right" aria-label="下一篇"></span><span class="break-anywhere">使用 Caddy Security 时的 Uptime 监控</span></a></div>
-          </nav>
-        </div>
-      </div>
-    </main>
-    <footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter">
-      <div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-14 01:26:29 GMT+8 (7858a82)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div>
-      <div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-6"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root>
-          <script></script>
-          <script type="module" async="">
-            var p = (o, a) => () => (a || o((a = {
-              exports: {}
-            }).exports, a), a.exports);
-            var r = (o, a, _) => new Promise((c, n) => {
-              var f = t => {
-                  try {
-                    e(_.next(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                l = t => {
-                  try {
-                    e(_.throw(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-              e((_ = _.apply(o, a)).next())
-            });
-            import {
-              _ as d
-            } from "/assets/vite.5ce4fca4.js";
-            import {
-              a as s
-            } from "/assets/iles.5e82acba.js";
-            import "/assets/vendor-vue.075573a8.js";
-            var E = p(m => {
-              const u = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                }),
-                v = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/VisitorCount.a8d4ae35.js"), ["assets/VisitorCount.a8d4ae35.js", "assets/VisitorCount.c343552a.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                });
-              s(u, v, "ile-6", {}, {})
-            });
-            export default E();
-          </script> 人到访过这里
-        </span></div>
-      <div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div>
-    </footer>
-    <meta itemprop="copyrightYear" content="2022 - 2023">
-    <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder">
-      <meta itemprop="additionalName" content="ouuan">
-      <meta itemprop="givenName" content="Yufan">
-      <meta itemprop="familyName" content="You">
-      <meta itemprop="url" content="https://github.com/ouuan">
-      <link itemprop="gender" href="https://schema.org/Male">
-      <meta itemprop="image" content="/android-chrome-512x512.png">
-    </div><ile-root id="ile-7"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (o, a) => () => (a || o((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (o, a, _) => new Promise((c, n) => {
-        var f = t => {
-            try {
-              e(_.next(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = t => {
-            try {
-              e(_.throw(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-        e((_ = _.apply(o, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var E = p(m => {
-        const u = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          v = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/BackToTop.9b4bb339.js"), ["assets/BackToTop.9b4bb339.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          });
-        s(u, v, "ile-7", {}, {})
-      });
-      export default E();
-    </script>
-    <div class="hidden"></div><ile-root id="ile-8"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      import {
-        h as o,
-        b as r
-      } from "/assets/iles.5e82acba.js";
-      import {
-        o as a
-      } from "/assets/PlausibleTrigger.bafee336.js";
-      import "/assets/vendor-vue.075573a8.js";
-      import "/assets/vite.5ce4fca4.js";
-      o(r, a, "ile-8", {}, {});
-    </script>
-    <div></div><ile-root id="ile-9"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (t, a) => () => (a || t((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (t, a, _) => new Promise((c, n) => {
-        var f = o => {
-            try {
-              e(_.next(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = o => {
-            try {
-              e(_.throw(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = o => o.done ? c(o.value) : Promise.resolve(o.value).then(f, l);
-        e((_ = _.apply(t, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var u = p(m => {
-        const E = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(t => t.e), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          h = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/TextJustifyFix.4fa5e997.js"), [])).onLoad
-          });
-        s(E, h, "ile-9", {}, {})
-      });
-      export default u();
-    </script>
-    <meta itemprop="inLanguage" content="zh-CN">
-  </div>
-
-</body>
-
-</html>
+<p>因为选课相关问题错综复杂<span class="mojikumi-line-end">，</span>下面的内容按顺序阅读可能会有困难<span class="mojikumi-line-end">，</span>因为有后文才介绍的概念前文已经出现的情况<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>这也是为什么我说这篇不是<span class="mojikumi-line-start">“</span>指南<span class="mojikumi-line-end">”</span>而是<span class="mojikumi-line-start">“</span>常见问题与注意事项<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span></p>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-orange-1 dark:bg-orange-9 b-orange" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h2 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span class="text-5 i-mdi-alert-circle-outline text-orange" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">Warning</span></h2><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><p>本文内容仅供参考<span class="mojikumi-line-end">，</span>可能因为规则具有时效性<span class="mojikumi-line-end">、</span>不同院系之间存在差别<span class="mojikumi-line-end">、</span>笔者的认识错误或笔误而与实际选课不符<span class="mojikumi-line-end">，</span>还请以实际的选课规则为准<span class="mojikumi-line-end">，</span>必要时向老师或辅导员咨询<span class="mojikumi-line-end">。</span></p></div></div></aside>
+<p>当然如果发现了什么错误可以评论区告诉我<span class="mojikumi-line-end">。</span></p>
+<h2 id="选课入口------在哪选课啊，我找不到" class="heading"><a href="#选课入口------在哪选课啊，我找不到" class="heading-anchor" aria-label="章节： 选课入口 —— 在哪选课啊，我找不到" tabindex="-1"></a><span>选课入口 —— 在哪选课啊<span class="mojikumi-line-end">，</span>我找不到</span></h2>
+<p><a href="https://zhjwxk.cic.tsinghua.edu.cn/xklogin.do">中文选课入口</a></p>
+<p>反正我是每次在地址栏输入 <code>xk</code><span class="mojikumi-line-end">，</span>然后匹配到的第一个历史记录就是选课入口<span class="mojikumi-line-end">。</span></p>
+<p>除此之外<span class="mojikumi-line-end">，</span>还可以在 <a href="https://academic.tsinghua.edu.cn">academic</a> 登录后点击 <a href="https://zhjw.cic.tsinghua.edu.cn/xkBks.vxkBksXkbBs.do?m=main"><span class="mojikumi-line-start">“</span>进入本科生选课<span class="mojikumi-line-end">”</span></a> 进入<span class="mojikumi-line-end">。</span></p>
+<p>如果是在校外<span class="mojikumi-line-end">，</span>就要用 VPN 访问<span class="mojikumi-line-end">，</span>一般使用 <a href="https://webvpn.tsinghua.edu.cn/">webvpn</a><span class="mojikumi-line-end">，</span>登录进去后就会有选课入口的链接<span class="mojikumi-line-end">。</span></p>
+<p>在抢课刚开始等热门时段<span class="mojikumi-line-end">，</span>选课系统一般会非常卡<span class="mojikumi-line-end">，</span>据说使用 <a href="https://zhjwxkyw.cic.tsinghua.edu.cn/xklogin.do">英文选课系统</a> 会不卡一些<span class="mojikumi-line-end">，</span>但不确定是不是真的<span class="mojikumi-line-end">。</span></p>
+<h2 id="选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" class="heading"><a href="#选课流程------什么是预选、正选、补退选？什么是抽签、抢课？" class="heading-anchor" aria-label="章节： 选课流程 —— 什么是预选、正选、补退选？什么是抽签、抢课？" tabindex="-1"></a><span>选课流程 —— 什么是预选<span class="mojikumi-line-end">、</span>正选<span class="mojikumi-line-end">、</span>补退选？什么是抽签<span class="mojikumi-line-end">、</span>抢课？</span></h2>
+<h3 id="选课流程" class="heading"><a href="#选课流程" class="heading-anchor" aria-label="章节： 选课流程" tabindex="-1"></a><span>选课流程</span></h3>
+<h4 id="新生选课流程" class="heading"><a href="#新生选课流程" class="heading-anchor" aria-label="章节： 新生选课流程" tabindex="-1"></a><span>新生选课流程</span></h4>
+<p>刚入学时的第一次选课与后面的选课是有一定差异的<span class="mojikumi-line-end">，</span>如果不意识到这一点<span class="mojikumi-line-end">，</span>看到一个对正常选课流程的描述<span class="mojikumi-line-end">，</span>发现和新生选课不同<span class="mojikumi-line-end">，</span>就可能被搞晕<span class="mojikumi-line-end">。</span></p>
+<p>新生选课主要有这些特点<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>没有正选环节</li>
+<li>不分一二三志愿</li>
+<li>老生已在上学期末完成了预选和正选<span class="mojikumi-line-end">，</span>而新生在入学时才会进行预选</li>
+<li>一些课程会在老生选课时给新生预留部分课容量<span class="mojikumi-line-start">（</span>若新生没选满<span class="mojikumi-line-end">，</span>老生可以在补退选时再抢课<span class="mojikumi-line-end">）</span></li>
+</ul>
+<h4 id="正常选课流程" class="heading"><a href="#正常选课流程" class="heading-anchor" aria-label="章节： 正常选课流程" tabindex="-1"></a><span>正常选课流程</span></h4>
+<p>在选课系统点击<span class="mojikumi-line-start">“</span>选课时间安排<span class="mojikumi-line-end">”</span>就能看到当前学期的完整选课时间安排<span class="mojikumi-line-end">。</span></p>
+<p>一般来说<span class="mojikumi-line-end">，</span>选课的主体流程为: 预选 → 正选 → 补退选第一阶段 → 补退选第二阶段 &amp; 特殊原因补选</p>
+<p>除此之外<span class="mojikumi-line-end">，</span>还会有二级选课<span class="mojikumi-line-end">、</span>重修体育课分项等特殊类型选课<span class="mojikumi-line-end">，</span>以及记 P/F 和退课<span class="mojikumi-line-end">。</span></p>
+<a id="记得选课！" name="记得选课！" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-orange-1 dark:bg-orange-9 b-orange" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Warning: " class="text-5 i-mdi-alert-circle-outline text-orange" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">记得选课！</span></h5><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><p><s>你在说啥？我怎么会忘记选课<span class="mojikumi-line-end">，</span>不会有通知吗</s></p><p>可能会和你想象中不同<span class="mojikumi-line-end">，</span>选课经常是没有通知的<span class="mojikumi-line-end">，</span>或者<span class="mojikumi-line-end">，</span>更准确地说<span class="mojikumi-line-end">，</span>你不一定关注了发布通知的渠道<span class="mojikumi-line-end">，</span>以及通知可能发布得比选课时间早很多<span class="mojikumi-line-end">，</span>等到选课时你可能已经忘了<span class="mojikumi-line-end">。</span></p><p>运气好时<span class="mojikumi-line-end">，</span>你可能会收到通知<span class="mojikumi-line-end">，</span>或者看到群里有同学在讨论选课相关的话题<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>如果你运气不太好<span class="mojikumi-line-end">，</span>或者是你遇到的是 <strong>二级选课<span class="mojikumi-line-end">、</span>补退选<span class="mojikumi-line-end">、</span>记 P/F<span class="mojikumi-line-end">、</span>退课</strong> 等并非人人关注的选课环节<span class="mojikumi-line-end">，</span>可能真的没有任何人会来通知你<span class="mojikumi-line-end">。</span>所以<span class="mojikumi-line-end">，</span>一定要在选课期间关注选课时间安排<span class="mojikumi-line-end">，</span>不要错过选课<span class="mojikumi-line-end">。</span></p></div></div></aside>
+<h4 id="夏季学期（小学期）选课流程" class="heading"><a href="#夏季学期（小学期）选课流程" class="heading-anchor" aria-label="章节： 夏季学期（小学期）选课流程" tabindex="-1"></a><span>夏季学期<span class="mojikumi-line-start">（</span>小学期<span class="mojikumi-line-end">）</span>选课流程</span></h4>
+<p>夏季学期没有预选也没有补退选<span class="mojikumi-line-end">，</span>也就是不抽签直接抢课<span class="mojikumi-line-end">。</span>具体差别请在夏季学期选课时查看选课系统中的<span class="mojikumi-line-start">“</span>选课时间安排<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p>
+<h3 id="选课环节" class="heading"><a href="#选课环节" class="heading-anchor" aria-label="章节： 选课环节" tabindex="-1"></a><span>选课环节</span></h3>
+<h4 id="预选" class="heading"><a href="#预选" class="heading-anchor" aria-label="章节： 预选" tabindex="-1"></a><span>预选</span></h4>
+<p>所谓的<span class="mojikumi-line-start">“</span>抽签<span class="mojikumi">”</span> <s><span class="mojikumi-line-start">“</span>赌场<span class="mojikumi-line-end">”</span></s> 指的就是预选了<span class="mojikumi-line-end">。</span></p>
+<p>对于每个课<span class="mojikumi-line-end">，</span>若选课人数超过课容量<span class="mojikumi-line-end">，</span>就会在预选结束后进行抽签<span class="mojikumi-line-end">，</span>在选了这个课的人里随机抽取课容量这么多的人<span class="mojikumi-line-end">，</span>他们就选上这门课了<span class="mojikumi-line-end">，</span>而其他人则按随机顺序加入 Waiting List<span class="mojikumi-line-end">。</span></p>
+<p>但是<span class="mojikumi-line-end">，</span>这里的<span class="mojikumi-line-start">“</span>随机<span class="mojikumi-line-end">”</span>不是完全的随机<span class="mojikumi-line-end">，</span>而是有优先级的 —— 先看课程属性<span class="mojikumi-line-end">，</span>再看志愿优先级<span class="mojikumi-line-end">。</span>课程属性分为必修<span class="mojikumi-line-end">、</span>限选<span class="mojikumi-line-end">、</span>任选<span class="mojikumi-line-end">，</span>除新生选课外志愿分为一二三三档<span class="mojikumi-line-end">，</span>满足特殊条件的话还可以在任选课中拿到<span class="mojikumi-line-start">“</span>优先志愿<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>总的排序就是: 必修一志愿 &gt; 必修二志愿 &gt; 必修三志愿 &gt; 限选一志愿 &gt; 限选二志愿 &gt; 限选三志愿 &gt; 任选优先志愿 &gt; 任选一志愿 &gt; 任选二志愿 &gt; 任选三志愿<span class="mojikumi-line-end">。</span></p>
+<p>抽签时<span class="mojikumi-line-end">，</span>会先依次让每个优先级的所有人选上课<span class="mojikumi-line-end">，</span>如果一个优先级的人数大于当前课余量<span class="mojikumi-line-end">，</span>就会在这一优先级内随机抽取课余量这么多人选上课<span class="mojikumi-line-end">，</span>而没有抽到的人以及更低优先级的人则会落选<span class="mojikumi-line-end">，</span>并按优先级顺序加入 Waiting List<span class="mojikumi-line-end">。</span>也可以理解为以优先级为第一关键字<span class="mojikumi-line-end">、</span>随机数为第二关键字进行排序<span class="mojikumi-line-end">，</span>然后取前课容量这么多的人选上课<span class="mojikumi-line-end">，</span>余下的人按原序加入 Waiting List<span class="mojikumi-line-end">。</span></p>
+<a id="waiting-list-顺序与志愿优先级" name="waiting-list-顺序与志愿优先级" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">Waiting List 顺序与志愿优先级</span></h5><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><p>有一个流传甚广的传言<span class="mojikumi-line-end">，</span>是 Waiting List 顺序与志愿优先级无关<span class="mojikumi-line-end">。</span>这个传言能流传开来<span class="mojikumi-line-end">，</span>大概是因为实际抽到的 WL 位置不能 100% 证伪这个传言<span class="mojikumi-line-end">，</span>而每学期又只有最多那么几门课会进入 WL<span class="mojikumi-line-end">，</span>也很难收集足够多的数据以在大概率上证伪<span class="mojikumi-line-end">。</span>而一旦把中午 12:00 的志愿当作最终志愿<span class="mojikumi-line-end">，</span>把有人退出队列后的队列位置当作抽到的队列位置<span class="mojikumi-line-end">，</span>或者是怎么算错了<span class="mojikumi-line-end">，</span>就可能误以为<span class="mojikumi-line-start">“</span>证实<span class="mojikumi-line-end">”</span>了这个传言<span class="mojikumi-line-end">。</span></p><p>实际上 <a href="https://announce.cic.tsinghua.edu.cn/node/26766">本科生选课系统Waiting List方案介绍</a> 就明确说了<span class="mojikumi-line-end">：</span></p><blockquote>
+<p>未中签的学生<span class="mojikumi-line-end">，</span>系统根据抽签级别顺序进入该课程的WL中候选<span class="mojikumi-line-end">。</span>同一级别的学生随机排序<span class="mojikumi-line-end">。</span></p>
+</blockquote><p>但大家看起来都没有看到这个方案介绍<span class="mojikumi-line-end">，</span>都靠口口相传来了解选课规则<span class="mojikumi-line-start">（</span></p></div></div></aside>
+<p>一二三志愿是选课者自行选择的<span class="mojikumi-line-end">，</span><strong>每个课程属性</strong>都可以选择至多 1 门一志愿<span class="mojikumi-line-end">、</span>至多 2 门二志愿<span class="mojikumi-line-end">、</span>任意门三志愿<span class="mojikumi-line-end">，</span>而不同课程属性的志愿之间互不影响<span class="mojikumi-line-end">，</span>也就是说必修一志愿和任选一志愿可以各有一个<span class="mojikumi-line-end">。</span>优先志愿一般是给相关院系/专业的学生<span class="mojikumi-line-end">，</span>需要满足的条件会写在<span class="mojikumi-line-start">“</span>选课文字说明<span class="mojikumi-line-end">”</span>中<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">，</span>课程<span class="mojikumi-line-start">“</span>计算机科学基础<span class="mojikumi-line-end">”</span>的选课文字说明为<span class="mojikumi-line-start">“</span>优先:计算机类<span class="mojikumi-line-end">、</span>信息与计算科学专业学生选课<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p>
+<p>在预选期间<span class="mojikumi-line-end">，</span>可以多次修改所选的课程或志愿等级<span class="mojikumi-line-end">，</span>也可以在 选课查询 → 志愿填报情况查询 中查到所有课的志愿填报情况<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>这个志愿填报情况并非实时更新<span class="mojikumi-line-end">，</span>而是只会在每天 8<span class="mojikumi-line-end">、</span>12<span class="mojikumi-line-end">、</span>16<span class="mojikumi-line-end">、</span>20 点更新<span class="mojikumi-line-end">，</span>且预选阶段的最后一次更新会在预选结束前四小时左右<span class="mojikumi-line-end">，</span>所以<span class="mojikumi-line-end">，</span>你查到的志愿填报情况可能和最终的真实情况差别极大<span class="mojikumi-line-end">。</span>如何选择填报志愿的时机<span class="mojikumi-line-end">、</span>如何根据情报调整自己的志愿等级<span class="mojikumi-line-end">、</span>教师乃至课程选择<span class="mojikumi-line-end">，</span>都是一场惊心动魄的博弈 <s><span class="mojikumi-line-end">，</span>这也是预选被称作<span class="mojikumi-line-start">“</span>赌场<span class="mojikumi-line-end">”</span>的重要原因之一</s><span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>博弈有风险<span class="mojikumi-line-end">，</span>推荐同学们尽早填报真实志愿<span class="mojikumi-line-end">，</span>瞒报志愿可能害人害己<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p>抽签结果一般在预选结束后好几天才会公布<span class="mojikumi-line-start">（</span>可能是要安排教室<span class="mojikumi-line-end">、</span>必要时调整课容量之类的<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<p>在抽签完成后<span class="mojikumi-line-end">，</span>可以在选课系统的课表查询中查看抽签情况<span class="mojikumi-line-end">，</span>选上的课会和预选时一样是 <span style="color:#855512;">棕色</span> 的<span class="mojikumi-line-end">，</span>而掉了的课则会显示为<span class="mojikumi-line-start">“</span>候选<span class="mojikumi-line-end">”</span>并且是 <span style="color:#6684A5;">蓝色</span> 的<span class="mojikumi-line-end">。</span></p>
+<h4 id="正选、补退选、waiting-list" class="heading"><a href="#正选、补退选、waiting-list" class="heading-anchor" aria-label="章节： 正选、补退选、Waiting List" tabindex="-1"></a><span>正选<span class="mojikumi-line-end">、</span>补退选<span class="mojikumi-line-end">、</span>Waiting List</span></h4>
+<p>所谓的<span class="mojikumi-line-start">“</span>抢课<span class="mojikumi-line-end">”</span>主要指的就是正选<span class="mojikumi-line-end">，</span>以及补退选<span class="mojikumi-line-end">。</span></p>
+<p>这两者在选课操作上基本上是一样的<span class="mojikumi-line-end">，</span>最大的区别就是正选在上学期末<span class="mojikumi-line-end">、</span>预选结束后不久进行<span class="mojikumi-line-end">，</span>而补退选在新学期开始上课后进行<span class="mojikumi-line-end">，</span>新生选课则没有正选环节<span class="mojikumi-line-end">。</span></p>
+<p>在这一环节中<span class="mojikumi-line-end">，</span>选课不再以抽签进行<span class="mojikumi-line-end">，</span>而是先到先得<span class="mojikumi-line-end">。</span></p>
+<p>在这一阶段中<span class="mojikumi-line-end">，</span>除了选课<span class="mojikumi-line-end">，</span>还可以退选<span class="mojikumi-line-end">。</span>这里就涉及到了 <i>Waiting List</i> 的概念<span class="mojikumi-line-end">。</span>顾名思义<span class="mojikumi-line-end">，</span>Waiting List<span class="mojikumi-line-start">（</span>简称 WL<span class="mojikumi-line-end">）</span>就是排队等待课程坑位空出来<span class="mojikumi-line-end">，</span>而空出坑位一般就是有人退选了<span class="mojikumi-line-start">（</span>也可能是课程扩容了<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>当出现新的课余量时<span class="mojikumi-line-end">，</span>排在 WL 最前端的人就会递补选上这门课<span class="mojikumi-line-end">。</span>可以选择退出 WL<span class="mojikumi-line-end">，</span>这也可以看作是退选的一种<span class="mojikumi-line-end">。</span></p>
+<p>特别地<span class="mojikumi-line-end">，</span>补退选分为两个阶段<span class="mojikumi-line-end">，</span>分别位于上课第一周和上课第二周<span class="mojikumi-line-end">，</span>在第二阶段中只能退选不能补选<span class="mojikumi-line-end">。</span></p>
+<a id="退出-wl" name="退出-wl" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">退出 WL</span></h5><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><p>想选的课只要苦苦等待就可能有机会选上<span class="mojikumi-line-end">，</span>为什么要退出呢？主要有两个原因<span class="mojikumi-line-end">：</span></p><ol>
+<li>
+<p>同一个课程号的课只能选一个<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">，</span>你选了 A 老师的数学分析<span class="mojikumi-line-end">，</span>不幸进入 WL<span class="mojikumi-line-end">，</span>只有退出 WL 才能再选 B 老师的数学分析<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>WL 中的课程不受学分限制<span class="mojikumi-line-end">，</span>但递补时受学分限制<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">，</span>你已经选择了 24 学分的课程<span class="mojikumi-line-end">，</span>学分限制为 26<span class="mojikumi-line-end">，</span>你还有两门 2 学分的课程 A 和 B 在 WL 中<span class="mojikumi-line-end">，</span>你比起 B 更想选上 A<span class="mojikumi-line-end">，</span>并且两门课都排在 WL 前端<span class="mojikumi-line-end">，</span>有希望成功递补<span class="mojikumi-line-end">。</span>第二天早上<span class="mojikumi-line-end">，</span>你起来一看<span class="mojikumi-line-end">，</span>两门课都递补了<span class="mojikumi-line-end">，</span>但 B 先递补上<span class="mojikumi-line-end">，</span>占满了学分限制<span class="mojikumi-line-end">，</span>所以后递补的 A 就直接退出了 WL<span class="mojikumi-line-end">，</span>如果想选就得再排在 WL 尾部了<span class="mojikumi-line-end">。</span></p>
+<p>除了删除不必要的 WL<span class="mojikumi-line-end">，</span>若学分可能受限而递补希望大<span class="mojikumi-line-end">，</span>也可以考虑删除已经选上的课来为 WL 中的课留出学分<span class="mojikumi-line-end">。</span></p>
+</li>
+</ol><p>如何退出 WL 也是困扰很多同学的一大难题<span class="mojikumi-line-start">（</span><s>选课系统的 UI 是谁设计的</s><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>在 选课查询 → 队列系统查询 里是只能查询队列信息不能退出队列的<span class="mojikumi-line-end">，</span>要在 选课操作 → 一级选课 → 队列信息 里退出<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>知道在哪退 WL 可能让你在新生第一次补退选中抢占先机<span class="mojikumi-line-start">（</span><s>也可能不止新生那一次<span class="mojikumi-line-end">，</span>直到选大二的课的时候我室友还在问我怎么退 WL</s></p></div></div></aside>
+<h4 id="二级选课" class="heading"><a href="#二级选课" class="heading-anchor" aria-label="章节： 二级选课" tabindex="-1"></a><span>二级选课</span></h4>
+<p>二级选课也是先到先得<span class="mojikumi-line-end">，</span>一般是用来做实验之类的<span class="mojikumi-line-end">，</span>在课程信息中会标明一个课是否有二级选课<span class="mojikumi-line-end">，</span>但选课前不一定会告诉你有哪些时间段可以选<span class="mojikumi-line-end">，</span>所以可能需要预留出一些时间给二级课<span class="mojikumi-line-end">，</span>不能选太满或者太分散以至于没有大段的空余时间<span class="mojikumi-line-start">（</span>依具体课程而定<span class="mojikumi-line-end">，</span>可以考虑咨询学长学姐<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<p>数学课的习题课也可能会被标注成有二级选课<span class="mojikumi-line-end">，</span>但我目前上过的数学课都不会真的进行二级选课<span class="mojikumi-line-end">，</span>而是会和同学们一起协商出习题课的时间<span class="mojikumi-line-end">。</span></p>
+<h4 id="特殊原因补选（手选）" class="heading"><a href="#特殊原因补选（手选）" class="heading-anchor" aria-label="章节： 特殊原因补选（手选）" tabindex="-1"></a><span>特殊原因补选<span class="mojikumi-line-start">（</span>手选<span class="mojikumi-line-end">）</span></span></h4>
+<p>特殊原因补选<span class="mojikumi-line-end">，</span>也称手选<span class="mojikumi-line-start">（</span>手动选课<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>是一种无视其余选课规则的存在<span class="mojikumi-line-start">（</span>不受课程容量<span class="mojikumi-line-end">、</span>院系专业限制<span class="mojikumi-line-end">、</span>甚至上课时间冲突等条件制约<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>只要任课教师和开课院系同意<span class="mojikumi-line-start">（</span><s>这是可以<span class="mojikumi-line-start">“</span>只要<span class="mojikumi-line-end">”</span>的吗</s> 如果课容量满了<span class="mojikumi-line-end">，</span>可能需要说明具体原因<span class="mojikumi-line-end">，</span>但如果只是受到专业限制之类的而课容量没满<span class="mojikumi-line-end">，</span>还是很可能申请通过的<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>就能选上课<span class="mojikumi-line-end">。</span>申请流程详见 <a href="https://jwcbg.cic.tsinghua.edu.cn/download.jsp?attachSeq=2962">网上特殊原因补选课申请系统操作说明<span class="mojikumi-line-start">（</span>学生篇<span class="mojikumi-line-end">）</span>.docx</a></p>
+<p>由于手选一般安排在开学后第二周<span class="mojikumi-line-end">，</span>最好是通过提前和老师发邮件等方式确定能否手选上<span class="mojikumi-line-end">，</span>也可以一并了解上课地点以及发布给选上课的同学的相关通知<span class="mojikumi-line-end">。</span></p>
+<h4 id="记-pf" class="heading"><a href="#记-pf" class="heading-anchor" aria-label="章节： 记 P/F" tabindex="-1"></a><span>记 P/F</span></h4>
+<p>记 P/F 即成绩以 P(ass) 或 F(ailure) 记录<span class="mojikumi-line-end">，</span>不记录具体等级<span class="mojikumi-line-end">，</span>只要过了就都一样<span class="mojikumi-line-end">。</span>记 P/F 的课不会有绩点<span class="mojikumi-line-end">，</span>也不会计入 GPA<span class="mojikumi-line-end">。</span></p>
+<p>一般情况下<span class="mojikumi-line-end">，</span>只有任选课可以记 P/F<span class="mojikumi-line-end">，</span>必修和限选课不能记<span class="mojikumi-line-end">，</span>并且每学期最多只能选择一门课记 P/F<span class="mojikumi-line-end">。</span>实际操作中<span class="mojikumi-line-end">，</span>如果想记 P/F 的课完全是自己感兴趣而选的<span class="mojikumi-line-end">、</span>不在培养方案中<span class="mojikumi-line-end">，</span>应该就可以放心记 P/F<span class="mojikumi-line-end">；</span>而如果在培养方案中的话<span class="mojikumi-line-end">，</span>最好咨询一下<span class="mojikumi-line-start">（</span>教务<span class="mojikumi-line-end">）</span>老师或者辅导员<span class="mojikumi-line-end">，</span>以免对培养方案的完成或者保研等造成影响<span class="mojikumi-line-end">。</span></p>
+<p>除了在记 P/F 阶段在选课系统中主动记 P/F<span class="mojikumi-line-end">，</span>有的课程<span class="mojikumi-line-start">（</span>一般是通识课<span class="mojikumi-line-end">、</span>选修课<span class="mojikumi-line-end">）</span>会自带 P/F<span class="mojikumi-line-end">，</span>即无需手动选择就以 P/F 记录成绩<span class="mojikumi-line-end">，</span>这样的 P/F 不会占用每学期一门课的名额<span class="mojikumi-line-end">，</span>也不会对培养方案的完成造成影响<span class="mojikumi-line-end">。</span>有的课程会在课程介绍中说明是否自带 P/F<span class="mojikumi-line-end">，</span>而有的课就需要咨询学长学姐或者等开课后才知道了<span class="mojikumi-line-end">。</span></p>
+<h4 id="退课" class="heading"><a href="#退课" class="heading-anchor" aria-label="章节： 退课" tabindex="-1"></a><span>退课</span></h4>
+<p>每学期会有两次退课阶段<span class="mojikumi-line-end">，</span>一般安排在期中附近以及期中后一个月左右<span class="mojikumi-line-end">。</span>在退课阶段退课<span class="mojikumi-line-end">，</span>除非退掉的是还没开课的课程<span class="mojikumi-line-start">（</span>一般是在第一次退课时退掉后八周开课的课程<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>会在成绩单上记一个 <span class="mojikumi">“</span>W<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span>W <s>onderful</s> ithdrew<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>这个 <span class="mojikumi">“</span>W<span class="mojikumi">”</span> 貌似不会有什么实际的影响<span class="mojikumi-line-end">，</span>但总之会显示在你的成绩单上<span class="mojikumi-line-end">。</span></p>
+<p>大家一般会因为对课程不感兴趣<span class="mojikumi-line-end">、</span>对自己前半学期的学习情况不满意<span class="mojikumi-line-end">、</span>对期中考试的成绩不满意等原因而选择退课<span class="mojikumi-line-end">。</span>退课是一件需要慎重考虑的事<span class="mojikumi-line-end">，</span>如果退掉的是比较重要的课<span class="mojikumi-line-end">，</span>就要考虑到重修带来的各方面的影响<span class="mojikumi-line-end">。</span></p>
+<a id="我到底是在退课，退课，还是退课------删课-vs-退选-vs-退课" name="我到底是在退课，退课，还是退课------删课-vs-退选-vs-退课" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h5 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">我到底是在退课，退课，还是退课 😵 —— 删课 vs 退选 vs 退课</span></h5><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><p>在预选<span class="mojikumi-line-end">、</span>正选/补退选<span class="mojikumi-line-end">、</span>退课三个不同的阶段<span class="mojikumi-line-end">，</span>都有类似<span class="mojikumi-line-start">“</span>退课<span class="mojikumi-line-end">”</span>的操作<span class="mojikumi-line-end">。</span>其实我也不知道这三个阶段中的<span class="mojikumi-line-start">“</span>退课<span class="mojikumi-line-end">”</span>分别应当叫做什么<span class="mojikumi-line-end">，</span>而在实际交谈中<span class="mojikumi-line-end">，</span>同学们可能会把这三种<span class="mojikumi-line-start">“</span>退课<span class="mojikumi-line-end">”</span>混为一谈<span class="mojikumi-line-end">。</span></p><p>在预选阶段<span class="mojikumi-line-end">，</span>删除一门课是不会有任何负面影响的<span class="mojikumi-line-end">，</span>选一门课再删掉和从来没选过完全一样<span class="mojikumi-line-end">，</span>删掉再选和不删也完全一样<span class="mojikumi-line-start">（</span>当然<span class="mojikumi-line-end">，</span>你会需要多操作两次<span class="mojikumi-line-end">，</span>而且别人看到的志愿填报情况可能会不一样<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p><p>在正选/补退选阶段<span class="mojikumi-line-end">，</span>如果退选一门课<span class="mojikumi-line-end">，</span>空出来的位置就随时可能被他人抢走<span class="mojikumi-line-end">，</span>但成绩单上不会有 <span class="mojikumi">“</span>W<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p><p>在退课阶段退课<span class="mojikumi-line-end">，</span>就是真正的退课了<span class="mojikumi-line-end">，</span>没有再选课的机会<span class="mojikumi-line-end">，</span>并且成绩单上也会有一个 <span class="mojikumi">“</span>W<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></p></div></div></aside>
+<h2 id="课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" class="heading"><a href="#课程信息与选课操作------怎么找不到要选的课？怎么知道课在哪上呢？" class="heading-anchor" aria-label="章节： 课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？" tabindex="-1"></a><span>课程信息与选课操作 —— 怎么找不到要选的课？怎么知道课在哪上呢？</span></h2>
+<h3 id="切换学期" class="heading"><a href="#切换学期" class="heading-anchor" aria-label="章节： 切换学期" tabindex="-1"></a><span>切换学期</span></h3>
+<p>选课系统的左上角会有一个学期<span class="mojikumi-line-end">，</span>选课前需要先确认没有选错学期<span class="mojikumi-line-end">。</span></p>
+<h3 id="查看课程信息" class="heading"><a href="#查看课程信息" class="heading-anchor" aria-label="章节： 查看课程信息" tabindex="-1"></a><span>查看课程信息</span></h3>
+<p>在选课系统的 开课信息 → 一级课开课信息 中可以找到当前学期所有课程的信息<span class="mojikumi-line-end">，</span>可以在这搜索你想上的通识选修课有没有开课<span class="mojikumi-line-end">，</span>查看课程简介<span class="mojikumi-line-end">、</span>上课时间<span class="mojikumi-line-end">、</span>选课要求<span class="mojikumi-line-end">，</span>查看教师信息<span class="mojikumi-line-start">（</span>包括邮箱<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<h3 id="选课操作与课程属性" class="heading"><a href="#选课操作与课程属性" class="heading-anchor" aria-label="章节： 选课操作与课程属性" tabindex="-1"></a><span>选课操作与课程属性</span></h3>
+<p>在 选课操作 → 一级选课 中<span class="mojikumi-line-end">，</span>首先看到的会是当前学期的必修课<span class="mojikumi-line-end">。</span>如果在必修课和限选课<span class="mojikumi-line-start">（</span>以及体育课<span class="mojikumi-line-end">）</span>中都没有看到想报的课<span class="mojikumi-line-end">，</span>就要在任选课中手动搜索<span class="mojikumi-line-end">。</span></p>
+<p><s>这不是废话吗</s> 但是<span class="mojikumi-line-end">，</span>这里的课程属性可能和你想像中不一样<span class="mojikumi-line-end">，</span>因为同一个课程在不同地方会有不同的属性<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>在培养方案中会有课程属性<span class="mojikumi-line-end">，</span>你认为的课程该有的属性很可能就是培养方案中的课程属性<span class="mojikumi-line-end">。</span></li>
+<li>选课系统中的课程属性取决于当前学期的指导性教学计划<span class="mojikumi-line-end">，</span>所以下学期的必修课很可能是当前学期的任选课<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span>外语课总是任选课<span class="mojikumi-line-end">，</span>大约是因为教学计划中虽然有外语课的位置<span class="mojikumi-line-end">，</span>但每人要上的外语课具体是哪一门是不一样的<span class="mojikumi-line-end">。</span></li>
+<li>info 上的成绩单以及培养方案完成情况中会另有一套课程属性<span class="mojikumi-line-end">，</span>大致是限选课变成了必修<span class="mojikumi-line-end">，</span>任选课变成了限选<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>需要注意的是<span class="mojikumi-line-end">，</span>决定志愿优先级的课程属性也是由教学计划决定的<span class="mojikumi-line-end">，</span>这也是鼓励大家按教学计划选择必修课<span class="mojikumi-line-end">，</span>如果错过了必修课在教学计划的学期<span class="mojikumi-line-end">，</span>之后的志愿等级可能就是任选了<span class="mojikumi-line-end">。</span></p>
+<h3 id="教室位置查看" class="heading"><a href="#教室位置查看" class="heading-anchor" aria-label="章节： 教室位置查看" tabindex="-1"></a><span>教室位置查看</span></h3>
+<p>教室的位置在预选时是尚未安排好的<span class="mojikumi-line-end">，</span>要在预选结果出来后才能在课表等位置看到教室在哪<span class="mojikumi-line-end">。</span></p>
+<p>在 <a href="https://tsinghua.app/courses">courseX</a> 上可以看到他人分享的教室位置信息<span class="mojikumi-line-end">，</span>但不一定全<span class="mojikumi-line-end">。</span>这些信息主要是 <a href="https://tsinghua.app/learnX">learnX</a> 在用户主动同意后自动收集的<span class="mojikumi-line-end">，</span>learnX 是对 <a href="https://learn.tsinghua.edu.cn">网络学堂</a> 非常好的补充<span class="mojikumi-line-end">，</span>推荐使用<span class="mojikumi-line-end">，</span>也希望大家能在设置中开启课程信息共享<span class="mojikumi-line-end">。</span></p>
+<h3 id="关于上课时间" class="heading"><a href="#关于上课时间" class="heading-anchor" aria-label="章节： 关于上课时间" tabindex="-1"></a><span>关于上课时间</span></h3>
+<p>上课时间一般会以大节编号和周数的形式呈现<span class="mojikumi-line-end">，</span>例如 <code>1<wbr>-<wbr>1<wbr>(全周),<wbr>3<wbr>-<wbr>4<wbr>(全周)</code> 表示每周一第一大节和每周三第四大节上课<span class="mojikumi-line-end">，</span><code>4-6(前八周)</code> 表示前八周周四第六大节上课<span class="mojikumi-line-end">。</span></p>
+<p>每大节的具体时间可以在课表中查看<span class="mojikumi-line-end">。</span>一大节一般是两小节课各 45min 中间有 5min 休息<span class="mojikumi-line-end">，</span>但第二大节和第六大节都有三小节<span class="mojikumi-line-end">，</span>有的课会上满三小节<span class="mojikumi-line-end">，</span>而有的课会只上两小节<span class="mojikumi-line-end">，</span>而这一般可以通过课程的学分看出来<span class="mojikumi-line-end">，</span>每一学分对应全周的一小节课<span class="mojikumi-line-end">，</span>也就是八周的两小节课<span class="mojikumi-line-end">。</span>如果一个 4 学分的课在全周的一个第二大节和一个第三大节上<span class="mojikumi-line-end">，</span>那很有可能就是第二大节只上两小节<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span>思想道德与法治<span class="mojikumi-line-end">、</span>中国近现代史纲要<span class="mojikumi-line-end">、</span>马克思主义基本原理等课程会比学时对应的学分多一分<span class="mojikumi-line-end">，</span>这三节课分别是 3<span class="mojikumi-line-end">、</span>3<span class="mojikumi-line-end">、</span>4 学分<span class="mojikumi-line-end">，</span>但分别对应全周上 2<span class="mojikumi-line-end">、</span>2<span class="mojikumi-line-end">、</span>3 小节<span class="mojikumi-line-end">。</span></p>
+<h2 id="体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" class="heading"><a href="#体育课------为什么-26-分的限制-ta-可以报-28-分还不用申请特批学分？" class="heading-anchor" aria-label="章节： 体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？" tabindex="-1"></a><span>体育课 —— 为什么 26 分的限制 TA 可以报 28 分还不用申请特批学分？</span></h2>
+<p>体育课在选课中有一些特殊之处<span class="mojikumi-line-end">：</span></p>
+<ol>
+<li>体育课是不占用学分限制的</li>
+<li>体育课在选课时具有单独的课程属性<span class="mojikumi-line-end">，</span>算在必限任之外<span class="mojikumi-line-start">（</span>这也是有人找不到或者忘记报体育课的一大原因<span class="mojikumi-line-end">）</span></li>
+<li>体育课虽然只能上一门<span class="mojikumi-line-end">，</span>但预选时可以报很多门<span class="mojikumi-line-end">，</span>等级高的志愿优先选上<span class="mojikumi-line-end">，</span>等级低的志愿就会自动取消</li>
+<li>如果体育课挂科了<span class="mojikumi-line-end">，</span>重修选课时会有特殊的流程<span class="mojikumi-line-end">，</span>详见<span class="mojikumi-line-start">“</span>选课时间安排<span class="mojikumi-line-end">”</span></li>
+</ol>
+<p>正因为前三点<span class="mojikumi-line-end">，</span>可以多报几门体育课<span class="mojikumi-line-end">，</span>提高选上想上的课的概率<span class="mojikumi-line-end">，</span>既不会占用学分限制也不会浪费一二志愿<span class="mojikumi-line-end">。</span></p></section><div class="article-style my-9"><hr></div><footer><div class="my-6 bg-area shadow b-l-6 b-gray-4 dark:b-gray-11 p-6" itemprop="copyrightNotice"><ul class="flex flex-col gap-1"><li class="flex gap-1"><span class="shrink-0">文章作者:</span><a href="https://github.com/ouuan" rel="author">ouuan</a></li><li class="flex gap-1"><span class="shrink-0">原文链接:</span><a href="https://ouuan.moe/post/2022/07/thu-course-selection-tips" rel="canonical" class="break-all">https://ouuan.moe/post/2022/07/thu-course-selection-tips</a></li><li class="flex gap-1"><span class="shrink-0">许可协议:</span><span> 本文采用 <span class="article-style"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="font-sans" itemprop="license">CC BY-SA 4.0</a></span> 许可协议进行授权，未满足 <span class="underline decoration-dotted" title="简而言之，转载时必须标明出处（本文的链接），标明是转载而非原创，标明作了哪些修改，并使用相同的许可协议，但无需私信征求许可">许可协议要求</span> 不得转载。 </span></li></ul></div></footer></article><div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-5"></ile-root><script></script><script type="module" async="">import{h as r,c as m}from"/assets/iles.5e82acba.js";import{_ as o}from"/assets/GiscusCommentsInner.487fa077.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/useTheme.f1d4e689.js";import"/assets/site.1441102a.js";r(m,o,"ile-5",{term:"有关 THU 选课的一些常见问题与注意事项"},{});
+</script></div><nav class="my-6 flex justify-between gap-6 lg:text-justify print:hidden"><div class="flex-1 flex"><a class="flex items-center gap-1 hover:text-hover" href="/post/2022/07/display-none-and-lazy-load"><span class="i-mdi-chevron-left" aria-label="上一篇"></span><span class="break-anywhere">display: none 与 loading="lazy"</span></a></div><div class="flex-1 flex justify-end"><a class="flex items-center gap-1 hover:text-hover flex-row-reverse" href="/post/2022/07/uptime-monitoring-under-caddy-security"><span class="i-mdi-chevron-right" aria-label="下一篇"></span><span class="break-anywhere">使用 Caddy Security 时的 Uptime 监控</span></a></div></nav></div></div></main><footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter"><div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-13 21:42:42 GMT+8 (2271fb3)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div><div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-6"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/VisitorCount.a8d4ae35.js"),["assets/VisitorCount.a8d4ae35.js","assets/VisitorCount.c343552a.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-6",{},{})});export default E();
+</script> 人到访过这里 </span></div><div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div></footer><meta itemprop="copyrightYear" content="2022 - 2023"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><ile-root id="ile-7"></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/BackToTop.9b4bb339.js"),["assets/BackToTop.9b4bb339.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-7",{},{})});export default E();
+</script><div class="hidden"></div><ile-root id="ile-8"></ile-root><script></script><script type="module" async="">import{h as o,b as r}from"/assets/iles.5e82acba.js";import{o as a}from"/assets/PlausibleTrigger.bafee336.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";o(r,a,"ile-8",{},{});
+</script><div></div><ile-root id="ile-9"></ile-root><script></script><script type="module" async="">var p=(t,a)=>()=>(a||t((a={exports:{}}).exports,a),a.exports);var r=(t,a,_)=>new Promise((c,n)=>{var f=o=>{try{e(_.next(o))}catch(i){n(i)}},l=o=>{try{e(_.throw(o))}catch(i){n(i)}},e=o=>o.done?c(o.value):Promise.resolve(o.value).then(f,l);e((_=_.apply(t,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var u=p(m=>{const E=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(t=>t.e),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),h=()=>r(m,null,function*(){return(yield d(()=>import("/assets/TextJustifyFix.4fa5e997.js"),[])).onLoad});s(E,h,"ile-9",{},{})});export default u();
+</script><meta itemprop="inLanguage" content="zh-CN"></div>
+  
+</body></html>

@@ -1,732 +1,169 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta charset="UTF-8">
-  <title>另一种很新的中文字体网页嵌入方案 - ouuan's blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+<title>另一种很新的中文字体网页嵌入方案 - ouuan's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
 整一个另一种很新的中文字体网页嵌入方案（
 ">
-  <meta property="og:url" content="https://ouuan.moe/post/2023/01/glyph-segregator">
-  <meta property="og:site_name" content="ouuan's blog">
-  <meta property="og:title" content="另一种很新的中文字体网页嵌入方案 · ouuan's blog">
-  <meta property="og:description" content="当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
+<meta property="og:url" content="https://ouuan.moe/post/2023/01/glyph-segregator">
+<meta property="og:site_name" content="ouuan's blog">
+<meta property="og:title" content="另一种很新的中文字体网页嵌入方案 · ouuan's blog">
+<meta property="og:description" content="当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
 整一个另一种很新的中文字体网页嵌入方案（
 ">
-  <meta property="twitter:domain" content="ouuan.moe">
-  <meta property="twitter:title" content="另一种很新的中文字体网页嵌入方案 · ouuan's blog">
-  <meta property="twitter:description" content="当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
+<meta property="twitter:domain" content="ouuan.moe">
+<meta property="twitter:title" content="另一种很新的中文字体网页嵌入方案 · ouuan's blog">
+<meta property="twitter:description" content="当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
 整一个另一种很新的中文字体网页嵌入方案（
 ">
-  <meta property="twitter:url" content="https://ouuan.moe/post/2023/01/glyph-segregator">
-  <style>
-    html:not(.dark):not(.light) {
-      visibility: hidden;
-    }
-
-    body {
-      visibility: hidden;
-    }
-  </style>
-  <script>
-    (() => {
-      let dark;
-      try {
-        const theme = localStorage && localStorage.getItem('vueuse-color-scheme');
-        if (theme === 'dark') dark = true;
-        else if (theme === 'light') dark = false;
-        else dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      } catch (e) {
-        dark = false;
-      }
-      document.documentElement.classList.add(dark ? 'dark' : 'light');
-    })()
-  </script>
-  <noscript>
-    <style>
-      @media (prefers-color-scheme: light) {
-        :root:not(.dark):not(.light) {
-          color-scheme: light;
-          --text-color: #232637;
-          --bg-color: #DEE6EE;
-          --card-color: #EFF3F7;
-          --link-color: #1E66B8;
-          --hover-color: #2E80DD;
-          --active-color: #164C89;
-          --bghover-color: #D6E0EA;
-          --popup-color: #F7F9FB;
-          --footer-color: #5F627B;
-          --area-color: #E1E2E8;
-          --nested-color: #F0F0F3;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not(.dark):not(.light) {
-          color-scheme: dark;
-          --text-color: #E6EDF2;
-          --bg-color: #0D0E15;
-          --card-color: #1F2130;
-          --link-color: #8BB8EC;
-          --hover-color: #A2C6F0;
-          --active-color: #74AAE8;
-          --bghover-color: #353853;
-          --popup-color: #2C2F45;
-          --footer-color: #9699AE;
-          --area-color: #2F313D;
-          --nested-color: #3C3E4E;
-        }
-      }
-
-      html {
-        visibility: visible !important;
-      }
-    </style>
-  </noscript>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
-  <link rel="canonical" href="https://ouuan.moe/post/2023/01/glyph-segregator">
-  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
-  <link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
-  <link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
-  <link rel="dns-prefetch" href="https://plausible.ouuan.moe">
-  <link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
-  <link rel="stylesheet" href="/vendors/katex/katex.css">
-  <link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
-  <meta name="author" content="ouuan">
-  <meta name="twitter:creator" content="@ouuan">
-  <meta name="twitter:card" content="summary">
-  <meta property="og:image" content="https://ouuan.moe/images/2023/01/glyph-segregator.png">
-  <meta property="generator" content="îles">
-  <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2023-01-19T13:15:05.000Z">
-  <meta property="article:modified_time" content="2023-02-02T06:26:13.000Z">
-  <meta property="article:author" content="ouuan">
-  <meta property="article:tag" content="blog">
-  <meta property="article:tag" content="Web">
-  <meta property="article:tag" content="项目开发">
-  <link rel="preconnect" href="https://giscus.app">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
-
-  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/TableOfContents.3de486f5.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin="">
-  <style>
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.unique.0aac792e.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.809d877d.woff') format('woff');
-      unicode-range: U+0-ff1f;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff');
-      unicode-range: U+0-ff1b;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.unique.24cd2e2c.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.unique.e8eb9c48.woff') format('woff');
-      unicode-range: U+0-ff1a;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff');
-      unicode-range: U+0-ff1f;
-    }
-
-    @font-face {
-      font-family: "LXGW WenKai Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/LXGWWenKai-Regular.unique.498fdcd7.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.unique.22a2bdab.woff') format('woff');
-      unicode-range: U+0-8fd8;
-    }
-
-    @font-face {
-      font-family: "LXGW WenKai Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/LXGWWenKai-Regular.common.17c05e80.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.common.8d5b3f2b.woff') format('woff');
-      unicode-range: U+0-ff0c;
-    }
-  </style>
-</head>
-
-<body itemscope="" itemtype="https://schema.org/ItemPage">
-  <div id="app">
-    <header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader">
-      <div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center">
-        <div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div>
-        <nav class="flex">
-          <ul class="flex">
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li>
-          </ul>
-        </nav>
-        <div class="sm:basis-full"></div>
-        <ul class="flex">
-          <li class="flex"><ile-root id="ile-1">
-              <div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div>
-              <form role="search" class="hidden lg:flex items-stretch justify-center">
-                <div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a>
-              </form>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as a
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as m
-              } from "/assets/SearchBar.5e1dcbf6.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              r(a, m, "ile-1", {}, {});
-            </script>
-          </li>
-          <li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li>
-          <li class="flex"><ile-root id="ile-2">
-              <div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button>
-                <ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项">
-                  <li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li>
-                </ul>
-              </div>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              var p = (o, a) => () => (a || o((a = {
-                exports: {}
-              }).exports, a), a.exports);
-              var r = (o, a, _) => new Promise((c, n) => {
-                var f = t => {
-                    try {
-                      e(_.next(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  l = t => {
-                    try {
-                      e(_.throw(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-                e((_ = _.apply(o, a)).next())
-              });
-              import {
-                _ as d
-              } from "/assets/vite.5ce4fca4.js";
-              import {
-                a as s
-              } from "/assets/iles.5e82acba.js";
-              import "/assets/vendor-vue.075573a8.js";
-              var E = p(m => {
-                const u = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                  }),
-                  v = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/ThemeSwitcher.3f8d4c7e.js"), ["assets/ThemeSwitcher.3f8d4c7e.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js", "assets/useTheme.f1d4e689.js"])).default
-                  });
-                s(u, v, "ile-2", {}, {})
-              });
-              export default E();
-            </script>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement">
-      <div class="flex flex-row-reverse justify-center"><ile-root id="ile-3">
-          <div class="flex print:hidden">
-            <aside style="max-height:calc(100vh - 10rem);" id="__toc" class="sticky top-16 bg-card py-6 m-4 rd-2 w-72 2xl:w-84 3xl:w-96 shadow hidden xl:block" aria-label="文章目录" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPSideBar">
-              <div class="flex flex-wrap gap-2 justify-between items-center pr-4 pl-8 mb-3">
-                <div class="flex items-center">
-                  <h2 class="text-xl font-bold"> 文章目录 </h2><button id="__toc-close" class="px-1 text-xl flex items-center" title="关闭目录" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-close"></span></button>
-                </div>
-                <div><label class="ml-auto flex gap-1 items-center"><span>展开全部</span><input type="checkbox"></label></div>
-              </div>
-              <div style="max-height:calc(100% - 2rem);" class="overflow-auto overscroll-contain pr-4 pl-8">
-                <ol data-v-84d105d6="">
-                  <li id="__toc-item-背景" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#背景" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">背景</span></a></li>
-                  <li id="__toc-item-主体思路" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#主体思路" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">主体思路</span></a></li>
-                  <li id="__toc-item-具体实现" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#具体实现" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">具体实现</span></a></li>
-                  <li id="__toc-item-实际效果" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#实际效果" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">实际效果</span></a></li>
-                  <li id="__toc-item-后记：font-subsetting-与-kerning" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#后记：font-subsetting-与-kerning" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">后记：font subsetting 与 kerning</span></a></li>
-                </ol>
-              </div>
-            </aside><button style="display:none;" id="__toc-open" title="显示文章目录" class="floating-button text-lg bottom-24" aria-haspopup="dialog" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-menu"></span></button>
-          </div>
-        </ile-root>
-        <script></script>
-        <script type="module" async="">
-          import {
-            h as f,
-            c as m
-          } from "/assets/iles.5e82acba.js";
-          import {
-            _ as c
-          } from "/assets/TableOfContents.3de486f5.js";
-          import "/assets/vendor-vue.075573a8.js";
-          import "/assets/vite.5ce4fca4.js";
-          f(m, c, "ile-3", function(l, e, t, i, s, n, g, u, o, r, v) {
-            return {
-              headings: [{
-                level: e,
-                title: t,
-                slug: t
-              }, {
-                level: e,
-                title: i,
-                slug: i
-              }, {
-                level: e,
-                title: s,
-                slug: s
-              }, {
-                level: l,
-                title: n,
-                slug: n
-              }, {
-                level: l,
-                title: g,
-                slug: g
-              }, {
-                level: l,
-                title: u,
-                slug: u
-              }, {
-                level: l,
-                title: "生成字体文件和 @font-face",
-                slug: "生成字体文件和-font-face"
-              }, {
-                level: l,
-                title: "将 CSS 写入 HTML 文件",
-                slug: "将-css-写入-html-文件"
-              }, {
-                level: l,
-                title: o,
-                slug: o
-              }, {
-                level: l,
-                title: r,
-                slug: r
-              }, {
-                level: e,
-                title: v,
-                slug: v
-              }, {
-                level: e,
-                title: "后记：font subsetting 与 kerning",
-                slug: "后记：font-subsetting-与-kerning"
-              }, {
-                level: 6,
-                title: "font kerning 示例",
-                slug: "font-kerning-示例"
-              }]
-            }
-          }(3, 2, "背景", "主体思路", "具体实现", "获取页面使用的字体", "字体匹配", "常用字体划分", "给项目起名", "在博客中使用", "实际效果"), {});
-        </script>
-        <div class="grow m-4 standard-card max-w-200">
-          <article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/BlogPosting">
-            <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author">
-              <meta itemprop="additionalName" content="ouuan">
-              <meta itemprop="givenName" content="Yufan">
-              <meta itemprop="familyName" content="You">
-              <meta itemprop="url" content="https://github.com/ouuan">
-              <link itemprop="gender" href="https://schema.org/Male">
-              <meta itemprop="image" content="/android-chrome-512x512.png">
-            </div>
-            <meta itemprop="mainEntityOfPage" content="https://ouuan.moe/post/2023/01/glyph-segregator">
-            <meta itemprop="image" content="https://ouuan.moe/images/2023/01/glyph-segregator.png"><ile-root id="ile-4" class="my-12">
-              <header class="my-12" data-v-267f9ef7="">
-                <h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">另一种很新的中文字体网页嵌入方案</span></h1>
-                <div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2023-01-19 17:03:46 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/post/2023/01/glyph-segregator.mdx?plain=1" data-v-267f9ef7=""><time datetime="2023-01-19T17:03:46+08:00" itemprop="dateCreated" data-v-267f9ef7="">2023-01-19 (25 天前) </time></a></span><span class="flex items-center" title="修改于 2023-02-02 14:26:13 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/post/2023/01/glyph-segregator.mdx" data-v-267f9ef7=""><time datetime="2023-02-02T14:26:13+08:00" itemprop="dateModified" data-v-267f9ef7="">2023-02-02 (11 天前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span><span class="flex flex-wrap justify-center gap-x-2 gap-y-1" data-v-267f9ef7=""><span title="标签: blog" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/blog" class="hover:underline" data-v-267f9ef7="">blog</a></span><span title="标签: Web" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/Web" class="hover:underline" data-v-267f9ef7="">Web</a></span><span title="标签: 项目开发" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/项目开发" class="hover:underline" data-v-267f9ef7="">项目开发</a></span></span></div>
-              </header>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as e,
-                c as t
-              } from "/assets/iles.5e82acba.js";
-              import a from "/assets/PostHead.e82ef423.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              import "/assets/VisitorCount.c343552a.js";
-              import "/assets/site.1441102a.js";
-              e(t, a, "ile-4", {
-                class: "my-12",
-                href: "/post/2023/01/glyph-segregator",
-                filename: "src/pages/post/2023/01/glyph-segregator.mdx",
-                frontmatter: {
-                  title: "另一种很新的中文字体网页嵌入方案",
-                  date: new Date(1674119026e3),
-                  image: "/images/2023/01/glyph-segregator.png",
-                  tags: ["blog", "Web", "项目开发"],
-                  lastUpdated: new Date(1675319173e3),
-                  published: new Date(1674134105e3),
-                  visitor: 85,
-                  description: `当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
+<meta property="twitter:url" content="https://ouuan.moe/post/2023/01/glyph-segregator">
+<style>html:not(.dark):not(.light) { visibility: hidden; } body { visibility: hidden; }</style>
+<script>(() => { let dark; try { const theme = localStorage && localStorage.getItem('vueuse-color-scheme'); if (theme === 'dark') dark = true; else if (theme === 'light') dark = false; else dark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { dark = false; } document.documentElement.classList.add(dark ? 'dark' : 'light'); })()</script>
+<noscript><style>@media (prefers-color-scheme: light) { :root:not(.dark):not(.light) { color-scheme: light; --text-color: #232637; --bg-color: #DEE6EE; --card-color: #EFF3F7; --link-color: #1E66B8; --hover-color: #2E80DD; --active-color: #164C89; --bghover-color: #D6E0EA; --popup-color: #F7F9FB; --footer-color: #5F627B; --area-color: #E1E2E8; --nested-color: #F0F0F3; } } @media (prefers-color-scheme: dark) { :root:not(.dark):not(.light) { color-scheme: dark; --text-color: #E6EDF2; --bg-color: #0D0E15; --card-color: #1F2130; --link-color: #8BB8EC; --hover-color: #A2C6F0; --active-color: #74AAE8; --bghover-color: #353853; --popup-color: #2C2F45; --footer-color: #9699AE; --area-color: #2F313D; --nested-color: #3C3E4E; } } html { visibility:visible !important; }</style></noscript>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
+<link rel="canonical" href="https://ouuan.moe/post/2023/01/glyph-segregator">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
+<link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
+<link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
+<link rel="dns-prefetch" href="https://plausible.ouuan.moe">
+<link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
+<link rel="stylesheet" href="/vendors/katex/katex.css">
+<link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
+<meta name="author" content="ouuan">
+<meta name="twitter:creator" content="@ouuan">
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://ouuan.moe/images/2023/01/glyph-segregator.png">
+<meta property="generator" content="îles">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-01-19T13:15:05.000Z">
+<meta property="article:modified_time" content="2023-02-02T06:26:13.000Z">
+<meta property="article:author" content="ouuan">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="项目开发">
+<link rel="preconnect" href="https://giscus.app">
+<link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
+    
+  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin=""><link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin=""><link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin=""><link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin=""><link rel="modulepreload" href="/assets/TableOfContents.3de486f5.js" crossorigin=""><link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin=""><link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin=""><link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin=""><link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin=""><link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin=""><link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin=""><style>@font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.unique.0aac792e.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.809d877d.woff') format('woff'); unicode-range: U+0-ff1f; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff'); unicode-range: U+0-ff1b; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.unique.24cd2e2c.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.unique.e8eb9c48.woff') format('woff'); unicode-range: U+0-ff1a; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff'); unicode-range: U+0-ff1f; } @font-face { font-family: "LXGW WenKai Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/LXGWWenKai-Regular.unique.498fdcd7.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.unique.22a2bdab.woff') format('woff'); unicode-range: U+0-8fd8; } @font-face { font-family: "LXGW WenKai Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/LXGWWenKai-Regular.common.17c05e80.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.common.8d5b3f2b.woff') format('woff'); unicode-range: U+0-ff0c; }</style></head>
+  <body itemscope="" itemtype="https://schema.org/ItemPage">
+    <div id="app"><header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader"><div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center"><div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div><nav class="flex"><ul class="flex"><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li></ul></nav><div class="sm:basis-full"></div><ul class="flex"><li class="flex"><ile-root id="ile-1"><div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div><form role="search" class="hidden lg:flex items-stretch justify-center"><div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></form></ile-root><script></script><script type="module" async="">import{h as r,c as a}from"/assets/iles.5e82acba.js";import{_ as m}from"/assets/SearchBar.5e1dcbf6.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";r(a,m,"ile-1",{},{});
+</script></li><li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li><li class="flex"><ile-root id="ile-2"><div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button><ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项"><li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li></ul></div></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/ThemeSwitcher.3f8d4c7e.js"),["assets/ThemeSwitcher.3f8d4c7e.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js","assets/useTheme.f1d4e689.js"])).default});s(u,v,"ile-2",{},{})});export default E();
+</script></li></ul></div></header><main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement"><div class="flex flex-row-reverse justify-center"><ile-root id="ile-3"><div class="flex print:hidden"><aside style="max-height:calc(100vh - 10rem);" id="__toc" class="sticky top-16 bg-card py-6 m-4 rd-2 w-72 2xl:w-84 3xl:w-96 shadow hidden xl:block" aria-label="文章目录" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPSideBar"><div class="flex flex-wrap gap-2 justify-between items-center pr-4 pl-8 mb-3"><div class="flex items-center"><h2 class="text-xl font-bold"> 文章目录 </h2><button id="__toc-close" class="px-1 text-xl flex items-center" title="关闭目录" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-close"></span></button></div><div><label class="ml-auto flex gap-1 items-center"><span>展开全部</span><input type="checkbox"></label></div></div><div style="max-height:calc(100% - 2rem);" class="overflow-auto overscroll-contain pr-4 pl-8"><ol data-v-84d105d6=""><li id="__toc-item-背景" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#背景" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">背景</span></a></li><li id="__toc-item-主体思路" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#主体思路" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">主体思路</span></a></li><li id="__toc-item-具体实现" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#具体实现" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">具体实现</span></a></li><li id="__toc-item-实际效果" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#实际效果" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">实际效果</span></a></li><li id="__toc-item-后记：font-subsetting-与-kerning" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#后记：font-subsetting-与-kerning" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">后记：font subsetting 与 kerning</span></a></li></ol></div></aside><button style="display:none;" id="__toc-open" title="显示文章目录" class="floating-button text-lg bottom-24" aria-haspopup="dialog" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-menu"></span></button></div></ile-root><script></script><script type="module" async="">import{h as f,c as m}from"/assets/iles.5e82acba.js";import{_ as c}from"/assets/TableOfContents.3de486f5.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";f(m,c,"ile-3",function(l,e,t,i,s,n,g,u,o,r,v){return{headings:[{level:e,title:t,slug:t},{level:e,title:i,slug:i},{level:e,title:s,slug:s},{level:l,title:n,slug:n},{level:l,title:g,slug:g},{level:l,title:u,slug:u},{level:l,title:"生成字体文件和 @font-face",slug:"生成字体文件和-font-face"},{level:l,title:"将 CSS 写入 HTML 文件",slug:"将-css-写入-html-文件"},{level:l,title:o,slug:o},{level:l,title:r,slug:r},{level:e,title:v,slug:v},{level:e,title:"后记：font subsetting 与 kerning",slug:"后记：font-subsetting-与-kerning"},{level:6,title:"font kerning 示例",slug:"font-kerning-示例"}]}}(3,2,"背景","主体思路","具体实现","获取页面使用的字体","字体匹配","常用字体划分","给项目起名","在博客中使用","实际效果"),{});
+</script><div class="grow m-4 standard-card max-w-200"><article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/BlogPosting"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><meta itemprop="mainEntityOfPage" content="https://ouuan.moe/post/2023/01/glyph-segregator"><meta itemprop="image" content="https://ouuan.moe/images/2023/01/glyph-segregator.png"><ile-root id="ile-4" class="my-12"><header class="my-12" data-v-267f9ef7=""><h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">另一种很新的中文字体网页嵌入方案</span></h1><div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2023-01-19 17:03:46 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/post/2023/01/glyph-segregator.mdx?plain=1" data-v-267f9ef7=""><time datetime="2023-01-19T17:03:46+08:00" itemprop="dateCreated" data-v-267f9ef7="">2023-01-19  (25 天前) </time></a></span><span class="flex items-center" title="修改于 2023-02-02 14:26:13 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/post/2023/01/glyph-segregator.mdx" data-v-267f9ef7=""><time datetime="2023-02-02T14:26:13+08:00" itemprop="dateModified" data-v-267f9ef7="">2023-02-02  (11 天前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span><span class="flex flex-wrap justify-center gap-x-2 gap-y-1" data-v-267f9ef7=""><span title="标签: blog" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/blog" class="hover:underline" data-v-267f9ef7="">blog</a></span><span title="标签: Web" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/Web" class="hover:underline" data-v-267f9ef7="">Web</a></span><span title="标签: 项目开发" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/项目开发" class="hover:underline" data-v-267f9ef7="">项目开发</a></span></span></div></header></ile-root><script></script><script type="module" async="">import{h as e,c as t}from"/assets/iles.5e82acba.js";import a from"/assets/PostHead.e82ef423.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/VisitorCount.c343552a.js";import"/assets/site.1441102a.js";e(t,a,"ile-4",{class:"my-12",href:"/post/2023/01/glyph-segregator",filename:"src/pages/post/2023/01/glyph-segregator.mdx",frontmatter:{title:"另一种很新的中文字体网页嵌入方案",date:new Date(1674119026e3),image:"/images/2023/01/glyph-segregator.png",tags:["blog","Web","项目开发"],lastUpdated:new Date(1675319173e3),published:new Date(1674134105e3),visitor:85,description:`当你看到 一种很新的中文字体网页嵌入方案，但是懒得优化 DP，也不会进化算法，你可以……
 整一个另一种很新的中文字体网页嵌入方案（
-`
-                },
-                "title-link": !1
-              }, {});
-            </script>
-            <section class="article-style" itemprop="articleBody">
-              <p>当你看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>但是懒得优化 DP<span class="mojikumi-line-end">，</span>也不会进化算法<span class="mojikumi-line-end">，</span>你可以……</p>
-              <p>整一个<a href="https://github.com/ouuan/glyph-segregator"><em>另</em>一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-start">（</span></p>
+`},"title-link":!1},{});
+</script><section class="article-style" itemprop="articleBody"><p>当你看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>但是懒得优化 DP<span class="mojikumi-line-end">，</span>也不会进化算法<span class="mojikumi-line-end">，</span>你可以……</p>
+<p>整一个<a href="https://github.com/ouuan/glyph-segregator"><em>另</em>一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-start">（</span></p>
 
-              <p><s>这就是你 <a href="/post/2023/01/ddpp">开坑 DDPP</a> 不填的理由吗</s></p>
-              <h2 id="背景" class="heading"><a href="#背景" class="heading-anchor" aria-label="章节： 背景" tabindex="-1"></a><span>背景</span></h2>
-              <p>前不久看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>还想着没必要做这种优化<span class="mojikumi-line-end">，</span>毕竟按 Google Fonts 进行子集化就可以做到每页 1MB 左右<span class="mojikumi-line-end">，</span>按现代的网速不会有太大问题<span class="mojikumi-line-end">，</span>用 devtools 开节流试了下看起来也还行<span class="mojikumi-line-end">。</span></p>
-              <p>然后我回家了<span class="mojikumi-line-end">，</span>离开了校园网<span class="mojikumi-line-end">。</span>虽然自定义域名的 Cloudflare Pages 还能访问<span class="mojikumi-line-end">，</span>但速度暂且不论<span class="mojikumi-line-end">，</span>丢包率就很有点恐怖<span class="mojikumi-line-end">，</span>经常页面加载一半就卡住了<span class="mojikumi-line-end">。</span></p>
-              <p>再然后<span class="mojikumi-line-end">，</span>Google Fonts 里 Noto Serif SC 的 unicode range 不含单引号<span class="mojikumi-line-start">（</span>和撇号是同一个字符<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>导致 <a href="/post/2023/01/ddpp">DDPP 序</a> 里引用的那段话的撇号在我的手机上显示成了很宽的另一种字体<span class="mojikumi-line-end">，</span>才让我<a href="https://github.com/ouuan/iles-blog/commit/080bd7112f88d2eae1e86594f8820c0c517e37ce">发现这个问题</a><span class="mojikumi-line-end">。</span>为了以后能及时发现这种问题<span class="mojikumi-line-end">，</span>我就设置了不使用本地字体直接使用 web font 的 Stylus<span class="mojikumi-line-end">。</span></p>
-              <p>恐怖的丢包率<span class="mojikumi-line-end">，</span>加上自己亲身体验 web font 加载<span class="mojikumi-line-end">，</span>让我意识到了<span class="mojikumi-line-end">，</span>在国内普通网络环境下<span class="mojikumi-line-end">，</span>如果你的设备没有安装思源宋体<span class="mojikumi-line-end">，</span>访问我的博客会是多么难受<span class="mojikumi-line-start">（</span></p>
-              <h2 id="主体思路" class="heading"><a href="#主体思路" class="heading-anchor" aria-label="章节： 主体思路" tabindex="-1"></a><span>主体思路</span></h2>
-              <p><span class="mojikumi-line-start">“</span>另一种<span class="mojikumi-line-end">”</span>的主体思路<a href="https://ayu.land/webfont#principle">和<span class="mojikumi-line-start">“</span>一种<span class="mojikumi-line-end">”</span>是一样的</a><span class="mojikumi-line-end">，</span>就是把字体划分成常用字和非常用字<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-start">“</span>一种<span class="mojikumi-line-end">”</span>在这之后选择了使用动态规划 + 进化算法来对常用字进行进一步的拆分<span class="mojikumi">，</span><wbr><span class="mojikumi-line-start">“</span>另一种<span class="mojikumi-line-end">”</span>所做的优化则基于这样一个观察<span class="mojikumi-line-end">：</span>虽然一个博客有一堆页面<span class="mojikumi-line-end">，</span>但 80% 的人只会访问 20% 的页面<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>一个字体是否常用<span class="mojikumi-line-end">，</span>不仅要看出现在几个页面<span class="mojikumi-line-end">，</span>还要看出现在哪些页面<span class="mojikumi-line-end">。</span></p>
-              <p>这时候<span class="mojikumi-line-end">，</span><s>一直充当<a href="https://busuanzi.ibruce.info/">不蒜子</a>平替<span class="mojikumi-line-start">（</span>哪平价了啊<span class="mojikumi-line-end">）</span>的</s> Plausible Analytics 就发挥作用了<span class="mojikumi-line-end">：</span>近段时间的页面访问量可以用来估计每个页面被访问的概率<span class="mojikumi-line-end">，</span>为常用字的划分提供可靠的数据支撑<span class="mojikumi-line-end">。</span></p>
-              <p>一旦估计出了每个页面的被访问概率<span class="mojikumi-line-end">，</span>就可以对每个 glyph 分别计算出<span class="mojikumi-line-end">，</span>如果在每一个使用了它的页面上都加载一遍<span class="mojikumi-line-end">，</span>期望代价是多少<span class="mojikumi-line-end">，</span>也就是使用了它的所有页面的被访问概率之和<span class="mojikumi-line-end">。</span>如果这个数大于 1<span class="mojikumi-line-end">，</span>就设为常用<span class="mojikumi-line-end">，</span>否则设为不常用<span class="mojikumi-line-end">。</span></p>
-              <p>这个思路还是非常简单的<span class="mojikumi-line-end">，</span>可以说只是<span class="mojikumi-line-start">“</span>结合实际<span class="mojikumi-line-end">，</span>采取启发式方法<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>也称不上是一种新的方案<span class="mojikumi-line-start">（</span></p>
-              <h2 id="具体实现" class="heading"><a href="#具体实现" class="heading-anchor" aria-label="章节： 具体实现" tabindex="-1"></a><span>具体实现</span></h2>
-              <p>虽然思路简单<span class="mojikumi-line-end">，</span>但实现起来还是有点复杂的<span class="mojikumi-line-end">，</span>坑有点多<span class="mojikumi-line-end">。</span></p>
-              <h3 id="获取页面使用的字体" class="heading"><a href="#获取页面使用的字体" class="heading-anchor" aria-label="章节： 获取页面使用的字体" tabindex="-1"></a><span>获取页面使用的字体</span></h3>
-              <p>如果整个页面都使用一种字体<span class="mojikumi-line-end">，</span>直接看 HTML 里有哪些中文就差不多了<span class="mojikumi-line-end">，</span>但我不仅<span class="font-sans">非正文用的是黑体</span><span class="mojikumi-line-end">，</span><span class="font-kai">引用块还是楷体</span><span class="mojikumi-line-end">，</span>说不定在哪冒出来个<code>等宽</code>或者 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mtext>LaTeX公式</mtext>
-                          </mrow>
-                          <annotation encoding="application/x-tex">\LaTeX\text{公式}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span><span class="mord text"><span class="mord cjk_fallback">公式</span></span></span></span></span></span><span class="mojikumi-line-end">，</span>有时候还会<strong>加粗</strong><span class="mojikumi-line-end">，</span>更别提心情好的时候会像这段一样直接塞 <code>&lt;span class=""&gt;</code> 来修改样式<span class="mojikumi-line-end">。</span></p>
-              <p>一开始我通过 <a href="https://github.com/Munter/subfont">subfont</a> 找到了 <a href="https://github.com/assetgraph/font-tracer">assetgraph/font-tracer</a><span class="mojikumi-line-end">，</span>但这个 font-tracer 就两个 star<span class="mojikumi-line-end">，</span>没有文档<span class="mojikumi-line-end">，</span><a href="https://github.com/assetgraph/assetgraph">AssetGraph</a> 又是一个 12 年前的老项目<span class="mojikumi-line-end">，</span>连 Definitely Typed 都没有<span class="mojikumi-line-end">，</span>试了一下完全用不会<span class="mojikumi-line-end">。</span></p>
-              <p>想了想<span class="mojikumi-line-end">，</span>最靠谱的还是直接交给浏览器来处理<span class="mojikumi-line-end">，</span>所以就用 <a href="https://github.com/puppeteer/puppeteer">puppeteer</a> 了<span class="mojikumi-line-end">。</span>目前采用的算法是<span class="mojikumi-line-end">：</span>遍历 <code>&lt;body&gt;</code><span class="mojikumi-line-end">，</span>跳过 <code>&lt;script&gt;</code> 和 <code>&lt;style&gt;</code> 子树<span class="mojikumi-line-end">，</span>找到所有 <a href="https://developer.mozilla.org/docs/Web/API/Text">Text 节点</a><span class="mojikumi-line-end">，</span>再加上所有 <code>&lt;img&gt;</code> 的 <code>alt</code> 属性<span class="mojikumi-line-end">。</span>找到节点后<span class="mojikumi-line-end">，</span>可以用 <a href="https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle"><code class="break-all">getComputedStyle</code></a> 获取 <code>font<wbr>-<wbr>family</code> 和 <code>font<wbr>-<wbr>weight</code> 等信息<span class="mojikumi-line-end">。</span></p>
-              <p>因为要处理很多页面<span class="mojikumi-line-end">，</span>也要花一点时间<span class="mojikumi-line-end">，</span>所以用了 <a href="https://github.com/thomasdondorf/puppeteer-cluster">puppeteer-cluster</a> 来并行处理<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>不知道为什么<span class="mojikumi-line-end">，</span>在 vitest 和 iles 中运行时<span class="mojikumi-line-end">，</span>不加参数会报错<span class="mojikumi-line-end">，</span>而加了 <code>--<wbr>no<wbr>-<wbr>sandbox<wbr> --<wbr>no<wbr>-<wbr>zygote</code> 之后并行的优化效果就差一些<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
-              <p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/getPagesFontInfo.ts"><code class="break-all">getPagesFontInfo.ts</code></a></p>
-              <h3 id="字体匹配" class="heading"><a href="#字体匹配" class="heading-anchor" aria-label="章节： 字体匹配" tabindex="-1"></a><span>字体匹配</span></h3>
-              <p><a href="https://www.w3.org/TR/css-fonts-4/#font-style-matching">完整的字体匹配</a>是非常复杂的<span class="mojikumi-line-end">，</span>我也没找到相关的库<span class="mojikumi-line-end">，</span>就自己写了一个简陋的只匹配完整 <code>font<wbr>-<wbr>family</code> 和 <code>font<wbr>-<wbr>weight</code> 的算法<span class="mojikumi-line-end">。</span></p>
-              <p>其实一般 <code>font<wbr>-<wbr>weight</code> 也就 400 和 700<span class="mojikumi-line-end">，</span>但我还是实现了一个 <a href="https://developer.mozilla.org/docs/Web/CSS/font-weight#fallback_weights">完整的 <code>font<wbr>-<wbr>weight</code> fallback</a><span class="mojikumi-line-end">。</span></p>
-              <p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/matchFonts.ts"><code>matchFonts<wbr>.<wbr>ts</code></a></p>
-              <h3 id="常用字体划分" class="heading"><a href="#常用字体划分" class="heading-anchor" aria-label="章节： 常用字体划分" tabindex="-1"></a><span>常用字体划分</span></h3>
-              <p>最关键的这一步实现起来是最简单的<span class="mojikumi-line-end">，</span>因为是纯算法的<span class="mojikumi-line-end">，</span>不涉及到可怕的 Web<span class="mojikumi-line-start">（</span></p>
-              <p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/getCommonGlyphs.ts"><code>getCommonGlyphs<wbr>.<wbr>ts</code></a></p>
-              <h3 id="生成字体文件和-font-face" class="heading"><a href="#生成字体文件和-font-face" class="heading-anchor" aria-label="章节： 生成字体文件和 @font-face" tabindex="-1"></a><span>生成字体文件和 @font-face</span></h3>
-              <p>我使用的是 <a href="https://github.com/papandreou/subset-font">subset-font</a> 来生成字体子集文件<span class="mojikumi-line-end">。</span></p>
-              <p>这一步最大的困难<span class="mojikumi-line-end">，</span>是正确地写出 <code>@font-face</code><span class="mojikumi-line-end">。</span></p>
-              <p>一开始我是给常用字 (common) 和非常用字 (unique) 不同的 <code>font<wbr>-<wbr>family</code><span class="mojikumi-line-end">，</span>然后发现<span class="mojikumi-line-end">，</span>在特殊情况下<span class="mojikumi-line-start">（</span>幸好我的博客文章列表就触发了这个问题<span class="mojikumi-line-end">，</span>不然真没想到<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>某个字的常规样式属于 common 而粗体属于 unique<span class="mojikumi-line-end">，</span>由于 <code>font<wbr>-<wbr>family</code> 里 common 排在 unique 前面<span class="mojikumi-line-end">，</span>就会匹配到常规样式<span class="mojikumi-line-end">，</span>而加载不出粗体<span class="mojikumi-line-end">。</span></p>
-              <p>为了解决这个问题<span class="mojikumi-line-end">，</span>common 和 unique 需要使用同一个 <code>font<wbr>-<wbr>family</code><span class="mojikumi-line-end">。</span>因为用过 Google Fonts 子集划分方案<span class="mojikumi-line-end">，</span>我知道有不同 <code>unicode<wbr>-<wbr>range</code> 的 <code>@font-face</code> 是可以组合在一起的<span class="mojikumi-line-end">，</span>难道我需要计算出精确的 <code>unicode<wbr>-<wbr>range</code> 写在 CSS 里？</p>
-              <p>为此<span class="mojikumi-line-end">，</span>我粗略地读了半天<span class="mojikumi-line-start">（</span><s>这两个词不冲突</s><span class="mojikumi-line-end">）</span><a href="https://www.w3.org/TR/css-fonts-4/">CSS Fonts Module Level 4 W3C Working Draft</a><span class="mojikumi-line-end">，</span>发现它说<span class="mojikumi-line-end">，</span><code>unicode<wbr>-<wbr>range</code> 可以比真实的 character map 大很多<span class="mojikumi-line-end">，</span>若干 <code>@font-face</code> 的 <code>unicode<wbr>-<wbr>range</code> 也可以相交<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>它没说两个 <code>@font-face</code> 能不能除了 <code>src</code> 啥都一样<span class="mojikumi-line-end">，</span><a href="https://www.w3.org/TR/css-fonts-4/#composite-fonts">而只说了</a><span class="mojikumi-line-end">：</span></p>
-              <blockquote>
-                <p>Multiple @font-face rules with different unicode ranges for the same family and style descriptor values can be used to create composite fonts that mix the glyphs from different fonts for different scripts.</p>
-              </blockquote>
-              <p>我也不敢依赖于实验结果<span class="mojikumi-line-end">，</span>就没做实验<span class="mojikumi-line-end">，</span>直接加上了粗略但是保证 common 和 unique 不相同的 <code>unicode<wbr>-<wbr>range</code><span class="mojikumi-line-end">，</span>具体来说就是 0 到最大的 code point<span class="mojikumi-line-end">。</span></p>
-              <p>这里从 0 开始也是有一定原因的<span class="mojikumi-line-end">：</span>我在看 specification 的时候注意到一个奇怪的东西叫 <a href="https://www.w3.org/TR/css-fonts-4/#first-available-font"><i>first available font</i></a><span class="mojikumi-line-end">，</span>虽然没太看懂具体是什么意思<span class="mojikumi-line-end">，</span>但大致上感觉最好是让 <code>unicode<wbr>-<wbr>range</code> 包含空格<span class="mojikumi-line-end">，</span>为了保险就从 0 开始了<span class="mojikumi-line-end">。</span></p>
-              <p>最后还有一个坑<span class="mojikumi-line-end">：</span>如果 composite font 中两个 <code>@font-face</code> 的 <code>unicode<wbr>-<wbr>range</code> 相交<span class="mojikumi-line-end">，</span>给交集内的字符匹配字体时<span class="mojikumi-line-end">，</span>会按出现位置的逆序进行匹配<span class="mojikumi-line-end">。</span></p>
-              <p>这能有什么坑呢<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>如果不动手试一试真的很难想到.. 按照整体的设计<span class="mojikumi-line-end">，</span>访问一个页面时很有可能是 common 字体已经缓存好了<span class="mojikumi-line-end">，</span>需要下载 unique 字体<span class="mojikumi-line-end">，</span>如果 unique 的 <code>@font-face</code> 放在 common 的后面<span class="mojikumi-line-end">，</span>就会优先匹配<span class="mojikumi-line-end">，</span>从而阻塞住已经缓存的 common 字体<span class="mojikumi-line-end">，</span>整个页面都要等 unique 下载好才切换字体<span class="mojikumi-line-end">，</span>而不是先显示 common 再显示剩下的 unique<span class="mojikumi-line-end">。</span>当然<span class="mojikumi-line-end">，</span>反过来的话<span class="mojikumi-line-end">，</span>unique 也会等 common<span class="mojikumi-line-end">，</span>但这样一般来说是更好的<span class="mojikumi-line-end">。</span></p>
-              <p>还有一些细节优化<span class="mojikumi-line-end">：</span></p>
-              <ul>
-                <li>生成 unique 字体文件时<span class="mojikumi-line-end">，</span>文件名里有 hash 就够了<span class="mojikumi-line-end">，</span>不要再添加和页面有关的信息<span class="mojikumi-line-end">，</span>这样的话如果两个页面刚好 unique glyph 集合相同就可以共用一个字体文件<span class="mojikumi-line-end">。</span></li>
-                <li>如果一个页面一个 common glyph 都没用<span class="mojikumi-line-end">，</span>就可以不添加 common font 的 <code>@font-face</code><span class="mojikumi-line-end">。</span></li>
-              </ul>
-              <p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/generateFontFiles.ts"><code class="break-all">generateFontFiles.ts</code></a></p>
-              <h3 id="将-css-写入-html-文件" class="heading"><a href="#将-css-写入-html-文件" class="heading-anchor" aria-label="章节： 将 CSS 写入 HTML 文件" tabindex="-1"></a><span>将 CSS 写入 HTML 文件</span></h3>
-              <p>虽然也有想过直接找到 <code>&lt;/head&gt;</code> 文本替换<span class="mojikumi-line-end">，</span>但为了靠谱还是用的 <a href="https://github.com/jsdom/jsdom"><code>jsdom</code></a><span class="mojikumi-line-end">。</span></p>
-              <p>这部分的代码是最短的<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/injectCSS.ts"><code>injectCSS<wbr>.<wbr>ts</code></a></p>
-              <h3 id="给项目起名" class="heading"><a href="#给项目起名" class="heading-anchor" aria-label="章节： 给项目起名" tabindex="-1"></a><span>给项目起名</span></h3>
-              <p>主体思路是把 glyph 分成两类分别对待<span class="mojikumi-line-end">，</span>就很有 segregate 的感觉<span class="mojikumi-line-start">（</span></p>
-              <p>主要还是因为刚写了一个 <a href="/post/2022/11/csapp-9#segregated-fit">segregated fit</a> 印象比较深刻<span class="mojikumi-line-end">，</span>所以就取了这么个名字<span class="mojikumi-line-end">。</span></p>
-              <h3 id="在博客中使用" class="heading"><a href="#在博客中使用" class="heading-anchor" aria-label="章节： 在博客中使用" tabindex="-1"></a><span>在博客中使用</span></h3>
-              <p>就是 <a href="https://iles-docs.netlify.app/config#ssg-onsiterendered">从 iles 获取页面信息</a><span class="mojikumi-line-end">，</span>从 <a href="https://plausible.io/docs/stats-api#get-apiv1statsbreakdown">Plausible Stats API</a> 获取访问量<span class="mojikumi-line-end">，</span>调用 <a href="https://vitejs.dev/guide/api-javascript.html#preview">Vite API</a> 跑一个 preview server<span class="mojikumi-line-end">，</span>然后调用 <code>glyph<wbr>-<wbr>segregator</code><span class="mojikumi-line-end">。</span>直接看<a href="https://github.com/ouuan/iles-blog/commit/695f8b22ca3a791ceeb5440e81a6fa377b50bb3b#diff-ca899b3bf20a893bb3dfb058072a2b279953ce008f562727ad74a76d520be662">代码</a>吧<span class="mojikumi-line-end">。</span></p>
-              <p>访问概率的计算方式是<span class="mojikumi-line-end">，</span>看每个页面近 90 天的访客数<span class="mojikumi-line-end">，</span>加一后除以其中最高的加二<span class="mojikumi-line-start">（</span>其实这个加一加二基本没啥用<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>用最高页面访客数而非实际总访客数作分母<span class="mojikumi-line-end">，</span>是想在算法的基础上更加偏向于划分到常用字一些<span class="mojikumi-line-end">，</span>稍微优化一点访问页面较多的访客的体验<span class="mojikumi-line-end">，</span>也可以少一次 API 查询<span class="mojikumi-line-end">。</span></p>
-              <p>更新常用字集合用的是 <a href="https://github.com/ouuan/iles-blog/blob/master/.github/workflows/update-fonts.yml">scheduled GitHub Actions</a><span class="mojikumi-line-end">，</span>在 Docker 里跑是因为 <a href="https://stackoverflow.com/questions/74332455/connection-refused-for-local-server-in-github-actions-workflow/74341376">Connection refused for local server in github actions workflow</a><span class="mojikumi-line-end">。</span></p>
-              <h2 id="实际效果" class="heading"><a href="#实际效果" class="heading-anchor" aria-label="章节： 实际效果" tabindex="-1"></a><span>实际效果</span></h2>
-              <p>整个 <code>glyphSegregator</code> 用时 40s 左右<span class="mojikumi-line-end">，</span>glyph 数量和 common font file size (woff2) 如表所示<span class="mojikumi-line-end">：</span></p>
-              <div class="overflow-auto my-6">
-                <table>
-                  <thead>
-                    <tr>
-                      <th align="center"></th>
-                      <th align="center">Noto Serif SC Regular</th>
-                      <th align="center">Noto Serif SC Bold</th>
-                      <th align="center">LXGW WenKai Regular</th>
-                      <th align="center">LXGW WenKai Bold</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td align="center"><span class="whitespace-nowrap">common</span></td>
-                      <td align="center">575 (162.7KiB)</td>
-                      <td align="center">25 (8.5KiB)</td>
-                      <td align="center">37 (5.2KiB)</td>
-                      <td align="center">0</td>
-                    </tr>
-                    <tr>
-                      <td align="center">unique</td>
-                      <td align="center">2311</td>
-                      <td align="center">1536</td>
-                      <td align="center">161</td>
-                      <td align="center">0</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p>首页只需加载两个 Regular 的 common font<span class="mojikumi-line-end">，</span>每个页面需要加载的字体文件总大小缩减到了原来使用子集化的 1/4 左右<span class="mojikumi-line-end">，</span>并且加载的字体文件数量从 10~30 个缩减到了 2~6 个<span class="mojikumi-line-end">。</span></p>
-              <p>作为对比<span class="mojikumi-line-end">，</span>如果出现在两个页面就设为常用字<span class="mojikumi-line-end">，</span>Noto Serif SC Regular 的 common 有 299KiB<span class="mojikumi-line-end">，</span>出现在三个页面则是 227KiB<span class="mojikumi-line-end">。</span></p>
-              <h2 id="后记：font-subsetting-与-kerning" class="heading"><a href="#后记：font-subsetting-与-kerning" class="heading-anchor" aria-label="章节： 后记：font subsetting 与 kerning" tabindex="-1"></a><span>后记<span class="mojikumi-line-end">：</span>font subsetting 与 kerning</span></h2>
-              <p>因为通过 Stylus 设置了不使用本地字体<span class="mojikumi-line-end">，</span>我可以轻松地在本地字体和 web font 之间切换<span class="mojikumi-line-end">。</span>然后我就偶然发现<span class="mojikumi-line-end">，</span>切换时一些标题发生了字符的偏移<span class="mojikumi-line-end">。</span>原因也很简单<span class="mojikumi-line-end">，</span>就是相邻的两个字符本来有 kerning (字距调整)<span class="mojikumi-line-end">，</span>但它们被划分到了不同的子集中<span class="mojikumi-line-end">，</span>生成字体子集时就丢失了 kerning 信息<span class="mojikumi-line-end">。</span></p>
-              <p>我在 glyph-segregator 中 <a href="https://github.com/ouuan/glyph-segregator/commit/ae3ddd5cbb91f0eb6bbfec7071ee408c28b36dec">添加了 <code class="break-all">alwaysCommonGlyphs</code> 选项</a><span class="mojikumi-line-start">（</span>ASCII 字符总是设为 common<span class="mojikumi-line-end">，</span>如果需要处理非 ASCII 字符的 kerning 也可以修改设置<span class="mojikumi-line-end">，</span>但我的博客就假设只有 ASCII 字符会遇到这个问题<span class="mojikumi-line-end">）</span>来解决这一问题<span class="mojikumi-line-end">。</span>最好的解决方案是真的去看一下字体里有哪些 kerning 信息然后相应地处理<span class="mojikumi-line-end">，</span>但是差不多得了<span class="mojikumi-line-start">（</span></p>
-              <a id="font-kerning-示例" name="font-kerning-示例" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">font kerning 示例</span></h3><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <ul>
-                      <li>有 kerning: <span style="font-kerning: normal; font-size: 2rem;">TAVeYoW</span></li>
-                      <li>没 kerning: <span style="font-kerning: none; font-size: 2rem;">TAVeYoW</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </aside>
-              <p>后记的后记<span class="mojikumi-line-end">：</span>还是改成了<a href="https://github.com/ouuan/glyph-segregator/commit/e955eb1c935d77adf0e4bcb5c870fee0614801b6">即使未被使用也添加进 common glyph set</a><span class="mojikumi-line-end">，</span>否则如果新加一个 always common 的 glyph<span class="mojikumi-line-end">，</span>为了让它 common<span class="mojikumi-line-end">，</span>就会改变 common glyph set<span class="mojikumi-line-end">，</span>导致 cache 失效<span class="mojikumi-line-end">。</span>这里有一定的 trade-off<span class="mojikumi-line-end">，</span>要在 cache 失效 / 多塞一些未被使用的 glyph / kerning 挂掉之间进行选择<span class="mojikumi-line-end">，</span>我还是选择了多塞一些未被使用的 glyph<span class="mojikumi-line-end">，</span>毕竟整个 ASCII 也没多大<span class="mojikumi-line-end">。</span>最好是借助人类智慧来预测一下哪些 glyph 更有可能在未来被添加而放进 common glyph set 里<span class="mojikumi-line-end">，</span>其他 glyph 就只有使用了才放<span class="mojikumi-line-end">，</span>但是差不多得了<span class="mojikumi-line-start">（</span></p>
-            </section>
-            <div class="article-style my-9">
-              <hr>
-            </div>
-            <footer>
-              <div class="my-6 bg-area shadow b-l-6 b-gray-4 dark:b-gray-11 p-6" itemprop="copyrightNotice">
-                <ul class="flex flex-col gap-1">
-                  <li class="flex gap-1"><span class="shrink-0">文章作者:</span><a href="https://github.com/ouuan" rel="author">ouuan</a></li>
-                  <li class="flex gap-1"><span class="shrink-0">原文链接:</span><a href="https://ouuan.moe/post/2023/01/glyph-segregator" rel="canonical" class="break-all">https://ouuan.moe/post/2023/01/glyph-segregator</a></li>
-                  <li class="flex gap-1"><span class="shrink-0">许可协议:</span><span> 本文采用 <span class="article-style"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="font-sans" itemprop="license">CC BY-SA 4.0</a></span> 许可协议进行授权，未满足 <span class="underline decoration-dotted" title="简而言之，转载时必须标明出处（本文的链接），标明是转载而非原创，标明作了哪些修改，并使用相同的许可协议，但无需私信征求许可">许可协议要求</span> 不得转载。 </span></li>
-                </ul>
-              </div>
-            </footer>
-          </article>
-          <div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-5"></ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as m
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as o
-              } from "/assets/GiscusCommentsInner.487fa077.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              import "/assets/useTheme.f1d4e689.js";
-              import "/assets/site.1441102a.js";
-              r(m, o, "ile-5", {
-                term: "另一种很新的中文字体网页嵌入方案"
-              }, {});
-            </script>
-          </div>
-          <nav class="my-6 flex justify-between gap-6 lg:text-justify print:hidden">
-            <div class="flex-1 flex"><a class="flex items-center gap-1 hover:text-hover" href="/post/2023/01/ddpp"><span class="i-mdi-chevron-left" aria-label="上一篇"></span><span class="break-anywhere">DDPP 学习笔记系列 序</span></a></div>
-            <div class="flex-1 flex justify-end"><a class="flex items-center gap-1 hover:text-hover flex-row-reverse" href="/post/2023/01/ddpp-2"><span class="i-mdi-chevron-right" aria-label="下一篇"></span><span class="break-anywhere">DDPP 第二章学习笔记</span></a></div>
-          </nav>
-        </div>
-      </div>
-    </main>
-    <footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter">
-      <div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-14 01:26:29 GMT+8 (7858a82)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div>
-      <div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-6"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root>
-          <script></script>
-          <script type="module" async="">
-            var p = (o, a) => () => (a || o((a = {
-              exports: {}
-            }).exports, a), a.exports);
-            var r = (o, a, _) => new Promise((c, n) => {
-              var f = t => {
-                  try {
-                    e(_.next(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                l = t => {
-                  try {
-                    e(_.throw(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-              e((_ = _.apply(o, a)).next())
-            });
-            import {
-              _ as d
-            } from "/assets/vite.5ce4fca4.js";
-            import {
-              a as s
-            } from "/assets/iles.5e82acba.js";
-            import "/assets/vendor-vue.075573a8.js";
-            var E = p(m => {
-              const u = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                }),
-                v = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/VisitorCount.a8d4ae35.js"), ["assets/VisitorCount.a8d4ae35.js", "assets/VisitorCount.c343552a.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                });
-              s(u, v, "ile-6", {}, {})
-            });
-            export default E();
-          </script> 人到访过这里
-        </span></div>
-      <div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div>
-    </footer>
-    <meta itemprop="copyrightYear" content="2022 - 2023">
-    <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder">
-      <meta itemprop="additionalName" content="ouuan">
-      <meta itemprop="givenName" content="Yufan">
-      <meta itemprop="familyName" content="You">
-      <meta itemprop="url" content="https://github.com/ouuan">
-      <link itemprop="gender" href="https://schema.org/Male">
-      <meta itemprop="image" content="/android-chrome-512x512.png">
-    </div><ile-root id="ile-7"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (o, a) => () => (a || o((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (o, a, _) => new Promise((c, n) => {
-        var f = t => {
-            try {
-              e(_.next(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = t => {
-            try {
-              e(_.throw(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-        e((_ = _.apply(o, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var E = p(m => {
-        const u = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          v = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/BackToTop.9b4bb339.js"), ["assets/BackToTop.9b4bb339.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          });
-        s(u, v, "ile-7", {}, {})
-      });
-      export default E();
-    </script>
-    <div class="hidden"></div><ile-root id="ile-8"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      import {
-        h as o,
-        b as r
-      } from "/assets/iles.5e82acba.js";
-      import {
-        o as a
-      } from "/assets/PlausibleTrigger.bafee336.js";
-      import "/assets/vendor-vue.075573a8.js";
-      import "/assets/vite.5ce4fca4.js";
-      o(r, a, "ile-8", {}, {});
-    </script>
-    <div></div><ile-root id="ile-9"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (t, a) => () => (a || t((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (t, a, _) => new Promise((c, n) => {
-        var f = o => {
-            try {
-              e(_.next(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = o => {
-            try {
-              e(_.throw(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = o => o.done ? c(o.value) : Promise.resolve(o.value).then(f, l);
-        e((_ = _.apply(t, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var u = p(m => {
-        const E = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(t => t.e), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          h = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/TextJustifyFix.4fa5e997.js"), [])).onLoad
-          });
-        s(E, h, "ile-9", {}, {})
-      });
-      export default u();
-    </script>
-    <meta itemprop="inLanguage" content="zh-CN">
-  </div>
-
-</body>
-
-</html>
+<p><s>这就是你 <a href="/post/2023/01/ddpp">开坑 DDPP</a> 不填的理由吗</s></p>
+<h2 id="背景" class="heading"><a href="#背景" class="heading-anchor" aria-label="章节： 背景" tabindex="-1"></a><span>背景</span></h2>
+<p>前不久看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>还想着没必要做这种优化<span class="mojikumi-line-end">，</span>毕竟按 Google Fonts 进行子集化就可以做到每页 1MB 左右<span class="mojikumi-line-end">，</span>按现代的网速不会有太大问题<span class="mojikumi-line-end">，</span>用 devtools 开节流试了下看起来也还行<span class="mojikumi-line-end">。</span></p>
+<p>然后我回家了<span class="mojikumi-line-end">，</span>离开了校园网<span class="mojikumi-line-end">。</span>虽然自定义域名的 Cloudflare Pages 还能访问<span class="mojikumi-line-end">，</span>但速度暂且不论<span class="mojikumi-line-end">，</span>丢包率就很有点恐怖<span class="mojikumi-line-end">，</span>经常页面加载一半就卡住了<span class="mojikumi-line-end">。</span></p>
+<p>再然后<span class="mojikumi-line-end">，</span>Google Fonts 里 Noto Serif SC 的 unicode range 不含单引号<span class="mojikumi-line-start">（</span>和撇号是同一个字符<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>导致 <a href="/post/2023/01/ddpp">DDPP 序</a> 里引用的那段话的撇号在我的手机上显示成了很宽的另一种字体<span class="mojikumi-line-end">，</span>才让我<a href="https://github.com/ouuan/iles-blog/commit/080bd7112f88d2eae1e86594f8820c0c517e37ce">发现这个问题</a><span class="mojikumi-line-end">。</span>为了以后能及时发现这种问题<span class="mojikumi-line-end">，</span>我就设置了不使用本地字体直接使用 web font 的 Stylus<span class="mojikumi-line-end">。</span></p>
+<p>恐怖的丢包率<span class="mojikumi-line-end">，</span>加上自己亲身体验 web font 加载<span class="mojikumi-line-end">，</span>让我意识到了<span class="mojikumi-line-end">，</span>在国内普通网络环境下<span class="mojikumi-line-end">，</span>如果你的设备没有安装思源宋体<span class="mojikumi-line-end">，</span>访问我的博客会是多么难受<span class="mojikumi-line-start">（</span></p>
+<h2 id="主体思路" class="heading"><a href="#主体思路" class="heading-anchor" aria-label="章节： 主体思路" tabindex="-1"></a><span>主体思路</span></h2>
+<p><span class="mojikumi-line-start">“</span>另一种<span class="mojikumi-line-end">”</span>的主体思路<a href="https://ayu.land/webfont#principle">和<span class="mojikumi-line-start">“</span>一种<span class="mojikumi-line-end">”</span>是一样的</a><span class="mojikumi-line-end">，</span>就是把字体划分成常用字和非常用字<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-start">“</span>一种<span class="mojikumi-line-end">”</span>在这之后选择了使用动态规划 + 进化算法来对常用字进行进一步的拆分<span class="mojikumi">，</span><wbr><span class="mojikumi-line-start">“</span>另一种<span class="mojikumi-line-end">”</span>所做的优化则基于这样一个观察<span class="mojikumi-line-end">：</span>虽然一个博客有一堆页面<span class="mojikumi-line-end">，</span>但 80% 的人只会访问 20% 的页面<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>一个字体是否常用<span class="mojikumi-line-end">，</span>不仅要看出现在几个页面<span class="mojikumi-line-end">，</span>还要看出现在哪些页面<span class="mojikumi-line-end">。</span></p>
+<p>这时候<span class="mojikumi-line-end">，</span><s>一直充当<a href="https://busuanzi.ibruce.info/">不蒜子</a>平替<span class="mojikumi-line-start">（</span>哪平价了啊<span class="mojikumi-line-end">）</span>的</s> Plausible Analytics 就发挥作用了<span class="mojikumi-line-end">：</span>近段时间的页面访问量可以用来估计每个页面被访问的概率<span class="mojikumi-line-end">，</span>为常用字的划分提供可靠的数据支撑<span class="mojikumi-line-end">。</span></p>
+<p>一旦估计出了每个页面的被访问概率<span class="mojikumi-line-end">，</span>就可以对每个 glyph 分别计算出<span class="mojikumi-line-end">，</span>如果在每一个使用了它的页面上都加载一遍<span class="mojikumi-line-end">，</span>期望代价是多少<span class="mojikumi-line-end">，</span>也就是使用了它的所有页面的被访问概率之和<span class="mojikumi-line-end">。</span>如果这个数大于 1<span class="mojikumi-line-end">，</span>就设为常用<span class="mojikumi-line-end">，</span>否则设为不常用<span class="mojikumi-line-end">。</span></p>
+<p>这个思路还是非常简单的<span class="mojikumi-line-end">，</span>可以说只是<span class="mojikumi-line-start">“</span>结合实际<span class="mojikumi-line-end">，</span>采取启发式方法<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>也称不上是一种新的方案<span class="mojikumi-line-start">（</span></p>
+<h2 id="具体实现" class="heading"><a href="#具体实现" class="heading-anchor" aria-label="章节： 具体实现" tabindex="-1"></a><span>具体实现</span></h2>
+<p>虽然思路简单<span class="mojikumi-line-end">，</span>但实现起来还是有点复杂的<span class="mojikumi-line-end">，</span>坑有点多<span class="mojikumi-line-end">。</span></p>
+<h3 id="获取页面使用的字体" class="heading"><a href="#获取页面使用的字体" class="heading-anchor" aria-label="章节： 获取页面使用的字体" tabindex="-1"></a><span>获取页面使用的字体</span></h3>
+<p>如果整个页面都使用一种字体<span class="mojikumi-line-end">，</span>直接看 HTML 里有哪些中文就差不多了<span class="mojikumi-line-end">，</span>但我不仅<span class="font-sans">非正文用的是黑体</span><span class="mojikumi-line-end">，</span><span class="font-kai">引用块还是楷体</span><span class="mojikumi-line-end">，</span>说不定在哪冒出来个<code>等宽</code>或者 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX公式</mtext></mrow><annotation encoding="application/x-tex">\LaTeX\text{公式}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8988em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.905em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4678em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span><span class="mord text"><span class="mord cjk_fallback">公式</span></span></span></span></span></span><span class="mojikumi-line-end">，</span>有时候还会<strong>加粗</strong><span class="mojikumi-line-end">，</span>更别提心情好的时候会像这段一样直接塞 <code>&lt;span class=""&gt;</code> 来修改样式<span class="mojikumi-line-end">。</span></p>
+<p>一开始我通过 <a href="https://github.com/Munter/subfont">subfont</a> 找到了 <a href="https://github.com/assetgraph/font-tracer">assetgraph/font-tracer</a><span class="mojikumi-line-end">，</span>但这个 font-tracer 就两个 star<span class="mojikumi-line-end">，</span>没有文档<span class="mojikumi-line-end">，</span><a href="https://github.com/assetgraph/assetgraph">AssetGraph</a> 又是一个 12 年前的老项目<span class="mojikumi-line-end">，</span>连 Definitely Typed 都没有<span class="mojikumi-line-end">，</span>试了一下完全用不会<span class="mojikumi-line-end">。</span></p>
+<p>想了想<span class="mojikumi-line-end">，</span>最靠谱的还是直接交给浏览器来处理<span class="mojikumi-line-end">，</span>所以就用 <a href="https://github.com/puppeteer/puppeteer">puppeteer</a> 了<span class="mojikumi-line-end">。</span>目前采用的算法是<span class="mojikumi-line-end">：</span>遍历 <code>&lt;body&gt;</code><span class="mojikumi-line-end">，</span>跳过 <code>&lt;script&gt;</code> 和 <code>&lt;style&gt;</code> 子树<span class="mojikumi-line-end">，</span>找到所有 <a href="https://developer.mozilla.org/docs/Web/API/Text">Text 节点</a><span class="mojikumi-line-end">，</span>再加上所有 <code>&lt;img&gt;</code> 的 <code>alt</code> 属性<span class="mojikumi-line-end">。</span>找到节点后<span class="mojikumi-line-end">，</span>可以用 <a href="https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle"><code class="break-all">getComputedStyle</code></a> 获取 <code>font<wbr>-<wbr>family</code> 和 <code>font<wbr>-<wbr>weight</code> 等信息<span class="mojikumi-line-end">。</span></p>
+<p>因为要处理很多页面<span class="mojikumi-line-end">，</span>也要花一点时间<span class="mojikumi-line-end">，</span>所以用了 <a href="https://github.com/thomasdondorf/puppeteer-cluster">puppeteer-cluster</a> 来并行处理<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>不知道为什么<span class="mojikumi-line-end">，</span>在 vitest 和 iles 中运行时<span class="mojikumi-line-end">，</span>不加参数会报错<span class="mojikumi-line-end">，</span>而加了 <code>--<wbr>no<wbr>-<wbr>sandbox<wbr> --<wbr>no<wbr>-<wbr>zygote</code> 之后并行的优化效果就差一些<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/getPagesFontInfo.ts"><code class="break-all">getPagesFontInfo.ts</code></a></p>
+<h3 id="字体匹配" class="heading"><a href="#字体匹配" class="heading-anchor" aria-label="章节： 字体匹配" tabindex="-1"></a><span>字体匹配</span></h3>
+<p><a href="https://www.w3.org/TR/css-fonts-4/#font-style-matching">完整的字体匹配</a>是非常复杂的<span class="mojikumi-line-end">，</span>我也没找到相关的库<span class="mojikumi-line-end">，</span>就自己写了一个简陋的只匹配完整 <code>font<wbr>-<wbr>family</code> 和 <code>font<wbr>-<wbr>weight</code> 的算法<span class="mojikumi-line-end">。</span></p>
+<p>其实一般 <code>font<wbr>-<wbr>weight</code> 也就 400 和 700<span class="mojikumi-line-end">，</span>但我还是实现了一个 <a href="https://developer.mozilla.org/docs/Web/CSS/font-weight#fallback_weights">完整的 <code>font<wbr>-<wbr>weight</code> fallback</a><span class="mojikumi-line-end">。</span></p>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/matchFonts.ts"><code>matchFonts<wbr>.<wbr>ts</code></a></p>
+<h3 id="常用字体划分" class="heading"><a href="#常用字体划分" class="heading-anchor" aria-label="章节： 常用字体划分" tabindex="-1"></a><span>常用字体划分</span></h3>
+<p>最关键的这一步实现起来是最简单的<span class="mojikumi-line-end">，</span>因为是纯算法的<span class="mojikumi-line-end">，</span>不涉及到可怕的 Web<span class="mojikumi-line-start">（</span></p>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/getCommonGlyphs.ts"><code>getCommonGlyphs<wbr>.<wbr>ts</code></a></p>
+<h3 id="生成字体文件和-font-face" class="heading"><a href="#生成字体文件和-font-face" class="heading-anchor" aria-label="章节： 生成字体文件和 @font-face" tabindex="-1"></a><span>生成字体文件和 @font-face</span></h3>
+<p>我使用的是 <a href="https://github.com/papandreou/subset-font">subset-font</a> 来生成字体子集文件<span class="mojikumi-line-end">。</span></p>
+<p>这一步最大的困难<span class="mojikumi-line-end">，</span>是正确地写出 <code>@font-face</code><span class="mojikumi-line-end">。</span></p>
+<p>一开始我是给常用字 (common) 和非常用字 (unique) 不同的 <code>font<wbr>-<wbr>family</code><span class="mojikumi-line-end">，</span>然后发现<span class="mojikumi-line-end">，</span>在特殊情况下<span class="mojikumi-line-start">（</span>幸好我的博客文章列表就触发了这个问题<span class="mojikumi-line-end">，</span>不然真没想到<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>某个字的常规样式属于 common 而粗体属于 unique<span class="mojikumi-line-end">，</span>由于 <code>font<wbr>-<wbr>family</code> 里 common 排在 unique 前面<span class="mojikumi-line-end">，</span>就会匹配到常规样式<span class="mojikumi-line-end">，</span>而加载不出粗体<span class="mojikumi-line-end">。</span></p>
+<p>为了解决这个问题<span class="mojikumi-line-end">，</span>common 和 unique 需要使用同一个 <code>font<wbr>-<wbr>family</code><span class="mojikumi-line-end">。</span>因为用过 Google Fonts 子集划分方案<span class="mojikumi-line-end">，</span>我知道有不同 <code>unicode<wbr>-<wbr>range</code> 的 <code>@font-face</code> 是可以组合在一起的<span class="mojikumi-line-end">，</span>难道我需要计算出精确的 <code>unicode<wbr>-<wbr>range</code> 写在 CSS 里？</p>
+<p>为此<span class="mojikumi-line-end">，</span>我粗略地读了半天<span class="mojikumi-line-start">（</span><s>这两个词不冲突</s><span class="mojikumi-line-end">）</span><a href="https://www.w3.org/TR/css-fonts-4/">CSS Fonts Module Level 4 W3C Working Draft</a><span class="mojikumi-line-end">，</span>发现它说<span class="mojikumi-line-end">，</span><code>unicode<wbr>-<wbr>range</code> 可以比真实的 character map 大很多<span class="mojikumi-line-end">，</span>若干 <code>@font-face</code> 的 <code>unicode<wbr>-<wbr>range</code> 也可以相交<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>它没说两个 <code>@font-face</code> 能不能除了 <code>src</code> 啥都一样<span class="mojikumi-line-end">，</span><a href="https://www.w3.org/TR/css-fonts-4/#composite-fonts">而只说了</a><span class="mojikumi-line-end">：</span></p>
+<blockquote>
+<p>Multiple @font-face rules with different unicode ranges for the same family and style descriptor values can be used to create composite fonts that mix the glyphs from different fonts for different scripts.</p>
+</blockquote>
+<p>我也不敢依赖于实验结果<span class="mojikumi-line-end">，</span>就没做实验<span class="mojikumi-line-end">，</span>直接加上了粗略但是保证 common 和 unique 不相同的 <code>unicode<wbr>-<wbr>range</code><span class="mojikumi-line-end">，</span>具体来说就是 0 到最大的 code point<span class="mojikumi-line-end">。</span></p>
+<p>这里从 0 开始也是有一定原因的<span class="mojikumi-line-end">：</span>我在看 specification 的时候注意到一个奇怪的东西叫 <a href="https://www.w3.org/TR/css-fonts-4/#first-available-font"><i>first available font</i></a><span class="mojikumi-line-end">，</span>虽然没太看懂具体是什么意思<span class="mojikumi-line-end">，</span>但大致上感觉最好是让 <code>unicode<wbr>-<wbr>range</code> 包含空格<span class="mojikumi-line-end">，</span>为了保险就从 0 开始了<span class="mojikumi-line-end">。</span></p>
+<p>最后还有一个坑<span class="mojikumi-line-end">：</span>如果 composite font 中两个 <code>@font-face</code> 的 <code>unicode<wbr>-<wbr>range</code> 相交<span class="mojikumi-line-end">，</span>给交集内的字符匹配字体时<span class="mojikumi-line-end">，</span>会按出现位置的逆序进行匹配<span class="mojikumi-line-end">。</span></p>
+<p>这能有什么坑呢<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>如果不动手试一试真的很难想到.. 按照整体的设计<span class="mojikumi-line-end">，</span>访问一个页面时很有可能是 common 字体已经缓存好了<span class="mojikumi-line-end">，</span>需要下载 unique 字体<span class="mojikumi-line-end">，</span>如果 unique 的 <code>@font-face</code> 放在 common 的后面<span class="mojikumi-line-end">，</span>就会优先匹配<span class="mojikumi-line-end">，</span>从而阻塞住已经缓存的 common 字体<span class="mojikumi-line-end">，</span>整个页面都要等 unique 下载好才切换字体<span class="mojikumi-line-end">，</span>而不是先显示 common 再显示剩下的 unique<span class="mojikumi-line-end">。</span>当然<span class="mojikumi-line-end">，</span>反过来的话<span class="mojikumi-line-end">，</span>unique 也会等 common<span class="mojikumi-line-end">，</span>但这样一般来说是更好的<span class="mojikumi-line-end">。</span></p>
+<p>还有一些细节优化<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>生成 unique 字体文件时<span class="mojikumi-line-end">，</span>文件名里有 hash 就够了<span class="mojikumi-line-end">，</span>不要再添加和页面有关的信息<span class="mojikumi-line-end">，</span>这样的话如果两个页面刚好 unique glyph 集合相同就可以共用一个字体文件<span class="mojikumi-line-end">。</span></li>
+<li>如果一个页面一个 common glyph 都没用<span class="mojikumi-line-end">，</span>就可以不添加 common font 的 <code>@font-face</code><span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>代码<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/generateFontFiles.ts"><code class="break-all">generateFontFiles.ts</code></a></p>
+<h3 id="将-css-写入-html-文件" class="heading"><a href="#将-css-写入-html-文件" class="heading-anchor" aria-label="章节： 将 CSS 写入 HTML 文件" tabindex="-1"></a><span>将 CSS 写入 HTML 文件</span></h3>
+<p>虽然也有想过直接找到 <code>&lt;/head&gt;</code> 文本替换<span class="mojikumi-line-end">，</span>但为了靠谱还是用的 <a href="https://github.com/jsdom/jsdom"><code>jsdom</code></a><span class="mojikumi-line-end">。</span></p>
+<p>这部分的代码是最短的<span class="mojikumi-line-end">：</span><a href="https://github.com/ouuan/glyph-segregator/blob/master/src/injectCSS.ts"><code>injectCSS<wbr>.<wbr>ts</code></a></p>
+<h3 id="给项目起名" class="heading"><a href="#给项目起名" class="heading-anchor" aria-label="章节： 给项目起名" tabindex="-1"></a><span>给项目起名</span></h3>
+<p>主体思路是把 glyph 分成两类分别对待<span class="mojikumi-line-end">，</span>就很有 segregate 的感觉<span class="mojikumi-line-start">（</span></p>
+<p>主要还是因为刚写了一个 <a href="/post/2022/11/csapp-9#segregated-fit">segregated fit</a> 印象比较深刻<span class="mojikumi-line-end">，</span>所以就取了这么个名字<span class="mojikumi-line-end">。</span></p>
+<h3 id="在博客中使用" class="heading"><a href="#在博客中使用" class="heading-anchor" aria-label="章节： 在博客中使用" tabindex="-1"></a><span>在博客中使用</span></h3>
+<p>就是 <a href="https://iles-docs.netlify.app/config#ssg-onsiterendered">从 iles 获取页面信息</a><span class="mojikumi-line-end">，</span>从 <a href="https://plausible.io/docs/stats-api#get-apiv1statsbreakdown">Plausible Stats API</a> 获取访问量<span class="mojikumi-line-end">，</span>调用 <a href="https://vitejs.dev/guide/api-javascript.html#preview">Vite API</a> 跑一个 preview server<span class="mojikumi-line-end">，</span>然后调用 <code>glyph<wbr>-<wbr>segregator</code><span class="mojikumi-line-end">。</span>直接看<a href="https://github.com/ouuan/iles-blog/commit/695f8b22ca3a791ceeb5440e81a6fa377b50bb3b#diff-ca899b3bf20a893bb3dfb058072a2b279953ce008f562727ad74a76d520be662">代码</a>吧<span class="mojikumi-line-end">。</span></p>
+<p>访问概率的计算方式是<span class="mojikumi-line-end">，</span>看每个页面近 90 天的访客数<span class="mojikumi-line-end">，</span>加一后除以其中最高的加二<span class="mojikumi-line-start">（</span>其实这个加一加二基本没啥用<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>用最高页面访客数而非实际总访客数作分母<span class="mojikumi-line-end">，</span>是想在算法的基础上更加偏向于划分到常用字一些<span class="mojikumi-line-end">，</span>稍微优化一点访问页面较多的访客的体验<span class="mojikumi-line-end">，</span>也可以少一次 API 查询<span class="mojikumi-line-end">。</span></p>
+<p>更新常用字集合用的是 <a href="https://github.com/ouuan/iles-blog/blob/master/.github/workflows/update-fonts.yml">scheduled GitHub Actions</a><span class="mojikumi-line-end">，</span>在 Docker 里跑是因为 <a href="https://stackoverflow.com/questions/74332455/connection-refused-for-local-server-in-github-actions-workflow/74341376">Connection refused for local server in github actions workflow</a><span class="mojikumi-line-end">。</span></p>
+<h2 id="实际效果" class="heading"><a href="#实际效果" class="heading-anchor" aria-label="章节： 实际效果" tabindex="-1"></a><span>实际效果</span></h2>
+<p>整个 <code>glyphSegregator</code> 用时 40s 左右<span class="mojikumi-line-end">，</span>glyph 数量和 common font file size (woff2) 如表所示<span class="mojikumi-line-end">：</span></p>
+<div class="overflow-auto my-6"><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Noto Serif SC Regular</th>
+<th align="center">Noto Serif SC Bold</th>
+<th align="center">LXGW WenKai Regular</th>
+<th align="center">LXGW WenKai Bold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><span class="whitespace-nowrap">common</span></td>
+<td align="center">575 (162.7KiB)</td>
+<td align="center">25 (8.5KiB)</td>
+<td align="center">37 (5.2KiB)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">unique</td>
+<td align="center">2311</td>
+<td align="center">1536</td>
+<td align="center">161</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>首页只需加载两个 Regular 的 common font<span class="mojikumi-line-end">，</span>每个页面需要加载的字体文件总大小缩减到了原来使用子集化的 1/4 左右<span class="mojikumi-line-end">，</span>并且加载的字体文件数量从 10~30 个缩减到了 2~6 个<span class="mojikumi-line-end">。</span></p>
+<p>作为对比<span class="mojikumi-line-end">，</span>如果出现在两个页面就设为常用字<span class="mojikumi-line-end">，</span>Noto Serif SC Regular 的 common 有 299KiB<span class="mojikumi-line-end">，</span>出现在三个页面则是 227KiB<span class="mojikumi-line-end">。</span></p>
+<h2 id="后记：font-subsetting-与-kerning" class="heading"><a href="#后记：font-subsetting-与-kerning" class="heading-anchor" aria-label="章节： 后记：font subsetting 与 kerning" tabindex="-1"></a><span>后记<span class="mojikumi-line-end">：</span>font subsetting 与 kerning</span></h2>
+<p>因为通过 Stylus 设置了不使用本地字体<span class="mojikumi-line-end">，</span>我可以轻松地在本地字体和 web font 之间切换<span class="mojikumi-line-end">。</span>然后我就偶然发现<span class="mojikumi-line-end">，</span>切换时一些标题发生了字符的偏移<span class="mojikumi-line-end">。</span>原因也很简单<span class="mojikumi-line-end">，</span>就是相邻的两个字符本来有 kerning (字距调整)<span class="mojikumi-line-end">，</span>但它们被划分到了不同的子集中<span class="mojikumi-line-end">，</span>生成字体子集时就丢失了 kerning 信息<span class="mojikumi-line-end">。</span></p>
+<p>我在 glyph-segregator 中 <a href="https://github.com/ouuan/glyph-segregator/commit/ae3ddd5cbb91f0eb6bbfec7071ee408c28b36dec">添加了 <code class="break-all">alwaysCommonGlyphs</code> 选项</a><span class="mojikumi-line-start">（</span>ASCII 字符总是设为 common<span class="mojikumi-line-end">，</span>如果需要处理非 ASCII 字符的 kerning 也可以修改设置<span class="mojikumi-line-end">，</span>但我的博客就假设只有 ASCII 字符会遇到这个问题<span class="mojikumi-line-end">）</span>来解决这一问题<span class="mojikumi-line-end">。</span>最好的解决方案是真的去看一下字体里有哪些 kerning 信息然后相应地处理<span class="mojikumi-line-end">，</span>但是差不多得了<span class="mojikumi-line-start">（</span></p>
+<a id="font-kerning-示例" name="font-kerning-示例" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">font kerning 示例</span></h3><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><ul>
+<li>有 kerning: <span style="font-kerning: normal; font-size: 2rem;">TAVeYoW</span></li>
+<li>没 kerning: <span style="font-kerning: none; font-size: 2rem;">TAVeYoW</span></li>
+</ul></div></div></aside>
+<p>后记的后记<span class="mojikumi-line-end">：</span>还是改成了<a href="https://github.com/ouuan/glyph-segregator/commit/e955eb1c935d77adf0e4bcb5c870fee0614801b6">即使未被使用也添加进 common glyph set</a><span class="mojikumi-line-end">，</span>否则如果新加一个 always common 的 glyph<span class="mojikumi-line-end">，</span>为了让它 common<span class="mojikumi-line-end">，</span>就会改变 common glyph set<span class="mojikumi-line-end">，</span>导致 cache 失效<span class="mojikumi-line-end">。</span>这里有一定的 trade-off<span class="mojikumi-line-end">，</span>要在 cache 失效 / 多塞一些未被使用的 glyph / kerning 挂掉之间进行选择<span class="mojikumi-line-end">，</span>我还是选择了多塞一些未被使用的 glyph<span class="mojikumi-line-end">，</span>毕竟整个 ASCII 也没多大<span class="mojikumi-line-end">。</span>最好是借助人类智慧来预测一下哪些 glyph 更有可能在未来被添加而放进 common glyph set 里<span class="mojikumi-line-end">，</span>其他 glyph 就只有使用了才放<span class="mojikumi-line-end">，</span>但是差不多得了<span class="mojikumi-line-start">（</span></p></section><div class="article-style my-9"><hr></div><footer><div class="my-6 bg-area shadow b-l-6 b-gray-4 dark:b-gray-11 p-6" itemprop="copyrightNotice"><ul class="flex flex-col gap-1"><li class="flex gap-1"><span class="shrink-0">文章作者:</span><a href="https://github.com/ouuan" rel="author">ouuan</a></li><li class="flex gap-1"><span class="shrink-0">原文链接:</span><a href="https://ouuan.moe/post/2023/01/glyph-segregator" rel="canonical" class="break-all">https://ouuan.moe/post/2023/01/glyph-segregator</a></li><li class="flex gap-1"><span class="shrink-0">许可协议:</span><span> 本文采用 <span class="article-style"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="font-sans" itemprop="license">CC BY-SA 4.0</a></span> 许可协议进行授权，未满足 <span class="underline decoration-dotted" title="简而言之，转载时必须标明出处（本文的链接），标明是转载而非原创，标明作了哪些修改，并使用相同的许可协议，但无需私信征求许可">许可协议要求</span> 不得转载。 </span></li></ul></div></footer></article><div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-5"></ile-root><script></script><script type="module" async="">import{h as r,c as m}from"/assets/iles.5e82acba.js";import{_ as o}from"/assets/GiscusCommentsInner.487fa077.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/useTheme.f1d4e689.js";import"/assets/site.1441102a.js";r(m,o,"ile-5",{term:"另一种很新的中文字体网页嵌入方案"},{});
+</script></div><nav class="my-6 flex justify-between gap-6 lg:text-justify print:hidden"><div class="flex-1 flex"><a class="flex items-center gap-1 hover:text-hover" href="/post/2023/01/ddpp"><span class="i-mdi-chevron-left" aria-label="上一篇"></span><span class="break-anywhere">DDPP 学习笔记系列 序</span></a></div><div class="flex-1 flex justify-end"><a class="flex items-center gap-1 hover:text-hover flex-row-reverse" href="/post/2023/01/ddpp-2"><span class="i-mdi-chevron-right" aria-label="下一篇"></span><span class="break-anywhere">DDPP 第二章学习笔记</span></a></div></nav></div></div></main><footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter"><div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-13 21:42:42 GMT+8 (2271fb3)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div><div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-6"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/VisitorCount.a8d4ae35.js"),["assets/VisitorCount.a8d4ae35.js","assets/VisitorCount.c343552a.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-6",{},{})});export default E();
+</script> 人到访过这里 </span></div><div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div></footer><meta itemprop="copyrightYear" content="2022 - 2023"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><ile-root id="ile-7"></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/BackToTop.9b4bb339.js"),["assets/BackToTop.9b4bb339.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-7",{},{})});export default E();
+</script><div class="hidden"></div><ile-root id="ile-8"></ile-root><script></script><script type="module" async="">import{h as o,b as r}from"/assets/iles.5e82acba.js";import{o as a}from"/assets/PlausibleTrigger.bafee336.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";o(r,a,"ile-8",{},{});
+</script><div></div><ile-root id="ile-9"></ile-root><script></script><script type="module" async="">var p=(t,a)=>()=>(a||t((a={exports:{}}).exports,a),a.exports);var r=(t,a,_)=>new Promise((c,n)=>{var f=o=>{try{e(_.next(o))}catch(i){n(i)}},l=o=>{try{e(_.throw(o))}catch(i){n(i)}},e=o=>o.done?c(o.value):Promise.resolve(o.value).then(f,l);e((_=_.apply(t,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var u=p(m=>{const E=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(t=>t.e),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),h=()=>r(m,null,function*(){return(yield d(()=>import("/assets/TextJustifyFix.4fa5e997.js"),[])).onLoad});s(E,h,"ile-9",{},{})});export default u();
+</script><meta itemprop="inLanguage" content="zh-CN"></div>
+  
+</body></html>

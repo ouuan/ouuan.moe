@@ -1,640 +1,181 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta charset="UTF-8">
-  <title>关于 - ouuan's blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……">
-  <meta property="og:url" content="https://ouuan.moe/about">
-  <meta property="og:site_name" content="ouuan's blog">
-  <meta property="og:title" content="关于 · ouuan's blog">
-  <meta property="og:description" content="ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……">
-  <meta property="twitter:domain" content="ouuan.moe">
-  <meta property="twitter:title" content="关于 · ouuan's blog">
-  <meta property="twitter:description" content="ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……">
-  <meta property="twitter:url" content="https://ouuan.moe/about">
-  <style>
-    html:not(.dark):not(.light) {
-      visibility: hidden;
-    }
-
-    body {
-      visibility: hidden;
-    }
-  </style>
-  <script>
-    (() => {
-      let dark;
-      try {
-        const theme = localStorage && localStorage.getItem('vueuse-color-scheme');
-        if (theme === 'dark') dark = true;
-        else if (theme === 'light') dark = false;
-        else dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      } catch (e) {
-        dark = false;
-      }
-      document.documentElement.classList.add(dark ? 'dark' : 'light');
-    })()
-  </script>
-  <noscript>
-    <style>
-      @media (prefers-color-scheme: light) {
-        :root:not(.dark):not(.light) {
-          color-scheme: light;
-          --text-color: #232637;
-          --bg-color: #DEE6EE;
-          --card-color: #EFF3F7;
-          --link-color: #1E66B8;
-          --hover-color: #2E80DD;
-          --active-color: #164C89;
-          --bghover-color: #D6E0EA;
-          --popup-color: #F7F9FB;
-          --footer-color: #5F627B;
-          --area-color: #E1E2E8;
-          --nested-color: #F0F0F3;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not(.dark):not(.light) {
-          color-scheme: dark;
-          --text-color: #E6EDF2;
-          --bg-color: #0D0E15;
-          --card-color: #1F2130;
-          --link-color: #8BB8EC;
-          --hover-color: #A2C6F0;
-          --active-color: #74AAE8;
-          --bghover-color: #353853;
-          --popup-color: #2C2F45;
-          --footer-color: #9699AE;
-          --area-color: #2F313D;
-          --nested-color: #3C3E4E;
-        }
-      }
-
-      html {
-        visibility: visible !important;
-      }
-    </style>
-  </noscript>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
-  <link rel="canonical" href="https://ouuan.moe/about">
-  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
-  <link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
-  <link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
-  <link rel="dns-prefetch" href="https://plausible.ouuan.moe">
-  <link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
-  <link rel="stylesheet" href="/vendors/katex/katex.css">
-  <link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
-  <meta name="author" content="ouuan">
-  <meta name="twitter:creator" content="@ouuan">
-  <meta name="twitter:card" content="summary">
-  <meta property="og:image" content="https://ouuan.moe/android-chrome-512x512.png">
-  <meta property="generator" content="îles">
-  <meta property="og:type" content="profile">
-  <meta property="profile:first_name" content="Yufan">
-  <meta property="profile:last_name" content="You">
-  <meta property="profile:username" content="ouuan">
-  <meta property="profile:gender" content="male">
-  <meta property="article:modified_time" content="2023-02-12T12:24:31.000Z">
-  <link rel="preconnect" href="https://giscus.app">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
-
-  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin="">
-  <style>
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.unique.679f4bb5.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.eb0636aa.woff') format('woff');
-      unicode-range: U+0-9ed1;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff');
-      unicode-range: U+0-ff1b;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.unique.159cb026.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.unique.b2856f55.woff') format('woff');
-      unicode-range: U+0-9605;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff');
-      unicode-range: U+0-ff1f;
-    }
-
-    @font-face {
-      font-family: "LXGW WenKai Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/LXGWWenKai-Regular.unique.28b77206.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.unique.d1668d1e.woff') format('woff');
-      unicode-range: U+0-9e5c;
-    }
-
-    @font-face {
-      font-family: "LXGW WenKai Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/LXGWWenKai-Regular.common.17c05e80.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.common.8d5b3f2b.woff') format('woff');
-      unicode-range: U+0-ff0c;
-    }
-  </style>
-</head>
-
-<body itemscope="" itemtype="https://schema.org/AboutPage">
-  <div id="app">
-    <header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader">
-      <div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center">
-        <div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div>
-        <nav class="flex">
-          <ul class="flex">
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li>
-          </ul>
-        </nav>
-        <div class="sm:basis-full"></div>
-        <ul class="flex">
-          <li class="flex"><ile-root id="ile-1">
-              <div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div>
-              <form role="search" class="hidden lg:flex items-stretch justify-center">
-                <div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a>
-              </form>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as a
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as m
-              } from "/assets/SearchBar.5e1dcbf6.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              r(a, m, "ile-1", {}, {});
-            </script>
-          </li>
-          <li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li>
-          <li class="flex"><ile-root id="ile-2">
-              <div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button>
-                <ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项">
-                  <li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li>
-                </ul>
-              </div>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              var p = (o, a) => () => (a || o((a = {
-                exports: {}
-              }).exports, a), a.exports);
-              var r = (o, a, _) => new Promise((c, n) => {
-                var f = t => {
-                    try {
-                      e(_.next(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  l = t => {
-                    try {
-                      e(_.throw(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-                e((_ = _.apply(o, a)).next())
-              });
-              import {
-                _ as d
-              } from "/assets/vite.5ce4fca4.js";
-              import {
-                a as s
-              } from "/assets/iles.5e82acba.js";
-              import "/assets/vendor-vue.075573a8.js";
-              var E = p(m => {
-                const u = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                  }),
-                  v = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/ThemeSwitcher.3f8d4c7e.js"), ["assets/ThemeSwitcher.3f8d4c7e.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js", "assets/useTheme.f1d4e689.js"])).default
-                  });
-                s(u, v, "ile-2", {}, {})
-              });
-              export default E();
-            </script>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement">
-      <div class="m-4 standard-card xl:px-24 2xl:px-30 3xl:px-36">
-        <article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Article">
-          <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author">
-            <meta itemprop="additionalName" content="ouuan">
-            <meta itemprop="givenName" content="Yufan">
-            <meta itemprop="familyName" content="You">
-            <meta itemprop="url" content="https://github.com/ouuan">
-            <link itemprop="gender" href="https://schema.org/Male">
-            <meta itemprop="image" content="/android-chrome-512x512.png">
-          </div>
-          <meta itemprop="mainEntityOfPage" content="https://ouuan.moe/about"><ile-root id="ile-3">
-            <header data-v-267f9ef7="">
-              <h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">关于</span></h1>
-              <div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2018-12-05 13:40:21 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/about.mdx?plain=1" data-v-267f9ef7=""><time datetime="2018-12-05T13:40:21+08:00" itemprop="dateCreated" data-v-267f9ef7="">2018-12-05 (大约 4 年前) </time></a></span><span class="flex items-center" title="修改于 2023-02-12 20:24:31 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/about.mdx" data-v-267f9ef7=""><time datetime="2023-02-12T20:24:31+08:00" itemprop="dateModified" data-v-267f9ef7="">2023-02-12 (1 天前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span></div>
-            </header>
-          </ile-root>
-          <script></script>
-          <script type="module" async="">
-            import {
-              h as e,
-              c as t
-            } from "/assets/iles.5e82acba.js";
-            import a from "/assets/PostHead.e82ef423.js";
-            import "/assets/vendor-vue.075573a8.js";
-            import "/assets/vite.5ce4fca4.js";
-            import "/assets/VisitorCount.c343552a.js";
-            import "/assets/site.1441102a.js";
-            e(t, a, "ile-3", {
-              href: "/about",
-              filename: "src/pages/about.mdx",
-              frontmatter: {
-                title: "关于",
-                date: new Date(1543988421e3),
-                description: "ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……",
-                tags: null,
-                lastUpdated: new Date(1676204671e3),
-                published: new Date(1658482129e3),
-                visitor: 0
-              },
-              "title-link": !1
-            }, {});
-          </script>
-          <section class="article-style" itemprop="articleBody">
-            <h2 id="关于我" class="heading"><a href="#关于我" class="heading-anchor" aria-label="章节： 关于我" tabindex="-1"></a><span>关于我</span></h2>
-            <p>你好<span class="mojikumi-line-end">，</span>我是 ouuan<span class="mojikumi">，</span> I<span class="mojikumi-narrow-left">’</span>m from China. 下面是关于我的一些信息<span class="mojikumi-line-end">。</span></p>
-            <hr>
-            <ul>
-              <li>祖籍是 &amp; 出生于江西<span class="mojikumi-line-end">，</span>但不到一岁就来到了武汉<span class="mojikumi-line-end">。</span></li>
-              <li>曾经是一名现役的 OIer<span class="mojikumi-line-end">。</span></li>
-              <li>现在是位于 THU 的一名本科生<span class="mojikumi-line-end">，</span>班上只有两位同学不<span class="mojikumi-line-start">（</span>曾经<span class="mojikumi-line-end">）</span>是 OIer <s><span class="mojikumi-line-end">，</span>但学的都是数学</s><span class="mojikumi-line-end">，</span>培养方案里既有大量数学系核心课<span class="mojikumi-line-end">，</span>又有大量贵系核心课 <s><span class="mojikumi-line-end">，</span>但我的数分可能还没有上微 A 的人学的好</s><span class="mojikumi-line-end">。</span></li>
-              <li>如果你有幸 (?) 需要在线下作为赛博朋友称呼我<span class="mojikumi-line-end">，</span>出于顺口的考虑 (?)<span class="mojikumi-line-end">，</span>可以叫我<span class="mojikumi-line-start">“</span>欧元<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span><s>为什么是 yuan 不是 wan 呢<span class="mojikumi-line-end">，</span>因为从出处来说正确的写法应该是 ouüan<span class="mojikumi-line-start">（</span></s><span class="mojikumi-line-end">，</span>但如果你不介意拗口的话 (?)<span class="mojikumi-line-end">，</span>也可以读成 O-U-U-A-N<span class="mojikumi-line-end">，</span><s>甚至 óu yǔ án</s><span class="mojikumi-line-start">（</span></li>
-            </ul>
-            <hr>
-            <ul>
-              <li>从 2020 年初开始使用 Linux 作为主力操作系统<span class="mojikumi-line-end">，</span>现在是 <a href="https://wiki.archlinux.org/title/Arch_Linux">Arch Linux</a> / <a href="https://i3wm.org/">i3-wm</a> / <a href="https://neovim.io/">Neovim</a> / <a href="https://github.com/jarun/nnn">nnn</a> / <a href="https://github.com/TheLocehiliosan/yadm">yadm</a> 等软件/项目的用户<span class="mojikumi-line-end">。</span></li>
-              <li>GitHub: <a href="https://github.com/ouuan">ouuan</a><span class="mojikumi-line-end">，</span>参与维护/开发了一些或不大或很小的项目<span class="mojikumi-line-end">，</span>例如 <a href="https://github.com/cpeditor/cpeditor">CP Editor</a>, <a href="https://github.com/OI-wiki/OI-wiki">OI Wiki</a>, <a href="https://github.com/ouuan/pacwatch">pacwatch</a> 等<span class="mojikumi-line-end">。</span></li>
-              <li>写了一个代码语法树猜谜游戏 <a href="https://codle.ouuan.moe/">Codle</a><span class="mojikumi-line-end">，</span>可是没多少人玩<span class="mojikumi-line-start">（</span></li>
-            </ul>
-            <hr>
-            <ul>
-              <li>
-                <p>最喜欢的番剧<span class="mojikumi-line-start">（</span>以及原作漫画<span class="mojikumi-line-end">）</span>目前是 <a href="https://bgm.tv/subject/147068">3月のライオン</a><span class="mojikumi-line-end">，</span>曾经是 <a href="https://bgm.tv/subject/51">CLANNAD</a><span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p><a href="https://bgm.tv/subject/207573"><span class="mojikumi-line-start">《</span>月がきれい<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/268070"><span class="mojikumi-line-start">《</span>荒ぶる季節の乙女どもよ<span class="mojikumi">。</span><span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/248154"><span class="mojikumi-line-start">《</span>風が強く吹いている<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/273843"><span class="mojikumi-line-start">《</span>BEASTARS<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/93739"><span class="mojikumi-line-start">《</span>ピンポン<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/110467"><span class="mojikumi-line-start">《</span>SHIROBAKO<span class="mojikumi-line-end">》</span></a>这几部番也很棒<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p>在 <a href="https://zh.moegirl.org.cn/%CE%BC's_Final_LoveLive!_~%CE%BC'sic_Forever~"><span class="text-muse">μ's Final LoveLive!</span></a> 的两个月前被同学安利由动画入坑 <a href="https://zh.moegirl.org.cn/LoveLive!"><span class="text-muse">LL</span></a><span class="mojikumi-line-end">，</span>这也是我的入宅番<span class="mojikumi-line-end">。</span>之后有玩过一段时间 <a href="https://zh.moegirl.org.cn/zh-cn/LoveLive!%E5%AD%A6%E5%9B%AD%E5%81%B6%E5%83%8F%E7%A5%AD">sif</a><span class="mojikumi-line-end">，</span>但缪的三次元活动<span class="mojikumi-line-start">（</span>广播生放 live 之类<span class="mojikumi-line-end">）</span>都看的很少<span class="mojikumi-line-end">，</span>后面也逐渐淡坑<span class="mojikumi-line-end">，</span>直到星团<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p><a href="https://zh.moegirl.org.cn/LoveLive!Superstar!!"><span class="text-liella">星</span></a> 是在一期动画结束后开始看的<span class="mojikumi-line-end">；</span><a href="https://zh.moegirl.org.cn/LoveLive!%E8%99%B9%E5%92%B2%E5%AD%A6%E5%9B%AD%E5%AD%A6%E5%9B%AD%E5%81%B6%E5%83%8F%E5%90%8C%E5%A5%BD%E4%BC%9A"><span class="text-nijigasaki">虹</span></a> 是二期动画放送中开始看的<span class="mojikumi-line-end">；</span><a href="https://zh.moegirl.org.cn/LoveLive!Sunshine!!"><span class="text-aqours">水</span></a> 没太关注<span class="mojikumi-line-end">，</span>动画只追到一期的一半<span class="mojikumi-line-end">，</span>但开始看虹星后也多少看了一点切片<span class="mojikumi-line-end">。</span>主推大概是 <a href="https://zh.moegirl.org.cn/%E4%BC%8A%E8%BE%BE%E5%B0%8F%E7%99%BE%E5%90%88"><span class="text-kanon">sayu</span>/<span class="text-kanon">合</span></a><a href="https://zh.moegirl.org.cn/Liyuu"><span class="text-keke">鲤</span></a>/<a href="https://zh.moegirl.org.cn/%E5%86%85%E7%94%B0%E7%A7%80"><span class="text-mia">秀酱</span></a>/<a href="https://zh.moegirl.org.cn/%E6%8C%87%E5%87%BA%E6%AF%AC%E4%BA%9A"><span class="text-emma">麻圆</span></a><span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p><a href="https://bgm.tv/subject/13603"><span class="mojikumi-line-start">《</span>罗小黑战记<span class="mojikumi-line-end">》</span></a> 是除了动画电影以及小时候看的动画片<span class="mojikumi-line-end">，</span>唯一一部较为完整地看过的国漫<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p>有在用 <a href="https://bgm.tv/user/ouuan">bangumi</a><span class="mojikumi-line-end">，</span>但是用的较晚<span class="mojikumi-line-end">，</span>所以<span class="mojikumi-line-start">（</span>早期的<span class="mojikumi-line-end">）</span>时间胶囊会比较乱<span class="mojikumi-line-end">，</span>早期看的番的评分大概也比较乱来<span class="mojikumi-line-start">（</span>说的好像最近看的番评分就有多正确一样x<span class="mojikumi-line-end">）</span></p>
-              </li>
-              <li>
-                <p>听的最多的是日语歌<span class="mojikumi-line-end">，</span>目前<a href="https://music.163.com/#/playlist?id=5091819419">歌单</a>的前六名有三首<a href="https://space.bilibili.com/203655966/">匹老板</a>的歌和三首<a href="https://space.bilibili.com/488970166/">花譜</a>的歌<span class="mojikumi-line-end">。</span></p>
-                <p>P.S. 感觉找不到一个满意的歌单管理解决方案<span class="mojikumi-line-end">，</span>以至于懒得更新歌单<span class="mojikumi-line-end">。</span>想以后自己写一个<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p>大概是一名<a href="https://space.bilibili.com/61639371">轴芯</a><span class="mojikumi-line-end">。</span>只不过看 <a href="https://zh.moegirl.org.cn/%E8%99%9A%E6%8B%9FUP%E4%B8%BB">v</a> 看的多的还是 2020 年<span class="mojikumi-line-end">，</span>曾经还看过很多其他 v<span class="mojikumi-line-end">，</span>现在看得少了<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p>偶尔<span class="mojikumi-line-start">（</span><s>曾经</s><span class="mojikumi-line-end">）</span>会<a href="https://space.bilibili.com/11067182">在 b 站上发一些视频</a><span class="mojikumi-line-end">。</span>感觉除了 <a href="https://www.bilibili.com/video/av65924361">av65924361</a> 和 <a href="https://www.bilibili.com/video/av79877987">av79877987</a> 基本上都是划水或者黑历史<span class="mojikumi-line-start">（</span></p>
-              </li>
-              <li>
-                <p>不喜欢 BV 号<span class="mojikumi-line-end">，</span>所以写了个 <a href="https://greasyfork.org/zh-CN/scripts/398535-bv2av">bv2av</a> 的 userscript<span class="mojikumi-line-end">。</span></p>
-              </li>
-            </ul>
-            <hr>
-            <ul>
-              <li>
-                <p>在<a href="https://www.16personalities.com/ch/">十六型人格测试</a>中稳定获得<a href="https://www.16personalities.com/ch/intp-%E4%BA%BA%E6%A0%BC"><span class="mojikumi-line-start">“</span>逻辑学家<span class="mojikumi-line-end">”</span>人格 (INTP)</a> 的测试结果<span class="mojikumi-line-start">（</span>有时会在 INTP-A 和 INTP-T 之间摇摆<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>但由于 MBTI 越来越火<span class="mojikumi-line-end">，</span>而且经常受到非理性看待<span class="mojikumi-line-end">、</span>过度解读<span class="mojikumi-line-end">，</span>其实是有点不想公开结果的<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p>不擅言辞<span class="mojikumi-line-end">，</span>不会交际<span class="mojikumi-line-end">。</span>常有语出冒犯的时候<span class="mojikumi-line-end">。</span>虽希望善良待人<span class="mojikumi-line-end">，</span>但不会为人处事<span class="mojikumi-line-end">。</span>(<a href="http://web.archive.org/web/20210123202817/https://blog.yuuta.moe/about/">origin</a>)</p>
-              </li>
-              <li>
-                <p>我相信人与人之间的误解远多于分歧<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <blockquote>
-                  <p><span class="mojikumi-line-start">「</span>没有人是怪物<span class="mojikumi">」</span><wbr><span class="mojikumi-line-start">「</span>理解不等于赞同<span class="mojikumi-line-end">」</span></p>
-                </blockquote>
-                <p>引自《<span class="mojikumi">〈</span>和陌生人说话<span class="mojikumi">〉</span><span class="mojikumi-line-end">：</span>越汹涌<span class="mojikumi-line-end">，</span>越平静<span class="mojikumi">》</span><span class="mojikumi-line-end">，</span>Vista 看天下 2021.12.18
-                  <span class="mojikumi-line-start">（</span>其实应该是<span class="mojikumi-line-start">“</span>越平静<span class="mojikumi-line-end">，</span>越汹涌<span class="mojikumi">”</span><span class="mojikumi-line-end">；</span>原标题如此<span class="mojikumi-line-end">）</span>
-                </p>
-              </li>
-              <li>
-                <p>高三的时候同学带了很多<span class="mojikumi-line-start">《</span>Vista 看天下<span class="mojikumi-line-end">》</span>到班上供大家借阅<span class="mojikumi-line-end">，</span>就利用晚自习和考前<span class="mojikumi-line-start">“</span>复习<span class="mojikumi-line-end">”</span>看了很多<span class="mojikumi-line-end">；</span>高中毕业后自己订阅了电子版的看天下<span class="mojikumi-line-end">，</span>现在也一直在看<span class="mojikumi-line-end">，</span>可以说是除了社交媒体外的主要信息来源<span class="mojikumi-line-end">。</span></p>
-              </li>
-              <li>
-                <p>幻想有一天用户为开源/<a href="https://www.gnu.org/philosophy/free-sw.html">自由软件</a>付费能成为常态<span class="mojikumi-line-end">，</span>就像观众为能免费看的直播打赏成为常态一样<span class="mojikumi-line-end">。</span>现在越来越觉得这只能是个幻想<span class="mojikumi-line-end">，</span>而且或许会有比用户不愿付费更大的阻碍<span class="mojikumi-line-end">。</span></p>
-              </li>
-            </ul>
-            <hr>
-            <ul>
-              <li>GPG key: <a href="https://github.com/ouuan.gpg"><code class="break-all">863A0F9FA8127FA4</code></a></li>
-            </ul>
-            <hr>
-            <h2 id="关于本博客" class="heading"><a href="#关于本博客" class="heading-anchor" aria-label="章节： 关于本博客" tabindex="-1"></a><span>关于本博客</span></h2>
-            <p>这是我继博客园<span class="mojikumi-line-end">、</span>hexo-theme-next<span class="mojikumi-line-end">、</span>hugo-theme-even 后的第四代博客<span class="mojikumi-line-end">。</span>博客园和 Hexo 的文章已全部移至 Hugo 博客<span class="mojikumi-line-end">，</span>但 Hugo 博客的文章<span class="mojikumi-line-start">（</span>以 OI 相关内容为主<span class="mojikumi-line-end">）</span>将不会移至本博客<span class="mojikumi-line-end">，</span>可在 <a href="https://ouuan.github.io/">原 Hugo 博客</a> 查看<span class="mojikumi-line-end">。</span></p>
-            <p>本博客由 ouuan 自己设计<span class="mojikumi-line-end">、</span>制作<span class="mojikumi-line-end">，</span>主要基于 <a href="https://github.com/ElMassimo/iles">îles</a><span class="mojikumi-line-start">（</span><a href="https://vuejs.org/">Vue</a><span class="mojikumi-line-end">、</span><a href="https://vitejs.dev/">Vite</a><span class="mojikumi-line-end">）</span>和 <a href="https://github.com/unocss/unocss">UnoCSS</a><span class="mojikumi-line-end">。</span>设计有在一定程度上借鉴 <a href="https://github.com/olOwOlo/hugo-theme-even">hugo-theme-even</a><span class="mojikumi-line-end">、</span><a href="https://github.com/next-theme/hexo-theme-next">hexo-theme-next</a><span class="mojikumi-line-end">、</span><a href="https://blog.skk.moe/">Sukka's Blog</a><span class="mojikumi-line-end">、</span>GitHub 的 Markdown 显示<span class="mojikumi-line-end">，</span>但大部分是原创设计<span class="mojikumi-line-end">，</span>且借鉴部分的代码基本都是自己写的<span class="mojikumi-line-end">。</span></p>
-            <p>博客正文部分使用的字体是 <a href="https://github.com/adobe-fonts/source-han-serif">思源宋体</a><span class="mojikumi-line-end">，</span>引用块部分使用的是 <a href="https://github.com/lxgw/LxgwWenKai"><span class="font-kai">霞鹜文楷</span></a><span class="mojikumi-line-end">，</span>二者均以 OFL 授权<span class="mojikumi-line-end">。</span>web font 的划分<span class="mojikumi-line-end">、</span>生成可以参考<a href="/post/2023/01/glyph-segregator"><span class="mojikumi-line-start">《</span>另一种很新的中文字体网页嵌入方案<span class="mojikumi-line-end">》</span></a><span class="mojikumi-line-end">，</span>可以在本地安装这两个字体来避免下载 web font<span class="mojikumi-line-end">。</span>其他排版优化<span class="mojikumi-line-start">（</span>包括标点挤压的实现<span class="mojikumi-line-end">）</span>详见<a href="/post/2023/02/typography-tricks"><span class="mojikumi-line-start">《</span>一些博客排版优化小 trick<span class="mojikumi-line-end">》</span></a><span class="mojikumi-line-end">。</span></p>
-            <p>代码高亮使用的是 <a href="https://github.com/shikijs/shiki/">Shiki</a><span class="mojikumi-line-end">，</span>主题是 <a href="https://github.com/sdras/night-owl-vscode-theme">Night Owl</a><span class="mojikumi-line-start">（</span>选了一个用的人较多<span class="mojikumi-line-end">，</span>有暗色和亮色<span class="mojikumi-line-end">，</span>配色整体偏蓝<span class="mojikumi-line-end">、</span>和博客主题比较贴合的<span class="mojikumi-line-end">；</span>我自己的 neovim 还是用的 <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox</a><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span><a href="https://github.com/remarkjs/remark">remark</a> 插件和 Vue component 是自己写的<span class="mojikumi-line-end">，</span>可以参考 <a href="https://github.com/ouuan/iles-blog/blob/master/src/remark/remarkShiki.ts">remarkShiki.ts</a><span class="mojikumi-line-end">、</span><a href="https://github.com/ouuan/iles-blog/blob/master/src/components/CodeBlock.vue">CodeBlock.vue</a><span class="mojikumi-line-end">、</span><a href="https://github.com/ouuan/iles-blog/blob/master/src/components/CopyButton.vue">CopyButton.vue</a><span class="mojikumi-line-start">（</span>如果用的不是 iles 大概不能直接照抄<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-            <p>可以在遵循 <a href="https://github.com/ouuan/iles-blog/blob/master/LICENSE">AGPL v3</a><span class="mojikumi-line-start">（</span>或其更新的版本<span class="mojikumi-line-end">）</span>的条件下参考/使用 <a href="https://github.com/ouuan/iles-blog">本博客代码</a> 的 <strong>片段</strong><span class="mojikumi-line-end">，</span>但请 <strong>尽量不要</strong> 直接在整个代码的基础上进行修改<span class="mojikumi-line-end">，</span>因为并没有按照人人可以拿来用的模板进行设计<span class="mojikumi-line-end">，</span>很多地方会硬编码一些东西<span class="mojikumi-line-end">，</span>修改比较困难<span class="mojikumi-line-end">，</span>如果我这里有更新要同步也很麻烦<span class="mojikumi-line-end">，</span>也可能在某些系统环境无法正常构建之类的<span class="mojikumi-line-end">。</span>如果真的直接使用<span class="mojikumi-line-end">，</span>也需要遵循 <a href="https://github.com/ouuan/iles-blog/blob/master/LICENSE">AGPL v3</a><span class="mojikumi-line-end">，</span>并且请务必小心<span class="mojikumi-line-end">，</span>一切后果自负<span class="mojikumi-line-end">。</span></p>
-            <p>本博客使用 ouuan 自行搭建的 <a href="https://plausible.io/">Plausible Analytics</a> 实例进行访问量统计<span class="mojikumi-line-end">，</span>不使用 Cookies 且满足 GDPR 等条例要求<span class="mojikumi-line-end">。</span>使用 <a href="https://giscus.app/">giscus</a> 提供评论服务<span class="mojikumi-line-end">，</span>发表评论需要登录 GitHub 帐号<span class="mojikumi-line-end">，</span>除了发表评论也可以给文章点赞/点踩<span class="mojikumi-line-end">。</span>网站托管于 <a href="https://pages.cloudflare.com/">Cloudflare Pages</a><span class="mojikumi-line-end">。</span></p>
-            <a id="rss-订阅" name="rss-订阅" aria-hidden="true"></a>
-            <aside role="note" data-v-bb0e38b3="">
-              <details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3="">
-                <summary class="p-3 flex justify-between items-center cursor-pointer" data-v-bb0e38b3="">
-                  <h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Info: " class="text-5 i-mdi-info-circle-outline text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">RSS 订阅</span></h3><span class="details-icon text-5" data-v-bb0e38b3=""></span>
-                </summary>
-                <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                  <aside role="note" data-v-bb0e38b3="">
-                    <details class="shadow-md rd-1 b-l-6 my-6 bg-purple-2 dark:bg-purple-9 b-purple-5" data-v-bb0e38b3="">
-                      <summary class="p-3 flex justify-between items-center cursor-pointer" data-v-bb0e38b3="">
-                        <h4 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Question: " class="text-5 i-mdi-help-circle-outline text-purple" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">什么是 RSS？</span></h4><span class="details-icon text-5" data-v-bb0e38b3=""></span>
-                      </summary>
-                      <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                        <ul>
-                          <li><a href="https://sspai.com/post/56391">高效获取信息<span class="mojikumi-line-end">，</span>你需要这份 RSS 入门指南 - 少数派</a></li>
-                          <li><a href="https://diygod.me/ohmyrss/">我有特别的 RSS 使用技巧 | Hi, DIYgod</a></li>
-                          <li><a href="https://en.wikipedia.org/wiki/RSS">RSS - Wikipedia</a></li>
-                        </ul>
-                      </div>
-                    </details>
-                  </aside>
-                  <ul>
-                    <li>一些 RSS 阅读器<span class="mojikumi-line-end">：</span>
-                      <div class="inline-img mb-2">
-                        <ul>
-                          <li><a href="https://www.inoreader.com/feed/https%3A%2F%2Fouuan.moe%2Ffeed.xml"><img src="https://shields.ouuan.moe/static/v1?label=Inoreader&amp;message=follow&amp;style=social&amp;logo=data:image/webp;base64,UklGRlICAABXRUJQVlA4IEYCAADwDQCdASpIAEgAPpFCmkolo6Ihp7gKGLASCWYA05nA/qumqeI8zavP3naz1m+oDbAc9Hpne9AL91aqgA91zGCWx8nzKx0FkaT+q4k67MyE2/hZym+6Qlfro/6nbI7vMhtFzlbdteFFMPzGJSH6DzATVS/YBx+Pv1gA/tYx/G8ZLrdlf+Ur43bsXBh+7KArqPth0CslagD4VKOmauUvNe1dhwxpfrDwqRKvSQEviUNf9AoDJ89/8dEHpu/J/vIsQVr8/SLJPEy8MGcw3ZV+gyLplT/tqzDYluRQ9IQKj9PPk/ExqxMI98/ACDXEYrdimUzsiz7qxRCKQ81JCgKiZTVeMiujTknatA6miOW2wTG1KSEoCa+6eyuzyo1puxJMM8ZbYt3aayIQAQ1DhjYxtMb/RD1SZZtmsBl9puxniEDqgnw2hIPekG5SatAlFeiJJw6A5B+dDCTeP+0Tir6PRDuQVXCzNBmtLFHXyBO/YYYsVq8ifCYlqn5bFEyJ4NHidwPWyf4NmVmquIwYbyxd/253wVwQQQig9oO9zHFMW8erqf9qk9N7V0yU5VOEHYGqmcWVB1cvOQuvja7SX3aoiGVMMsEelV0sH0USncQ7lx9aI6DTfLjQJyQ3Hl91g6JEcEjv4TCh0KewAnNpCM4PuEvn1kWgGusR2kcUUDZxn+pJLv8XJUbA2PkZ3O2e6eySmglzu8+ytxDe+TzGrAGF/SCcLth5IuX4eeBVDVjn0TqDEjOncMk0AIzNDD8Wdw/1aAAB4oAAAAA=" alt="Follow on Inoreader" loading="lazy"></a></li>
-                          <li><a href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fouuan.moe%2Ffeed.xml"><img src="https://shields.ouuan.moe/static/v1?label=Feedly&amp;message=follow&amp;style=social&amp;logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTExLjU1LjY1MmEyLjE3NCAyLjE3NCAwIDAgMC0zLjEwNSAwTC42NCA4LjZhMi4yNzQgMi4yNzQgMCAwIDAgMCAzLjE2M2w1LjU3IDUuNjczYy4zODguMzQzLjg5NC41NTMgMS40NS41NTNoNC42NzdhMi4xOCAyLjE4IDAgMCAwIDEuNTYtLjY1OWw1LjQ2Mi01LjU2MmEyLjI3MiAyLjI3MiAwIDAgMCAwLTMuMTYzTDExLjU1MS42NTJ6bS0uMjE2IDE0LjUxOGwtLjc4Ljc5MmEuMzEuMzEgMCAwIDEtLjIyMy4wOTVoLS42NjdhLjMxMy4zMTMgMCAwIDEtLjIwNi0uMDhsLS43OTUtLjgwOGEuMzI1LjMyNSAwIDAgMSAwLS40NTJsMS4xMTQtMS4xMzRhLjMwOS4zMDkgMCAwIDEgLjQ0MyAwbDEuMTE0IDEuMTM1YS4zMjQuMzI0IDAgMCAxIDAgLjQ1MnptMC00Ljc1OWwtMy4xMTUgMy4xNzNhLjMxMi4zMTIgMCAwIDEtLjIyMy4wOTNINy4zM2EuMzEzLjMxMyAwIDAgMS0uMjA4LS4wNzhsLS43OTMtLjgwOGEuMzI2LjMyNiAwIDAgMSAwLS40NTNsMy40NDktMy41MTJhLjMxLjMxIDAgMCAxIC40NDMgMGwxLjExNCAxLjEzNWEuMzIyLjMyMiAwIDAgMSAwIC40NXptMC00Ljc1NmwtNS40NSA1LjU1YS4zMS4zMSAwIDAgMS0uMjI0LjA5NGgtLjY2N2EuMzExLjMxMSAwIDAgMS0uMjA3LS4wNzhsLS43OTQtLjgxYS4zMjMuMzIzIDAgMCAxIDAtLjQ1bDUuNzg1LTUuODkyYS4zMS4zMSAwIDAgMSAuNDQzIDBsMS4xMTQgMS4xMzRhLjMyNC4zMjQgMCAwIDEgMCAuNDUyeiIgZmlsbD0iIzJBQjE0QyIvPjwvc3ZnPg==" alt="Follow on Feedly" loading="lazy"></a></li>
-                          <li><a href="https://follow.it/ouuan"><img src="https://shields.ouuan.moe/static/v1?label=follow.it&amp;message=follow&amp;style=social&amp;logo=data:image/webp;base64,UklGRtABAABXRUJQVlA4IMQBAAAQDgCdASpkAGQAPpFGnkqlpCMhp9aocLASCUASsGppds4Y7itw+9LtpfMBz//pVdQBvNb5erWMAKna+qj/c5jfNiyUrDFqi3eD6AyfUe6ISt9zmrlUv2UAjxTG+eKE7qwoJNK39PMAcA69EnBUL63cyqTxw+B6YhgAAP7E7/m0mB7/+fmfzv87bYAa20JIb/DcScQ/QlgNi1R1d5K3VmoCDeADr6/SZMY4nBAdm0CaZ2RpgiVkoynHcHSonLrL/PnqPiR3/roVeiudb9EaMEQ/p3uAQRL25vUE9YaeovyxgRWMK+sTdmazKTpHlERAxIvOpyWnv3md3AXnpxETXCkcXS5IqWNh/+qsybjBIt9SS8eaCh1cPh/I7u3oCgzciiwhUCke8PuElhuW7eM5tgCiULVgkIo2ewuVHLZcUBPd7XVNU7QfwXwFAWPx7EesLRyGgVZat672D6n79nFnjydEgAjPgFSGGgdZKy+a9DxKClQ6UtEep9nj5APCAaqS7lTJNx63XEWvY5/qQCSaRUPTHdgmpJVAEK/963VJXfgPGJzy5dDei7IkCP9WAA5IfaQ7jHVP4fUCd6v2Jj7x7kMWAAAAAA==" alt="Follow on follow.it" loading="lazy"></a></li>
-                          <li><a href="https://feeds.pub/feed/https%3A%2F%2Fouuan.moe%2Ffeed.xml"><img src="https://shields.ouuan.moe/static/v1?label=Feeds%20Pub&amp;message=follow&amp;style=social&amp;logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAABFCAYAAAAcjSspAAAACXBIWXMAAAInAAACJwG+ElQIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAASkSURBVHgB7Ztdcts2EMf/oDyeNO5MnBOUN4hzAtNvrZ0H8QSimwPEPoHlE9g5gZkTSJ46mU77YPYEVd/6yN5AnWkzrVNxuxAhN3UA0YL46eA3Y30AkDT8c7FY7MKAw+FwlIfAAyAafe2rl/w8m8bhjxOsQedEiUbBNrAVeQLPCBTwJfiaYROiWRiH36ewYAMdIBfiUV+I3oDfBrKN5j3Ge7rDYy/4eQ8WtFoUOS08zxsQiSN+u73ap7EDS1opCosR8J0+4ZcBEWyZwpJWiRKN9tnsxRnUFFkHIjqFJa1wtNJneN7WCVvFEexgqyD+E1MBkWaUXcbhuxiWNC7Ky8sXrzKiIVbzGVO2hDeANwb+mMRhYj1VdDQmytw6xJcXvKz2V/hYwk73NA6vElRII6Io3zHCPNgqhK1CvGaLOC/bIkzU7mij0TccbwgZQxRNl9rFWFCrpby8PBhkhLhoHPsLFuP9sG4xFtQmioo9rguGcXgujqv2GUX0UAMyMmVBpA8xThllHYdx+MOvaJhafIqyEN/Qzb7DY+v4LkZLqFwUFYf4hm4Zb+yxIGtt9cumUp+ipo3RSliQ5xx5tkoQiYdK8QIYBcFxGwWRVCoKxyMnhi4Ozd+eo6VUJopKEfq6PqKbQ7SYCh3txs4iP3aHqRCbZ4fjA16eSS3RIp0/CkyyjH4BssQ2lVgGFYqS7Rj8uBQiyF/e9vvygf0MB3iyrYdvxwdxRrPTJsSpZPrkq47YxRqwjUW8cv0sN4+omdJFkXGJvBiUkD1jtlnc649KGLVQ2vTJ8yOPzzhQi1AuPN08mZGzzcqtTCmWIgURYuuaICJUAFvLADWydkS7EAT3LClwFPsT3wuOUbIU2OTUwI20BOl85WrEuRYM9J/782lnkkwq4XxvZ8h3/auL/tXY0D0+HO/v6qp+vc3HT7BG2WIV1po+vDJEFhl4P6/4mRDaC5/dfHiKmlhLlCVhvIw5ONtOqb73i0DXGo36UiyD1X1IURPWokgrgXn3+5r3NlHuPzQ/anCcPe8fk0NN60xNWouyxEr4At6pKSUS3QBepYK7U0jGIqr+oxmPBDViJYqKMn1dH+dYP9rsbUqHqrvD84rgf993m3fR+xoSb1AjVktyNDo44qXzTNM1uei/ff7/sfvnbFWvdN8jRG4ZBacKEv5OqyMVtlgtyewTdkmzAybKNHc045ikpxWFxRiiAKJZ7WkGq+lDt1v+u/Q+yaTJXW5e1LL4nXl2rjO7ZFMi+m/DCrEx5IcUq/zCvGbcTHbOUhTh61pNB/DicMxZ+5n0CynuQW4hV0M0xMqiqABLx9I4Ip9Gsz1ejsdLhiV5hr/Z/K2Fo/1r21BYLAyulH8Io9GLgB2wLLQ/ExzWZ5T9Js+aNF0uXdDI8S518Qlaio1P8Q3tKR4IFRfDuokTRYONKKmh3ccDwVmKBieKBieKBgtRHpmCtKLTjp1hZVHkPsbQ9fmK8jlgK4rWWpaXLrqDbT5FK4oqWHUeN300OFE0OFE02KYjU13r7Ob973gA2GXziY5xZwXKE83N/NdF2VifT8mPXHlHXAN6knEFry2pRIfD4XA4usm//qauBcoh1b8AAAAASUVORK5CYII=" alt="Follow on Feeds Pub" loading="lazy"></a></li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li>最新文章: <a href="https://ouuan.moe/feed.xml">RSS 订阅</a> / <a href="https://ouuan.moe/feed.atom">Atom 订阅</a> / <a href="https://ouuan.moe/feed.json">JSON 订阅</a></li>
-                    <li>某个 tag 的最新文章: 在 tag URL 的后面加上 <code>/feed.xml</code>/<code>.atom</code>/<code>.json</code><span class="mojikumi-line-end">，</span>例如 <a href="https://ouuan.moe/tag/csapp/feed.xml">csapp 标签的 RSS 订阅</a></li>
-                  </ul>
-                  <p>Tips: 可以使用 <a href="https://github.com/DIYgod/RSSHub-Radar">RSSHub Radar</a> 等插件自动发现这些订阅<span class="mojikumi-line-end">。</span></p>
-                </div>
-              </details>
-            </aside>
-            <h2 id="关于我在一些其他地方的-profile" class="heading"><a href="#关于我在一些其他地方的-profile" class="heading-anchor" aria-label="章节： 关于我在一些其他地方的 profile" tabindex="-1"></a><span>关于我在一些其他地方的 profile</span></h2>
-            <blockquote>
-              <p>如果奇迹有颜色的话<span class="mojikumi-line-end">，</span>那么其中之一必是<span class="text-honoka">橙色</span>的吧<span class="mojikumi-line-end">。</span></p>
-            </blockquote>
-            <p>这是 <a href="https://space.bilibili.com/11067182">我在 b 站上</a> 的个性签名<span class="mojikumi-line-end">，</span>应该是 16 或 17 年就开始在用了<span class="mojikumi-line-end">。</span><a href="https://zh.moegirl.org.cn/%E5%A6%82%E6%9E%9C%E5%A5%87%E8%BF%B9%E6%9C%89%E9%A2%9C%E8%89%B2%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E6%98%AF%E6%A9%99%E8%89%B2">出自 Snow Halation</a> 但把<span class="mojikumi-line-start">“</span>那<span class="mojikumi-line-end">”</span>改成了<span class="mojikumi-line-start">“</span>其中之一<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span>
-              <a href="https://www.luogu.com.cn/user/49742">在洛谷上</a><span class="mojikumi-line-end">，</span>因为当时洛谷换了新 UI 后个人空间和 b 站长得有点像<span class="mojikumi-line-end">，</span>我就特意用头图和个性签名模仿了 b 站个人空间<span class="mojikumi-line-end">。</span>
-            </p>
-            <blockquote>
-              <p>この道行きの最後が 天国か そこらじゃあないとしても<br>
-                这条路的尽头会是天国吗 就算不是也没有关系</p>
-              <p>ただの君と笑って立っていたいよ<br>
-                单纯的想和你相视而笑并肩而立</p>
-              <p>誇らしさとか 願いとか 希望とか<br>
-                我的骄傲 愿望 希望</p>
-              <p>もっと ずっと 持ち合わせとくよ<br>
-                愿能永久地伴我同行</p>
-            </blockquote>
-            <p>这是 <a href="https://music.163.com/#/song?id=456185218">3 狮 OP2</a> 的一段歌词<span class="mojikumi-line-end">，</span>我把它设为了一些地方的个人空间头图<span class="mojikumi-line-end">。</span></p>
-            <blockquote>
-              <p>生き方は 無限にある<span class="mojikumi-line-end">。</span><br>
-                生活的方法有无限种<span class="mojikumi-line-end">。</span></p>
-            </blockquote>
-            <p>这是 <a href="https://music.163.com/#/song?id=1416874718">No.1</a> 的一句歌词<span class="mojikumi-line-end">，</span>是我现在的 QQ 个性签名<span class="mojikumi-line-end">。</span></p>
-          </section>
-        </article>
-        <div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-4"></ile-root>
-          <script></script>
-          <script type="module" async="">
-            import {
-              h as r,
-              c as m
-            } from "/assets/iles.5e82acba.js";
-            import {
-              _ as o
-            } from "/assets/GiscusCommentsInner.487fa077.js";
-            import "/assets/vendor-vue.075573a8.js";
-            import "/assets/vite.5ce4fca4.js";
-            import "/assets/useTheme.f1d4e689.js";
-            import "/assets/site.1441102a.js";
-            r(m, o, "ile-4", {
-              term: "关于"
-            }, {});
-          </script>
-        </div>
-      </div>
-    </main>
-    <footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter">
-      <div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-14 01:26:29 GMT+8 (7858a82)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div>
-      <div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-5"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root>
-          <script></script>
-          <script type="module" async="">
-            var p = (o, a) => () => (a || o((a = {
-              exports: {}
-            }).exports, a), a.exports);
-            var r = (o, a, _) => new Promise((c, n) => {
-              var f = t => {
-                  try {
-                    e(_.next(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                l = t => {
-                  try {
-                    e(_.throw(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-              e((_ = _.apply(o, a)).next())
-            });
-            import {
-              _ as d
-            } from "/assets/vite.5ce4fca4.js";
-            import {
-              a as s
-            } from "/assets/iles.5e82acba.js";
-            import "/assets/vendor-vue.075573a8.js";
-            var E = p(m => {
-              const u = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                }),
-                v = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/VisitorCount.a8d4ae35.js"), ["assets/VisitorCount.a8d4ae35.js", "assets/VisitorCount.c343552a.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                });
-              s(u, v, "ile-5", {}, {})
-            });
-            export default E();
-          </script> 人到访过这里
-        </span></div>
-      <div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div>
-    </footer>
-    <meta itemprop="copyrightYear" content="2022 - 2023">
-    <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder">
-      <meta itemprop="additionalName" content="ouuan">
-      <meta itemprop="givenName" content="Yufan">
-      <meta itemprop="familyName" content="You">
-      <meta itemprop="url" content="https://github.com/ouuan">
-      <link itemprop="gender" href="https://schema.org/Male">
-      <meta itemprop="image" content="/android-chrome-512x512.png">
-    </div><ile-root id="ile-6"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (o, a) => () => (a || o((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (o, a, _) => new Promise((c, n) => {
-        var f = t => {
-            try {
-              e(_.next(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = t => {
-            try {
-              e(_.throw(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-        e((_ = _.apply(o, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var E = p(m => {
-        const u = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          v = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/BackToTop.9b4bb339.js"), ["assets/BackToTop.9b4bb339.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          });
-        s(u, v, "ile-6", {}, {})
-      });
-      export default E();
-    </script>
-    <div class="hidden"></div><ile-root id="ile-7"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      import {
-        h as o,
-        b as r
-      } from "/assets/iles.5e82acba.js";
-      import {
-        o as a
-      } from "/assets/PlausibleTrigger.bafee336.js";
-      import "/assets/vendor-vue.075573a8.js";
-      import "/assets/vite.5ce4fca4.js";
-      o(r, a, "ile-7", {}, {});
-    </script>
-    <div></div><ile-root id="ile-8"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (t, a) => () => (a || t((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (t, a, _) => new Promise((c, n) => {
-        var f = o => {
-            try {
-              e(_.next(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = o => {
-            try {
-              e(_.throw(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = o => o.done ? c(o.value) : Promise.resolve(o.value).then(f, l);
-        e((_ = _.apply(t, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var u = p(m => {
-        const E = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(t => t.e), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          h = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/TextJustifyFix.4fa5e997.js"), [])).onLoad
-          });
-        s(E, h, "ile-8", {}, {})
-      });
-      export default u();
-    </script>
-    <meta itemprop="inLanguage" content="zh-CN">
-  </div>
-
-</body>
-
-</html>
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+<title>关于 - ouuan's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……">
+<meta property="og:url" content="https://ouuan.moe/about">
+<meta property="og:site_name" content="ouuan's blog">
+<meta property="og:title" content="关于 · ouuan's blog">
+<meta property="og:description" content="ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……">
+<meta property="twitter:domain" content="ouuan.moe">
+<meta property="twitter:title" content="关于 · ouuan's blog">
+<meta property="twitter:description" content="ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……">
+<meta property="twitter:url" content="https://ouuan.moe/about">
+<style>html:not(.dark):not(.light) { visibility: hidden; } body { visibility: hidden; }</style>
+<script>(() => { let dark; try { const theme = localStorage && localStorage.getItem('vueuse-color-scheme'); if (theme === 'dark') dark = true; else if (theme === 'light') dark = false; else dark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { dark = false; } document.documentElement.classList.add(dark ? 'dark' : 'light'); })()</script>
+<noscript><style>@media (prefers-color-scheme: light) { :root:not(.dark):not(.light) { color-scheme: light; --text-color: #232637; --bg-color: #DEE6EE; --card-color: #EFF3F7; --link-color: #1E66B8; --hover-color: #2E80DD; --active-color: #164C89; --bghover-color: #D6E0EA; --popup-color: #F7F9FB; --footer-color: #5F627B; --area-color: #E1E2E8; --nested-color: #F0F0F3; } } @media (prefers-color-scheme: dark) { :root:not(.dark):not(.light) { color-scheme: dark; --text-color: #E6EDF2; --bg-color: #0D0E15; --card-color: #1F2130; --link-color: #8BB8EC; --hover-color: #A2C6F0; --active-color: #74AAE8; --bghover-color: #353853; --popup-color: #2C2F45; --footer-color: #9699AE; --area-color: #2F313D; --nested-color: #3C3E4E; } } html { visibility:visible !important; }</style></noscript>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
+<link rel="canonical" href="https://ouuan.moe/about">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
+<link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
+<link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
+<link rel="dns-prefetch" href="https://plausible.ouuan.moe">
+<link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
+<link rel="stylesheet" href="/vendors/katex/katex.css">
+<link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
+<meta name="author" content="ouuan">
+<meta name="twitter:creator" content="@ouuan">
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://ouuan.moe/android-chrome-512x512.png">
+<meta property="generator" content="îles">
+<meta property="og:type" content="profile">
+<meta property="profile:first_name" content="Yufan">
+<meta property="profile:last_name" content="You">
+<meta property="profile:username" content="ouuan">
+<meta property="profile:gender" content="male">
+<meta property="article:modified_time" content="2023-02-12T12:24:31.000Z">
+<link rel="preconnect" href="https://giscus.app">
+<link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
+    
+  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin=""><link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin=""><link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin=""><link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin=""><link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin=""><link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin=""><link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin=""><link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin=""><link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin=""><link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin=""><style>@font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.unique.679f4bb5.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.eb0636aa.woff') format('woff'); unicode-range: U+0-9ed1; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff'); unicode-range: U+0-ff1b; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.unique.159cb026.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.unique.b2856f55.woff') format('woff'); unicode-range: U+0-9605; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff'); unicode-range: U+0-ff1f; } @font-face { font-family: "LXGW WenKai Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/LXGWWenKai-Regular.unique.28b77206.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.unique.d1668d1e.woff') format('woff'); unicode-range: U+0-9e5c; } @font-face { font-family: "LXGW WenKai Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/LXGWWenKai-Regular.common.17c05e80.woff2') format('woff2'), url('/assets/fonts/LXGWWenKai-Regular.common.8d5b3f2b.woff') format('woff'); unicode-range: U+0-ff0c; }</style></head>
+  <body itemscope="" itemtype="https://schema.org/AboutPage">
+    <div id="app"><header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader"><div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center"><div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div><nav class="flex"><ul class="flex"><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li></ul></nav><div class="sm:basis-full"></div><ul class="flex"><li class="flex"><ile-root id="ile-1"><div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div><form role="search" class="hidden lg:flex items-stretch justify-center"><div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></form></ile-root><script></script><script type="module" async="">import{h as r,c as a}from"/assets/iles.5e82acba.js";import{_ as m}from"/assets/SearchBar.5e1dcbf6.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";r(a,m,"ile-1",{},{});
+</script></li><li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li><li class="flex"><ile-root id="ile-2"><div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button><ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项"><li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li></ul></div></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/ThemeSwitcher.3f8d4c7e.js"),["assets/ThemeSwitcher.3f8d4c7e.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js","assets/useTheme.f1d4e689.js"])).default});s(u,v,"ile-2",{},{})});export default E();
+</script></li></ul></div></header><main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement"><div class="m-4 standard-card xl:px-24 2xl:px-30 3xl:px-36"><article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Article"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><meta itemprop="mainEntityOfPage" content="https://ouuan.moe/about"><ile-root id="ile-3"><header data-v-267f9ef7=""><h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">关于</span></h1><div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2018-12-05 13:40:21 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/about.mdx?plain=1" data-v-267f9ef7=""><time datetime="2018-12-05T13:40:21+08:00" itemprop="dateCreated" data-v-267f9ef7="">2018-12-05  (大约 4 年前) </time></a></span><span class="flex items-center" title="修改于 2023-02-12 20:24:31 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/about.mdx" data-v-267f9ef7=""><time datetime="2023-02-12T20:24:31+08:00" itemprop="dateModified" data-v-267f9ef7="">2023-02-12  (1 天前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span></div></header></ile-root><script></script><script type="module" async="">import{h as e,c as t}from"/assets/iles.5e82acba.js";import a from"/assets/PostHead.e82ef423.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/VisitorCount.c343552a.js";import"/assets/site.1441102a.js";e(t,a,"ile-3",{href:"/about",filename:"src/pages/about.mdx",frontmatter:{title:"关于",date:new Date(1543988421e3),description:"ouuan 的个人以及博客介绍：OIer / THU / Free Software / Linux / Web / ACG……",tags:null,lastUpdated:new Date(1676204671e3),published:new Date(1658482129e3),visitor:0},"title-link":!1},{});
+</script><section class="article-style" itemprop="articleBody"><h2 id="关于我" class="heading"><a href="#关于我" class="heading-anchor" aria-label="章节： 关于我" tabindex="-1"></a><span>关于我</span></h2>
+<p>你好<span class="mojikumi-line-end">，</span>我是 ouuan<span class="mojikumi">，</span> I<span class="mojikumi-narrow-left">’</span>m from China. 下面是关于我的一些信息<span class="mojikumi-line-end">。</span></p>
+<hr>
+<ul>
+<li>祖籍是 &amp; 出生于江西<span class="mojikumi-line-end">，</span>但不到一岁就来到了武汉<span class="mojikumi-line-end">。</span></li>
+<li>曾经是一名现役的 OIer<span class="mojikumi-line-end">。</span></li>
+<li>现在是位于 THU 的一名本科生<span class="mojikumi-line-end">，</span>班上只有两位同学不<span class="mojikumi-line-start">（</span>曾经<span class="mojikumi-line-end">）</span>是 OIer <s><span class="mojikumi-line-end">，</span>但学的都是数学</s><span class="mojikumi-line-end">，</span>培养方案里既有大量数学系核心课<span class="mojikumi-line-end">，</span>又有大量贵系核心课 <s><span class="mojikumi-line-end">，</span>但我的数分可能还没有上微 A 的人学的好</s><span class="mojikumi-line-end">。</span></li>
+<li>如果你有幸 (?) 需要在线下作为赛博朋友称呼我<span class="mojikumi-line-end">，</span>出于顺口的考虑 (?)<span class="mojikumi-line-end">，</span>可以叫我<span class="mojikumi-line-start">“</span>欧元<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span><s>为什么是 yuan 不是 wan 呢<span class="mojikumi-line-end">，</span>因为从出处来说正确的写法应该是 ouüan<span class="mojikumi-line-start">（</span></s><span class="mojikumi-line-end">，</span>但如果你不介意拗口的话 (?)<span class="mojikumi-line-end">，</span>也可以读成 O-U-U-A-N<span class="mojikumi-line-end">，</span><s>甚至 óu yǔ án</s><span class="mojikumi-line-start">（</span></li>
+</ul>
+<hr>
+<ul>
+<li>从 2020 年初开始使用 Linux 作为主力操作系统<span class="mojikumi-line-end">，</span>现在是 <a href="https://wiki.archlinux.org/title/Arch_Linux">Arch Linux</a> / <a href="https://i3wm.org/">i3-wm</a> / <a href="https://neovim.io/">Neovim</a> / <a href="https://github.com/jarun/nnn">nnn</a> / <a href="https://github.com/TheLocehiliosan/yadm">yadm</a> 等软件/项目的用户<span class="mojikumi-line-end">。</span></li>
+<li>GitHub: <a href="https://github.com/ouuan">ouuan</a><span class="mojikumi-line-end">，</span>参与维护/开发了一些或不大或很小的项目<span class="mojikumi-line-end">，</span>例如 <a href="https://github.com/cpeditor/cpeditor">CP Editor</a>, <a href="https://github.com/OI-wiki/OI-wiki">OI Wiki</a>, <a href="https://github.com/ouuan/pacwatch">pacwatch</a> 等<span class="mojikumi-line-end">。</span></li>
+<li>写了一个代码语法树猜谜游戏 <a href="https://codle.ouuan.moe/">Codle</a><span class="mojikumi-line-end">，</span>可是没多少人玩<span class="mojikumi-line-start">（</span></li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>最喜欢的番剧<span class="mojikumi-line-start">（</span>以及原作漫画<span class="mojikumi-line-end">）</span>目前是 <a href="https://bgm.tv/subject/147068">3月のライオン</a><span class="mojikumi-line-end">，</span>曾经是 <a href="https://bgm.tv/subject/51">CLANNAD</a><span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p><a href="https://bgm.tv/subject/207573"><span class="mojikumi-line-start">《</span>月がきれい<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/268070"><span class="mojikumi-line-start">《</span>荒ぶる季節の乙女どもよ<span class="mojikumi">。</span><span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/248154"><span class="mojikumi-line-start">《</span>風が強く吹いている<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/273843"><span class="mojikumi-line-start">《</span>BEASTARS<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/93739"><span class="mojikumi-line-start">《</span>ピンポン<span class="mojikumi-line-end">》</span></a><a href="https://bgm.tv/subject/110467"><span class="mojikumi-line-start">《</span>SHIROBAKO<span class="mojikumi-line-end">》</span></a>这几部番也很棒<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>在 <a href="https://zh.moegirl.org.cn/%CE%BC's_Final_LoveLive!_~%CE%BC'sic_Forever~"><span class="text-muse">μ's Final LoveLive!</span></a> 的两个月前被同学安利由动画入坑 <a href="https://zh.moegirl.org.cn/LoveLive!"><span class="text-muse">LL</span></a><span class="mojikumi-line-end">，</span>这也是我的入宅番<span class="mojikumi-line-end">。</span>之后有玩过一段时间 <a href="https://zh.moegirl.org.cn/zh-cn/LoveLive!%E5%AD%A6%E5%9B%AD%E5%81%B6%E5%83%8F%E7%A5%AD">sif</a><span class="mojikumi-line-end">，</span>但缪的三次元活动<span class="mojikumi-line-start">（</span>广播生放 live 之类<span class="mojikumi-line-end">）</span>都看的很少<span class="mojikumi-line-end">，</span>后面也逐渐淡坑<span class="mojikumi-line-end">，</span>直到星团<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p><a href="https://zh.moegirl.org.cn/LoveLive!Superstar!!"><span class="text-liella">星</span></a> 是在一期动画结束后开始看的<span class="mojikumi-line-end">；</span><a href="https://zh.moegirl.org.cn/LoveLive!%E8%99%B9%E5%92%B2%E5%AD%A6%E5%9B%AD%E5%AD%A6%E5%9B%AD%E5%81%B6%E5%83%8F%E5%90%8C%E5%A5%BD%E4%BC%9A"><span class="text-nijigasaki">虹</span></a> 是二期动画放送中开始看的<span class="mojikumi-line-end">；</span><a href="https://zh.moegirl.org.cn/LoveLive!Sunshine!!"><span class="text-aqours">水</span></a> 没太关注<span class="mojikumi-line-end">，</span>动画只追到一期的一半<span class="mojikumi-line-end">，</span>但开始看虹星后也多少看了一点切片<span class="mojikumi-line-end">。</span>主推大概是 <a href="https://zh.moegirl.org.cn/%E4%BC%8A%E8%BE%BE%E5%B0%8F%E7%99%BE%E5%90%88"><span class="text-kanon">sayu</span>/<span class="text-kanon">合</span></a><a href="https://zh.moegirl.org.cn/Liyuu"><span class="text-keke">鲤</span></a>/<a href="https://zh.moegirl.org.cn/%E5%86%85%E7%94%B0%E7%A7%80"><span class="text-mia">秀酱</span></a>/<a href="https://zh.moegirl.org.cn/%E6%8C%87%E5%87%BA%E6%AF%AC%E4%BA%9A"><span class="text-emma">麻圆</span></a><span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p><a href="https://bgm.tv/subject/13603"><span class="mojikumi-line-start">《</span>罗小黑战记<span class="mojikumi-line-end">》</span></a> 是除了动画电影以及小时候看的动画片<span class="mojikumi-line-end">，</span>唯一一部较为完整地看过的国漫<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>有在用 <a href="https://bgm.tv/user/ouuan">bangumi</a><span class="mojikumi-line-end">，</span>但是用的较晚<span class="mojikumi-line-end">，</span>所以<span class="mojikumi-line-start">（</span>早期的<span class="mojikumi-line-end">）</span>时间胶囊会比较乱<span class="mojikumi-line-end">，</span>早期看的番的评分大概也比较乱来<span class="mojikumi-line-start">（</span>说的好像最近看的番评分就有多正确一样x<span class="mojikumi-line-end">）</span></p>
+</li>
+<li>
+<p>听的最多的是日语歌<span class="mojikumi-line-end">，</span>目前<a href="https://music.163.com/#/playlist?id=5091819419">歌单</a>的前六名有三首<a href="https://space.bilibili.com/203655966/">匹老板</a>的歌和三首<a href="https://space.bilibili.com/488970166/">花譜</a>的歌<span class="mojikumi-line-end">。</span></p>
+<p>P.S. 感觉找不到一个满意的歌单管理解决方案<span class="mojikumi-line-end">，</span>以至于懒得更新歌单<span class="mojikumi-line-end">。</span>想以后自己写一个<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>大概是一名<a href="https://space.bilibili.com/61639371">轴芯</a><span class="mojikumi-line-end">。</span>只不过看 <a href="https://zh.moegirl.org.cn/%E8%99%9A%E6%8B%9FUP%E4%B8%BB">v</a> 看的多的还是 2020 年<span class="mojikumi-line-end">，</span>曾经还看过很多其他 v<span class="mojikumi-line-end">，</span>现在看得少了<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>偶尔<span class="mojikumi-line-start">（</span><s>曾经</s><span class="mojikumi-line-end">）</span>会<a href="https://space.bilibili.com/11067182">在 b 站上发一些视频</a><span class="mojikumi-line-end">。</span>感觉除了 <a href="https://www.bilibili.com/video/av65924361">av65924361</a> 和 <a href="https://www.bilibili.com/video/av79877987">av79877987</a> 基本上都是划水或者黑历史<span class="mojikumi-line-start">（</span></p>
+</li>
+<li>
+<p>不喜欢 BV 号<span class="mojikumi-line-end">，</span>所以写了个 <a href="https://greasyfork.org/zh-CN/scripts/398535-bv2av">bv2av</a> 的 userscript<span class="mojikumi-line-end">。</span></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>在<a href="https://www.16personalities.com/ch/">十六型人格测试</a>中稳定获得<a href="https://www.16personalities.com/ch/intp-%E4%BA%BA%E6%A0%BC"><span class="mojikumi-line-start">“</span>逻辑学家<span class="mojikumi-line-end">”</span>人格 (INTP)</a> 的测试结果<span class="mojikumi-line-start">（</span>有时会在 INTP-A 和 INTP-T 之间摇摆<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>但由于 MBTI 越来越火<span class="mojikumi-line-end">，</span>而且经常受到非理性看待<span class="mojikumi-line-end">、</span>过度解读<span class="mojikumi-line-end">，</span>其实是有点不想公开结果的<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>不擅言辞<span class="mojikumi-line-end">，</span>不会交际<span class="mojikumi-line-end">。</span>常有语出冒犯的时候<span class="mojikumi-line-end">。</span>虽希望善良待人<span class="mojikumi-line-end">，</span>但不会为人处事<span class="mojikumi-line-end">。</span>(<a href="http://web.archive.org/web/20210123202817/https://blog.yuuta.moe/about/">origin</a>)</p>
+</li>
+<li>
+<p>我相信人与人之间的误解远多于分歧<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<blockquote>
+<p><span class="mojikumi-line-start">「</span>没有人是怪物<span class="mojikumi">」</span><wbr><span class="mojikumi-line-start">「</span>理解不等于赞同<span class="mojikumi-line-end">」</span></p>
+</blockquote>
+<p>引自《<span class="mojikumi">〈</span>和陌生人说话<span class="mojikumi">〉</span><span class="mojikumi-line-end">：</span>越汹涌<span class="mojikumi-line-end">，</span>越平静<span class="mojikumi">》</span><span class="mojikumi-line-end">，</span>Vista 看天下 2021.12.18
+<span class="mojikumi-line-start">（</span>其实应该是<span class="mojikumi-line-start">“</span>越平静<span class="mojikumi-line-end">，</span>越汹涌<span class="mojikumi">”</span><span class="mojikumi-line-end">；</span>原标题如此<span class="mojikumi-line-end">）</span></p>
+</li>
+<li>
+<p>高三的时候同学带了很多<span class="mojikumi-line-start">《</span>Vista 看天下<span class="mojikumi-line-end">》</span>到班上供大家借阅<span class="mojikumi-line-end">，</span>就利用晚自习和考前<span class="mojikumi-line-start">“</span>复习<span class="mojikumi-line-end">”</span>看了很多<span class="mojikumi-line-end">；</span>高中毕业后自己订阅了电子版的看天下<span class="mojikumi-line-end">，</span>现在也一直在看<span class="mojikumi-line-end">，</span>可以说是除了社交媒体外的主要信息来源<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>幻想有一天用户为开源/<a href="https://www.gnu.org/philosophy/free-sw.html">自由软件</a>付费能成为常态<span class="mojikumi-line-end">，</span>就像观众为能免费看的直播打赏成为常态一样<span class="mojikumi-line-end">。</span>现在越来越觉得这只能是个幻想<span class="mojikumi-line-end">，</span>而且或许会有比用户不愿付费更大的阻碍<span class="mojikumi-line-end">。</span></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>GPG key: <a href="https://github.com/ouuan.gpg"><code class="break-all">863A0F9FA8127FA4</code></a></li>
+</ul>
+<hr>
+<h2 id="关于本博客" class="heading"><a href="#关于本博客" class="heading-anchor" aria-label="章节： 关于本博客" tabindex="-1"></a><span>关于本博客</span></h2>
+<p>这是我继博客园<span class="mojikumi-line-end">、</span>hexo-theme-next<span class="mojikumi-line-end">、</span>hugo-theme-even 后的第四代博客<span class="mojikumi-line-end">。</span>博客园和 Hexo 的文章已全部移至 Hugo 博客<span class="mojikumi-line-end">，</span>但 Hugo 博客的文章<span class="mojikumi-line-start">（</span>以 OI 相关内容为主<span class="mojikumi-line-end">）</span>将不会移至本博客<span class="mojikumi-line-end">，</span>可在 <a href="https://ouuan.github.io/">原 Hugo 博客</a> 查看<span class="mojikumi-line-end">。</span></p>
+<p>本博客由 ouuan 自己设计<span class="mojikumi-line-end">、</span>制作<span class="mojikumi-line-end">，</span>主要基于 <a href="https://github.com/ElMassimo/iles">îles</a><span class="mojikumi-line-start">（</span><a href="https://vuejs.org/">Vue</a><span class="mojikumi-line-end">、</span><a href="https://vitejs.dev/">Vite</a><span class="mojikumi-line-end">）</span>和 <a href="https://github.com/unocss/unocss">UnoCSS</a><span class="mojikumi-line-end">。</span>设计有在一定程度上借鉴 <a href="https://github.com/olOwOlo/hugo-theme-even">hugo-theme-even</a><span class="mojikumi-line-end">、</span><a href="https://github.com/next-theme/hexo-theme-next">hexo-theme-next</a><span class="mojikumi-line-end">、</span><a href="https://blog.skk.moe/">Sukka's Blog</a><span class="mojikumi-line-end">、</span>GitHub 的 Markdown 显示<span class="mojikumi-line-end">，</span>但大部分是原创设计<span class="mojikumi-line-end">，</span>且借鉴部分的代码基本都是自己写的<span class="mojikumi-line-end">。</span></p>
+<p>博客正文部分使用的字体是 <a href="https://github.com/adobe-fonts/source-han-serif">思源宋体</a><span class="mojikumi-line-end">，</span>引用块部分使用的是 <a href="https://github.com/lxgw/LxgwWenKai"><span class="font-kai">霞鹜文楷</span></a><span class="mojikumi-line-end">，</span>二者均以 OFL 授权<span class="mojikumi-line-end">。</span>web font 的划分<span class="mojikumi-line-end">、</span>生成可以参考<a href="/post/2023/01/glyph-segregator"><span class="mojikumi-line-start">《</span>另一种很新的中文字体网页嵌入方案<span class="mojikumi-line-end">》</span></a><span class="mojikumi-line-end">，</span>可以在本地安装这两个字体来避免下载 web font<span class="mojikumi-line-end">。</span>其他排版优化<span class="mojikumi-line-start">（</span>包括标点挤压的实现<span class="mojikumi-line-end">）</span>详见<a href="/post/2023/02/typography-tricks"><span class="mojikumi-line-start">《</span>一些博客排版优化小 trick<span class="mojikumi-line-end">》</span></a><span class="mojikumi-line-end">。</span></p>
+<p>代码高亮使用的是 <a href="https://github.com/shikijs/shiki/">Shiki</a><span class="mojikumi-line-end">，</span>主题是 <a href="https://github.com/sdras/night-owl-vscode-theme">Night Owl</a><span class="mojikumi-line-start">（</span>选了一个用的人较多<span class="mojikumi-line-end">，</span>有暗色和亮色<span class="mojikumi-line-end">，</span>配色整体偏蓝<span class="mojikumi-line-end">、</span>和博客主题比较贴合的<span class="mojikumi-line-end">；</span>我自己的 neovim 还是用的 <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox</a><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span><a href="https://github.com/remarkjs/remark">remark</a> 插件和 Vue component 是自己写的<span class="mojikumi-line-end">，</span>可以参考 <a href="https://github.com/ouuan/iles-blog/blob/master/src/remark/remarkShiki.ts">remarkShiki.ts</a><span class="mojikumi-line-end">、</span><a href="https://github.com/ouuan/iles-blog/blob/master/src/components/CodeBlock.vue">CodeBlock.vue</a><span class="mojikumi-line-end">、</span><a href="https://github.com/ouuan/iles-blog/blob/master/src/components/CopyButton.vue">CopyButton.vue</a><span class="mojikumi-line-start">（</span>如果用的不是 iles 大概不能直接照抄<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<p>可以在遵循 <a href="https://github.com/ouuan/iles-blog/blob/master/LICENSE">AGPL v3</a><span class="mojikumi-line-start">（</span>或其更新的版本<span class="mojikumi-line-end">）</span>的条件下参考/使用 <a href="https://github.com/ouuan/iles-blog">本博客代码</a> 的 <strong>片段</strong><span class="mojikumi-line-end">，</span>但请 <strong>尽量不要</strong> 直接在整个代码的基础上进行修改<span class="mojikumi-line-end">，</span>因为并没有按照人人可以拿来用的模板进行设计<span class="mojikumi-line-end">，</span>很多地方会硬编码一些东西<span class="mojikumi-line-end">，</span>修改比较困难<span class="mojikumi-line-end">，</span>如果我这里有更新要同步也很麻烦<span class="mojikumi-line-end">，</span>也可能在某些系统环境无法正常构建之类的<span class="mojikumi-line-end">。</span>如果真的直接使用<span class="mojikumi-line-end">，</span>也需要遵循 <a href="https://github.com/ouuan/iles-blog/blob/master/LICENSE">AGPL v3</a><span class="mojikumi-line-end">，</span>并且请务必小心<span class="mojikumi-line-end">，</span>一切后果自负<span class="mojikumi-line-end">。</span></p>
+<p>本博客使用 ouuan 自行搭建的 <a href="https://plausible.io/">Plausible Analytics</a> 实例进行访问量统计<span class="mojikumi-line-end">，</span>不使用 Cookies 且满足 GDPR 等条例要求<span class="mojikumi-line-end">。</span>使用 <a href="https://giscus.app/">giscus</a> 提供评论服务<span class="mojikumi-line-end">，</span>发表评论需要登录 GitHub 帐号<span class="mojikumi-line-end">，</span>除了发表评论也可以给文章点赞/点踩<span class="mojikumi-line-end">。</span>网站托管于 <a href="https://pages.cloudflare.com/">Cloudflare Pages</a><span class="mojikumi-line-end">。</span></p>
+<a id="rss-订阅" name="rss-订阅" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3=""><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-bb0e38b3=""><h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Info: " class="text-5 i-mdi-info-circle-outline text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">RSS 订阅</span></h3><span class="details-icon text-5" data-v-bb0e38b3=""></span></summary><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><aside role="note" data-v-bb0e38b3=""><details class="shadow-md rd-1 b-l-6 my-6 bg-purple-2 dark:bg-purple-9 b-purple-5" data-v-bb0e38b3=""><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-bb0e38b3=""><h4 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Question: " class="text-5 i-mdi-help-circle-outline text-purple" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">什么是 RSS？</span></h4><span class="details-icon text-5" data-v-bb0e38b3=""></span></summary><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><ul>
+<li><a href="https://sspai.com/post/56391">高效获取信息<span class="mojikumi-line-end">，</span>你需要这份 RSS 入门指南 - 少数派</a></li>
+<li><a href="https://diygod.me/ohmyrss/">我有特别的 RSS 使用技巧 | Hi, DIYgod</a></li>
+<li><a href="https://en.wikipedia.org/wiki/RSS">RSS - Wikipedia</a></li>
+</ul></div></details></aside><ul>
+<li>一些 RSS 阅读器<span class="mojikumi-line-end">：</span>
+<div class="inline-img mb-2"><ul>
+<li><a href="https://www.inoreader.com/feed/https%3A%2F%2Fouuan.moe%2Ffeed.xml"><img src="https://shields.ouuan.moe/static/v1?label=Inoreader&amp;message=follow&amp;style=social&amp;logo=data:image/webp;base64,UklGRlICAABXRUJQVlA4IEYCAADwDQCdASpIAEgAPpFCmkolo6Ihp7gKGLASCWYA05nA/qumqeI8zavP3naz1m+oDbAc9Hpne9AL91aqgA91zGCWx8nzKx0FkaT+q4k67MyE2/hZym+6Qlfro/6nbI7vMhtFzlbdteFFMPzGJSH6DzATVS/YBx+Pv1gA/tYx/G8ZLrdlf+Ur43bsXBh+7KArqPth0CslagD4VKOmauUvNe1dhwxpfrDwqRKvSQEviUNf9AoDJ89/8dEHpu/J/vIsQVr8/SLJPEy8MGcw3ZV+gyLplT/tqzDYluRQ9IQKj9PPk/ExqxMI98/ACDXEYrdimUzsiz7qxRCKQ81JCgKiZTVeMiujTknatA6miOW2wTG1KSEoCa+6eyuzyo1puxJMM8ZbYt3aayIQAQ1DhjYxtMb/RD1SZZtmsBl9puxniEDqgnw2hIPekG5SatAlFeiJJw6A5B+dDCTeP+0Tir6PRDuQVXCzNBmtLFHXyBO/YYYsVq8ifCYlqn5bFEyJ4NHidwPWyf4NmVmquIwYbyxd/253wVwQQQig9oO9zHFMW8erqf9qk9N7V0yU5VOEHYGqmcWVB1cvOQuvja7SX3aoiGVMMsEelV0sH0USncQ7lx9aI6DTfLjQJyQ3Hl91g6JEcEjv4TCh0KewAnNpCM4PuEvn1kWgGusR2kcUUDZxn+pJLv8XJUbA2PkZ3O2e6eySmglzu8+ytxDe+TzGrAGF/SCcLth5IuX4eeBVDVjn0TqDEjOncMk0AIzNDD8Wdw/1aAAB4oAAAAA=" alt="Follow on Inoreader" loading="lazy"></a></li>
+<li><a href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fouuan.moe%2Ffeed.xml"><img src="https://shields.ouuan.moe/static/v1?label=Feedly&amp;message=follow&amp;style=social&amp;logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTExLjU1LjY1MmEyLjE3NCAyLjE3NCAwIDAgMC0zLjEwNSAwTC42NCA4LjZhMi4yNzQgMi4yNzQgMCAwIDAgMCAzLjE2M2w1LjU3IDUuNjczYy4zODguMzQzLjg5NC41NTMgMS40NS41NTNoNC42NzdhMi4xOCAyLjE4IDAgMCAwIDEuNTYtLjY1OWw1LjQ2Mi01LjU2MmEyLjI3MiAyLjI3MiAwIDAgMCAwLTMuMTYzTDExLjU1MS42NTJ6bS0uMjE2IDE0LjUxOGwtLjc4Ljc5MmEuMzEuMzEgMCAwIDEtLjIyMy4wOTVoLS42NjdhLjMxMy4zMTMgMCAwIDEtLjIwNi0uMDhsLS43OTUtLjgwOGEuMzI1LjMyNSAwIDAgMSAwLS40NTJsMS4xMTQtMS4xMzRhLjMwOS4zMDkgMCAwIDEgLjQ0MyAwbDEuMTE0IDEuMTM1YS4zMjQuMzI0IDAgMCAxIDAgLjQ1MnptMC00Ljc1OWwtMy4xMTUgMy4xNzNhLjMxMi4zMTIgMCAwIDEtLjIyMy4wOTNINy4zM2EuMzEzLjMxMyAwIDAgMS0uMjA4LS4wNzhsLS43OTMtLjgwOGEuMzI2LjMyNiAwIDAgMSAwLS40NTNsMy40NDktMy41MTJhLjMxLjMxIDAgMCAxIC40NDMgMGwxLjExNCAxLjEzNWEuMzIyLjMyMiAwIDAgMSAwIC40NXptMC00Ljc1NmwtNS40NSA1LjU1YS4zMS4zMSAwIDAgMS0uMjI0LjA5NGgtLjY2N2EuMzExLjMxMSAwIDAgMS0uMjA3LS4wNzhsLS43OTQtLjgxYS4zMjMuMzIzIDAgMCAxIDAtLjQ1bDUuNzg1LTUuODkyYS4zMS4zMSAwIDAgMSAuNDQzIDBsMS4xMTQgMS4xMzRhLjMyNC4zMjQgMCAwIDEgMCAuNDUyeiIgZmlsbD0iIzJBQjE0QyIvPjwvc3ZnPg==" alt="Follow on Feedly" loading="lazy"></a></li>
+<li><a href="https://follow.it/ouuan"><img src="https://shields.ouuan.moe/static/v1?label=follow.it&amp;message=follow&amp;style=social&amp;logo=data:image/webp;base64,UklGRtABAABXRUJQVlA4IMQBAAAQDgCdASpkAGQAPpFGnkqlpCMhp9aocLASCUASsGppds4Y7itw+9LtpfMBz//pVdQBvNb5erWMAKna+qj/c5jfNiyUrDFqi3eD6AyfUe6ISt9zmrlUv2UAjxTG+eKE7qwoJNK39PMAcA69EnBUL63cyqTxw+B6YhgAAP7E7/m0mB7/+fmfzv87bYAa20JIb/DcScQ/QlgNi1R1d5K3VmoCDeADr6/SZMY4nBAdm0CaZ2RpgiVkoynHcHSonLrL/PnqPiR3/roVeiudb9EaMEQ/p3uAQRL25vUE9YaeovyxgRWMK+sTdmazKTpHlERAxIvOpyWnv3md3AXnpxETXCkcXS5IqWNh/+qsybjBIt9SS8eaCh1cPh/I7u3oCgzciiwhUCke8PuElhuW7eM5tgCiULVgkIo2ewuVHLZcUBPd7XVNU7QfwXwFAWPx7EesLRyGgVZat672D6n79nFnjydEgAjPgFSGGgdZKy+a9DxKClQ6UtEep9nj5APCAaqS7lTJNx63XEWvY5/qQCSaRUPTHdgmpJVAEK/963VJXfgPGJzy5dDei7IkCP9WAA5IfaQ7jHVP4fUCd6v2Jj7x7kMWAAAAAA==" alt="Follow on follow.it" loading="lazy"></a></li>
+<li><a href="https://feeds.pub/feed/https%3A%2F%2Fouuan.moe%2Ffeed.xml"><img src="https://shields.ouuan.moe/static/v1?label=Feeds%20Pub&amp;message=follow&amp;style=social&amp;logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAABFCAYAAAAcjSspAAAACXBIWXMAAAInAAACJwG+ElQIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAASkSURBVHgB7Ztdcts2EMf/oDyeNO5MnBOUN4hzAtNvrZ0H8QSimwPEPoHlE9g5gZkTSJ46mU77YPYEVd/6yN5AnWkzrVNxuxAhN3UA0YL46eA3Y30AkDT8c7FY7MKAw+FwlIfAAyAafe2rl/w8m8bhjxOsQedEiUbBNrAVeQLPCBTwJfiaYROiWRiH36ewYAMdIBfiUV+I3oDfBrKN5j3Ge7rDYy/4eQ8WtFoUOS08zxsQiSN+u73ap7EDS1opCosR8J0+4ZcBEWyZwpJWiRKN9tnsxRnUFFkHIjqFJa1wtNJneN7WCVvFEexgqyD+E1MBkWaUXcbhuxiWNC7Ky8sXrzKiIVbzGVO2hDeANwb+mMRhYj1VdDQmytw6xJcXvKz2V/hYwk73NA6vElRII6Io3zHCPNgqhK1CvGaLOC/bIkzU7mij0TccbwgZQxRNl9rFWFCrpby8PBhkhLhoHPsLFuP9sG4xFtQmioo9rguGcXgujqv2GUX0UAMyMmVBpA8xThllHYdx+MOvaJhafIqyEN/Qzb7DY+v4LkZLqFwUFYf4hm4Zb+yxIGtt9cumUp+ipo3RSliQ5xx5tkoQiYdK8QIYBcFxGwWRVCoKxyMnhi4Ozd+eo6VUJopKEfq6PqKbQ7SYCh3txs4iP3aHqRCbZ4fjA16eSS3RIp0/CkyyjH4BssQ2lVgGFYqS7Rj8uBQiyF/e9vvygf0MB3iyrYdvxwdxRrPTJsSpZPrkq47YxRqwjUW8cv0sN4+omdJFkXGJvBiUkD1jtlnc649KGLVQ2vTJ8yOPzzhQi1AuPN08mZGzzcqtTCmWIgURYuuaICJUAFvLADWydkS7EAT3LClwFPsT3wuOUbIU2OTUwI20BOl85WrEuRYM9J/782lnkkwq4XxvZ8h3/auL/tXY0D0+HO/v6qp+vc3HT7BG2WIV1po+vDJEFhl4P6/4mRDaC5/dfHiKmlhLlCVhvIw5ONtOqb73i0DXGo36UiyD1X1IURPWokgrgXn3+5r3NlHuPzQ/anCcPe8fk0NN60xNWouyxEr4At6pKSUS3QBepYK7U0jGIqr+oxmPBDViJYqKMn1dH+dYP9rsbUqHqrvD84rgf993m3fR+xoSb1AjVktyNDo44qXzTNM1uei/ff7/sfvnbFWvdN8jRG4ZBacKEv5OqyMVtlgtyewTdkmzAybKNHc045ikpxWFxRiiAKJZ7WkGq+lDt1v+u/Q+yaTJXW5e1LL4nXl2rjO7ZFMi+m/DCrEx5IcUq/zCvGbcTHbOUhTh61pNB/DicMxZ+5n0CynuQW4hV0M0xMqiqABLx9I4Ip9Gsz1ejsdLhiV5hr/Z/K2Fo/1r21BYLAyulH8Io9GLgB2wLLQ/ExzWZ5T9Js+aNF0uXdDI8S518Qlaio1P8Q3tKR4IFRfDuokTRYONKKmh3ccDwVmKBieKBieKBgtRHpmCtKLTjp1hZVHkPsbQ9fmK8jlgK4rWWpaXLrqDbT5FK4oqWHUeN300OFE0OFE02KYjU13r7Ob973gA2GXziY5xZwXKE83N/NdF2VifT8mPXHlHXAN6knEFry2pRIfD4XA4usm//qauBcoh1b8AAAAASUVORK5CYII=" alt="Follow on Feeds Pub" loading="lazy"></a></li>
+</ul></div>
+</li>
+<li>最新文章: <a href="https://ouuan.moe/feed.xml">RSS 订阅</a> / <a href="https://ouuan.moe/feed.atom">Atom 订阅</a> / <a href="https://ouuan.moe/feed.json">JSON 订阅</a></li>
+<li>某个 tag 的最新文章: 在 tag URL 的后面加上 <code>/feed.xml</code>/<code>.atom</code>/<code>.json</code><span class="mojikumi-line-end">，</span>例如 <a href="https://ouuan.moe/tag/csapp/feed.xml">csapp 标签的 RSS 订阅</a></li>
+</ul><p>Tips: 可以使用 <a href="https://github.com/DIYgod/RSSHub-Radar">RSSHub Radar</a> 等插件自动发现这些订阅<span class="mojikumi-line-end">。</span></p></div></details></aside>
+<h2 id="关于我在一些其他地方的-profile" class="heading"><a href="#关于我在一些其他地方的-profile" class="heading-anchor" aria-label="章节： 关于我在一些其他地方的 profile" tabindex="-1"></a><span>关于我在一些其他地方的 profile</span></h2>
+<blockquote>
+<p>如果奇迹有颜色的话<span class="mojikumi-line-end">，</span>那么其中之一必是<span class="text-honoka">橙色</span>的吧<span class="mojikumi-line-end">。</span></p>
+</blockquote>
+<p>这是 <a href="https://space.bilibili.com/11067182">我在 b 站上</a> 的个性签名<span class="mojikumi-line-end">，</span>应该是 16 或 17 年就开始在用了<span class="mojikumi-line-end">。</span><a href="https://zh.moegirl.org.cn/%E5%A6%82%E6%9E%9C%E5%A5%87%E8%BF%B9%E6%9C%89%E9%A2%9C%E8%89%B2%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E6%98%AF%E6%A9%99%E8%89%B2">出自 Snow Halation</a> 但把<span class="mojikumi-line-start">“</span>那<span class="mojikumi-line-end">”</span>改成了<span class="mojikumi-line-start">“</span>其中之一<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span>
+<a href="https://www.luogu.com.cn/user/49742">在洛谷上</a><span class="mojikumi-line-end">，</span>因为当时洛谷换了新 UI 后个人空间和 b 站长得有点像<span class="mojikumi-line-end">，</span>我就特意用头图和个性签名模仿了 b 站个人空间<span class="mojikumi-line-end">。</span></p>
+<blockquote>
+<p>この道行きの最後が 天国か そこらじゃあないとしても<br>
+这条路的尽头会是天国吗 就算不是也没有关系</p>
+<p>ただの君と笑って立っていたいよ<br>
+单纯的想和你相视而笑并肩而立</p>
+<p>誇らしさとか 願いとか 希望とか<br>
+我的骄傲 愿望 希望</p>
+<p>もっと ずっと 持ち合わせとくよ<br>
+愿能永久地伴我同行</p>
+</blockquote>
+<p>这是 <a href="https://music.163.com/#/song?id=456185218">3 狮 OP2</a> 的一段歌词<span class="mojikumi-line-end">，</span>我把它设为了一些地方的个人空间头图<span class="mojikumi-line-end">。</span></p>
+<blockquote>
+<p>生き方は 無限にある<span class="mojikumi-line-end">。</span><br>
+生活的方法有无限种<span class="mojikumi-line-end">。</span></p>
+</blockquote>
+<p>这是 <a href="https://music.163.com/#/song?id=1416874718">No.1</a> 的一句歌词<span class="mojikumi-line-end">，</span>是我现在的 QQ 个性签名<span class="mojikumi-line-end">。</span></p></section></article><div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-4"></ile-root><script></script><script type="module" async="">import{h as r,c as m}from"/assets/iles.5e82acba.js";import{_ as o}from"/assets/GiscusCommentsInner.487fa077.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/useTheme.f1d4e689.js";import"/assets/site.1441102a.js";r(m,o,"ile-4",{term:"关于"},{});
+</script></div></div></main><footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter"><div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-13 21:42:42 GMT+8 (2271fb3)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div><div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-5"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/VisitorCount.a8d4ae35.js"),["assets/VisitorCount.a8d4ae35.js","assets/VisitorCount.c343552a.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-5",{},{})});export default E();
+</script> 人到访过这里 </span></div><div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div></footer><meta itemprop="copyrightYear" content="2022 - 2023"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><ile-root id="ile-6"></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/BackToTop.9b4bb339.js"),["assets/BackToTop.9b4bb339.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-6",{},{})});export default E();
+</script><div class="hidden"></div><ile-root id="ile-7"></ile-root><script></script><script type="module" async="">import{h as o,b as r}from"/assets/iles.5e82acba.js";import{o as a}from"/assets/PlausibleTrigger.bafee336.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";o(r,a,"ile-7",{},{});
+</script><div></div><ile-root id="ile-8"></ile-root><script></script><script type="module" async="">var p=(t,a)=>()=>(a||t((a={exports:{}}).exports,a),a.exports);var r=(t,a,_)=>new Promise((c,n)=>{var f=o=>{try{e(_.next(o))}catch(i){n(i)}},l=o=>{try{e(_.throw(o))}catch(i){n(i)}},e=o=>o.done?c(o.value):Promise.resolve(o.value).then(f,l);e((_=_.apply(t,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var u=p(m=>{const E=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(t=>t.e),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),h=()=>r(m,null,function*(){return(yield d(()=>import("/assets/TextJustifyFix.4fa5e997.js"),[])).onLoad});s(E,h,"ile-8",{},{})});export default u();
+</script><meta itemprop="inLanguage" content="zh-CN"></div>
+  
+</body></html>

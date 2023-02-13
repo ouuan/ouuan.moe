@@ -1,481 +1,81 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta charset="UTF-8">
-  <title>DDPP 第二章学习笔记 - ouuan's blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+<title>DDPP 第二章学习笔记 - ouuan's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
 
 DDPP5 第二章 “Number Systems and Codes” 的学习笔记。
 ">
-  <meta property="og:url" content="https://ouuan.moe/post/2023/01/ddpp-2">
-  <meta property="og:site_name" content="ouuan's blog">
-  <meta property="og:title" content="DDPP 第二章学习笔记 · ouuan's blog">
-  <meta property="og:description" content="
+<meta property="og:url" content="https://ouuan.moe/post/2023/01/ddpp-2">
+<meta property="og:site_name" content="ouuan's blog">
+<meta property="og:title" content="DDPP 第二章学习笔记 · ouuan's blog">
+<meta property="og:description" content="
 
 DDPP5 第二章 “Number Systems and Codes” 的学习笔记。
 ">
-  <meta property="twitter:domain" content="ouuan.moe">
-  <meta property="twitter:title" content="DDPP 第二章学习笔记 · ouuan's blog">
-  <meta property="twitter:description" content="
+<meta property="twitter:domain" content="ouuan.moe">
+<meta property="twitter:title" content="DDPP 第二章学习笔记 · ouuan's blog">
+<meta property="twitter:description" content="
 
 DDPP5 第二章 “Number Systems and Codes” 的学习笔记。
 ">
-  <meta property="twitter:url" content="https://ouuan.moe/post/2023/01/ddpp-2">
-  <style>
-    html:not(.dark):not(.light) {
-      visibility: hidden;
-    }
-
-    body {
-      visibility: hidden;
-    }
-  </style>
-  <script>
-    (() => {
-      let dark;
-      try {
-        const theme = localStorage && localStorage.getItem('vueuse-color-scheme');
-        if (theme === 'dark') dark = true;
-        else if (theme === 'light') dark = false;
-        else dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      } catch (e) {
-        dark = false;
-      }
-      document.documentElement.classList.add(dark ? 'dark' : 'light');
-    })()
-  </script>
-  <noscript>
-    <style>
-      @media (prefers-color-scheme: light) {
-        :root:not(.dark):not(.light) {
-          color-scheme: light;
-          --text-color: #232637;
-          --bg-color: #DEE6EE;
-          --card-color: #EFF3F7;
-          --link-color: #1E66B8;
-          --hover-color: #2E80DD;
-          --active-color: #164C89;
-          --bghover-color: #D6E0EA;
-          --popup-color: #F7F9FB;
-          --footer-color: #5F627B;
-          --area-color: #E1E2E8;
-          --nested-color: #F0F0F3;
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not(.dark):not(.light) {
-          color-scheme: dark;
-          --text-color: #E6EDF2;
-          --bg-color: #0D0E15;
-          --card-color: #1F2130;
-          --link-color: #8BB8EC;
-          --hover-color: #A2C6F0;
-          --active-color: #74AAE8;
-          --bghover-color: #353853;
-          --popup-color: #2C2F45;
-          --footer-color: #9699AE;
-          --area-color: #2F313D;
-          --nested-color: #3C3E4E;
-        }
-      }
-
-      html {
-        visibility: visible !important;
-      }
-    </style>
-  </noscript>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
-  <link rel="canonical" href="https://ouuan.moe/post/2023/01/ddpp-2">
-  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
-  <link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
-  <link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
-  <link rel="dns-prefetch" href="https://plausible.ouuan.moe">
-  <link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
-  <link rel="stylesheet" href="/vendors/katex/katex.css">
-  <link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
-  <meta name="author" content="ouuan">
-  <meta name="twitter:creator" content="@ouuan">
-  <meta name="twitter:card" content="summary">
-  <meta property="og:image" content="https://ouuan.moe/images/2023/01/ddpp-2.png">
-  <meta property="generator" content="îles">
-  <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2023-01-24T14:37:12.000Z">
-  <meta property="article:modified_time" content="2023-01-24T14:37:12.000Z">
-  <meta property="article:author" content="ouuan">
-  <meta property="article:tag" content="ddpp">
-  <meta property="article:tag" content="学习笔记">
-  <link rel="preconnect" href="https://giscus.app">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
-
-  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/TableOfContents.3de486f5.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin="">
-  <link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin="">
-  <style>
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.unique.e0d319ef.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.ba22a033.woff') format('woff');
-      unicode-range: U+0-9876;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff');
-      unicode-range: U+0-ff1b;
-    }
-
-    @font-face {
-      font-family: "Noto Serif SC Web Font";
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-      src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff');
-      unicode-range: U+0-ff1f;
-    }
-  </style>
-</head>
-
-<body itemscope="" itemtype="https://schema.org/ItemPage">
-  <div id="app">
-    <header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader">
-      <div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center">
-        <div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div>
-        <nav class="flex">
-          <ul class="flex">
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li>
-            <li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li>
-          </ul>
-        </nav>
-        <div class="sm:basis-full"></div>
-        <ul class="flex">
-          <li class="flex"><ile-root id="ile-1">
-              <div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div>
-              <form role="search" class="hidden lg:flex items-stretch justify-center">
-                <div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a>
-              </form>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as a
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as m
-              } from "/assets/SearchBar.5e1dcbf6.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              r(a, m, "ile-1", {}, {});
-            </script>
-          </li>
-          <li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li>
-          <li class="flex"><ile-root id="ile-2">
-              <div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button>
-                <ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项">
-                  <li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li>
-                  <li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li>
-                </ul>
-              </div>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              var p = (o, a) => () => (a || o((a = {
-                exports: {}
-              }).exports, a), a.exports);
-              var r = (o, a, _) => new Promise((c, n) => {
-                var f = t => {
-                    try {
-                      e(_.next(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  l = t => {
-                    try {
-                      e(_.throw(t))
-                    } catch (i) {
-                      n(i)
-                    }
-                  },
-                  e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-                e((_ = _.apply(o, a)).next())
-              });
-              import {
-                _ as d
-              } from "/assets/vite.5ce4fca4.js";
-              import {
-                a as s
-              } from "/assets/iles.5e82acba.js";
-              import "/assets/vendor-vue.075573a8.js";
-              var E = p(m => {
-                const u = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                  }),
-                  v = () => r(m, null, function*() {
-                    return (yield d(() => import("/assets/ThemeSwitcher.3f8d4c7e.js"), ["assets/ThemeSwitcher.3f8d4c7e.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js", "assets/useTheme.f1d4e689.js"])).default
-                  });
-                s(u, v, "ile-2", {}, {})
-              });
-              export default E();
-            </script>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement">
-      <div class="flex flex-row-reverse justify-center"><ile-root id="ile-3">
-          <div class="flex print:hidden">
-            <aside style="max-height:calc(100vh - 10rem);" id="__toc" class="sticky top-16 bg-card py-6 m-4 rd-2 w-72 2xl:w-84 3xl:w-96 shadow hidden xl:block" aria-label="文章目录" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPSideBar">
-              <div class="flex flex-wrap gap-2 justify-between items-center pr-4 pl-8 mb-3">
-                <div class="flex items-center">
-                  <h2 class="text-xl font-bold"> 文章目录 </h2><button id="__toc-close" class="px-1 text-xl flex items-center" title="关闭目录" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-close"></span></button>
-                </div>
-                <div><label class="ml-auto flex gap-1 items-center"><span>展开全部</span><input type="checkbox"></label></div>
-              </div>
-              <div style="max-height:calc(100% - 2rem);" class="overflow-auto overscroll-contain pr-4 pl-8">
-                <ol data-v-84d105d6="">
-                  <li id="__toc-item-gray-code" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#gray-code" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">Gray Code</span></a></li>
-                  <li id="__toc-item-codes-for-actions-conditions-and-states" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#codes-for-actions-conditions-and-states" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">Codes for Actions, Conditions, and States</span></a></li>
-                  <li id="__toc-item-n-cubes-and-distance" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#n-cubes-and-distance" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">n-Cubes and Distance</span></a></li>
-                  <li id="__toc-item-codes-for-detecting-and-correcting-errors" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#codes-for-detecting-and-correcting-errors" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">Codes for Detecting and Correcting Errors</span></a></li>
-                  <li id="__toc-item-codes-for-transmitting-and-storing-serial-data" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#codes-for-transmitting-and-storing-serial-data" data-v-84d105d6=""><span class="absolute top-1.2 left--4
-                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">Codes for Transmitting and Storing Serial Data</span></a></li>
-                </ol>
-              </div>
-            </aside><button style="display:none;" id="__toc-open" title="显示文章目录" class="floating-button text-lg bottom-24" aria-haspopup="dialog" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-menu"></span></button>
-          </div>
-        </ile-root>
-        <script></script>
-        <script type="module" async="">
-          import {
-            h as o,
-            c as s
-          } from "/assets/iles.5e82acba.js";
-          import {
-            _ as i
-          } from "/assets/TableOfContents.3de486f5.js";
-          import "/assets/vendor-vue.075573a8.js";
-          import "/assets/vite.5ce4fca4.js";
-          o(s, i, "ile-3", function(e, t, l) {
-            return {
-              headings: [{
-                level: t,
-                title: "Gray Code",
-                slug: "gray-code"
-              }, {
-                level: l,
-                title: "4-bit Gray code",
-                slug: "4-bit-gray-code"
-              }, {
-                level: t,
-                title: "Codes for Actions, Conditions, and States",
-                slug: "codes-for-actions-conditions-and-states"
-              }, {
-                level: t,
-                title: "n-Cubes and Distance",
-                slug: "n-cubes-and-distance"
-              }, {
-                level: t,
-                title: "Codes for Detecting and Correcting Errors",
-                slug: "codes-for-detecting-and-correcting-errors"
-              }, {
-                level: e,
-                title: "Error-Detecting Codes",
-                slug: "error-detecting-codes"
-              }, {
-                level: e,
-                title: "Error-Correcting and Multiple-Error-Detecting Codes",
-                slug: "error-correcting-and-multiple-error-detecting-codes"
-              }, {
-                level: e,
-                title: "Hamming Codes",
-                slug: "hamming-codes"
-              }, {
-                level: e,
-                title: "CRC Codes",
-                slug: "crc-codes"
-              }, {
-                level: e,
-                title: "Two-Dimensional Codes",
-                slug: "two-dimensional-codes"
-              }, {
-                level: e,
-                title: "Checksum Codes",
-                slug: "checksum-codes"
-              }, {
-                level: e,
-                title: "m-out-of-n Codes",
-                slug: "m-out-of-n-codes"
-              }, {
-                level: t,
-                title: "Codes for Transmitting and Storing Serial Data",
-                slug: "codes-for-transmitting-and-storing-serial-data"
-              }, {
-                level: l,
-                title: "Serial Line Codes",
-                slug: "serial-line-codes"
-              }]
-            }
-          }(3, 2, 6), {});
-        </script>
-        <div class="grow m-4 standard-card max-w-200">
-          <article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/BlogPosting">
-            <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author">
-              <meta itemprop="additionalName" content="ouuan">
-              <meta itemprop="givenName" content="Yufan">
-              <meta itemprop="familyName" content="You">
-              <meta itemprop="url" content="https://github.com/ouuan">
-              <link itemprop="gender" href="https://schema.org/Male">
-              <meta itemprop="image" content="/android-chrome-512x512.png">
-            </div>
-            <meta itemprop="mainEntityOfPage" content="https://ouuan.moe/post/2023/01/ddpp-2">
-            <meta itemprop="image" content="https://ouuan.moe/images/2023/01/ddpp-2.png"><ile-root id="ile-4" class="my-12">
-              <header class="my-12" data-v-267f9ef7="">
-                <h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">DDPP 第二章学习笔记</span></h1>
-                <div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2023-01-21 20:32:38 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/post/2023/01/ddpp-2.mdx?plain=1" data-v-267f9ef7=""><time datetime="2023-01-21T20:32:38+08:00" itemprop="dateCreated" data-v-267f9ef7="">2023-01-21 (23 天前) </time></a></span><span class="flex items-center" title="修改于 2023-01-24 22:37:12 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/post/2023/01/ddpp-2.mdx" data-v-267f9ef7=""><time datetime="2023-01-24T22:37:12+08:00" itemprop="dateModified" data-v-267f9ef7="">2023-01-24 (20 天前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span><span class="flex flex-wrap justify-center gap-x-2 gap-y-1" data-v-267f9ef7=""><span title="标签: ddpp" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/ddpp" class="hover:underline" data-v-267f9ef7="">ddpp</a></span><span title="标签: 学习笔记" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/学习笔记" class="hover:underline" data-v-267f9ef7="">学习笔记</a></span></span></div>
-              </header>
-            </ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as e,
-                c as t
-              } from "/assets/iles.5e82acba.js";
-              import p from "/assets/PostHead.e82ef423.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              import "/assets/VisitorCount.c343552a.js";
-              import "/assets/site.1441102a.js";
-              e(t, p, "ile-4", {
-                class: "my-12",
-                href: "/post/2023/01/ddpp-2",
-                filename: "src/pages/post/2023/01/ddpp-2.mdx",
-                frontmatter: {
-                  title: "DDPP 第二章学习笔记",
-                  date: new Date(1674304358e3),
-                  image: "/images/2023/01/ddpp-2.png",
-                  copyrightNotice: "本文包含若干截自 DDPP 的图片，本文作者对其不拥有版权。",
-                  tags: ["ddpp", "学习笔记"],
-                  lastUpdated: new Date(1674571032e3),
-                  published: new Date(1674571032e3),
-                  visitor: 28,
-                  description: `
+<meta property="twitter:url" content="https://ouuan.moe/post/2023/01/ddpp-2">
+<style>html:not(.dark):not(.light) { visibility: hidden; } body { visibility: hidden; }</style>
+<script>(() => { let dark; try { const theme = localStorage && localStorage.getItem('vueuse-color-scheme'); if (theme === 'dark') dark = true; else if (theme === 'light') dark = false; else dark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { dark = false; } document.documentElement.classList.add(dark ? 'dark' : 'light'); })()</script>
+<noscript><style>@media (prefers-color-scheme: light) { :root:not(.dark):not(.light) { color-scheme: light; --text-color: #232637; --bg-color: #DEE6EE; --card-color: #EFF3F7; --link-color: #1E66B8; --hover-color: #2E80DD; --active-color: #164C89; --bghover-color: #D6E0EA; --popup-color: #F7F9FB; --footer-color: #5F627B; --area-color: #E1E2E8; --nested-color: #F0F0F3; } } @media (prefers-color-scheme: dark) { :root:not(.dark):not(.light) { color-scheme: dark; --text-color: #E6EDF2; --bg-color: #0D0E15; --card-color: #1F2130; --link-color: #8BB8EC; --hover-color: #A2C6F0; --active-color: #74AAE8; --bghover-color: #353853; --popup-color: #2C2F45; --footer-color: #9699AE; --area-color: #2F313D; --nested-color: #3C3E4E; } } html { visibility:visible !important; }</style></noscript>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a07e5b">
+<link rel="canonical" href="https://ouuan.moe/post/2023/01/ddpp-2">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="RSS Feed - ouuan's blog">
+<link rel="alternate" type="application/atom+xml" href="/feed.atom" title="Atom Feed - ouuan's blog">
+<link rel="alternate" type="application/json" href="/feed.json" title="JSON Feed - ouuan's blog">
+<link rel="dns-prefetch" href="https://plausible.ouuan.moe">
+<link rel="preconnect" href="https://blog-visitor-count.ouuan.moe">
+<link rel="stylesheet" href="/vendors/katex/katex.css">
+<link rel="sitemap" href="https://ouuan.moe/sitemap.xml">
+<meta name="author" content="ouuan">
+<meta name="twitter:creator" content="@ouuan">
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://ouuan.moe/images/2023/01/ddpp-2.png">
+<meta property="generator" content="îles">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-01-24T14:37:12.000Z">
+<meta property="article:modified_time" content="2023-01-24T14:37:12.000Z">
+<meta property="article:author" content="ouuan">
+<meta property="article:tag" content="ddpp">
+<meta property="article:tag" content="学习笔记">
+<link rel="preconnect" href="https://giscus.app">
+<link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+    <link rel="stylesheet" href="/assets/style-e9b3c3a2.css">
+    
+  <link rel="modulepreload" href="/assets/iles.5e82acba.js" crossorigin=""><link rel="modulepreload" href="/assets/vendor-vue.075573a8.js" crossorigin=""><link rel="modulepreload" href="/assets/vite.5ce4fca4.js" crossorigin=""><link rel="modulepreload" href="/assets/SearchBar.5e1dcbf6.js" crossorigin=""><link rel="modulepreload" href="/assets/TableOfContents.3de486f5.js" crossorigin=""><link rel="modulepreload" href="/assets/PostHead.e82ef423.js" crossorigin=""><link rel="modulepreload" href="/assets/VisitorCount.c343552a.js" crossorigin=""><link rel="modulepreload" href="/assets/site.1441102a.js" crossorigin=""><link rel="modulepreload" href="/assets/GiscusCommentsInner.487fa077.js" crossorigin=""><link rel="modulepreload" href="/assets/useTheme.f1d4e689.js" crossorigin=""><link rel="modulepreload" href="/assets/PlausibleTrigger.bafee336.js" crossorigin=""><style>@font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.unique.e0d319ef.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.unique.ba22a033.woff') format('woff'); unicode-range: U+0-9876; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 400; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Regular.common.3e148809.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Regular.common.af590d95.woff') format('woff'); unicode-range: U+0-ff1b; } @font-face { font-family: "Noto Serif SC Web Font"; font-weight: 700; font-style: normal; font-display: swap; src: url('/assets/fonts/NotoSerifSC-Bold.common.248a9221.woff2') format('woff2'), url('/assets/fonts/NotoSerifSC-Bold.common.330f25d0.woff') format('woff'); unicode-range: U+0-ff1f; }</style></head>
+  <body itemscope="" itemtype="https://schema.org/ItemPage">
+    <div id="app"><header class="bg-card shadow print:hidden" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPHeader"><div class="page-container px-4 whitespace-nowrap flex flex-wrap sm:flex-nowrap justify-center"><div class="flex basis-full sm:basis-auto items-stretch justify-center sm:mr-3"><a class="p-3 bghover font-serif text-xl flex items-center" href="/"><span>ouuan<span class="mojikumi-narrow-left">’</span>s blog</span></a></div><nav class="flex"><ul class="flex"><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/"><span>首页</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/posts"><span>文章</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/tags"><span>标签</span></a></li><li class="flex-1 flex items-stretch justify-center"><a class="p-3 bghover flex items-center" href="/about"><span>关于</span></a></li></ul></nav><div class="sm:basis-full"></div><ul class="flex"><li class="flex"><ile-root id="ile-1"><div class="lg:hidden flex items-stretch"><a class="p-2 bghover flex items-center" href="/search" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></div><form role="search" class="hidden lg:flex items-stretch justify-center"><div class="flex items-center"><input value="" class="w-48 px-3 py-1 bg-area rd-full" type="search" placeholder="关键词" aria-label="全站搜索"></div><a class="p-2 bghover flex items-center" href="/search?q=" title="全站搜索"><span class="text-xl i-mdi-magnify"></span></a></form></ile-root><script></script><script type="module" async="">import{h as r,c as a}from"/assets/iles.5e82acba.js";import{_ as m}from"/assets/SearchBar.5e1dcbf6.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";r(a,m,"ile-1",{},{});
+</script></li><li class="flex items-stretch"><a class="p-2 bghover flex items-center" href="/feed.xml" title="RSS 订阅"><span class="text-xl i-mdi-rss"></span></a></li><li class="flex"><ile-root id="ile-2"><div class="relative flex items-stretch"><button title="暗色模式设置" class="p-2 bghover flex items-center" aria-haspopup="menu" aria-controls="__theme-switcher" aria-expanded="false"><span class="text-xl i-mdi-theme-light-dark"></span></button><ul style="display:none;" id="__theme-switcher" class="absolute z-20 top-full right-0 bg-popup shadow-md rd-1 whitespace-nowrap" role="menu" aria-label="暗色模式选项"><li class="bghover" role="menuitemradio" aria-checked="true"><button class="flex items-center p-1 text-hover"><span class="i-mdi-cellphone md:i-mdi-tablet lg:i-mdi-monitor mr-1"></span><span>跟随系统</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-white-balance-sunny mr-1"></span><span>总是亮色</span></button></li><li class="bghover" role="menuitemradio" aria-checked="false"><button class="flex items-center p-1"><span class="i-mdi-weather-night mr-1"></span><span>总是暗色</span></button></li></ul></div></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/ThemeSwitcher.3f8d4c7e.js"),["assets/ThemeSwitcher.3f8d4c7e.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js","assets/useTheme.f1d4e689.js"])).default});s(u,v,"ile-2",{},{})});export default E();
+</script></li></ul></div></header><main class="page-container py-6 min-h-100vh" itemprop="mainContentOfPage" itemscope="" itemtype="https://schema.org/WebPageElement"><div class="flex flex-row-reverse justify-center"><ile-root id="ile-3"><div class="flex print:hidden"><aside style="max-height:calc(100vh - 10rem);" id="__toc" class="sticky top-16 bg-card py-6 m-4 rd-2 w-72 2xl:w-84 3xl:w-96 shadow hidden xl:block" aria-label="文章目录" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPSideBar"><div class="flex flex-wrap gap-2 justify-between items-center pr-4 pl-8 mb-3"><div class="flex items-center"><h2 class="text-xl font-bold"> 文章目录 </h2><button id="__toc-close" class="px-1 text-xl flex items-center" title="关闭目录" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-close"></span></button></div><div><label class="ml-auto flex gap-1 items-center"><span>展开全部</span><input type="checkbox"></label></div></div><div style="max-height:calc(100% - 2rem);" class="overflow-auto overscroll-contain pr-4 pl-8"><ol data-v-84d105d6=""><li id="__toc-item-gray-code" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#gray-code" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">Gray Code</span></a></li><li id="__toc-item-codes-for-actions-conditions-and-states" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#codes-for-actions-conditions-and-states" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">Codes for Actions, Conditions, and States</span></a></li><li id="__toc-item-n-cubes-and-distance" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#n-cubes-and-distance" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-circle-medium" data-v-84d105d6=""></span><span data-v-84d105d6="">n-Cubes and Distance</span></a></li><li id="__toc-item-codes-for-detecting-and-correcting-errors" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#codes-for-detecting-and-correcting-errors" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">Codes for Detecting and Correcting Errors</span></a></li><li id="__toc-item-codes-for-transmitting-and-storing-serial-data" class="my-1 relative" data-v-84d105d6=""><a class="transition-color ease-out" href="#codes-for-transmitting-and-storing-serial-data" data-v-84d105d6=""><span class="absolute top-1.2 left--4
+                   motion-safe:transition-transform ease-out i-mdi-chevron-right" data-v-84d105d6=""></span><span data-v-84d105d6="">Codes for Transmitting and Storing Serial Data</span></a></li></ol></div></aside><button style="display:none;" id="__toc-open" title="显示文章目录" class="floating-button text-lg bottom-24" aria-haspopup="dialog" aria-controls="__toc" aria-expanded="true"><span class="i-mdi-menu"></span></button></div></ile-root><script></script><script type="module" async="">import{h as o,c as s}from"/assets/iles.5e82acba.js";import{_ as i}from"/assets/TableOfContents.3de486f5.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";o(s,i,"ile-3",function(e,t,l){return{headings:[{level:t,title:"Gray Code",slug:"gray-code"},{level:l,title:"4-bit Gray code",slug:"4-bit-gray-code"},{level:t,title:"Codes for Actions, Conditions, and States",slug:"codes-for-actions-conditions-and-states"},{level:t,title:"n-Cubes and Distance",slug:"n-cubes-and-distance"},{level:t,title:"Codes for Detecting and Correcting Errors",slug:"codes-for-detecting-and-correcting-errors"},{level:e,title:"Error-Detecting Codes",slug:"error-detecting-codes"},{level:e,title:"Error-Correcting and Multiple-Error-Detecting Codes",slug:"error-correcting-and-multiple-error-detecting-codes"},{level:e,title:"Hamming Codes",slug:"hamming-codes"},{level:e,title:"CRC Codes",slug:"crc-codes"},{level:e,title:"Two-Dimensional Codes",slug:"two-dimensional-codes"},{level:e,title:"Checksum Codes",slug:"checksum-codes"},{level:e,title:"m-out-of-n Codes",slug:"m-out-of-n-codes"},{level:t,title:"Codes for Transmitting and Storing Serial Data",slug:"codes-for-transmitting-and-storing-serial-data"},{level:l,title:"Serial Line Codes",slug:"serial-line-codes"}]}}(3,2,6),{});
+</script><div class="grow m-4 standard-card max-w-200"><article itemprop="mainEntity" itemscope="" itemtype="https://schema.org/BlogPosting"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="author"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><meta itemprop="mainEntityOfPage" content="https://ouuan.moe/post/2023/01/ddpp-2"><meta itemprop="image" content="https://ouuan.moe/images/2023/01/ddpp-2.png"><ile-root id="ile-4" class="my-12"><header class="my-12" data-v-267f9ef7=""><h1 class="mt-6 mb-3 text-8 text-center" itemprop="headline" data-v-267f9ef7=""><span class="inline-block font-serif break-anywhere" data-v-267f9ef7="">DDPP 第二章学习笔记</span></h1><div class="flex flex-wrap justify-center text-footer gap-x-4 gap-y-1 md:text-sm" data-v-267f9ef7=""><span class="flex items-center" title="创建于 2023-01-21 20:32:38 GMT+8" data-v-267f9ef7=""><span class="i-mdi-folder-plus-outline mr-1" aria-label="创建于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/blob/master/src/pages/post/2023/01/ddpp-2.mdx?plain=1" data-v-267f9ef7=""><time datetime="2023-01-21T20:32:38+08:00" itemprop="dateCreated" data-v-267f9ef7="">2023-01-21  (23 天前) </time></a></span><span class="flex items-center" title="修改于 2023-01-24 22:37:12 GMT+8" data-v-267f9ef7=""><span class="i-mdi-update mr-1" aria-label="修改于" data-v-267f9ef7=""></span><a class="hover:underline" href="https://github.com/ouuan/iles-blog/commits/master/src/pages/post/2023/01/ddpp-2.mdx" data-v-267f9ef7=""><time datetime="2023-01-24T22:37:12+08:00" itemprop="dateModified" data-v-267f9ef7="">2023-01-24  (20 天前) </time></a></span><span class="flex items-center" title="访问量" data-v-267f9ef7=""><span class="i-mdi-eye-outline mr-1" aria-label="访问量" data-v-267f9ef7=""></span><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中" data-v-267f9ef7=""></span></span><span class="flex flex-wrap justify-center gap-x-2 gap-y-1" data-v-267f9ef7=""><span title="标签: ddpp" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/ddpp" class="hover:underline" data-v-267f9ef7="">ddpp</a></span><span title="标签: 学习笔记" class="flex items-center" itemprop="keywords" data-v-267f9ef7=""><span class="i-mdi-tag-outline mr-1" aria-label="标签" data-v-267f9ef7=""></span><a href="/tag/学习笔记" class="hover:underline" data-v-267f9ef7="">学习笔记</a></span></span></div></header></ile-root><script></script><script type="module" async="">import{h as e,c as t}from"/assets/iles.5e82acba.js";import p from"/assets/PostHead.e82ef423.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/VisitorCount.c343552a.js";import"/assets/site.1441102a.js";e(t,p,"ile-4",{class:"my-12",href:"/post/2023/01/ddpp-2",filename:"src/pages/post/2023/01/ddpp-2.mdx",frontmatter:{title:"DDPP 第二章学习笔记",date:new Date(1674304358e3),image:"/images/2023/01/ddpp-2.png",copyrightNotice:"本文包含若干截自 DDPP 的图片，本文作者对其不拥有版权。",tags:["ddpp","学习笔记"],lastUpdated:new Date(1674571032e3),published:new Date(1674571032e3),visitor:28,description:`
 
 DDPP5 第二章 “Number Systems and Codes” 的学习笔记。
-`
-                },
-                "title-link": !1
-              }, {});
-            </script>
-            <section class="article-style" itemprop="articleBody">
+`},"title-link":!1},{});
+</script><section class="article-style" itemprop="articleBody">
 
-              <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第二章 <span class="mojikumi">“</span>Number Systems and Codes<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第二章 <span class="mojikumi">“</span>Number Systems and Codes<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
 
-              <p>开头整数编码的内容很多是 <a href="/post/2022/09/csapp-2">CS:APP 第二章</a> 讲过的<span class="mojikumi-line-end">，</span>也有一些新内容<span class="mojikumi-line-end">，</span>但基本上都是标星的可选内容<span class="mojikumi-line-end">，</span>我看是看了但懒得写笔记了<span class="mojikumi-line-start">（</span></p>
-              <p>一套编码被称作一个 <i>code</i><span class="mojikumi-line-end">，</span>一个 code 中的单个合法编码<span class="mojikumi-line-start">（</span>二进制串<span class="mojikumi-line-end">）</span>被称作一个 <i>code word</i><span class="mojikumi-line-end">。</span></p>
-              <h2 id="gray-code" class="heading"><a href="#gray-code" class="heading-anchor" aria-label="章节： Gray Code" tabindex="-1"></a><span>Gray Code</span></h2>
-              <p>Gray code 的性质<span class="mojikumi-line-end">：</span>相邻两个数的 code word 只有一位不同<span class="mojikumi-line-end">，</span>且 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                            <mo>−</mo>
-                            <mn>1</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^n-1</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 的 code word 中只有一个 1<span class="mojikumi-line-start">（</span>也就是说 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 的首尾也只有一位不同<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-              <a id="4-bit-gray-code" name="4-bit-gray-code" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3="">
-                  <summary class="p-3 flex justify-between items-center cursor-pointer" data-v-bb0e38b3="">
-                    <h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">4-bit Gray code</span></h3><span class="details-icon text-5" data-v-bb0e38b3=""></span>
-                  </summary>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <section class="code-block relative my-6 shadow" data-v-fc4b3c9e="">
-                      <div class="media-screen:important-flex items-center px-4 h-6 rd-t-1 bg-area dark:bg-#2A313A" style="display:none;" data-v-fc4b3c9e="">
-                        <h4 class="text-3 text-footer" aria-label="plain text 代码块" data-v-fc4b3c9e="">plain text</h4><ile-root id="ile-5"><button title="复制到剪贴板" class="copy-button b-footer text-footer" data-v-a02dde46=""><span class="i-mdi-content-copy" data-v-a02dde46=""></span><span class="absolute left-100vw" role="status" data-v-a02dde46=""></span></button></ile-root>
-                        <script></script>
-                        <script type="module" async="">
-                          var s = (i, a) => () => (a || i((a = {
-                            exports: {}
-                          }).exports, a), a.exports);
-                          var r = (i, a, o) => new Promise((c, n) => {
-                            var f = t => {
-                                try {
-                                  _(o.next(t))
-                                } catch (e) {
-                                  n(e)
-                                }
-                              },
-                              l = t => {
-                                try {
-                                  _(o.throw(t))
-                                } catch (e) {
-                                  n(e)
-                                }
-                              },
-                              _ = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-                            _((o = o.apply(i, a)).next())
-                          });
-                          import {
-                            _ as d
-                          } from "/assets/vite.5ce4fca4.js";
-                          import {
-                            d as p
-                          } from "/assets/iles.5e82acba.js";
-                          import "/assets/vendor-vue.075573a8.js";
-                          var E = s(m => {
-                            const u = () => r(m, null, function*() {
-                                return (yield d(() => import("/assets/iles.5e82acba.js").then(i => i.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                              }),
-                              v = () => r(m, null, function*() {
-                                return (yield d(() => import("/assets/CopyButton.039c992b.js"), ["assets/CopyButton.039c992b.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                              });
-                            p(u, v, "ile-5", {}, {})
-                          });
-                          export default E();
-                        </script>
-                      </div>
-                      <div class="light:hidden" data-v-fc4b3c9e="">
-                        <pre class="shiki dark" style="background-color: #011627" tabindex="0"><samp><span><span style="color: #d6deeb"> 0: 0000</span></span>
+<p>开头整数编码的内容很多是 <a href="/post/2022/09/csapp-2">CS:APP 第二章</a> 讲过的<span class="mojikumi-line-end">，</span>也有一些新内容<span class="mojikumi-line-end">，</span>但基本上都是标星的可选内容<span class="mojikumi-line-end">，</span>我看是看了但懒得写笔记了<span class="mojikumi-line-start">（</span></p>
+<p>一套编码被称作一个 <i>code</i><span class="mojikumi-line-end">，</span>一个 code 中的单个合法编码<span class="mojikumi-line-start">（</span>二进制串<span class="mojikumi-line-end">）</span>被称作一个 <i>code word</i><span class="mojikumi-line-end">。</span></p>
+<h2 id="gray-code" class="heading"><a href="#gray-code" class="heading-anchor" aria-label="章节： Gray Code" tabindex="-1"></a><span>Gray Code</span></h2>
+<p>Gray code 的性质<span class="mojikumi-line-end">：</span>相邻两个数的 code word 只有一位不同<span class="mojikumi-line-end">，</span>且 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 的 code word 中只有一个 1<span class="mojikumi-line-start">（</span>也就是说 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 的首尾也只有一位不同<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<a id="4-bit-gray-code" name="4-bit-gray-code" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-bb0e38b3=""><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-bb0e38b3=""><h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="Note: " class="text-5 i-mdi-pencil text-blue" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">4-bit Gray code</span></h3><span class="details-icon text-5" data-v-bb0e38b3=""></span></summary><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><section class="code-block relative my-6 shadow" data-v-fc4b3c9e=""><div class="media-screen:important-flex items-center px-4 h-6 rd-t-1 bg-area dark:bg-#2A313A" style="display:none;" data-v-fc4b3c9e=""><h4 class="text-3 text-footer" aria-label="plain text 代码块" data-v-fc4b3c9e="">plain text</h4><ile-root id="ile-5"><button title="复制到剪贴板" class="copy-button b-footer text-footer" data-v-a02dde46=""><span class="i-mdi-content-copy" data-v-a02dde46=""></span><span class="absolute left-100vw" role="status" data-v-a02dde46=""></span></button></ile-root><script></script><script type="module" async="">var s=(i,a)=>()=>(a||i((a={exports:{}}).exports,a),a.exports);var r=(i,a,o)=>new Promise((c,n)=>{var f=t=>{try{_(o.next(t))}catch(e){n(e)}},l=t=>{try{_(o.throw(t))}catch(e){n(e)}},_=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);_((o=o.apply(i,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{d as p}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=s(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(i=>i.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/CopyButton.039c992b.js"),["assets/CopyButton.039c992b.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});p(u,v,"ile-5",{},{})});export default E();
+</script></div><div class="light:hidden" data-v-fc4b3c9e=""><pre class="shiki dark" style="background-color: #011627" tabindex="0"><samp><span><span style="color: #d6deeb"> 0: 0000</span></span>
 <span><span style="color: #d6deeb"> 1: 0001</span></span>
 <span><span style="color: #d6deeb"> 2: 0011</span></span>
 <span><span style="color: #d6deeb"> 3: 0010</span></span>
@@ -490,10 +90,7 @@ DDPP5 第二章 “Number Systems and Codes” 的学习笔记。
 <span><span style="color: #d6deeb">12: 1010</span></span>
 <span><span style="color: #d6deeb">13: 1011</span></span>
 <span><span style="color: #d6deeb">14: 1001</span></span>
-<span><span style="color: #d6deeb">15: 1000</span></span></samp></pre>
-                      </div>
-                      <div class="light:important-block" style="display:none;" data-v-fc4b3c9e="">
-                        <pre class="shiki light" style="background-color: #FBFBFB" tabindex="0"><samp><span><span style="color: #403f53"> 0: 0000</span></span>
+<span><span style="color: #d6deeb">15: 1000</span></span></samp></pre></div><div class="light:important-block" style="display:none;" data-v-fc4b3c9e=""><pre class="shiki light" style="background-color: #FBFBFB" tabindex="0"><samp><span><span style="color: #403f53"> 0: 0000</span></span>
 <span><span style="color: #403f53"> 1: 0001</span></span>
 <span><span style="color: #403f53"> 2: 0011</span></span>
 <span><span style="color: #403f53"> 3: 0010</span></span>
@@ -508,817 +105,85 @@ DDPP5 第二章 “Number Systems and Codes” 的学习笔记。
 <span><span style="color: #403f53">12: 1010</span></span>
 <span><span style="color: #403f53">13: 1011</span></span>
 <span><span style="color: #403f53">14: 1001</span></span>
-<span><span style="color: #403f53">15: 1000</span></span></samp></pre>
-                      </div>
-                    </section>
-                  </div>
-                </details>
-              </aside>
-              <p>递归构造<span class="mojikumi-line-end">：</span></p>
-              <ol>
-                <li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mn>1</mn>
-                            </mrow>
-                            <annotation encoding="application/x-tex">1</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span>-bit Gray code: 0 是 0<span class="mojikumi-line-end">，</span>1 是 1</li>
-                <li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mo stretchy="false">(</mo>
-                              <mi>n</mi>
-                              <mo>+</mo>
-                              <mn>1</mn>
-                              <mo stretchy="false">)</mo>
-                            </mrow>
-                            <annotation encoding="application/x-tex">(n+1)</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>-bit Gray code:
-                  <ul>
-                    <li>前 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                              <semantics>
-                                <mrow>
-                                  <msup>
-                                    <mn>2</mn>
-                                    <mi>n</mi>
-                                  </msup>
-                                </mrow>
-                                <annotation encoding="application/x-tex">2^n</annotation>
-                              </semantics>
-                            </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个数和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                              <semantics>
-                                <mrow>
-                                  <mi>n</mi>
-                                </mrow>
-                                <annotation encoding="application/x-tex">n</annotation>
-                              </semantics>
-                            </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 相同<span class="mojikumi-line-start">（</span>开头加上 0<span class="mojikumi-line-end">）</span></li>
-                    <li>后 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                              <semantics>
-                                <mrow>
-                                  <msup>
-                                    <mn>2</mn>
-                                    <mi>n</mi>
-                                  </msup>
-                                </mrow>
-                                <annotation encoding="application/x-tex">2^n</annotation>
-                              </semantics>
-                            </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个数是把 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                              <semantics>
-                                <mrow>
-                                  <msup>
-                                    <mn>2</mn>
-                                    <mi>n</mi>
-                                  </msup>
-                                </mrow>
-                                <annotation encoding="application/x-tex">2^n</annotation>
-                              </semantics>
-                            </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                              <semantics>
-                                <mrow>
-                                  <mi>n</mi>
-                                </mrow>
-                                <annotation encoding="application/x-tex">n</annotation>
-                              </semantics>
-                            </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 逆序排列再在开头加上 1</li>
-                  </ul>
-                </li>
-              </ol>
-              <p>直接计算单个数的 Gray code<span class="mojikumi-line-end">：</span></p>
-              <ul>
-                <li>递归就能直接计算<span class="mojikumi-line-end">，</span><s>相信大家都会做 <a href="https://uoj.ac/problem/488">NOIPD1T1</a> 吧<span class="mojikumi-line-end">，</span>记得开 <code>unsigned long long</code></s><span class="mojikumi-line-start">（</span></li>
-                <li>也可以这么算<span class="mojikumi-line-end">：</span><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>n</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">n</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 的 Gray code 第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>i</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">i</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 位为 1 当且仅当 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>n</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">n</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 的二进制中第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>i</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">i</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 位和第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>i</mi>
-                              <mo>+</mo>
-                              <mn>1</mn>
-                            </mrow>
-                            <annotation encoding="application/x-tex">i+1</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 位不同</li>
-              </ul>
-              <p>书中描述了一个使用场景<span class="mojikumi-line-end">：</span>一个磁盘的每个扇区需要编码<span class="mojikumi-line-end">，</span>从扇区上读取若干 bits 来识别当前处于哪个扇区<span class="mojikumi-line-end">，</span>在两个相邻扇区的交界处可能有部分 bits 来自其中一个扇区<span class="mojikumi-line-end">，</span>另外的 bits 来自另一个扇区<span class="mojikumi-line-end">，</span>Gray code 可以使最终读取到的结果一定是这两个扇区之一<span class="mojikumi-line-end">。</span></p>
-              <h2 id="codes-for-actions-conditions-and-states" class="heading"><a href="#codes-for-actions-conditions-and-states" class="heading-anchor" aria-label="章节： Codes for Actions, Conditions, and States" tabindex="-1"></a><span>Codes for Actions, Conditions, and States</span></h2>
-              <p>说白了就是如何编码一个 enum<span class="mojikumi-line-end">。</span>不同的编码方式有各自的特点<span class="mojikumi-line-end">，</span>可以从编码长度<span class="mojikumi-line-end">、</span>电路开销<span class="mojikumi-line-end">、</span>设计难度<span class="mojikumi-line-end">、</span>可纠错性等角度考虑<span class="mojikumi-line-end">，</span>选择最合适的编码方式<span class="mojikumi-line-end">，</span>或者组合使用多种编码方式<span class="mojikumi-line-end">。</span></p>
-              <ul>
-                <li>顺着编码为二进制可以使编码长度最短<span class="mojikumi-line-start">（</span><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mo stretchy="false">⌈</mo>
-                              <msub>
-                                <mrow>
-                                  <mi>log</mi>
-                                  <mo>⁡</mo>
-                                </mrow>
-                                <mn>2</mn>
-                              </msub>
-                              <mi>n</mi>
-                              <mo stretchy="false">⌉</mo>
-                            </mrow>
-                            <annotation encoding="application/x-tex">\lceil \log_2 n \rceil</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">⌉</span></span></span></span></span><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></li>
-                <li><i>1-out-of-n-code</i><span class="mojikumi-line-end">：</span>合法的 code word 只有一位是 1<span class="mojikumi-line-end">，</span>每个 enum 对应某一位为 1<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">，</span>控制哪个灯开时<span class="mojikumi-line-end">，</span>这种编码方式无需再有电路来选择要开的灯<span class="mojikumi-line-end">，</span>直接将编码的每一位连到一盏灯就可以了<span class="mojikumi-line-end">。</span></li>
-                <li><i>m-out-of-n-code</i><span class="mojikumi-line-end">：</span>合法的 code word 恰有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>m</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">m</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> 位是 1<span class="mojikumi-line-end">。</span>要检测一个 code word<span class="mojikumi-line-end">，</span>只需使用一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>m</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">m</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span>-input AND gate<span class="mojikumi-line-end">，</span>电路较为简单<span class="mojikumi-line-end">。</span>而 code word 总数有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mo fence="true">(</mo>
-                              <mfrac linethickness="0px">
-                                <mi>n</mi>
-                                <mi>m</mi>
-                              </mfrac>
-                              <mo fence="true">)</mo>
-                            </mrow>
-                            <annotation encoding="application/x-tex">\binom nm</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span></span><span class="mojikumi-line-end">，</span>也很多<span class="mojikumi-line-end">。</span></li>
-              </ul>
-              <h2 id="n-cubes-and-distance" class="heading"><a href="#n-cubes-and-distance" class="heading-anchor" aria-label="章节： n-Cubes and Distance" tabindex="-1"></a><span>n-Cubes and Distance</span></h2>
-              <p>以 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit 二进制串作为顶点<span class="mojikumi-line-end">，</span>在只有一个 bit 不同的串之间连边<span class="mojikumi-line-end">，</span>得到的图被称作 <i><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                          <semantics>
-                            <mrow>
-                              <mi>n</mi>
-                            </mrow>
-                            <annotation encoding="application/x-tex">n</annotation>
-                          </semantics>
-                        </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-cube</i><span class="mojikumi-line-end">，</span>可以画成一个<span class="mojikumi-line-start">（</span>超<span class="mojikumi-line-end">）</span>立方体<span class="mojikumi">：</span><wbr><span class="mojikumi-line-start">（</span>DDPP5 Figure 2-8<span class="mojikumi-line-end">）</span></p>
-              <p>
-                <picture>
-                  <source type="image/webp" srcset="/assets/ddpp-fig-2-8.a7fd31fd.webp"><img srcset="/assets/ddpp-fig-2-8.8dc5d6f5.png" loading="lazy" src="/assets/ddpp-fig-2-8.8dc5d6f5.png" width="1213" height="827" alt="n-cubes for n = 1, 2, 3, and 4.">
-                </picture>
-              </p>
-              <p>图上两个二进制串之间的距离被称作 <i>Hamming distance</i><span class="mojikumi-line-end">，</span>表示两个串中不相同的位数<span class="mojikumi-line-end">。</span></p>
-              <h2 id="codes-for-detecting-and-correcting-errors" class="heading"><a href="#codes-for-detecting-and-correcting-errors" class="heading-anchor" aria-label="章节： Codes for Detecting and Correcting Errors" tabindex="-1"></a><span>Codes for Detecting and Correcting Errors</span></h2>
-              <p>实际存储<span class="mojikumi-line-end">、</span>传输编码时<span class="mojikumi-line-end">，</span>可能会发生错误<span class="mojikumi-line-end">。</span>错误的具体行为可以由 <i>error model</i> 刻画<span class="mojikumi-line-end">。</span>最简单的 error model 是 <i>independent error model</i><span class="mojikumi-line-end">，</span>即每个错误只独立地改变编码中的一位<span class="mojikumi-line-end">，</span>多位同时发生错误的概率比一位发生错误的概率小得多<span class="mojikumi-line-end">。</span></p>
-              <h3 id="error-detecting-codes" class="heading"><a href="#error-detecting-codes" class="heading-anchor" aria-label="章节： Error-Detecting Codes" tabindex="-1"></a><span>Error-Detecting Codes</span></h3>
-              <p>对于一个 code<span class="mojikumi-line-end">，</span>不是 code word 的二进制串称作 <i>noncode word</i><span class="mojikumi-line-end">。</span></p>
-              <p><i>error-detecting code</i> 具有这样的性质<span class="mojikumi-line-end">：</span>任何一个 code word 在任意修改一位后都会得到一个 noncode word<span class="mojikumi-line-end">。</span></p>
-              <p>使用 error-detecting code 时<span class="mojikumi-line-end">，</span>可以认为只要是 code word 都没有发生错误<span class="mojikumi-line-end">，</span>noncode word 则一定发生了错误<span class="mojikumi-line-end">。</span></p>
-              <p>一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit error-detecting code 是 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-cube 的一个点独立集<span class="mojikumi-line-end">，</span>也就是说任意两个 code word 的 Hamming distance 都至少为 2<span class="mojikumi-line-end">。</span></p>
-              <p>奇偶性可以用来设计 error-detecting code<span class="mojikumi-line-end">：</span>任给一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit code<span class="mojikumi-line-end">，</span>将第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n+1</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 位设为前 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 位中 1 的个数的奇偶性<span class="mojikumi-line-start">（</span>称作 <i>parity bit</i><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>则可以得到一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mo stretchy="false">(</mo>
-                            <mi>n</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                            <mo stretchy="false">)</mo>
-                          </mrow>
-                          <annotation encoding="application/x-tex">(n+1)</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>-bit error-detecting code<span class="mojikumi-line-end">。</span>这样的编码称作 <i>1-bit parity code</i><span class="mojikumi-line-end">，</span>若 code word 都有偶数个 1 则称作 <i>even-parity code</i><span class="mojikumi-line-end">，</span>有奇数个 1 则称作 <i>odd-parity code</i><span class="mojikumi-line-end">。</span></p>
-              <h3 id="error-correcting-and-multiple-error-detecting-codes" class="heading"><a href="#error-correcting-and-multiple-error-detecting-codes" class="heading-anchor" aria-label="章节： Error-Correcting and Multiple-Error-Detecting Codes" tabindex="-1"></a><span>Error-Correcting and Multiple-Error-Detecting Codes</span></h3>
-              <p>如果一个 code 中两个 code word 的最小 Hamming distance 有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mn>2</mn>
-                            <mi>c</mi>
-                            <mo>+</mo>
-                            <mi>d</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2c+d+1</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span class="mojikumi-line-end">，</span>则可以对最多 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>c</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">c</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span></span> 位的错误进行纠正<span class="mojikumi-line-end">，</span>并且检测到最多 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>c</mi>
-                            <mo>+</mo>
-                            <mi>d</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">c+d</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> 位的错误<span class="mojikumi-line-start">（</span>一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>c</mi>
-                            <mo>+</mo>
-                            <mi>d</mi>
-                            <mo>+</mo>
-                            <mn>1</mn>
-                            <mo>∼</mo>
-                            <mn>2</mn>
-                            <mi>c</mi>
-                            <mo>+</mo>
-                            <mi>d</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">c+d+1 \sim 2c+d</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> 位的错误会被认为是来自另一个方向的错误而被错误地纠正<span class="mojikumi-line-end">，</span>从而不能被检测到<span class="mojikumi-line-end">；</span>可以选择少纠错几位来检测到更多位的错误<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-              <p>纠错就是找到和一个 noncode word 的 Hamming distance 最小的唯一一个 code word<span class="mojikumi-line-end">，</span>进行纠错的硬件被称作 error-correcting decoder<span class="mojikumi-line-end">。</span></p>
-              <h3 id="hamming-codes" class="heading"><a href="#hamming-codes" class="heading-anchor" aria-label="章节： Hamming Codes" tabindex="-1"></a><span>Hamming Codes</span></h3>
-              <p><i>Hamming code</i> 是一种通用的最小距离为 3 的编码<span class="mojikumi-line-end">。</span>一个有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>n</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 个 check bit 的 Hamming code 最多可以存储 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                            <mo>−</mo>
-                            <mi>n</mi>
-                            <mo>−</mo>
-                            <mn>1</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^n-n-1</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 个 information bit<span class="mojikumi-line-end">，</span>从而总共有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                            <mo>−</mo>
-                            <mn>1</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^n-1</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 个 bit<span class="mojikumi-line-end">。</span></p>
-              <p>一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mo stretchy="false">(</mo>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                            <mo>−</mo>
-                            <mn>1</mn>
-                            <mo stretchy="false">)</mo>
-                          </mrow>
-                          <annotation encoding="application/x-tex">(2^n-1)</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>-bit Hamming code 的 bit 依次编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mn>1</mn>
-                            <mo>∼</mo>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                            <mo>−</mo>
-                            <mn>1</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">1 \sim 2^n-1</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span class="mojikumi-line-end">，</span>编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mn>1</mn>
-                            <mo separator="true">,</mo>
-                            <mn>2</mn>
-                            <mo separator="true">,</mo>
-                            <mn>4</mn>
-                            <mo separator="true">,</mo>
-                            <mo>…</mo>
-                            <mo separator="true">,</mo>
-                            <msup>
-                              <mn>2</mn>
-                              <mrow>
-                                <mi>n</mi>
-                                <mo>−</mo>
-                                <mn>1</mn>
-                              </mrow>
-                            </msup>
-                          </mrow>
-                          <annotation encoding="application/x-tex">1, 2, 4, \ldots, 2^{n-1}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span> 的 bit 是 check bit<span class="mojikumi-line-end">。</span>每个 check bit 代表一个 group<span class="mojikumi-line-end">，</span>编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>i</mi>
-                            </msup>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^i</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span> 的 check bit 所代表的 group 包含的是编号的二进制中包含 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>i</mi>
-                            </msup>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^i</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span> 的所有 bit<span class="mojikumi-line-end">。</span>check bit 的取值使得每个 group 都含偶数个 1<span class="mojikumi-line-end">。</span></p>
-              <p>实际使用的 Hamming code 往往会将 check bit 移到末尾<span class="mojikumi-line-end">，</span>例如一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mn>15</mn>
-                          </mrow>
-                          <annotation encoding="application/x-tex">15</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15</span></span></span></span></span>-bit Hamming code 中 bit 的编号依次为 15, 14, 13, 12, 11, 10, 9, 7, 6, 5, 3, 8, 4, 2, 1<span class="mojikumi-line-end">。</span></p>
-              <p>因为每个 bit 都至少属于一个 group<span class="mojikumi-line-end">，</span>改变一个 bit 会得到 noncode word<span class="mojikumi-line-end">。</span>改变编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>i</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">i</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>j</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">j</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 的两个 bit 时<span class="mojikumi-line-end">，</span>会改变 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>i</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">i</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 异或 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <mi>j</mi>
-                          </mrow>
-                          <annotation encoding="application/x-tex">j</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 对应的 group<span class="mojikumi-line-end">，</span>所以改变两个 bit 会得到 noncode word<span class="mojikumi-line-end">。</span>所以 Hamming code 中两个 code word 的 Hamming distance 至少为 3<span class="mojikumi-line-end">。</span></p>
-              <p>纠错时<span class="mojikumi-line-end">，</span>只要将错误的 check bit 的编号或起来就可以得到错误的 bit 的编号<span class="mojikumi-line-end">。</span></p>
-              <p>可以通过增加一个 parity bit 来得到一个最小距离为 4 的 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msup>
-                              <mn>2</mn>
-                              <mi>n</mi>
-                            </msup>
-                          </mrow>
-                          <annotation encoding="application/x-tex">2^n</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>-bit extended Hamming code<span class="mojikumi-line-end">。</span></p>
-              <h3 id="crc-codes" class="heading"><a href="#crc-codes" class="heading-anchor" aria-label="章节： CRC Codes" tabindex="-1"></a><span>CRC Codes</span></h3>
-              <p><i>cyclic-redundancy-check (CRC) codes</i> 是一种得到广泛应用的 error-correcting code<span class="mojikumi-line-end">，</span>例如被用在文件系统和网络通信中<span class="mojikumi-line-end">，</span>它可以检测到成团出现的多位错误<span class="mojikumi-line-end">，</span>在一些场景中这种错误比随机出现的错误概率更高<span class="mojikumi-line-end">。</span></p>
-              <h3 id="two-dimensional-codes" class="heading"><a href="#two-dimensional-codes" class="heading-anchor" aria-label="章节： Two-Dimensional Codes" tabindex="-1"></a><span>Two-Dimensional Codes</span></h3>
-              <p>如 DDPP5 Figure 2-14 (a) 所示<span class="mojikumi-line-end">：</span></p>
-              <p>
-                <picture>
-                  <source type="image/webp" srcset="/assets/ddpp-fig-2-14-a.6b397e71.webp"><img srcset="/assets/ddpp-fig-2-14-a.ecefd691.png" loading="lazy" src="/assets/ddpp-fig-2-14-a.ecefd691.png" width="776" height="529" alt="所有 bits 排列成一个矩阵，矩阵被划分为四个部分: information bits, checks on rows, checks on columns, checks on checks.">
-                </picture>
-              </p>
-              <p>选择 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">r</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">w</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">c</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">l</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 两种编码方式<span class="mojikumi-line-end">，</span>设置 checks on rows 使得 information bits 所在的每一行都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">r</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">w</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">，</span>设置 checks on columns 使得 information bits 所在的每一列都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">c</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">l</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">，</span>而 checks on checks 则可以选择<span class="mojikumi-line-end">，</span>要么每一行都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">r</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">w</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">，</span>要么每一列都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">c</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">l</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">。</span></p>
-              <p>这样得到的 <i>two-dimensional code</i> 的最小距离是 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">r</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">w</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <semantics>
-                          <mrow>
-                            <msub>
-                              <mi>C</mi>
-                              <mrow>
-                                <mi mathvariant="normal">c</mi>
-                                <mi mathvariant="normal">o</mi>
-                                <mi mathvariant="normal">l</mi>
-                              </mrow>
-                            </msub>
-                          </mrow>
-                          <annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation>
-                        </semantics>
-                      </math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的乘积<span class="mojikumi-line-end">，</span>所以 two-dimensional code 也被叫做 <i>product code</i><span class="mojikumi-line-end">。</span></p>
-              <p>RAID 就可以看作使用了 two-dimensional code<span class="mojikumi-line-end">：</span>每块数据盘内的每个 block 都有 CRC code<span class="mojikumi-line-end">，</span>还有一块硬盘用来存所有数据盘的 parity bits<span class="mojikumi-line-end">。</span></p>
-              <h3 id="checksum-codes" class="heading"><a href="#checksum-codes" class="heading-anchor" aria-label="章节： Checksum Codes" tabindex="-1"></a><span>Checksum Codes</span></h3>
-              <p>parity bit 可以看作是 bits 在模 2 意义下的和<span class="mojikumi-line-end">，</span>可以推广为 <i>checksum</i><span class="mojikumi-line-end">。</span></p>
-              <p>例如<span class="mojikumi-line-end">，</span>模 256 意义下<span class="mojikumi-line-end">，</span>可以计算 bytes 的和<span class="mojikumi-line-end">，</span>来检测 bytes 的错误<span class="mojikumi-line-end">。</span></p>
-              <p>除了改变模数<span class="mojikumi-line-end">，</span>还可以改变计算方式<span class="mojikumi-line-end">，</span>例如使用 ones<span class="mojikumi-narrow-left">’</span> complement 加法来计算模 255 或 65535 意义下的 checksum<span class="mojikumi-line-end">。</span></p>
-              <h3 id="m-out-of-n-codes" class="heading"><a href="#m-out-of-n-codes" class="heading-anchor" aria-label="章节： m-out-of-n Codes" tabindex="-1"></a><span>m-out-of-n Codes</span></h3>
-              <p><a href="#codes-for-actions-conditions-and-states">m-out-of-n code</a> 的最小距离为 2<span class="mojikumi-line-end">，</span>并且能够检测到 <i>unidirectional multiple errors</i><span class="mojikumi-line-end">，</span>即所有错误都是 0 变 1 或 1 变 0 的改变多位的错误<span class="mojikumi-line-end">。</span></p>
-              <h2 id="codes-for-transmitting-and-storing-serial-data" class="heading"><a href="#codes-for-transmitting-and-storing-serial-data" class="heading-anchor" aria-label="章节： Codes for Transmitting and Storing Serial Data" tabindex="-1"></a><span>Codes for Transmitting and Storing Serial Data</span></h2>
-              <ul>
-                <li>parallel data transmission: 一个 data word 的所有 bit 同时传输</li>
-                <li>serial data transmission: 一个 bit 一个 bit 传输</li>
-              </ul>
-              <p>在某些场景下<span class="mojikumi-line-end">，</span>serial data transmission 可以减少线路开销<span class="mojikumi-line-end">，</span>或者减少一些设计上的困难<span class="mojikumi-line-end">。</span></p>
-              <p>最基本的 serial data transmission 需要三个信号<span class="mojikumi-line-end">：</span></p>
-              <ul>
-                <li>CLOCK: 将时间划分为一个个 <i>bit cell</i><span class="mojikumi-line-end">，</span>标识出每个 bit 所处的时间范围</li>
-                <li>SERDATA: 实际传输的数据<span class="mojikumi-line-end">，</span>具体内容依 <i>line code</i> 而定</li>
-                <li>SYNC: 用来标识 bit 的 significance<span class="mojikumi-line-end">，</span>例如传输 bytes 时用来标记每个 byte 的开头</li>
-              </ul>
-              <p>实际上<span class="mojikumi-line-end">，</span>也可以选择合适的 line code 从而只需传输一个信号<span class="mojikumi-line-end">，</span>从数据信号中读取出 CLOCK 和 SYNC 的信息<span class="mojikumi-line-end">。</span></p>
-              <a id="serial-line-codes" name="serial-line-codes" aria-hidden="true"></a>
-              <aside role="note" data-v-bb0e38b3="">
-                <div class="shadow-md rd-1 b-l-6 my-6 bg-gray-2 dark:bg-gray-11 b-gray-6" data-v-bb0e38b3="">
-                  <div class="p-3 flex justify-between items-center" data-v-bb0e38b3="">
-                    <h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="WIP: " class="text-5 i-mdi-timer-sand text-gray" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">Serial Line Codes</span></h3><!--v-if-->
-                  </div>
-                  <div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3="">
-                    <p>Serial Line Codes 这一节我感觉有些地方没完全理解<span class="mojikumi-line-end">，</span>也有和 Wikipedia 有出入的地方<span class="mojikumi-line-end">，</span>也标星了<span class="mojikumi-line-end">，</span>感觉后面不一定用得上<span class="mojikumi-line-end">，</span>就先咕了<span class="mojikumi-line-end">。</span></p>
-                  </div>
-                </div>
-              </aside>
-            </section>
-            <div class="article-style my-9">
-              <hr>
-            </div>
-            <footer>
-              <div class="my-6 bg-area shadow b-l-6 b-gray-4 dark:b-gray-11 p-6" itemprop="copyrightNotice">
-                <ul class="flex flex-col gap-1">
-                  <li class="flex gap-1"><span class="shrink-0">文章作者:</span><a href="https://github.com/ouuan" rel="author">ouuan</a></li>
-                  <li class="flex gap-1"><span class="shrink-0">原文链接:</span><a href="https://ouuan.moe/post/2023/01/ddpp-2" rel="canonical" class="break-all">https://ouuan.moe/post/2023/01/ddpp-2</a></li>
-                  <li class="flex gap-1"><span class="shrink-0">许可协议:</span><span> 本文采用 <span class="article-style"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="font-sans" itemprop="license">CC BY-SA 4.0</a></span> 许可协议进行授权，未满足 <span class="underline decoration-dotted" title="简而言之，转载时必须标明出处（本文的链接），标明是转载而非原创，标明作了哪些修改，并使用相同的许可协议，但无需私信征求许可">许可协议要求</span> 不得转载。 </span></li>
-                  <li class="flex gap-1"><span class="shrink-0">额外说明:</span><span>本文包含若干截自 DDPP 的图片，本文作者对其不拥有版权。</span></li>
-                </ul>
-              </div>
-            </footer>
-          </article>
-          <div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-6"></ile-root>
-            <script></script>
-            <script type="module" async="">
-              import {
-                h as r,
-                c as m
-              } from "/assets/iles.5e82acba.js";
-              import {
-                _ as o
-              } from "/assets/GiscusCommentsInner.487fa077.js";
-              import "/assets/vendor-vue.075573a8.js";
-              import "/assets/vite.5ce4fca4.js";
-              import "/assets/useTheme.f1d4e689.js";
-              import "/assets/site.1441102a.js";
-              r(m, o, "ile-6", {
-                term: "DDPP 第二章学习笔记"
-              }, {});
-            </script>
-          </div>
-          <nav class="my-6 flex justify-between gap-6 lg:text-justify print:hidden">
-            <div class="flex-1 flex"><a class="flex items-center gap-1 hover:text-hover" href="/post/2023/01/glyph-segregator"><span class="i-mdi-chevron-left" aria-label="上一篇"></span><span class="break-anywhere">另一种很新的中文字体网页嵌入方案</span></a></div>
-            <div class="flex-1 flex justify-end"><a class="flex items-center gap-1 hover:text-hover flex-row-reverse" href="/post/2023/01/ddpp-3"><span class="i-mdi-chevron-right" aria-label="下一篇"></span><span class="break-anywhere">DDPP 第三章学习笔记</span></a></div>
-          </nav>
-        </div>
-      </div>
-    </main>
-    <footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter">
-      <div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-14 01:26:29 GMT+8 (7858a82)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div>
-      <div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-7"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root>
-          <script></script>
-          <script type="module" async="">
-            var p = (o, a) => () => (a || o((a = {
-              exports: {}
-            }).exports, a), a.exports);
-            var r = (o, a, _) => new Promise((c, n) => {
-              var f = t => {
-                  try {
-                    e(_.next(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                l = t => {
-                  try {
-                    e(_.throw(t))
-                  } catch (i) {
-                    n(i)
-                  }
-                },
-                e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-              e((_ = _.apply(o, a)).next())
-            });
-            import {
-              _ as d
-            } from "/assets/vite.5ce4fca4.js";
-            import {
-              a as s
-            } from "/assets/iles.5e82acba.js";
-            import "/assets/vendor-vue.075573a8.js";
-            var E = p(m => {
-              const u = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                }),
-                v = () => r(m, null, function*() {
-                  return (yield d(() => import("/assets/VisitorCount.a8d4ae35.js"), ["assets/VisitorCount.a8d4ae35.js", "assets/VisitorCount.c343552a.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-                });
-              s(u, v, "ile-7", {}, {})
-            });
-            export default E();
-          </script> 人到访过这里
-        </span></div>
-      <div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div>
-    </footer>
-    <meta itemprop="copyrightYear" content="2022 - 2023">
-    <div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder">
-      <meta itemprop="additionalName" content="ouuan">
-      <meta itemprop="givenName" content="Yufan">
-      <meta itemprop="familyName" content="You">
-      <meta itemprop="url" content="https://github.com/ouuan">
-      <link itemprop="gender" href="https://schema.org/Male">
-      <meta itemprop="image" content="/android-chrome-512x512.png">
-    </div><ile-root id="ile-8"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (o, a) => () => (a || o((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (o, a, _) => new Promise((c, n) => {
-        var f = t => {
-            try {
-              e(_.next(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = t => {
-            try {
-              e(_.throw(t))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = t => t.done ? c(t.value) : Promise.resolve(t.value).then(f, l);
-        e((_ = _.apply(o, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var E = p(m => {
-        const u = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(o => o.v), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          v = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/BackToTop.9b4bb339.js"), ["assets/BackToTop.9b4bb339.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          });
-        s(u, v, "ile-8", {}, {})
-      });
-      export default E();
-    </script>
-    <div class="hidden"></div><ile-root id="ile-9"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      import {
-        h as o,
-        b as r
-      } from "/assets/iles.5e82acba.js";
-      import {
-        o as a
-      } from "/assets/PlausibleTrigger.bafee336.js";
-      import "/assets/vendor-vue.075573a8.js";
-      import "/assets/vite.5ce4fca4.js";
-      o(r, a, "ile-9", {}, {});
-    </script>
-    <div></div><ile-root id="ile-10"></ile-root>
-    <script></script>
-    <script type="module" async="">
-      var p = (t, a) => () => (a || t((a = {
-        exports: {}
-      }).exports, a), a.exports);
-      var r = (t, a, _) => new Promise((c, n) => {
-        var f = o => {
-            try {
-              e(_.next(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          l = o => {
-            try {
-              e(_.throw(o))
-            } catch (i) {
-              n(i)
-            }
-          },
-          e = o => o.done ? c(o.value) : Promise.resolve(o.value).then(f, l);
-        e((_ = _.apply(t, a)).next())
-      });
-      import {
-        _ as d
-      } from "/assets/vite.5ce4fca4.js";
-      import {
-        a as s
-      } from "/assets/iles.5e82acba.js";
-      import "/assets/vendor-vue.075573a8.js";
-      var u = p(m => {
-        const E = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/iles.5e82acba.js").then(t => t.e), ["assets/iles.5e82acba.js", "assets/vendor-vue.075573a8.js", "assets/vite.5ce4fca4.js"])).default
-          }),
-          h = () => r(m, null, function*() {
-            return (yield d(() => import("/assets/TextJustifyFix.4fa5e997.js"), [])).onLoad
-          });
-        s(E, h, "ile-10", {}, {})
-      });
-      export default u();
-    </script>
-    <meta itemprop="inLanguage" content="zh-CN">
-  </div>
-
-</body>
-
-</html>
+<span><span style="color: #403f53">15: 1000</span></span></samp></pre></div></section></div></details></aside>
+<p>递归构造<span class="mojikumi-line-end">：</span></p>
+<ol>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span>-bit Gray code: 0 是 0<span class="mojikumi-line-end">，</span>1 是 1</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>-bit Gray code:
+<ul>
+<li>前 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个数和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 相同<span class="mojikumi-line-start">（</span>开头加上 0<span class="mojikumi-line-end">）</span></li>
+<li>后 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个数是把 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 逆序排列再在开头加上 1</li>
+</ul>
+</li>
+</ol>
+<p>直接计算单个数的 Gray code<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>递归就能直接计算<span class="mojikumi-line-end">，</span><s>相信大家都会做 <a href="https://uoj.ac/problem/488">NOIPD1T1</a> 吧<span class="mojikumi-line-end">，</span>记得开 <code>unsigned long long</code></s><span class="mojikumi-line-start">（</span></li>
+<li>也可以这么算<span class="mojikumi-line-end">：</span><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 的 Gray code 第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 位为 1 当且仅当 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 的二进制中第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 位和第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 位不同</li>
+</ul>
+<p>书中描述了一个使用场景<span class="mojikumi-line-end">：</span>一个磁盘的每个扇区需要编码<span class="mojikumi-line-end">，</span>从扇区上读取若干 bits 来识别当前处于哪个扇区<span class="mojikumi-line-end">，</span>在两个相邻扇区的交界处可能有部分 bits 来自其中一个扇区<span class="mojikumi-line-end">，</span>另外的 bits 来自另一个扇区<span class="mojikumi-line-end">，</span>Gray code 可以使最终读取到的结果一定是这两个扇区之一<span class="mojikumi-line-end">。</span></p>
+<h2 id="codes-for-actions-conditions-and-states" class="heading"><a href="#codes-for-actions-conditions-and-states" class="heading-anchor" aria-label="章节： Codes for Actions, Conditions, and States" tabindex="-1"></a><span>Codes for Actions, Conditions, and States</span></h2>
+<p>说白了就是如何编码一个 enum<span class="mojikumi-line-end">。</span>不同的编码方式有各自的特点<span class="mojikumi-line-end">，</span>可以从编码长度<span class="mojikumi-line-end">、</span>电路开销<span class="mojikumi-line-end">、</span>设计难度<span class="mojikumi-line-end">、</span>可纠错性等角度考虑<span class="mojikumi-line-end">，</span>选择最合适的编码方式<span class="mojikumi-line-end">，</span>或者组合使用多种编码方式<span class="mojikumi-line-end">。</span></p>
+<ul>
+<li>顺着编码为二进制可以使编码长度最短<span class="mojikumi-line-start">（</span><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌈</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>n</mi><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil \log_2 n \rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">⌉</span></span></span></span></span><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></li>
+<li><i>1-out-of-n-code</i><span class="mojikumi-line-end">：</span>合法的 code word 只有一位是 1<span class="mojikumi-line-end">，</span>每个 enum 对应某一位为 1<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">，</span>控制哪个灯开时<span class="mojikumi-line-end">，</span>这种编码方式无需再有电路来选择要开的灯<span class="mojikumi-line-end">，</span>直接将编码的每一位连到一盏灯就可以了<span class="mojikumi-line-end">。</span></li>
+<li><i>m-out-of-n-code</i><span class="mojikumi-line-end">：</span>合法的 code word 恰有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span> 位是 1<span class="mojikumi-line-end">。</span>要检测一个 code word<span class="mojikumi-line-end">，</span>只需使用一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span>-input AND gate<span class="mojikumi-line-end">，</span>电路较为简单<span class="mojikumi-line-end">。</span>而 code word 总数有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>n</mi><mi>m</mi></mfrac><mo fence="true">)</mo></mrow><annotation encoding="application/x-tex">\binom nm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7454em;"><span style="top:-2.355em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span></span><span class="mojikumi-line-end">，</span>也很多<span class="mojikumi-line-end">。</span></li>
+</ul>
+<h2 id="n-cubes-and-distance" class="heading"><a href="#n-cubes-and-distance" class="heading-anchor" aria-label="章节： n-Cubes and Distance" tabindex="-1"></a><span>n-Cubes and Distance</span></h2>
+<p>以 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit 二进制串作为顶点<span class="mojikumi-line-end">，</span>在只有一个 bit 不同的串之间连边<span class="mojikumi-line-end">，</span>得到的图被称作 <i><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-cube</i><span class="mojikumi-line-end">，</span>可以画成一个<span class="mojikumi-line-start">（</span>超<span class="mojikumi-line-end">）</span>立方体<span class="mojikumi">：</span><wbr><span class="mojikumi-line-start">（</span>DDPP5 Figure 2-8<span class="mojikumi-line-end">）</span></p>
+<p><picture><source type="image/webp" srcset="/assets/ddpp-fig-2-8.a7fd31fd.webp"><img srcset="/assets/ddpp-fig-2-8.8dc5d6f5.png" loading="lazy" src="/assets/ddpp-fig-2-8.8dc5d6f5.png" width="1213" height="827" alt="n-cubes for n = 1, 2, 3, and 4."></picture></p>
+<p>图上两个二进制串之间的距离被称作 <i>Hamming distance</i><span class="mojikumi-line-end">，</span>表示两个串中不相同的位数<span class="mojikumi-line-end">。</span></p>
+<h2 id="codes-for-detecting-and-correcting-errors" class="heading"><a href="#codes-for-detecting-and-correcting-errors" class="heading-anchor" aria-label="章节： Codes for Detecting and Correcting Errors" tabindex="-1"></a><span>Codes for Detecting and Correcting Errors</span></h2>
+<p>实际存储<span class="mojikumi-line-end">、</span>传输编码时<span class="mojikumi-line-end">，</span>可能会发生错误<span class="mojikumi-line-end">。</span>错误的具体行为可以由 <i>error model</i> 刻画<span class="mojikumi-line-end">。</span>最简单的 error model 是 <i>independent error model</i><span class="mojikumi-line-end">，</span>即每个错误只独立地改变编码中的一位<span class="mojikumi-line-end">，</span>多位同时发生错误的概率比一位发生错误的概率小得多<span class="mojikumi-line-end">。</span></p>
+<h3 id="error-detecting-codes" class="heading"><a href="#error-detecting-codes" class="heading-anchor" aria-label="章节： Error-Detecting Codes" tabindex="-1"></a><span>Error-Detecting Codes</span></h3>
+<p>对于一个 code<span class="mojikumi-line-end">，</span>不是 code word 的二进制串称作 <i>noncode word</i><span class="mojikumi-line-end">。</span></p>
+<p><i>error-detecting code</i> 具有这样的性质<span class="mojikumi-line-end">：</span>任何一个 code word 在任意修改一位后都会得到一个 noncode word<span class="mojikumi-line-end">。</span></p>
+<p>使用 error-detecting code 时<span class="mojikumi-line-end">，</span>可以认为只要是 code word 都没有发生错误<span class="mojikumi-line-end">，</span>noncode word 则一定发生了错误<span class="mojikumi-line-end">。</span></p>
+<p>一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit error-detecting code 是 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-cube 的一个点独立集<span class="mojikumi-line-end">，</span>也就是说任意两个 code word 的 Hamming distance 都至少为 2<span class="mojikumi-line-end">。</span></p>
+<p>奇偶性可以用来设计 error-detecting code<span class="mojikumi-line-end">：</span>任给一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit code<span class="mojikumi-line-end">，</span>将第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 位设为前 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 位中 1 的个数的奇偶性<span class="mojikumi-line-start">（</span>称作 <i>parity bit</i><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>则可以得到一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>-bit error-detecting code<span class="mojikumi-line-end">。</span>这样的编码称作 <i>1-bit parity code</i><span class="mojikumi-line-end">，</span>若 code word 都有偶数个 1 则称作 <i>even-parity code</i><span class="mojikumi-line-end">，</span>有奇数个 1 则称作 <i>odd-parity code</i><span class="mojikumi-line-end">。</span></p>
+<h3 id="error-correcting-and-multiple-error-detecting-codes" class="heading"><a href="#error-correcting-and-multiple-error-detecting-codes" class="heading-anchor" aria-label="章节： Error-Correcting and Multiple-Error-Detecting Codes" tabindex="-1"></a><span>Error-Correcting and Multiple-Error-Detecting Codes</span></h3>
+<p>如果一个 code 中两个 code word 的最小 Hamming distance 有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>c</mi><mo>+</mo><mi>d</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2c+d+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span class="mojikumi-line-end">，</span>则可以对最多 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span></span> 位的错误进行纠正<span class="mojikumi-line-end">，</span>并且检测到最多 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">c+d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> 位的错误<span class="mojikumi-line-start">（</span>一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>+</mo><mi>d</mi><mo>+</mo><mn>1</mn><mo>∼</mo><mn>2</mn><mi>c</mi><mo>+</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">c+d+1 \sim 2c+d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span> 位的错误会被认为是来自另一个方向的错误而被错误地纠正<span class="mojikumi-line-end">，</span>从而不能被检测到<span class="mojikumi-line-end">；</span>可以选择少纠错几位来检测到更多位的错误<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<p>纠错就是找到和一个 noncode word 的 Hamming distance 最小的唯一一个 code word<span class="mojikumi-line-end">，</span>进行纠错的硬件被称作 error-correcting decoder<span class="mojikumi-line-end">。</span></p>
+<h3 id="hamming-codes" class="heading"><a href="#hamming-codes" class="heading-anchor" aria-label="章节： Hamming Codes" tabindex="-1"></a><span>Hamming Codes</span></h3>
+<p><i>Hamming code</i> 是一种通用的最小距离为 3 的编码<span class="mojikumi-line-end">。</span>一个有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span> 个 check bit 的 Hamming code 最多可以存储 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 个 information bit<span class="mojikumi-line-end">，</span>从而总共有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 个 bit<span class="mojikumi-line-end">。</span></p>
+<p>一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2^n-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>-bit Hamming code 的 bit 依次编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∼</mo><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \sim 2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span class="mojikumi-line-end">，</span>编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>4</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1, 2, 4, \ldots, 2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span> 的 bit 是 check bit<span class="mojikumi-line-end">。</span>每个 check bit 代表一个 group<span class="mojikumi-line-end">，</span>编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span> 的 check bit 所代表的 group 包含的是编号的二进制中包含 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span> 的所有 bit<span class="mojikumi-line-end">。</span>check bit 的取值使得每个 group 都含偶数个 1<span class="mojikumi-line-end">。</span></p>
+<p>实际使用的 Hamming code 往往会将 check bit 移到末尾<span class="mojikumi-line-end">，</span>例如一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>15</mn></mrow><annotation encoding="application/x-tex">15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15</span></span></span></span></span>-bit Hamming code 中 bit 的编号依次为 15, 14, 13, 12, 11, 10, 9, 7, 6, 5, 3, 8, 4, 2, 1<span class="mojikumi-line-end">。</span></p>
+<p>因为每个 bit 都至少属于一个 group<span class="mojikumi-line-end">，</span>改变一个 bit 会得到 noncode word<span class="mojikumi-line-end">。</span>改变编号为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 的两个 bit 时<span class="mojikumi-line-end">，</span>会改变 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 异或 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 对应的 group<span class="mojikumi-line-end">，</span>所以改变两个 bit 会得到 noncode word<span class="mojikumi-line-end">。</span>所以 Hamming code 中两个 code word 的 Hamming distance 至少为 3<span class="mojikumi-line-end">。</span></p>
+<p>纠错时<span class="mojikumi-line-end">，</span>只要将错误的 check bit 的编号或起来就可以得到错误的 bit 的编号<span class="mojikumi-line-end">。</span></p>
+<p>可以通过增加一个 parity bit 来得到一个最小距离为 4 的 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>-bit extended Hamming code<span class="mojikumi-line-end">。</span></p>
+<h3 id="crc-codes" class="heading"><a href="#crc-codes" class="heading-anchor" aria-label="章节： CRC Codes" tabindex="-1"></a><span>CRC Codes</span></h3>
+<p><i>cyclic-redundancy-check (CRC) codes</i> 是一种得到广泛应用的 error-correcting code<span class="mojikumi-line-end">，</span>例如被用在文件系统和网络通信中<span class="mojikumi-line-end">，</span>它可以检测到成团出现的多位错误<span class="mojikumi-line-end">，</span>在一些场景中这种错误比随机出现的错误概率更高<span class="mojikumi-line-end">。</span></p>
+<h3 id="two-dimensional-codes" class="heading"><a href="#two-dimensional-codes" class="heading-anchor" aria-label="章节： Two-Dimensional Codes" tabindex="-1"></a><span>Two-Dimensional Codes</span></h3>
+<p>如 DDPP5 Figure 2-14 (a) 所示<span class="mojikumi-line-end">：</span></p>
+<p><picture><source type="image/webp" srcset="/assets/ddpp-fig-2-14-a.6b397e71.webp"><img srcset="/assets/ddpp-fig-2-14-a.ecefd691.png" loading="lazy" src="/assets/ddpp-fig-2-14-a.ecefd691.png" width="776" height="529" alt="所有 bits 排列成一个矩阵，矩阵被划分为四个部分: information bits, checks on rows, checks on columns, checks on checks."></picture></p>
+<p>选择 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 两种编码方式<span class="mojikumi-line-end">，</span>设置 checks on rows 使得 information bits 所在的每一行都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">，</span>设置 checks on columns 使得 information bits 所在的每一列都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">，</span>而 checks on checks 则可以选择<span class="mojikumi-line-end">，</span>要么每一行都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">，</span>要么每一列都是一个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的 code word<span class="mojikumi-line-end">。</span></p>
+<p>这样得到的 <i>two-dimensional code</i> 的最小距离是 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{row}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">row</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 和 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{\mathrm{col}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">col</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 的乘积<span class="mojikumi-line-end">，</span>所以 two-dimensional code 也被叫做 <i>product code</i><span class="mojikumi-line-end">。</span></p>
+<p>RAID 就可以看作使用了 two-dimensional code<span class="mojikumi-line-end">：</span>每块数据盘内的每个 block 都有 CRC code<span class="mojikumi-line-end">，</span>还有一块硬盘用来存所有数据盘的 parity bits<span class="mojikumi-line-end">。</span></p>
+<h3 id="checksum-codes" class="heading"><a href="#checksum-codes" class="heading-anchor" aria-label="章节： Checksum Codes" tabindex="-1"></a><span>Checksum Codes</span></h3>
+<p>parity bit 可以看作是 bits 在模 2 意义下的和<span class="mojikumi-line-end">，</span>可以推广为 <i>checksum</i><span class="mojikumi-line-end">。</span></p>
+<p>例如<span class="mojikumi-line-end">，</span>模 256 意义下<span class="mojikumi-line-end">，</span>可以计算 bytes 的和<span class="mojikumi-line-end">，</span>来检测 bytes 的错误<span class="mojikumi-line-end">。</span></p>
+<p>除了改变模数<span class="mojikumi-line-end">，</span>还可以改变计算方式<span class="mojikumi-line-end">，</span>例如使用 ones<span class="mojikumi-narrow-left">’</span> complement 加法来计算模 255 或 65535 意义下的 checksum<span class="mojikumi-line-end">。</span></p>
+<h3 id="m-out-of-n-codes" class="heading"><a href="#m-out-of-n-codes" class="heading-anchor" aria-label="章节： m-out-of-n Codes" tabindex="-1"></a><span>m-out-of-n Codes</span></h3>
+<p><a href="#codes-for-actions-conditions-and-states">m-out-of-n code</a> 的最小距离为 2<span class="mojikumi-line-end">，</span>并且能够检测到 <i>unidirectional multiple errors</i><span class="mojikumi-line-end">，</span>即所有错误都是 0 变 1 或 1 变 0 的改变多位的错误<span class="mojikumi-line-end">。</span></p>
+<h2 id="codes-for-transmitting-and-storing-serial-data" class="heading"><a href="#codes-for-transmitting-and-storing-serial-data" class="heading-anchor" aria-label="章节： Codes for Transmitting and Storing Serial Data" tabindex="-1"></a><span>Codes for Transmitting and Storing Serial Data</span></h2>
+<ul>
+<li>parallel data transmission: 一个 data word 的所有 bit 同时传输</li>
+<li>serial data transmission: 一个 bit 一个 bit 传输</li>
+</ul>
+<p>在某些场景下<span class="mojikumi-line-end">，</span>serial data transmission 可以减少线路开销<span class="mojikumi-line-end">，</span>或者减少一些设计上的困难<span class="mojikumi-line-end">。</span></p>
+<p>最基本的 serial data transmission 需要三个信号<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>CLOCK: 将时间划分为一个个 <i>bit cell</i><span class="mojikumi-line-end">，</span>标识出每个 bit 所处的时间范围</li>
+<li>SERDATA: 实际传输的数据<span class="mojikumi-line-end">，</span>具体内容依 <i>line code</i> 而定</li>
+<li>SYNC: 用来标识 bit 的 significance<span class="mojikumi-line-end">，</span>例如传输 bytes 时用来标记每个 byte 的开头</li>
+</ul>
+<p>实际上<span class="mojikumi-line-end">，</span>也可以选择合适的 line code 从而只需传输一个信号<span class="mojikumi-line-end">，</span>从数据信号中读取出 CLOCK 和 SYNC 的信息<span class="mojikumi-line-end">。</span></p>
+<a id="serial-line-codes" name="serial-line-codes" aria-hidden="true"></a>
+<aside role="note" data-v-bb0e38b3=""><div class="shadow-md rd-1 b-l-6 my-6 bg-gray-2 dark:bg-gray-11 b-gray-6" data-v-bb0e38b3=""><div class="p-3 flex justify-between items-center" data-v-bb0e38b3=""><h3 class="font-bold flex items-center gap-1" data-v-bb0e38b3=""><span aria-label="WIP: " class="text-5 i-mdi-timer-sand text-gray" data-v-bb0e38b3=""></span><span data-v-bb0e38b3="">Serial Line Codes</span></h3><!--v-if--></div><div class="bg-card dark:bg-bghover overflow-auto px-6 rd-br-1" data-v-bb0e38b3=""><p>Serial Line Codes 这一节我感觉有些地方没完全理解<span class="mojikumi-line-end">，</span>也有和 Wikipedia 有出入的地方<span class="mojikumi-line-end">，</span>也标星了<span class="mojikumi-line-end">，</span>感觉后面不一定用得上<span class="mojikumi-line-end">，</span>就先咕了<span class="mojikumi-line-end">。</span></p></div></div></aside></section><div class="article-style my-9"><hr></div><footer><div class="my-6 bg-area shadow b-l-6 b-gray-4 dark:b-gray-11 p-6" itemprop="copyrightNotice"><ul class="flex flex-col gap-1"><li class="flex gap-1"><span class="shrink-0">文章作者:</span><a href="https://github.com/ouuan" rel="author">ouuan</a></li><li class="flex gap-1"><span class="shrink-0">原文链接:</span><a href="https://ouuan.moe/post/2023/01/ddpp-2" rel="canonical" class="break-all">https://ouuan.moe/post/2023/01/ddpp-2</a></li><li class="flex gap-1"><span class="shrink-0">许可协议:</span><span> 本文采用 <span class="article-style"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="font-sans" itemprop="license">CC BY-SA 4.0</a></span> 许可协议进行授权，未满足 <span class="underline decoration-dotted" title="简而言之，转载时必须标明出处（本文的链接），标明是转载而非原创，标明作了哪些修改，并使用相同的许可协议，但无需私信征求许可">许可协议要求</span> 不得转载。 </span></li><li class="flex gap-1"><span class="shrink-0">额外说明:</span><span>本文包含若干截自 DDPP 的图片，本文作者对其不拥有版权。</span></li></ul></div></footer></article><div class="print:hidden my-6" itemprop="comment" itemscope="" itemtype="https://schema.org/Comment"><ile-root id="ile-6"></ile-root><script></script><script type="module" async="">import{h as r,c as m}from"/assets/iles.5e82acba.js";import{_ as o}from"/assets/GiscusCommentsInner.487fa077.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";import"/assets/useTheme.f1d4e689.js";import"/assets/site.1441102a.js";r(m,o,"ile-6",{term:"DDPP 第二章学习笔记"},{});
+</script></div><nav class="my-6 flex justify-between gap-6 lg:text-justify print:hidden"><div class="flex-1 flex"><a class="flex items-center gap-1 hover:text-hover" href="/post/2023/01/glyph-segregator"><span class="i-mdi-chevron-left" aria-label="上一篇"></span><span class="break-anywhere">另一种很新的中文字体网页嵌入方案</span></a></div><div class="flex-1 flex justify-end"><a class="flex items-center gap-1 hover:text-hover flex-row-reverse" href="/post/2023/01/ddpp-3"><span class="i-mdi-chevron-right" aria-label="下一篇"></span><span class="break-anywhere">DDPP 第三章学习笔记</span></a></div></nav></div></div></main><footer class="flex flex-col text-footer bg-card p-6 gap-1" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter"><div class="flex flex-wrap justify-center gap-x-1"><span>Copyright ©</span><span title="最后更新于 2023-02-13 21:42:42 GMT+8 (2271fb3)">2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span></div><div class="flex flex-wrap justify-center items-center gap-x-1"><span>文章总大小 294 KiB</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-7"><span class="i-mdi-loading motion-safe:animate-spin" aria-label="加载中"></span></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/VisitorCount.a8d4ae35.js"),["assets/VisitorCount.a8d4ae35.js","assets/VisitorCount.c343552a.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-7",{},{})});export default E();
+</script> 人到访过这里 </span></div><div class="flex justify-center items-center flex-wrap gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div></footer><meta itemprop="copyrightYear" content="2022 - 2023"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder"><meta itemprop="additionalName" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><ile-root id="ile-8"></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(o=>o.v),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/BackToTop.9b4bb339.js"),["assets/BackToTop.9b4bb339.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-8",{},{})});export default E();
+</script><div class="hidden"></div><ile-root id="ile-9"></ile-root><script></script><script type="module" async="">import{h as o,b as r}from"/assets/iles.5e82acba.js";import{o as a}from"/assets/PlausibleTrigger.bafee336.js";import"/assets/vendor-vue.075573a8.js";import"/assets/vite.5ce4fca4.js";o(r,a,"ile-9",{},{});
+</script><div></div><ile-root id="ile-10"></ile-root><script></script><script type="module" async="">var p=(t,a)=>()=>(a||t((a={exports:{}}).exports,a),a.exports);var r=(t,a,_)=>new Promise((c,n)=>{var f=o=>{try{e(_.next(o))}catch(i){n(i)}},l=o=>{try{e(_.throw(o))}catch(i){n(i)}},e=o=>o.done?c(o.value):Promise.resolve(o.value).then(f,l);e((_=_.apply(t,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.5e82acba.js";import"/assets/vendor-vue.075573a8.js";var u=p(m=>{const E=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.5e82acba.js").then(t=>t.e),["assets/iles.5e82acba.js","assets/vendor-vue.075573a8.js","assets/vite.5ce4fca4.js"])).default}),h=()=>r(m,null,function*(){return(yield d(()=>import("/assets/TextJustifyFix.4fa5e997.js"),[])).onLoad});s(E,h,"ile-10",{},{})});export default u();
+</script><meta itemprop="inLanguage" content="zh-CN"></div>
+  
+</body></html>
