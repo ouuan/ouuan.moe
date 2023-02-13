@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/tag/THU</id>
     <title>ouuan's blog: 标签: THU</title>
-    <updated>2023-02-12T20:26:03.349Z</updated>
+    <updated>2023-02-13T09:22:49.614Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>ouuan</name>
@@ -118,7 +118,7 @@ Licensed under CC BY-SA 4.0</rights>
 <p>需要注意的是<span class="mojikumi-line-end">，</span>决定志愿优先级的课程属性也是由教学计划决定的<span class="mojikumi-line-end">，</span>这也是鼓励大家按教学计划选择必修课<span class="mojikumi-line-end">，</span>如果错过了必修课在教学计划的学期<span class="mojikumi-line-end">，</span>之后的志愿等级可能就是任选了<span class="mojikumi-line-end">。</span></p>
 <h3 id="教室位置查看" class="heading"><a href="#教室位置查看" class="heading-anchor" aria-label="章节： 教室位置查看" tabindex="-1"></a><span>教室位置查看</span></h3>
 <p>教室的位置在预选时是尚未安排好的<span class="mojikumi-line-end">，</span>要在预选结果出来后才能在课表等位置看到教室在哪<span class="mojikumi-line-end">。</span></p>
-<p>在 <a href="https://tsinghua.app/courses">courseX</a> 上可以看到他人分享的教室位置信息<span class="mojikumi-line-end">，</span>但不一定全<span class="mojikumi-line-end">。</span>这些信息主要是 <a href="https://tsinghua.app/learn">learnX</a> 在用户主动同意后自动收集的<span class="mojikumi-line-end">，</span>learnX 是对 <a href="https://learn.tsinghua.edu.cn">网络学堂</a> 非常好的补充<span class="mojikumi-line-end">，</span>推荐使用<span class="mojikumi-line-end">，</span>也希望大家能在设置中开启课程信息共享<span class="mojikumi-line-end">。</span></p>
+<p>在 <a href="https://tsinghua.app/courses">courseX</a> 上可以看到他人分享的教室位置信息<span class="mojikumi-line-end">，</span>但不一定全<span class="mojikumi-line-end">。</span>这些信息主要是 <a href="https://tsinghua.app/learnX">learnX</a> 在用户主动同意后自动收集的<span class="mojikumi-line-end">，</span>learnX 是对 <a href="https://learn.tsinghua.edu.cn">网络学堂</a> 非常好的补充<span class="mojikumi-line-end">，</span>推荐使用<span class="mojikumi-line-end">，</span>也希望大家能在设置中开启课程信息共享<span class="mojikumi-line-end">。</span></p>
 <h3 id="关于上课时间" class="heading"><a href="#关于上课时间" class="heading-anchor" aria-label="章节： 关于上课时间" tabindex="-1"></a><span>关于上课时间</span></h3>
 <p>上课时间一般会以大节编号和周数的形式呈现<span class="mojikumi-line-end">，</span>例如 <code>1<wbr>-<wbr>1<wbr>(全周),<wbr>3<wbr>-<wbr>4<wbr>(全周)</code> 表示每周一第一大节和每周三第四大节上课<span class="mojikumi-line-end">，</span><code>4-6(前八周)</code> 表示前八周周四第六大节上课<span class="mojikumi-line-end">。</span></p>
 <p>每大节的具体时间可以在课表中查看<span class="mojikumi-line-end">。</span>一大节一般是两小节课各 45min 中间有 5min 休息<span class="mojikumi-line-end">，</span>但第二大节和第六大节都有三小节<span class="mojikumi-line-end">，</span>有的课会上满三小节<span class="mojikumi-line-end">，</span>而有的课会只上两小节<span class="mojikumi-line-end">，</span>而这一般可以通过课程的学分看出来<span class="mojikumi-line-end">，</span>每一学分对应全周的一小节课<span class="mojikumi-line-end">，</span>也就是八周的两小节课<span class="mojikumi-line-end">。</span>如果一个 4 学分的课在全周的一个第二大节和一个第三大节上<span class="mojikumi-line-end">，</span>那很有可能就是第二大节只上两小节<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span>思想道德与法治<span class="mojikumi-line-end">、</span>中国近现代史纲要<span class="mojikumi-line-end">、</span>马克思主义基本原理等课程会比学时对应的学分多一分<span class="mojikumi-line-end">，</span>这三节课分别是 3<span class="mojikumi-line-end">、</span>3<span class="mojikumi-line-end">、</span>4 学分<span class="mojikumi-line-end">，</span>但分别对应全周上 2<span class="mojikumi-line-end">、</span>2<span class="mojikumi-line-end">、</span>3 小节<span class="mojikumi-line-end">。</span></p>
