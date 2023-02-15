@@ -28,6 +28,7 @@ Licensed under CC BY-SA 4.0</rights>
 
 
 <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第四章 <span class="mojikumi">“</span>Digital Design Practices<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为数字设计的文档规范<span class="mojikumi-line-end">、</span>初步认识 circuit timing<span class="mojikumi-line-end">、</span>基于 HDL 的数字设计所使用的工具与设计流程<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
 
@@ -38,6 +39,7 @@ Licensed under CC BY-SA 4.0</rights>
 
 
 <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第四章 <span class="mojikumi">“</span>Digital Design Practices<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为数字设计的文档规范<span class="mojikumi-line-end">、</span>初步认识 circuit timing<span class="mojikumi-line-end">、</span>基于 HDL 的数字设计所使用的工具与设计流程<span class="mojikumi-line-end">。</span></p>
 
 <h2 id="documentation-standards" class="heading"><a href="#documentation-standards" class="heading-anchor" aria-label="章节： Documentation Standards" tabindex="-1"></a><span>Documentation Standards</span></h2>
 <p>一个 <dfn>document package</dfn> 通常至少包含以下内容<span class="mojikumi-line-end">：</span></p>
@@ -206,9 +208,11 @@ Licensed under CC BY-SA 4.0</rights>
         <updated>2023-01-29T07:52:32.000Z</updated>
         <summary type="html"><![CDATA[
 <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第三章 <span class="mojikumi">“</span>Switching Algebra and Combinational Logic<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为逻辑代数<span class="mojikumi-line-end">、</span>逻辑代数在电路中的使用及化简<span class="mojikumi-line-end">、</span>timing hazard<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
 <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第三章 <span class="mojikumi">“</span>Switching Algebra and Combinational Logic<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为逻辑代数<span class="mojikumi-line-end">、</span>逻辑代数在电路中的使用及化简<span class="mojikumi-line-end">、</span>timing hazard<span class="mojikumi-line-end">。</span></p>
 
 <h2 id="switching-algebra" class="heading"><a href="#switching-algebra" class="heading-anchor" aria-label="章节： Switching Algebra" tabindex="-1"></a><span>Switching Algebra</span></h2>
 <p>这一节基本上就是离散数学 (1) 开头两章的内容<span class="mojikumi-line-end">，</span>术语和记号有很多不同<span class="mojikumi-line-end">，</span><s>幸好忘的差不多了<span class="mojikumi-line-end">，</span>不然都要搞混了</s><span class="mojikumi-line-end">。</span></p>
@@ -430,12 +434,15 @@ Licensed under CC BY-SA 4.0</rights>
         <summary type="html"><![CDATA[
 
 <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第二章 <span class="mojikumi">“</span>Number Systems and Codes<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为一些常用的编码以及纠错码的原理<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
 
 <p><a href="https://wakerly.org/DDPP/">DDPP5</a> 第二章 <span class="mojikumi">“</span>Number Systems and Codes<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为一些常用的编码以及纠错码的原理<span class="mojikumi-line-end">。</span></p>
 
 <p>开头整数编码的内容很多是 <a href="/post/2022/09/csapp-2">CS:APP 第二章</a> 讲过的<span class="mojikumi-line-end">，</span>也有一些新内容<span class="mojikumi-line-end">，</span>但基本上都是标星的可选内容<span class="mojikumi-line-end">，</span>我看是看了但懒得写笔记了<span class="mojikumi-line-start">（</span></p>
+<hr>
 <p>一套编码被称作一个 <i>code</i><span class="mojikumi-line-end">，</span>一个 code 中的单个合法编码<span class="mojikumi-line-start">（</span>二进制串<span class="mojikumi-line-end">）</span>被称作一个 <i>code word</i><span class="mojikumi-line-end">。</span></p>
 <h2 id="gray-code" class="heading"><a href="#gray-code" class="heading-anchor" aria-label="章节： Gray Code" tabindex="-1"></a><span>Gray Code</span></h2>
 <p>Gray code 的性质<span class="mojikumi-line-end">：</span>相邻两个数的 code word 只有一位不同<span class="mojikumi-line-end">，</span>且 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 的 code word 中只有一个 1<span class="mojikumi-line-start">（</span>也就是说 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>-bit Gray code 的首尾也只有一位不同<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
@@ -578,10 +585,12 @@ Licensed under CC BY-SA 4.0</rights>
         <summary type="html"><![CDATA[
 
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第九章 <span class="mojikumi">“</span>Virtual Memory<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 page table<span class="mojikumi-line-end">、</span>address translation<span class="mojikumi-line-end">、</span>memory mapping<span class="mojikumi-line-end">、</span>dynamic allocation<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
 
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第九章 <span class="mojikumi">“</span>Virtual Memory<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 page table<span class="mojikumi-line-end">、</span>address translation<span class="mojikumi-line-end">、</span>memory mapping<span class="mojikumi-line-end">、</span>dynamic allocation<span class="mojikumi-line-end">。</span></p>
 
 <p>虚存是对 main memory 的抽象<span class="mojikumi-line-end">，</span>它的主要作用有<span class="mojikumi-line-end">：</span></p>
 <ul>
@@ -806,9 +815,11 @@ Licensed under CC BY-SA 4.0</rights>
         <updated>2022-12-17T06:27:26.000Z</updated>
         <summary type="html"><![CDATA[
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
 
 <p>在一般情况下<span class="mojikumi-line-end">，</span>PC 会按照指令的顺序以及跳转指令来变化<span class="mojikumi-line-end">。</span>但在很多时候<span class="mojikumi-line-end">，</span>这样的控制流是不能满足需要的<span class="mojikumi-line-end">，</span>需要 <i>exceptional control flow</i> (ECF) 作为跳转指令的补充<span class="mojikumi-line-end">，</span>以处理一些<span class="mojikumi-line-start">“</span>异常<span class="mojikumi-line-end">”</span>的或者来自<span class="mojikumi-line-start">“</span>外部<span class="mojikumi-line-end">”</span>的变化<span class="mojikumi-line-end">。</span></p>
 <p>ECF 存在于各个层次<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">：</span></p>

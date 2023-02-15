@@ -16,9 +16,9 @@ Licensed under CC BY-SA 4.0</copyright>
             <link>https://ouuan.moe/post/2023/01/string-prototype-replace</link>
             <guid>https://ouuan.moe/post/2023/01/string-prototype-replace</guid>
             <pubDate>Sun, 29 Jan 2023 12:16:32 GMT</pubDate>
-            <description><![CDATA[<p>tl;dr: <code>replace</code> 的第二个参数应当使用字面量或函数<span class="mojikumi-line-end">，</span>不应使用带变量的字符串表达式<span class="mojikumi-line-end">。</span></p>
+            <description><![CDATA[<p>tl;dr: <code>replace</code> 的第二个参数应当使用字面量或函数<span class="mojikumi-line-end">，</span>不应使用带变量的字符串表达式<span class="mojikumi-line-end">，</span>否则可能发生意想不到的错误替换<span class="mojikumi-line-end">。</span></p>
 ]]></description>
-            <content:encoded><![CDATA[<p>tl;dr: <code>replace</code> 的第二个参数应当使用字面量或函数<span class="mojikumi-line-end">，</span>不应使用带变量的字符串表达式<span class="mojikumi-line-end">。</span></p>
+            <content:encoded><![CDATA[<p>tl;dr: <code>replace</code> 的第二个参数应当使用字面量或函数<span class="mojikumi-line-end">，</span>不应使用带变量的字符串表达式<span class="mojikumi-line-end">，</span>否则可能发生意想不到的错误替换<span class="mojikumi-line-end">。</span></p>
 
 <h2 id="string-prototype-replace-的第二个参数" class="heading"><a href="#string-prototype-replace-的第二个参数" class="heading-anchor" aria-label="章节： String.prototype.replace 的第二个参数" tabindex="-1"></a><span>String.prototype.replace 的第二个参数</span></h2>
 <p>(reference: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_function_as_the_replacement"><code>String<wbr>.<wbr>prototype<wbr>.<wbr>replace<wbr>()</code> - JavaScript | MDN</a>)</p>

@@ -19,10 +19,12 @@ Licensed under CC BY-SA 4.0</copyright>
             <description><![CDATA[
 
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第九章 <span class="mojikumi">“</span>Virtual Memory<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 page table<span class="mojikumi-line-end">、</span>address translation<span class="mojikumi-line-end">、</span>memory mapping<span class="mojikumi-line-end">、</span>dynamic allocation<span class="mojikumi-line-end">。</span></p>
 ]]></description>
             <content:encoded><![CDATA[
 
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第九章 <span class="mojikumi">“</span>Virtual Memory<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 page table<span class="mojikumi-line-end">、</span>address translation<span class="mojikumi-line-end">、</span>memory mapping<span class="mojikumi-line-end">、</span>dynamic allocation<span class="mojikumi-line-end">。</span></p>
 
 <p>虚存是对 main memory 的抽象<span class="mojikumi-line-end">，</span>它的主要作用有<span class="mojikumi-line-end">：</span></p>
 <ul>
@@ -247,9 +249,11 @@ Licensed under CC BY-SA 4.0</copyright>
             <pubDate>Sat, 17 Dec 2022 06:27:26 GMT</pubDate>
             <description><![CDATA[
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
 ]]></description>
             <content:encoded><![CDATA[
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
 
 <p>在一般情况下<span class="mojikumi-line-end">，</span>PC 会按照指令的顺序以及跳转指令来变化<span class="mojikumi-line-end">。</span>但在很多时候<span class="mojikumi-line-end">，</span>这样的控制流是不能满足需要的<span class="mojikumi-line-end">，</span>需要 <i>exceptional control flow</i> (ECF) 作为跳转指令的补充<span class="mojikumi-line-end">，</span>以处理一些<span class="mojikumi-line-start">“</span>异常<span class="mojikumi-line-end">”</span>的或者来自<span class="mojikumi-line-start">“</span>外部<span class="mojikumi-line-end">”</span>的变化<span class="mojikumi-line-end">。</span></p>
 <p>ECF 存在于各个层次<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">：</span></p>
