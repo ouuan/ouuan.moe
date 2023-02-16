@@ -285,8 +285,4 @@
         <loc>https://ouuan.moe/tags</loc>
         <priority>0.4</priority>
     </url>
-    <url>
-        <loc>https://ouuan.moe/search</loc>
-        <priority>0.3</priority>
-    </url>
 </urlset>
