@@ -1123,7 +1123,7 @@ Licensed under CC BY-SA 4.0</copyright>
             <title><![CDATA[CS:APP 第八章学习笔记]]></title>
             <link>https://ouuan.moe/post/2022/11/csapp-8</link>
             <guid>https://ouuan.moe/post/2022/11/csapp-8</guid>
-            <pubDate>Sun, 18 Dec 2022 07:32:41 GMT</pubDate>
+            <pubDate>Sat, 17 Dec 2022 06:27:26 GMT</pubDate>
             <description><![CDATA[
 <p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
 <p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
