@@ -84,7 +84,8 @@ Licensed under CC BY-SA 4.0</copyright>
 <h4 id="忘记关测试用-docker-container" class="heading"><a href="#忘记关测试用-docker-container" class="heading-anchor" aria-label="章节： 忘记关测试用 Docker container" tabindex="-1"></a><span><s>忘记关测试用 Docker container</s></span></h4>
 <p>第二天早上起来一看<span class="mojikumi-line-end">，</span>Plausible 特别卡<span class="mojikumi-line-end">，</span>再一看<span class="mojikumi-line-end">，</span>load avg 都快两位数了<span class="mojikumi-line-end">，</span>原来是在 VPS 上测试后端部署忘关了 🌚 不要随便在生产环境顺便测小作业<span class="mojikumi-line-start">（</span></p>
 <h3 id="玩小作业" class="heading"><a href="#玩小作业" class="heading-anchor" aria-label="章节： 玩小作业" tabindex="-1"></a><span>玩小作业</span></h3>
-<p>把 game of life 当成冬日绘板画画<span class="mojikumi-line-end">，</span>动态更新时钟<span class="mojikumi-line-end">，</span>从 LifeWiki 获取随机 pattern<span class="mojikumi-line-end">，</span>这是一个作业写不完的人能干的出来的吗<span class="mojikumi-line-end">，</span>共享后端是这样用的吗<span class="mojikumi-line-start">（</span></p>]]></content:encoded>
+<p>把 game of life 当成冬日绘板画画<span class="mojikumi-line-end">，</span>动态更新时钟<span class="mojikumi-line-end">，</span>从 LifeWiki 获取随机 pattern<span class="mojikumi-line-end">，</span>这是一个作业写不完的人能干的出来的吗<span class="mojikumi-line-end">，</span>共享后端是这样用的吗<span class="mojikumi-line-start">（</span></p>
+<p>第二天早上起来一看<span class="mojikumi-line-start">（</span><s>怎么每段都有个第二天早上起来</s><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>大家都在画些啥<span class="mojikumi-line-end">，</span>我还是太保守了<span class="mojikumi-line-start">（</span></p>]]></content:encoded>
             <category domain="https://ouuan.moe/tag/Web">Web</category>
             <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
         </item>
