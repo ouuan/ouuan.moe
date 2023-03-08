@@ -92,6 +92,17 @@ Licensed under CC BY-SA 4.0</copyright>
 <p>软工的公开提问貌似只能在微信群<span class="mojikumi-line-end">，</span>而且助教有差不多 20 个<span class="mojikumi-line-end">，</span>回复速度实在是太快了<span class="mojikumi-line-end">。</span>程设训练的时候我还能偶尔抢在助教之前回答问题<span class="mojikumi-line-end">，</span>现在根本做不到<span class="mojikumi-line-start">（</span></p>
 <h3 id="redacted" class="heading"><a href="#redacted" class="heading-anchor" aria-label="章节： [redacted]" tabindex="-1"></a><span>[redacted]</span></h3>
 <p>这里是一段 13 天后才能公开的内容<span class="mojikumi-line-end">，</span>在这放个预告防止到时候忘了<span class="mojikumi-line-start">（</span></p>
+<h3 id="node-js-和浏览器的不同-timer" class="heading"><a href="#node-js-和浏览器的不同-timer" class="heading-anchor" aria-label="章节： Node.js 和浏览器的不同 timer" tabindex="-1"></a><span>Node.js 和浏览器的不同 timer</span></h3>
+<p>队友问了一个神奇的 bug<span class="mojikumi-line-end">，</span>说是 <code>clearInterval</code> clear 不掉<span class="mojikumi-line-end">，</span>我看了半天都没发现问题<span class="mojikumi-line-end">，</span>最后发现开头有个 <code>import<wbr> { <wbr>setInterval<wbr> } <wbr>from<wbr> '<wbr>timers<wbr>'</code><span class="mojikumi-line-end">。</span></p>
+<p>之前还真没注意过<span class="mojikumi-line-end">，</span>timer 有 Node.js 和浏览器两个版本<span class="mojikumi-line-end">，</span>Node.js 的 <code>setInterval</code> 返回的是一个 object<span class="mojikumi-line-end">，</span>浏览器返回的是一个 <code>number</code><span class="mojikumi-line-end">。</span></p>
+<ul>
+<li>直接写 <code>setInterval</code> 时<span class="mojikumi-line-end">，</span>在 TypeScript 中会被认为返回 <code>NodeJS<wbr>.<wbr>Timer</code><span class="mojikumi-line-end">，</span>而实际运行时在哪运行就用哪个版本的函数<span class="mojikumi-line-end">。</span></li>
+<li>如果写的是 <code>window<wbr>.<wbr>setInterval</code><span class="mojikumi-line-end">，</span>在 TypeScript 中会被认为返回 <code>number</code><span class="mojikumi-line-end">，</span>在 Node.js 中运行会报错<span class="mojikumi-line-end">。</span></li>
+<li>如果是 <code>import<wbr> { <wbr>setInterval<wbr> } <wbr>from<wbr> '<wbr>timers<wbr>'</code><span class="mojikumi-line-end">，</span>即使是在浏览器中运行也会使用 Node.js 版本的函数<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>这里比较重要的是 <code>setInterval</code> 和 <code>clearInterval</code> 要配套<span class="mojikumi-line-end">，</span>不能一个用 Node.js 的一个用浏览器的<span class="mojikumi-line-end">，</span>否则会 clear 不掉甚至报错<span class="mojikumi-line-end">。</span></p>
+<p>一般来说直接写<span class="mojikumi-line-start">（</span>不 <code>window.</code> 也不 <code>import from 'timers'</code><span class="mojikumi-line-end">）</span>就是最好的<span class="mojikumi-line-end">，</span>虽然看起来 TypeScript 会将 <code>number</code> 误认为是 <code>NodeJS<wbr>.<wbr>Timer</code><span class="mojikumi-line-end">，</span>但这个 <code>number</code> 本来就不该被当作一个 <code>number</code> 来使用<span class="mojikumi-line-end">，</span>这样的 typing 反而是好的<span class="mojikumi-line-end">。</span></p>
+<p>这里如果再仔细研究一下可以单独写一篇博客了<span class="mojikumi-line-end">，</span>但还是算了吧<span class="mojikumi-line-start">（</span></p>
 <h2 id="大作业" class="heading"><a href="#大作业" class="heading-anchor" aria-label="章节： 大作业" tabindex="-1"></a><span>大作业</span></h2>
 <h3 id="组队" class="heading"><a href="#组队" class="heading-anchor" aria-label="章节： 组队" tabindex="-1"></a><span>组队</span></h3>
 <p>在另外一个通识课上体验了一下差点没组上队<span class="mojikumi-line-start">（</span>虽然后来得知还有不少人比我更晚组上队<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>最后完全 rand 组队<span class="mojikumi-line-end">。</span>所以真的很感谢上学期就找我来组队的队友<span class="mojikumi-line-end">。</span></p>
