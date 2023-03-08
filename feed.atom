@@ -21,10 +21,12 @@ Licensed under CC BY-SA 4.0</rights>
         <updated>2023-03-04T03:42:29.000Z</updated>
         <summary type="html"><![CDATA[
 
+
 <p>很好<span class="mojikumi-line-end">，</span>你已经学会了 Vue<span class="mojikumi-line-end">、</span>Rust<span class="mojikumi-line-end">、</span>Actix<span class="mojikumi-line-end">、</span>GitHub Actions<span class="mojikumi-line-end">、</span>pnpm<span class="mojikumi-line-end">、</span>Vitest<span class="mojikumi-line-end">、</span>Caddy</p>
 <p>现在你可以使用 React<span class="mojikumi-line-end">、</span>Python<span class="mojikumi-line-end">、</span>Django<span class="mojikumi-line-end">、</span>GitLab CI<span class="mojikumi-line-end">、</span>yarn<span class="mojikumi-line-end">、</span>Jest<span class="mojikumi-line-end">、</span>Nginx 来完成软工作业了<span class="mojikumi-line-start">（</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
+
 
 <p>很好<span class="mojikumi-line-end">，</span>你已经学会了 Vue<span class="mojikumi-line-end">、</span>Rust<span class="mojikumi-line-end">、</span>Actix<span class="mojikumi-line-end">、</span>GitHub Actions<span class="mojikumi-line-end">、</span>pnpm<span class="mojikumi-line-end">、</span>Vitest<span class="mojikumi-line-end">、</span>Caddy</p>
 <p>现在你可以使用 React<span class="mojikumi-line-end">、</span>Python<span class="mojikumi-line-end">、</span>Django<span class="mojikumi-line-end">、</span>GitLab CI<span class="mojikumi-line-end">、</span>yarn<span class="mojikumi-line-end">、</span>Jest<span class="mojikumi-line-end">、</span>Nginx 来完成软工作业了<span class="mojikumi-line-start">（</span></p>
@@ -88,7 +90,23 @@ Licensed under CC BY-SA 4.0</rights>
 <p>第二天早上起来一看<span class="mojikumi-line-end">，</span>Plausible 特别卡<span class="mojikumi-line-end">，</span>再一看<span class="mojikumi-line-end">，</span>load avg 都快两位数了<span class="mojikumi-line-end">，</span>原来是在 VPS 上测试后端部署忘关了 🌚 不要随便在生产环境顺便测小作业<span class="mojikumi-line-start">（</span></p>
 <h3 id="玩小作业" class="heading"><a href="#玩小作业" class="heading-anchor" aria-label="章节： 玩小作业" tabindex="-1"></a><span>玩小作业</span></h3>
 <p>把 game of life 当成冬日绘板画画<span class="mojikumi-line-end">，</span>动态更新时钟<span class="mojikumi-line-end">，</span>从 LifeWiki 获取随机 pattern<span class="mojikumi-line-end">，</span>这是一个作业写不完的人能干的出来的吗<span class="mojikumi-line-end">，</span>共享后端是这样用的吗<span class="mojikumi-line-start">（</span></p>
-<p>第二天早上起来一看<span class="mojikumi-line-start">（</span><s>怎么每段都有个第二天早上起来</s><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>大家都在画些啥<span class="mojikumi-line-end">，</span>我还是太保守了<span class="mojikumi-line-start">（</span></p>]]></content>
+<p>第二天早上起来一看<span class="mojikumi-line-start">（</span><s>怎么每段都有个第二天早上起来</s><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>大家都在画些啥<span class="mojikumi-line-end">，</span>我还是太保守了<span class="mojikumi-line-start">（</span></p>
+<h3 id="回答同学提问" class="heading"><a href="#回答同学提问" class="heading-anchor" aria-label="章节： 回答同学提问" tabindex="-1"></a><span>回答同学提问</span></h3>
+<p>软工的公开提问貌似只能在微信群<span class="mojikumi-line-end">，</span>而且助教有差不多 20 个<span class="mojikumi-line-end">，</span>回复速度实在是太快了<span class="mojikumi-line-end">。</span>程设训练的时候我还能偶尔抢在助教之前回答问题<span class="mojikumi-line-end">，</span>现在根本做不到<span class="mojikumi-line-start">（</span></p>
+<h3 id="redacted" class="heading"><a href="#redacted" class="heading-anchor" aria-label="章节： [redacted]" tabindex="-1"></a><span>[redacted]</span></h3>
+<p>这里是一段 13 天后才能公开的内容<span class="mojikumi-line-end">，</span>在这放个预告防止到时候忘了<span class="mojikumi-line-start">（</span></p>
+<h2 id="大作业" class="heading"><a href="#大作业" class="heading-anchor" aria-label="章节： 大作业" tabindex="-1"></a><span>大作业</span></h2>
+<h3 id="组队" class="heading"><a href="#组队" class="heading-anchor" aria-label="章节： 组队" tabindex="-1"></a><span>组队</span></h3>
+<p>在另外一个通识课上体验了一下差点没组上队<span class="mojikumi-line-start">（</span>虽然后来得知还有不少人比我更晚组上队<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>最后完全 rand 组队<span class="mojikumi-line-end">。</span>所以真的很感谢上学期就找我来组队的队友<span class="mojikumi-line-end">。</span></p>
+<h3 id="起队名" class="heading"><a href="#起队名" class="heading-anchor" aria-label="章节： 起队名" tabindex="-1"></a><span>起队名</span></h3>
+<blockquote>
+<p>HardToName / 起个名好难队</p>
+</blockquote>
+<p><s>这是什么引用啊</s></p>
+<p>队友提出了三个队名<span class="mojikumi-line-end">：</span>啊对对队<span class="mojikumi-line-end">、</span>BUG 全调队<span class="mojikumi-line-end">、</span>[redacted] 队<span class="mojikumi-line-end">。</span>前两个都被占了<span class="mojikumi-line-end">，</span>后一个太魔幻了<span class="mojikumi-line-end">，</span>于是最后还是用的我提出的队名<span class="mojikumi-line-end">：</span>lazy / 这个队特别懒<span class="mojikumi-line-end">，</span>什么都没留下~</p>
+<p><span class="mojikumi-line-start">（</span>这 SECoder 怎么还在用这个很有年代感的个人描述 placeholder 啊<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p><picture><source type="image/webp" srcset="/assets/lazy-placeholder.65e936a3.webp"><img srcset="/assets/lazy-placeholder.aba50ccc.png" loading="lazy" src="/assets/lazy-placeholder.aba50ccc.png" width="1873" height="597" alt="学生列表，满屏都是“这个人特别懒，什么都没留下~”"></picture></p>
+<p>俗话说得好<span class="mojikumi-line-end">，</span>贱名好养活<span class="mojikumi-line-end">，</span><s>取名叫 lazy 一定摆不起来<span class="mojikumi-line-start">（</span></s></p>]]></content>
         <category label="Web" term="https://ouuan.moe/tag/Web"/>
         <category label="学习记录" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"/>
     </entry>
