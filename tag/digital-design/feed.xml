@@ -72,6 +72,9 @@ Licensed under CC BY-SA 4.0</copyright>
 <li>可随时退出<ins>？</ins></li>
 </ul>
 </blockquote>
+<h3 id="示波器实验" class="heading"><a href="#示波器实验" class="heading-anchor" aria-label="章节： 示波器实验" tabindex="-1"></a><span>示波器实验</span></h3>
+<p>上学期物理实验用过示波器<span class="mojikumi-line-end">，</span>感到了这个课除了 <a href="/post/2022/10/basic-tex-and-r-for-physics-lab">学习 TeX 和 R</a> 之外竟然还稍微有点用<span class="mojikumi-line-end">，</span>虽然也只有那么一点点用<span class="mojikumi-line-end">，</span>不知道和电子学基础相比哪个的一点点大一些<span class="mojikumi-line-start">（</span></p>
+<p>整个实验中卡壳最久的一步是<span class="mojikumi-line-end">，</span>从一坨绑得十分整齐的导线中抽出一根<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
 <h2 id="数设" class="heading"><a href="#数设" class="heading-anchor" aria-label="章节： 数设" tabindex="-1"></a><span>数设</span></h2>
 <h3 id="数设第二次课" class="heading"><a href="#数设第二次课" class="heading-anchor" aria-label="章节： 数设第二次课" tabindex="-1"></a><span>数设第二次课</span></h3>
 <p>这节课讲了一堆数电背后的模电原理<span class="mojikumi-line-end">，</span>而且还是 TTL 电路<span class="mojikumi-line-end">，</span>不是 DDPP5 放在第 14 章的 CMOS<span class="mojikumi-line-end">。</span>感觉完全没听懂<span class="mojikumi-line-end">，</span>只不过说到底这一节是物理课不是计算机课<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>后面又说讲的大部分东西不考<span class="mojikumi-line-end">，</span>讲这些是为了补充一些数字电路发展的历史<span class="mojikumi-line-end">，</span>弥补思维上的跳跃<span class="mojikumi-line-end">。</span></p>
