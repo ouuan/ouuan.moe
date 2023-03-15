@@ -106,6 +106,13 @@ Licensed under CC BY-SA 4.0</rights>
 <p>这里比较重要的是 <code>setInterval</code> 和 <code>clearInterval</code> 要配套<span class="mojikumi-line-end">，</span>不能一个用 Node.js 的一个用浏览器的<span class="mojikumi-line-end">，</span>否则会 clear 不掉甚至报错<span class="mojikumi-line-end">。</span></p>
 <p>一般来说直接写<span class="mojikumi-line-start">（</span>不 <code>window.</code> 也不 <code>import from 'timers'</code><span class="mojikumi-line-end">）</span>就是最好的<span class="mojikumi-line-end">，</span>虽然看起来 TypeScript 会将 <code>number</code> 误认为是 <code>NodeJS<wbr>.<wbr>Timer</code><span class="mojikumi-line-end">，</span>但这个 <code>number</code> 本来就不该被当作一个 <code>number</code> 来使用<span class="mojikumi-line-end">，</span>这样的 typing 反而是好的<span class="mojikumi-line-end">。</span></p>
 <p>这里如果再仔细研究一下可以单独写一篇博客了<span class="mojikumi-line-end">，</span>但还是算了吧<span class="mojikumi-line-start">（</span></p>
+<h3 id="小作业即将截止" class="heading"><a href="#小作业即将截止" class="heading-anchor" aria-label="章节： 小作业即将截止" tabindex="-1"></a><span>小作业即将截止</span></h3>
+<blockquote>
+<p>小作业 将于 3 月 16 日<span class="mojikumi-line-start">（</span>周四<span class="mojikumi-line-end">）</span>23:59 截止<span class="mojikumi-line-end">。</span></p>
+<p>请注意截止时间不是 21:55<span class="mojikumi-line-end">。</span></p>
+<p>……</p>
+</blockquote>
+<p>后面省略的几句也是模仿的 DSA<span class="mojikumi-line-end">，</span><s>DNS</s> <span class="heimu">前几天某位助教答疑的时候把 dns typo 成了 dna</span> DNA 动了<span class="mojikumi-line-end">，</span>好评<span class="mojikumi-line-end">，</span>但开头这个对偶的 ddl 绷不住了<span class="mojikumi-line-start">（</span></p>
 <h2 id="大作业" class="heading"><a href="#大作业" class="heading-anchor" aria-label="章节： 大作业" tabindex="-1"></a><span>大作业</span></h2>
 <h3 id="组队" class="heading"><a href="#组队" class="heading-anchor" aria-label="章节： 组队" tabindex="-1"></a><span>组队</span></h3>
 <p>在另外一个通识课上体验了一下差点没组上队<span class="mojikumi-line-start">（</span>虽然后来得知还有不少人比我更晚组上队<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>最后完全 rand 组队<span class="mojikumi-line-end">。</span>所以真的很感谢上学期就找我来组队的队友<span class="mojikumi-line-end">。</span></p>
