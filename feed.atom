@@ -137,9 +137,28 @@ Licensed under CC BY-SA 4.0</rights>
 </blockquote>
 <p>结果还真是<span class="mojikumi-line-start">“</span>24:00<strong>后</strong><span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>手动 ddl 🌚</p>
 <p>本来晚上 11 点还看到我们队的一志愿的一志愿数量从 7 变成了 6<span class="mojikumi-line-end">，</span>就是 2/3 的概率抽上<span class="mojikumi-line-end">，</span>结果早上起来一看还是掉了<span class="mojikumi-line-end">，</span>寄<span class="mojikumi-line-end">。</span>这下和不是队友的室友一个选题了<span class="mojikumi-line-end">。</span>好在例会还是 4-3<span class="mojikumi-line-end">，</span>要是 4-4 的话整个下午就消失了<span class="mojikumi-line-start">（</span></p>
-<h3 id="第一周例会" class="heading"><a href="#第一周例会" class="heading-anchor" aria-label="章节： 第一周例会" tabindex="-1"></a><span>第一周例会</span></h3>
-<p>第一周例会竟然就要写分工以及完整的进度安排<span class="mojikumi-line-end">，</span>虽然说是随便画饼也没事<span class="mojikumi-line-end">，</span>但还是感觉不太敏捷<span class="mojikumi-line-start">（</span></p>
-<p>顺便练习了一下 <a href="https://sli.dev/">Slidev</a><span class="mojikumi-line-end">，</span>在本机莫名 export 失败了<span class="mojikumi-line-end">，</span>结果扔到 VPS 上就成功了<span class="mojikumi-line-end">，</span>神秘<span class="mojikumi-line-end">。</span>但在 VPS 上还得装上中文字体<span class="mojikumi-line-end">，</span>并且配字体设置<span class="mojikumi-line-end">。</span></p>]]></content>
+<h3 id="第一次例会" class="heading"><a href="#第一次例会" class="heading-anchor" aria-label="章节： 第一次例会" tabindex="-1"></a><span>第一次例会</span></h3>
+<p>第一次例会竟然就要写分工以及完整的进度安排<span class="mojikumi-line-end">，</span>虽然说是随便画饼也没事<span class="mojikumi-line-end">，</span>但还是感觉不太敏捷<span class="mojikumi-line-start">（</span></p>
+<p>顺便练习了一下 <a href="https://sli.dev/">Slidev</a><span class="mojikumi-line-end">，</span>在本机莫名 export 失败了<span class="mojikumi-line-end">，</span>结果扔到 VPS 上就成功了<span class="mojikumi-line-end">，</span>神秘<span class="mojikumi-line-end">。</span>但在 VPS 上还得装上中文字体<span class="mojikumi-line-end">，</span>并且配字体设置<span class="mojikumi-line-end">。</span></p>
+<p>无奖竞猜<span class="mojikumi-line-end">，</span>下面这些队名都是啥<span class="mojikumi">：</span><wbr><span class="mojikumi-line-start">（</span></p>
+<blockquote>
+<p>下午的展示顺序是</p>
+<ol start="0">
+<li>我</li>
+<li>蛋白质</li>
+<li>迷</li>
+<li>对对对</li>
+<li>懒</li>
+</ol>
+</blockquote>
+<a id="答案" name="答案" aria-hidden="true"></a>
+<aside role="note" data-v-a2ab257f><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-a2ab257f><h4 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-info-circle-outline text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Info: </span><span data-v-a2ab257f>答案</span></h4><span class="details-icon text-5" data-v-a2ab257f></span></summary><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><aside role="note" data-v-a2ab257f><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-a2ab257f><h5 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-info-circle-outline text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Info: </span><span data-v-a2ab257f><s>给你一次再想一想的机会</s></span></h5><span class="details-icon text-5" data-v-a2ab257f></span></summary><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><ol>
+<li>青蛙补充蛋白质</li>
+<li>迷失分析LAS</li>
+<li>阿对对队</li>
+<li>这个队特别懒<span class="mojikumi-line-end">，</span>什么都没留下~</li>
+</ol></div></details></aside></div></details></aside>
+<p>感觉这个第一次例会总体上传达的意思就是<span class="mojikumi-line-end">，</span>看起来难的功能要想简单点<span class="mojikumi-line-end">，</span>差不多得了<span class="mojikumi-line-start">（</span></p>]]></content>
         <category label="Web" term="https://ouuan.moe/tag/Web"/>
         <category label="学习记录" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"/>
     </entry>
