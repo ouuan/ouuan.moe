@@ -17,11 +17,13 @@ Licensed under CC BY-SA 4.0</copyright>
             <guid>https://ouuan.moe/post/2023/03/digital-logic</guid>
             <pubDate>Thu, 02 Mar 2023 03:46:54 GMT</pubDate>
             <description><![CDATA[
+
 <p>谁会愿意天天用一个课六个字的全名来叫它呢<span class="mojikumi-line-end">，</span>但是数字逻辑电路是数电<span class="mojikumi-line-end">，</span>数字逻辑设计是数设<span class="mojikumi-line-end">，</span>数字逻辑实验总不能是 <code>/数[字逻]?实验?/</code><span class="mojikumi-line-end">，</span>但叫它数电实验或者数设实验好像都不太对<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
 <p>上课的时候也是<span class="mojikumi-line-end">，</span>老师一会儿一个<span class="mojikumi-line-start">“</span>如果你是数设的同学<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>一会儿一个<span class="mojikumi-line-start">“</span>如果你没报上数设但想把数电学成数设<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>这课也太乱了<span class="mojikumi-line-start">（</span></p>
 <p>我写游记都得把两个课放一起写<span class="mojikumi-line-end">，</span>课就不能合成一个吗<span class="mojikumi-line-start">（</span></p>
 ]]></description>
             <content:encoded><![CDATA[
+
 <p>谁会愿意天天用一个课六个字的全名来叫它呢<span class="mojikumi-line-end">，</span>但是数字逻辑电路是数电<span class="mojikumi-line-end">，</span>数字逻辑设计是数设<span class="mojikumi-line-end">，</span>数字逻辑实验总不能是 <code>/数[字逻]?实验?/</code><span class="mojikumi-line-end">，</span>但叫它数电实验或者数设实验好像都不太对<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
 <p>上课的时候也是<span class="mojikumi-line-end">，</span>老师一会儿一个<span class="mojikumi-line-start">“</span>如果你是数设的同学<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>一会儿一个<span class="mojikumi-line-start">“</span>如果你没报上数设但想把数电学成数设<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>这课也太乱了<span class="mojikumi-line-start">（</span></p>
 <p>我写游记都得把两个课放一起写<span class="mojikumi-line-end">，</span>课就不能合成一个吗<span class="mojikumi-line-start">（</span></p>
@@ -56,6 +58,9 @@ Licensed under CC BY-SA 4.0</copyright>
 <aside role="note" data-v-a2ab257f><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-a2ab257f><h5 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-pencil text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Note: </span><span data-v-a2ab257f>电源开关</span></h5><span class="details-icon text-5" data-v-a2ab257f></span></summary><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><p>按一次打开电源<span class="mojikumi-line-end">，</span>再按一次关闭电源<span class="mojikumi-line-end">。</span></p></div></details></aside>
 </blockquote>
 <p>非常地理所当然<span class="mojikumi-line-end">，</span>但感觉这个事实莫名地很有意思<span class="mojikumi-line-start">（</span><s>而且把电源开关写出来再折起来就莫名喜感<span class="mojikumi-line-start">（</span>按一次打开 <code>&#x3C;details></code><span class="mojikumi-line-end">，</span>再按一次关闭 <code>&#x3C;details></code></s></p>
+<h4 id="git-conflict" class="heading"><a href="#git-conflict" class="heading-anchor" aria-label="章节： git conflict" tabindex="-1"></a><span>git conflict</span></h4>
+<p>虽说是敏捷开发课程文档<span class="mojikumi-line-end">，</span>但这个 git conflict 也太<span class="mojikumi-line-start">（</span></p>
+<p><picture><source type="image/webp" srcset="/assets/git-conflict-in-doc.5d6c1b24.webp"><img srcset="/assets/git-conflict-in-doc.a7369472.png" loading="lazy" src="/assets/git-conflict-in-doc.a7369472.png" width="680" height="265" alt="课程文档中出现了 git conflict 标记"></picture></p>
 <h3 id="把人忽悠进来之后" class="heading"><a href="#把人忽悠进来之后" class="heading-anchor" aria-label="章节： 把人忽悠进来之后" tabindex="-1"></a><span><s>把人忽悠进来之后</s></span></h3>
 <p>下面是两个课件的 diff<span class="mojikumi-line-end">，</span>虽然这个优势的意思实际上没变<span class="mojikumi-line-end">，</span>从 sv 班苛刻的开设条件基本上就能猜到没法随时退出<span class="mojikumi-line-end">，</span>但是<span class="mojikumi-line-start">（</span></p>
 <blockquote>
@@ -75,6 +80,9 @@ Licensed under CC BY-SA 4.0</copyright>
 <h3 id="示波器实验" class="heading"><a href="#示波器实验" class="heading-anchor" aria-label="章节： 示波器实验" tabindex="-1"></a><span>示波器实验</span></h3>
 <p>上学期物理实验用过示波器<span class="mojikumi-line-end">，</span>感到了这个课除了 <a href="/post/2022/10/basic-tex-and-r-for-physics-lab">学习 TeX 和 R</a> 之外竟然还稍微有点用<span class="mojikumi-line-end">，</span>虽然也只有那么一点点用<span class="mojikumi-line-end">，</span>不知道和电子学基础相比哪个的一点点大一些<span class="mojikumi-line-start">（</span></p>
 <p>整个实验中卡壳最久的一步是<span class="mojikumi-line-end">，</span>从一坨绑得十分整齐的导线中抽出一根<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
+<h3 id="与非门电路测试实验" class="heading"><a href="#与非门电路测试实验" class="heading-anchor" aria-label="章节： 与非门电路测试实验" tabindex="-1"></a><span>与非门电路测试实验</span></h3>
+<p>预习的时候对着文档里的电路图和芯片引脚图把怎么接线<span class="mojikumi-line-end">、</span>怎么接地写清楚<span class="mojikumi-line-end">，</span>就很容易了<span class="mojikumi-line-end">。</span>普通班还要交预习报告<span class="mojikumi-line-end">，</span>sv 班是以能顺利做实验为目标要求预习<span class="mojikumi-line-end">，</span>但基本不用写预习报告<span class="mojikumi-line-end">，</span>感觉很科学<span class="mojikumi-line-end">。</span><s>暴论<span class="mojikumi-line-end">：</span>设计得再好的预习报告都与预习的目的相冲突<span class="mojikumi-line-end">。</span></s><span class="mojikumi-line-start">（</span>当然像物理实验这种和怎么做实验完全无关的预习报告就更不用说了<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p>本来想半小时速通<span class="mojikumi-line-end">，</span>失败了<span class="mojikumi-line-end">，</span>感觉最大的问题还是抽不出导线<span class="mojikumi-line-start">（</span></p>
 <h2 id="数设" class="heading"><a href="#数设" class="heading-anchor" aria-label="章节： 数设" tabindex="-1"></a><span>数设</span></h2>
 <h3 id="数设第二次课" class="heading"><a href="#数设第二次课" class="heading-anchor" aria-label="章节： 数设第二次课" tabindex="-1"></a><span>数设第二次课</span></h3>
 <p>这节课讲了一堆数电背后的模电原理<span class="mojikumi-line-end">，</span>而且还是 TTL 电路<span class="mojikumi-line-end">，</span>不是 DDPP5 放在第 14 章的 CMOS<span class="mojikumi-line-end">。</span>感觉完全没听懂<span class="mojikumi-line-end">，</span>只不过说到底这一节是物理课不是计算机课<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>后面又说讲的大部分东西不考<span class="mojikumi-line-end">，</span>讲这些是为了补充一些数字电路发展的历史<span class="mojikumi-line-end">，</span>弥补思维上的跳跃<span class="mojikumi-line-end">。</span></p>
