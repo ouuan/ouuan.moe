@@ -108,8 +108,42 @@ Licensed under CC BY-SA 4.0</copyright>
 <p>第二天早上起来一看<span class="mojikumi-line-start">（</span><s>怎么每段都有个第二天早上起来</s><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>大家都在画些啥<span class="mojikumi-line-end">，</span>我还是太保守了<span class="mojikumi-line-start">（</span></p>
 <h3 id="回答同学提问" class="heading"><a href="#回答同学提问" class="heading-anchor" aria-label="章节： 回答同学提问" tabindex="-1"></a><span>回答同学提问</span></h3>
 <p>软工的公开提问貌似只能在微信群<span class="mojikumi-line-end">，</span>而且助教有十几个<span class="mojikumi-line-end">，</span>回复速度实在是太快了<span class="mojikumi-line-end">。</span>程设训练的时候我还能偶尔抢在助教之前回答问题<span class="mojikumi-line-end">，</span>现在根本做不到<span class="mojikumi-line-start">（</span></p>
-<h3 id="redacted" class="heading"><a href="#redacted" class="heading-anchor" aria-label="章节： [redacted]" tabindex="-1"></a><span>[redacted]</span></h3>
-<p>这里是一段 13 天后才能公开的内容<span class="mojikumi-line-end">，</span>在这放个预告防止到时候忘了<span class="mojikumi-line-start">（</span></p>
+<h3 id="偷窥同学代码" class="heading"><a href="#偷窥同学代码" class="heading-anchor" aria-label="章节： 偷窥同学代码" tabindex="-1"></a><span>偷窥同学代码</span></h3>
+<p>偶然间发现 SonarQube 上可以看到同学的代码<span class="mojikumi-line-end">，</span>因为我的小作业已经交了而且分都给了<span class="mojikumi-line-end">，</span>所以我就放心大胆地偷窥了<span class="mojikumi-line-start">（</span></p>
+<p>本来想给助教报告一下问题等权限修复<span class="mojikumi-line-end">，</span>结果说是懒得修了<span class="mojikumi">，</span><wbr><span class="mojikumi-line-start">《</span>希望没多少人发现<span class="mojikumi">》</span><span class="mojikumi-line-end">，</span><s>导致我甚至不能在迟交 ddl 之前在博客吐槽</s><span class="mojikumi-line-start">（</span>要是下学期还不修<span class="mojikumi-line-end">，</span>大家都学会了这个操作<span class="mojikumi-line-end">，</span>那只能说不是我的锅了<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>那我只好趁机来认真看一看同学们都写了一些什么奇妙代码<span class="mojikumi-line-start">（</span></p>
+<ul>
+<li>
+<p>冗余的类型标注<span class="mojikumi-line-start">（</span>看到文档里讲 TS 的时候举例全是冗余类型标注时<span class="mojikumi-line-end">，</span>我就知道同学们肯定会写一万个 <code>let count: number = 0</code><span class="mojikumi-line-end">）</span></p>
+</li>
+<li>
+<p>只需条件修改 prop 时<span class="mojikumi-line-end">，</span>条件渲染 prop 不同的两个组件</p>
+</li>
+<li>
+<p>手写八遍而不是使用 <code>for</code> 来遍历网格的邻居</p>
+</li>
+<li>
+<p>更新 React state 时即使结果是常量依然使用回调函数</p>
+</li>
+<li>
+<p>回调函数写成 <code>() => { foo(); }</code> 而不是 <code>foo</code></p>
+</li>
+<li>
+<p>冗余的 <code>flex<wbr>-<wbr>direction<wbr>: <wbr>row</code></p>
+</li>
+<li>
+<p>复制二维数组<span class="mojikumi-line-end">，</span>有看到用 <code>for</code> 一个个 <code>push</code> 的<span class="mojikumi-line-end">，</span>也有看到直接 <code>JSON<wbr>.<wbr>parse<wbr>(<wbr>JSON<wbr>.<wbr>stringify<wbr>)</code> 的<span class="mojikumi-line-end">；</span>正确写法应该是 <code>old<wbr>.<wbr>map<wbr>((<wbr>row<wbr>) => <wbr>row<wbr>.<wbr>slice<wbr>())</code><span class="mojikumi-line-end">。</span>数组大小为 1000x1000 时<span class="mojikumi-line-end">，</span>在 Firefox 中<span class="mojikumi-line-end">，</span>这两种写法的用时都大约是 <code>map</code> &#x26; <code>slice</code> 的 10 倍<span class="mojikumi-line-end">，</span>在 Chrome 中<span class="mojikumi-line-end">，</span>一个个 <code>push</code> 的用时是 <code>map</code> &#x26; <code>slice</code> 的 3 倍<span class="mojikumi-line-end">，</span><code>JSON<wbr>.<wbr>parse<wbr>(<wbr>JSON<wbr>.<wbr>stringify<wbr>)</code> 的用时是 40 倍<span class="mojikumi-line-end">。</span>而且<span class="mojikumi-line-end">，</span>由于小作业中需要的是复制其他所有<span class="mojikumi-line-end">，</span>但修改一个<span class="mojikumi-line-end">，</span>很多同学在 <code>for</code> 里面写 <code>if</code><span class="mojikumi-line-end">，</span>这样效率更低<span class="mojikumi-line-end">，</span>应该把 <code>if</code> 写在 <code>for</code> 外面<span class="mojikumi-line-end">。</span></p>
+<p>但是还看到一种写法<span class="mojikumi-line-end">，</span>只深复制修改了的那一行<span class="mojikumi-line-end">，</span>其他行浅复制<span class="mojikumi-line-end">。</span>草<span class="mojikumi-line-end">，</span>这样确实性能更好<span class="mojikumi-line-end">。</span></p>
+</li>
+<li>
+<p>依赖于效果为 toggle 的按钮不会在 toggle 完成前被点击两次<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>问题背景<span class="mojikumi-line-end">：</span>一个 start 按钮和一个 stop 按钮<span class="mojikumi-line-end">，</span>修改一个 <code>playing</code> 的 state<span class="mojikumi-line-end">，</span>处于 playing 状态时需要一个 <code>setInterval</code></li>
+<li>问题 1<span class="mojikumi-line-end">：</span>在 start / stop 时将 <code>playing</code> 修改为 <code>!playing</code> 而非 <code>true</code>/<code>false</code></li>
+<li>问题 2<span class="mojikumi-line-end">：</span>只在 stop 时 <code>clearInterval</code><span class="mojikumi-line-end">，</span>没有在 start 时 <code>clearInterval</code></li>
+</ul>
+<p>正常的交互很难做到 toggle 完成前被点击两次<span class="mojikumi-line-end">，</span>基本上只能通过在 console 连续调用两次 <code>click</code> 实现<span class="mojikumi-line-end">，</span>但最好还是不要依赖于这一点<span class="mojikumi-line-end">。</span></p>
+</li>
+</ul>
 <h3 id="node-js-和浏览器的不同-timer" class="heading"><a href="#node-js-和浏览器的不同-timer" class="heading-anchor" aria-label="章节： Node.js 和浏览器的不同 timer" tabindex="-1"></a><span>Node.js 和浏览器的不同 timer</span></h3>
 <p>队友问了一个神奇的 bug<span class="mojikumi-line-end">，</span>说是 <code>clearInterval</code> clear 不掉<span class="mojikumi-line-end">，</span>我看了半天都没发现问题<span class="mojikumi-line-end">，</span>最后发现开头有个 <code>import<wbr> { <wbr>setInterval<wbr> } <wbr>from<wbr> '<wbr>timers<wbr>'</code><span class="mojikumi-line-end">。</span></p>
 <p>之前还真没注意过<span class="mojikumi-line-end">，</span>timer 有 Node.js 和浏览器两个版本<span class="mojikumi-line-end">，</span>Node.js 的 <code>setInterval</code> 返回的是一个 object<span class="mojikumi-line-end">，</span>浏览器返回的是一个 <code>number</code><span class="mojikumi-line-end">。</span></p>
