@@ -187,7 +187,7 @@ Licensed under CC BY-SA 4.0</copyright>
 </blockquote>
 <p>结果还真是<span class="mojikumi-line-start">“</span>24:00<strong>后</strong><span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>手动 ddl 🌚</p>
 <p>本来晚上 11 点还看到我们队的一志愿的一志愿数量从 7 变成了 6<span class="mojikumi-line-end">，</span>就是 2/3 的概率抽上<span class="mojikumi-line-end">，</span>结果早上起来一看还是掉了<span class="mojikumi-line-end">，</span>寄<span class="mojikumi-line-end">。</span>这下和不是队友的室友一个选题了<span class="mojikumi-line-end">。</span>好在例会还是 4-3<span class="mojikumi-line-end">，</span>要是 4-4 的话整个下午就消失了<span class="mojikumi-line-start">（</span></p>
-<h3 id="第一次例会" class="heading"><a href="#第一次例会" class="heading-anchor" aria-label="章节： 第一次例会" tabindex="-1"></a><span>第一次例会</span></h3>
+<h3 id="大例会-1" class="heading"><a href="#大例会-1" class="heading-anchor" aria-label="章节： 大例会 1" tabindex="-1"></a><span>大例会 1</span></h3>
 <p>第一次例会竟然就要写分工以及完整的进度安排<span class="mojikumi-line-end">，</span>虽然说是随便画饼也没事<span class="mojikumi-line-end">，</span>但还是感觉不太敏捷<span class="mojikumi-line-start">（</span></p>
 <p>顺便练习了一下 <a href="https://sli.dev/">Slidev</a><span class="mojikumi-line-end">，</span>在本机莫名 export 失败了<span class="mojikumi-line-end">，</span>结果扔到 VPS 上就成功了<span class="mojikumi-line-end">，</span>神秘<span class="mojikumi-line-end">。</span>但在 VPS 上还得装上中文字体<span class="mojikumi-line-end">，</span>并且配字体设置<span class="mojikumi-line-end">。</span></p>
 <p>无奖竞猜<span class="mojikumi-line-end">，</span>下面这些队名都是啥<span class="mojikumi">：</span><wbr><span class="mojikumi-line-start">（</span></p>
@@ -209,8 +209,30 @@ Licensed under CC BY-SA 4.0</copyright>
 <li>这个队特别懒<span class="mojikumi-line-end">，</span>什么都没留下~</li>
 </ol></div></details></aside></div></details></aside>
 <p>感觉这个第一次例会总体上传达的意思就是<span class="mojikumi-line-end">，</span>看起来难的功能要想简单点<span class="mojikumi-line-end">，</span>差不多得了<span class="mojikumi-line-start">（</span></p>
-<h3 id="需求细化" class="heading"><a href="#需求细化" class="heading-anchor" aria-label="章节： 需求细化" tabindex="-1"></a><span>需求细化</span></h3>
-<p>第一次例会上是我提的问题最多<span class="mojikumi-line-end">，</span>之后也基本上只有我在群里问需求细节问题<span class="mojikumi-line-end">。</span>回答大部分都是两种之一<span class="mojikumi-line-end">，</span>要么是<span class="mojikumi-line-start">“</span>这样也可以<span class="mojikumi-line-end">，</span>但那样也可以<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>要么是<span class="mojikumi-line-start">“</span>这样更好<span class="mojikumi-line-end">，</span>但没分<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span>程设训练的时候也是这样<span class="mojikumi-line-end">，</span>似乎是我的问题<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>正常的想法是不是应该是只要不说清楚就可以混过去<span class="mojikumi-line-end">，</span>而不是害怕没搞清楚而写错<span class="mojikumi-line-start">（</span></p>]]></content:encoded>
+<h3 id="大作业第一周" class="heading"><a href="#大作业第一周" class="heading-anchor" aria-label="章节： 大作业第一周" tabindex="-1"></a><span>大作业第一周</span></h3>
+<h4 id="需求细化" class="heading"><a href="#需求细化" class="heading-anchor" aria-label="章节： 需求细化" tabindex="-1"></a><span>需求细化</span></h4>
+<p>第一次例会上是我提的问题最多<span class="mojikumi-line-end">，</span>之后也基本上只有我在群里问需求细节问题<span class="mojikumi-line-end">。</span>回答大部分都是两种之一<span class="mojikumi-line-end">，</span>要么是<span class="mojikumi-line-start">“</span>这样也可以<span class="mojikumi-line-end">，</span>但那样也可以<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>要么是<span class="mojikumi-line-start">“</span>这样更好<span class="mojikumi-line-end">，</span>但没分<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span>程设训练的时候也是这样<span class="mojikumi-line-end">，</span>似乎是我的问题<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>正常的想法是不是应该是只要不说清楚就可以混过去<span class="mojikumi-line-end">，</span>而不是害怕没搞清楚而写错<span class="mojikumi-line-start">（</span></p>
+<h4 id="四个阶段" class="heading"><a href="#四个阶段" class="heading-anchor" aria-label="章节： 四个阶段" tabindex="-1"></a><span>四个阶段</span></h4>
+<p>第一周总体上分成四个阶段<span class="mojikumi-line-end">：</span></p>
+<ol>
+<li>设计任务计划<span class="mojikumi-line-end">，</span>编写让队友知道要干什么的文档和 issue</li>
+<li>ping &#x26; push 队友</li>
+<li>回答队友提问 &#x26; 指出队友代码里的问题</li>
+<li>马上就要例会了<span class="mojikumi-line-end">，</span>放弃指导队友<span class="mojikumi-line-end">，</span>上手自己写<span class="mojikumi-line-start">（</span></li>
+</ol>
+<p>感觉最后总的工作量还是超过了自己一个人把所有活干完<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>希望以后能好一点<span class="mojikumi-line-end">，</span>要一直是这样其他课真寄了<span class="mojikumi-line-end">。</span>而且我本来就没打算管后端<span class="mojikumi-line-end">，</span>就没学 Django<span class="mojikumi-line-end">，</span>结果不仅要搞一点后端的规划设计<span class="mojikumi-line-end">，</span>回答队友提问<span class="mojikumi-line-end">，</span>还得赶着 ddl 硬上写代码<span class="mojikumi-line-end">，</span>开发环境都没配好<span class="mojikumi-line-end">。</span></p>
+<h4 id="数据库配置" class="heading"><a href="#数据库配置" class="heading-anchor" aria-label="章节： 数据库配置" tabindex="-1"></a><span>数据库配置</span></h4>
+<p>你见过只能挂载目录<span class="mojikumi-line-end">，</span>不能设置环境变量<span class="mojikumi-line-end">，</span>也不能挂载单个文件的 Docker 容器管理吗<span class="mojikumi-line-start">（</span></p>
+<p>这个 SECoder 实在是有些过于离谱<span class="mojikumi-line-end">，</span>最后只能把环境变量写在 Dockerfile 里<span class="mojikumi-line-end">，</span>用 build 出来的数据库镜像<span class="mojikumi-line-end">。</span></p>
+<h4 id="小例会-1" class="heading"><a href="#小例会-1" class="heading-anchor" aria-label="章节： 小例会 1" tabindex="-1"></a><span>小例会 1</span></h4>
+<p>主要就是聊了一下数据库和 API 的设计<span class="mojikumi-line-end">，</span>也没检查 CI/CD<span class="mojikumi-line-end">，</span>结束之后才想起来架构设计也没说<span class="mojikumi-line-end">。</span>毕竟是小例会<span class="mojikumi-line-end">，</span>确实比较轻松<span class="mojikumi-line-end">，</span>感觉上午白着急把数据库跑起来了<span class="mojikumi-line-start">（</span></p>
+<h3 id="大作业第二周" class="heading"><a href="#大作业第二周" class="heading-anchor" aria-label="章节： 大作业第二周" tabindex="-1"></a><span>大作业第二周</span></h3>
+<h4 id="secoder-ssh-卡住" class="heading"><a href="#secoder-ssh-卡住" class="heading-anchor" aria-label="章节： SECoder SSH 卡住" tabindex="-1"></a><span>SECoder SSH 卡住</span></h4>
+<p>之前就偶尔碰到 SECoder SSH 卡住的情况<span class="mojikumi-line-end">，</span>今天发现是回了寝室连有线网就卡住<span class="mojikumi-line-end">，</span>换成 Tsinghua Secure 就不卡了<span class="mojikumi-line-end">，</span>怀疑和 IP 切换有关<span class="mojikumi-line-end">，</span>不是很懂<span class="mojikumi-line-end">。</span></p>
+<h4 id="nuxt-与-typescript-5-0" class="heading"><a href="#nuxt-与-typescript-5-0" class="heading-anchor" aria-label="章节： Nuxt 与 TypeScript 5.0" tabindex="-1"></a><span>Nuxt 与 TypeScript 5.0</span></h4>
+<p>之前还说有点太新太热了<span class="mojikumi-line-end">，</span>果然一堆锅<span class="mojikumi-line-end">。</span></p>
+<p>之前一直随机报错 <code>The "path" argument must be of type string. Received an instance of Array</code><span class="mojikumi-line-end">，</span>后来发现是我直接用了最新最热的 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#supporting-multiple-configuration-files-in-extends">tsconfig 里 <code>extends</code> 写数组</a><span class="mojikumi-line-end">，</span>然后 Nuxt 读取 tsconfig 的时候寄了<span class="mojikumi-line-end">。</span>改成单个 <code>extends</code> 或者把 Nuxt 更新到 edge channel 就 ok 了<span class="mojikumi-line-end">。</span></p>
+<p>另外还碰到 <a href="https://github.com/nuxt/nuxt/issues/15113">一个 bug</a><span class="mojikumi-line-end">，</span>只能把路径改成中文<span class="mojikumi-line-end">。</span></p>]]></content:encoded>
             <category domain="https://ouuan.moe/tag/Web">Web</category>
             <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
         </item>
