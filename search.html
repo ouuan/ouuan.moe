@@ -152,299 +152,7 @@ Tips: 可以使用 [RSSHub Radar](https://github.com/DIYgod/RSSHub-Radar) 等插
 > 生活的方法有无限种。
 
 这是 [No.1](https://music.163.com/#/song?id=1416874718) 的一句歌词，是我现在的 QQ 个性签名。
-`},{title:l,tags:"busuanzi live2d JavaScript Web 问题解决记录",content:`昨天在一位网友的 Hexo 博客遇到了很诡异的 busuanzi 访问量统计不显示问题，经过一番研究发现是 busuanzi 代码的一处问题和 live2d 插件的一处问题凑在一起导致的。
-
-今天在写博客之前先搜了一下 “busuanzi live2d”，发现搜出来一堆结果，我还以为我白研究了..结果点进去一看，第一页结果里没有一个指出了问题的根本原因，而且修复方法基本上都是删 feature 或者换组件，但实际上只要知道问题的根本原因就可以在不妨碍正常功能运作的前提下进行修复。所以昨天晚上没白忙活，我这篇博客还是要写的。
-
-
-
-当然，我只看了第一页搜索结果，可能有更深入研究的文章被搜索引擎埋没了，我这篇文章说不定也不会被搜到，只不过既然第一页没有，就让我也来成为被搜索引擎埋没的一员，这样的话说不定被搜到的可能性就增加了（
-
-## 问题描述
-
-在一个同时启用了 busuanzi 访问量统计和 live2d 插件的 Hexo 博客里，访问或刷新博客时有大概率 busuanzi 会被隐藏。
-
-被隐藏的具体表现为，刷新的瞬间 id 为 \`busuanzi_container_*\` 的容器是显示的，然后容器的样式很快被设为 \`display: none\`。
-
-查看 F12 的 Network，busuanzi 相关请求正常返回；console 中没有报错。
-
-## 问题定位
-
-注：这个过程中我也走了一些弯路，就不写出来了。
-
-### 设置 \`display: none\` 的定位
-
-查看 [busuanzi.pure.mini.js](https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js)，发现 \`display: none\` 在 \`hides\` 函数中被设置：
-
-\`\`\`javascript
-hides: function() {
-  this.bszs.map(function(a) {
-    var b = document.getElementById("busuanzi_container_" + a);
-    b && (b.style.display = "none")
-  })
-},
-\`\`\`
-
-而 hides 函数仅在一处被调用：
-
-\`\`\`javascript
-try {
-  a(b), scriptTag.parentElement.removeChild(scriptTag)
-} catch (c) {
-  bszTag.hides()
-}
-\`\`\`
-
-所以是在 \`a(b), scriptTag.parentElement.removeChild(scriptTag)\` 抛出异常时容器被隐藏。
-
-### 异常原因的定位
-
-由于在其它地方的 busuanzi 不会出现这一问题，而问题的原因还完全不清楚，为了尽可能还原原始环境以复现问题，我选择了使用 [Firefox 的 Header Editor 插件](https://addons.mozilla.org/zh-CN/firefox/addon/header-editor/) 直接在原博客进行测试。具体来说，就是在本地复制一份 busuanzi 的代码，然后跑一个 http server，在 Header Editor 里把 busuanzi 代码的请求重定向到本地的 http server。
-
-首先，在 \`catch\` 中添加 \`console.error(c)\`，得到错误内容 \`TypeError: scriptTag.parentElement is null\`。
-
-查看代码中 \`scriptTag\` 相关的部分：
-
-\`\`\`javascript
-scriptTag = document.createElement("SCRIPT"), scriptTag.type = "text/javascript", scriptTag.defer = !0, scriptTag.src = a, scriptTag.referrerPolicy = "no-referrer-when-downgrade", document.getElementsByTagName("HEAD")[0].appendChild(scriptTag)
-\`\`\`
-
-所以，再在 \`catch\` 中添加 \`s = document.querySelector("[src*=BusuanziCallback]"); console.log(s.parentElement);\`，发现 \`s.parentElement\` 不是 \`null\`。
-
-再添加 \`console.log(s === scriptTag)\`，发现结果是 \`s\` 和 \`scriptTag\` 不同，所以原因在于此时的 \`scriptTag\` 变量已经不指向 DOM 中的这个元素了。
-
-### 定位到 live2d 插件
-
-此时我原本是没有任何头绪的，但我发现，并不是每次刷新页面都会触发这一问题，所以没有触发问题时和触发问题时的差别就成了问题的突破口。
-
-经过多次刷新，我发现，有一串 console 输出，在出现问题时总位于我在 \`catch\` 中添加的调试信息之前，而在没出现问题时则位于调试信息之后：
-
-\`\`\`
-Live2D 2.1.00_1 live2d.core.js:5925:16
-profile : Desktop live2d.core.js:5913:16
-  [PROFILE_NAME] = Desktop live2d.core.js:5918:20
-  [USE_ADJUST_TRANSLATION] = false live2d.core.js:5918:20
-  [USE_CACHED_POLYGON_IMAGE] = false live2d.core.js:5918:20
-  [EXPAND_W] = 2
-\`\`\`
-
-多亏了 live2d 的这串输出，我得以将问题定位到 live2d 插件上。
-
-实际上，如果没有这些 console 输出，也可以通过 \`<head>\` 中 \`L2Dwidget.0.min.js\` 和 \`busuanzi?jsonpCallback=BusuanziCallback\` 两个 \`<script>\` 的相对位置发现问题，只不过这样的话就更隐蔽更难发现了。
-
-### 在 live2d 插件中定位问题
-
-在 \`L2Dwidget.min.js\` 的第一行有源码地址以及时间：\`/*! https://github.com/xiazeyu/live2d-widget.js built@2019-4-6 09:38:17 */\`
-
-因为注释中给出的时间不是最新版本，先查看 git log 并 checkout 到相应时间的版本。
-
-既然问题在于 \`<script>\` 元素被重新创建而导致原变量不指向 DOM 中元素，就在代码中 grep \`head\`，然后发现 [问题代码](https://github.com/xiazeyu/live2d-widget.js/blob/fa8f2d831a1a9e96cd85bd1ef593a3336aeac720/src/dialog/index.js#L4-L38)：\`document.head.innerHTML += ……\`
-
-至此，问题原因已发现，就是 live2d 插件通过修改 \`document.head.innerHTML\` 来添加样式，导致 busuanzi 的 \`scriptTag\` 变量指向的不再是 DOM 中的 \`<script>\` 元素。
-
-实际上，live2d 插件的这一问题 [已经修复](https://github.com/xiazeyu/live2d-widget.js/pull/61)，但需要使用新版才行。
-
-## 解决方法
-
-### 修改 busuanzi 的解决方法
-
-因为 busuanzi 的代码较短，而且本来就是用的外部的代码，改起来比较容易。
-
-把 \`scriptTag.parentElement.removeChild(scriptTag)\` 修改为 \`s=document.querySelector('[src*=BusuanziCallback]'),s.parentElement.removeChild(s)\` 即可。可以把修改后的静态文件放在博客里，然后修改 busuanzi \`<script>\` 的 \`src\`。
-
-<Card title="相关代码" fold>
-
-修改后的 busuanzi 代码（还在 \`catch\` 里加了个 \`console.error\`）：
-
-\`\`\`javascript
-var bszCaller,bszTag;!function(){var c,d,e,a=!1,b=[];ready=function(c){return a||"interactive"===document.readyState||"complete"===document.readyState?c.call(document):b.push(function(){return c.call(this)}),this},d=function(){for(var a=0,c=b.length;c>a;a++)b[a].apply(document);b=[]},e=function(){a||(a=!0,d.call(window),document.removeEventListener?document.removeEventListener("DOMContentLoaded",e,!1):document.attachEvent&&(document.detachEvent("onreadystatechange",e),window==window.top&&(clearInterval(c),c=null)))},document.addEventListener?document.addEventListener("DOMContentLoaded",e,!1):document.attachEvent&&(document.attachEvent("onreadystatechange",function(){/loaded|complete/.test(document.readyState)&&e()}),window==window.top&&(c=setInterval(function(){try{a||document.documentElement.doScroll("left")}catch(b){return}e()},5)))}(),bszCaller={fetch:function(a,b){var c="BusuanziCallback_"+Math.floor(1099511627776*Math.random());window[c]=this.evalCall(b),a=a.replace("=BusuanziCallback","="+c),scriptTag=document.createElement("SCRIPT"),scriptTag.type="text/javascript",scriptTag.defer=!0,scriptTag.src=a,scriptTag.referrerPolicy="no-referrer-when-downgrade",document.getElementsByTagName("HEAD")[0].appendChild(scriptTag)},evalCall:function(a){return function(b){ready(function(){try{a(b),s=document.querySelector('[src*=BusuanziCallback]'),s.parentElement.removeChild(s)}catch(c){console.error(c),bszTag.hides()}})}}},bszCaller.fetch("//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback",function(a){bszTag.texts(a),bszTag.shows()}),bszTag={bszs:["site_pv","page_pv","site_uv"],texts:function(a){this.bszs.map(function(b){var c=document.getElementById("busuanzi_value_"+b);c&&(c.innerHTML=a[b])})},hides:function(){this.bszs.map(function(a){var b=document.getElementById("busuanzi_container_"+a);b&&(b.style.display="none")})},shows:function(){this.bszs.map(function(a){var b=document.getElementById("busuanzi_container_"+a);b&&(b.style.display="inline")})}};
-\`\`\`
-
-然后将
-
-\`\`\`html
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"><\/script>
-\`\`\`
-
-修改为（如果上面的代码放在了博客的 \`/js/busuanzi.pure.mini.js\`）
-
-\`\`\`html
-<script async src="/js/busuanzi.pure.mini.js"><\/script>
-\`\`\`
-
-</Card>
-
-网上搜到的很多解决办法是把 \`id="busuanzi_container_*"\` 删掉，这样当然就不会被隐藏了，只不过这个隐藏本意是在出错时不把错误或者无意义的内容显示给访客，保留这一行为还是挺好的。
-
-### 修改 live2d 的解决方法
-
-总之，就是把 \`innerHTML +=\` 换成 \`createElement\` 和 \`appendChild\`，按 [xiazeyu/live2d-widget.js#61](https://github.com/xiazeyu/live2d-widget.js/pull/61/files#diff-61426849230d9976d234f7c4ca195c623d9bb05a91d76b7ae51501e394f81860L10-R43) 改就行。
-
-live2d 的代码还是挺长的，直接修改 minify 后的代码不太好。如果是 hexo 插件的话，要修改应该也蛮麻烦的。总之，如果你知道怎么改比较好的话可以改，不然的话还是推荐改 busuanzi。
-
-## 问题启示
-
-### 不要修改原 DOM 中的 innerHTML
-
-直接修改 DOM 元素的 innerHTML 会让其中的元素都重新渲染（加载？创建？），不仅指向其中元素的变量会失效，也可能导致画面闪烁等问题（例如导致 live2d-widget 修复这一问题的不是 busuanzi 失效而是 [CSS 闪烁](https://github.com/EYHN/hexo-helper-live2d/issues/149)）。
-
-所以，如果是添加 DOM 元素，应当避免修改 \`innerHTML\`，而应当使用 [\`document.createElement\`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) 和 [\`Node.appendChild()\`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) 以及 \`removeChild\`、\`replaceChild\`、\`insertBefore\` 等 API。
-
-### 不要依赖于指向 DOM 元素的变量长时间不改变
-
-如果 DOM 因各种原因部分重建，指向 DOM 元素的变量很可能不再指向当前 DOM 中的元素。所以，最好不要在过了一段时间后（例如在 callback 中）再次使用指向 DOM 元素的变量，而应当再次获取这一元素。
-
-### 不要 silently fail
-
-在处理异常，尤其是未知的异常时，即使不 throw 出去，也最好用 \`console.error\` 等方法记录下来。记录在 console 中的错误信息并不会显示给普通用户，但可以给寻找问题所在的用户提供宝贵的提示信息。
-
-### 使用 Header Editor 在对原环境最小修改的情况下进行调试
-
-这次使用 Header Editor 调试还是我临时想到的（~~知道有这么个插件还是以前用 [mahjong-helper](https://github.com/EndlessCheng/mahjong-helper)，当然现在已经没在用了~~）。一开始还用 pastebin 上传代码，效率极低，后来才想起来本地跑个 http server 就可以了..用这个插件来调试还是挺方便的。
-
-### 留心依赖版本
-
-一开始我还在 GitHub 上搜到一个 [busuanzi.pure.js](https://github.com/JoeyBling/busuanzi.pure.js)，调了一会儿才发现这个代码和 https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js 不一样..
-
-live2d 的版本也要注意开头包含时间的注释，因为最新版本已经把问题修复了。
-`},{title:m,tags:"Rust 学习记录",content:`早就想学 Rust 了，但一直咕着。这次小学期的程设训练开了 Rust 课堂，就毫不犹豫地选了，也以此为契机学了 Rust。
-
-这篇就是简单记录一下大体上的学习过程，如果有什么心得体会、经验分享之类应该会开新的文章。
-
-顺便也算是程设训练的游记了（“游记”这个词来源于 OI 时期的习惯）。
-
-
-
-## 初学 —— The Rust Programming Language
-
-不同于 Python、JavaScript，这次学 Rust 更像是当初学 C++，不是先魔改代码、用啥搜啥、StackOverflow，而是在还没怎么接触过时就直接看书。
-
-虽然没有细看中文翻译的质量如何，但至少术语是不好翻译的，就直接看了英文版的 [The Rust Programming Language](https://doc.rust-lang.org/book/)。
-
-这本书看下来给我的感觉是，很多地方没有按知识点依赖关系的拓扑排序来讲，而似乎是以某种由浅入深的顺序来的，很多后面才学到的概念在前文就出现，而前面学的概念的完全不需要后面知识的扩展又在后面才补充，还有一些零碎的知识是在 project chapter 讲的。
-
-反正，每天看两三章，~~还能有不少时间摸鱼，摸个~~ 一两周就看得差不多了（
-
-## 初步练习 —— 洛谷
-
-看书的同时在 [洛谷](https://www.luogu.com.cn/) 上随便挑了点入门题和板子题写。只不过一开始没学 io 之类的，会再多语法也做不动题，~~但幸好有 GitHub Copilot~~。
-
-在这放个读入的例子：
-
-\`\`\`
-6 0
-1 1 4 5 1 4
-\`\`\`
-
-\`\`\`rust
-fn main() {
-    let stdin = std::io::stdin();
-    let mut input = String::new();
-
-    stdin.read_line(&mut input).unwrap();
-    let mut parts = input.split_whitespace();
-    let n = parts.next().unwrap().parse::<u32>().unwrap();
-    assert_eq!(n, 6);
-    let m = parts.next().unwrap().parse::<u32>().unwrap();
-    assert_eq!(m, 0);
-
-    input.clear();
-    stdin.read_line(&mut input).unwrap();
-    let a = input
-        .split_whitespace()
-        .map(|x| x.parse::<i32>().unwrap())
-        .collect::<Vec<_>>();
-    assert_eq!(a, vec![1, 1, 4, 5, 1, 4]);
-}
-\`\`\`
-
-## 复习 —— A half-hour to learn Rust
-
-之前在 Hacker News 上看到了 [A half-hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust) 这篇文章。如果真的是看这个东西来学 Rust，不说能不能学会，肯定是学不扎实的。但是，看完书之后很多语法也忘了，看这个用来复习还是非常不错的。（另外，我感觉这个的顺序貌似比书更有条理一些，虽然初学不一定友好 🤔）
-
-## 深入了解 —— The Rust Standard Library
-
-其实看书的时候就感觉到了，很多时候不懂一段代码不是不懂语法，而是不懂 [标准库](https://doc.rust-lang.org/stable/std/) 的实现，而把 API 理解成了没学过的语法。了解标准库，不仅是提升编码和运行的效率，也是能够看懂很多基础代码的关键。
-
-看文档的时候发现，不仅是学到了很多有用的 methods，也学到了很多其它东西。比如说：
-
--   一般来说都可以用 [\`std::cmp::max\`](https://doc.rust-lang.org/stable/std/cmp/fn.max.html) 来取 max，但 [\`f32\` 专门有一个 \`pub fn max(self, other: f32) -> f32\`](https://doc.rust-lang.org/stable/std/primitive.f32.html#method.max)，这是因为浮点数有 NaN 这个特殊情况导致 \`f32\` 没有 impl [\`Ord\`](https://doc.rust-lang.org/stable/std/cmp/trait.Ord.html)，而 \`std::cmp::max\` 需要 \`Ord\`
--   书里貌似没讲到的 [keyword \`ref\`](https://doc.rust-lang.org/stable/std/keyword.ref.html)（以及在 pattern matching 中和 \`&\` 的区别）
--   引用之间进行比较时会自动转成指向的值，即实际进行比较的是指向的值（可以通过 [\`std::ptr::eq\`](https://doc.rust-lang.org/stable/std/ptr/fn.eq.html) 来比较地址）
--   从标准库的 API 设计能领会到很多 trait 和 generic 的用法，体会到它们组合在一起的强大
--   [\`Iterator\` 自动有 \`IntoIterator\`](https://doc.rust-lang.org/std/iter/index.html#for-loops-and-intoiterator)，所以用 \`IntoIterator\` 代替 \`Iterator\` 作为 trait bound 可以让函数更灵活
--   ……
-
-简单看一看就能知道 the book 里涉及到的真的只是冰山一角，学 Rust 标准库的意义会比学 C++ 的 STL 大得多（个人感觉）（也可能是我 C++ 水平太低 / 没认真学 STL 😢）（或者 Primer Plus 讲的全一些）。
-
-## 上课
-
-### Class 1
-
-因为自学过了，所以上课就基本上是把老师的声音当作 bgm 偶尔听一下，然后继续看标准库文档（
-
-上课的时候老师提到 Rust 编译器可以提示如何修改，于是我顺势在课程群里发了个 [rust 程序员现状](https://twitter.com/st1page/status/1477168761744805891) 的截图（
-
-![rust程序员现状](rust-programmers-be-like.jpg)
-
-课后把 OJ 上的作业速通后发现榜不是公开的 😢
-
-后来还发现自己一道题写了个 \`collect\` 得到的 \`Vec\` 只用在一个 \`for\` 里（就是说可以直接把迭代器用在 \`for\` 不用先 \`collect\`）😵 想改过来，但虽然没有公开榜，还是不想承受可能的罚时（
-
-### Class 2
-
-第二节课前后共一天多的时间，写了 16h 左右，把 Wordle 大作业的基础功能写完了。（~~本来以为 Wordle 挺好写的，没想到需求这么多，需求文档模糊不清的地方还有的要问有的要自己设计。~~）
-
-感觉课上讲的又快，大作业需要的知识又没讲全，很难想象如果不自学该怎么应对这个课（
-
-### Class 3
-
-修了一些文档说明不清导致的 bug，然后研究了一下扩展功能怎么写。
-
-不知道为什么把单词按信息熵排序写了半天，明明挺简单的。可能是听着老师讲课没法专心想算法。
-
-后来试着用 [rayon](https://docs.rs/rayon/latest/rayon/) 把信息熵计算并行化了，在我本机除了第一次猜测基本上都能秒出结果，感觉很爽 ~~，甚至玩了半天意义不明的照着提示输入~~。
-
-再后来发现用 release 模式编译的优化比并行还大 🌚
-
-### 第一次大作业验收
-
-验收在 THUWC 去过的东主楼，但上大学后还是第一次去，结果走错了，迟到了 5min 😵 然后非常慌张地展示提高功能，都没太演示全，~~感觉白写了~~（
-
-### Class 4~8
-
-略（
-
-### 第二次大作业验收
-
-这次真的有比 pretests 强很多的 system test 了，还好没 FST（助教：这个点你为什么能过啊（x
-
-可能是因为这个课不是学前端的，而且助教只简单看了一下界面演示没看代码，槽点很多的前端被夸了很科学（
-
-可能是因为这个课不是学数据库的，而且听说有其他同学数据库里全是 JSON，普普通通的建表被夸了很科学（
-
-### 关于课上的一些翻译
-
-为什么什么都要翻译出来啊（虽然如果英语母语的话看原文应该也很尬 🤣
-
-![trait: 特型；panic: 恐慌；poisoned: 中毒；crate: 箱；library crate: 库箱](rust-translations.jpg)
-
-## Async Rust
-
-先是看了 [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)，感觉看得一知半解的（尤其是 \`Pin\`），好像大概知道 \`Future\` 在干什么又不完全知道（~~而且这本书好咕啊，\`TODO\` 的章节应该是有生之年了~~
-
-没看完 async book，直接去看 [Tokio Tutorial](https://tokio.rs/tokio/tutorial) 和 [Async programming in Rust with async-std](https://book.async.rs/) 了。作为 async runtime 的教程，它们涉及到的具体原理和实现少一些，更注重怎么实际使用，读起来会容易理解一些。因为 Tokio 更 popular，主要看的是 Tokio 的教程。
-
-## 数据库: Diesel
-
-感觉 [diesel 的教程](https://diesel.rs/guides/) 写的挺简略的，但对着 examples 硬查文档也勉强能看懂基本用法。ORM 看着就很“安全”，只不过实在是太类型体操了，不仅文档查起来有点小麻烦，代码复用也经常因为繁琐的 trait bounds 写不太动（也可能是我没学会）。
-
-[diesel-derive-enum](https://crates.io/crates/diesel-derive-enum) 是好用的。
-
-Sqlite 的 \`RETURNING\` 语句需要启用 \`returning_clauses_for_sqlite_3_35\` feature flag（并且需要至少 3.35 版本的 Sqlite）。没启用的时候对着一堆 trait bound 不满足的错误信息（就和 C++ 模板感觉差不多了..）根本发现不了错误原因，还是翻文档翻半天发现的。
-
-还遇到一个 Sqlite 锁死的坑，通过 [使用 r2d2 设定 \`busy_timeout\`](https://stackoverflow.com/a/57717533) 并 [使用 WAL mode 以及 immediate transaction](https://github.com/the-lean-crate/criner/issues/1) （hopefully）解决了。
-`},{title:d,tags:"btrfs Arch Linux 问题解决记录",content:`记录一下之前困扰我近一年的 [Btrfs](https://wiki.archlinux.org/title/Btrfs) 快照导致的系统无响应问题。
+`},{title:l,tags:"btrfs Arch Linux 问题解决记录",content:`记录一下之前困扰我近一年的 [Btrfs](https://wiki.archlinux.org/title/Btrfs) 快照导致的系统无响应问题。
 
 
 
@@ -493,7 +201,7 @@ Sqlite 的 \`RETURNING\` 语句需要启用 \`returning_clauses_for_sqlite_3_35\
 ![消息记录，发于 6 月 30 日: 前段时间听说关 quota 可以解决这个问题，但关了之后还是经常卡。今天才发现 timeshift 里设置了开 quota，得把 timeshift 的自动开 quota 关了才行 🌚 需要观察几天是否还会整点卡](btrfs-quota-timeshift-message-screenshot.png)
 
 其实我还是写这篇博客的时候想看一眼 Timeshift 的 quota 设置发现没有这个设置项了才知道 Timeshift 已经修了...
-`},{title:p,tags:"CSS Web 问题解决记录",content:`同时使用 \`display: none\` 和 \`loading="lazy"\` 可能会让内容永远加载不出来。
+`},{title:m,tags:"CSS Web 问题解决记录",content:`同时使用 \`display: none\` 和 \`loading="lazy"\` 可能会让内容永远加载不出来。
 
 <p class="dark:hidden">![截图：评论加载中](comments-loading-light.png)</p>
 <p class="hidden dark:block">![截图：评论加载中](comments-loading-dark.png)</p>
@@ -537,7 +245,7 @@ P.S. 虽然问题的解决很简单，但还是浅搜了一下看看有没有什
 ## 再后记的后记
 
 这个东西虽然怎么都看不见了，但宽度会让整个页面出现水平滚动条，所以要加 \`width: 0; height: 0;\`。
-`},{title:F,tags:"选课 THU 经验分享",content:`还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
+`},{title:d,tags:"选课 THU 经验分享",content:`还记得刚入学的时候，我一开始完全没弄明白要怎么选课，当时就想着弄明白了要写一篇选课指南。
 
 后来，我弄明白之后发现不记得自己以前为什么不明白了，写不出来了（
 
@@ -744,7 +452,7 @@ P.S. 虽然问题的解决很简单，但还是浅搜了一下看看有没有什
 4.  如果体育课挂科了，重修选课时会有特殊的流程，详见“选课时间安排”
 
 正因为前三点，可以多报几门体育课，提高选上想上的课的概率，既不会占用学分限制也不会浪费一二志愿。
-`},{title:g,tags:"caddy-security uptime-kuma caddy server 问题解决记录",content:`[Caddy Security](https://authp.github.io/) 不仅会将未经认证的访问者拒之门外，也会拦住 [~~可爱的 kuma 酱~~ Uptime Kuma](https://uptime.kuma.pet/)。这里会分享一下我的一个放过 kuma 的小技巧。
+`},{title:p,tags:"caddy-security uptime-kuma caddy server 问题解决记录",content:`[Caddy Security](https://authp.github.io/) 不仅会将未经认证的访问者拒之门外，也会拦住 [~~可爱的 kuma 酱~~ Uptime Kuma](https://uptime.kuma.pet/)。这里会分享一下我的一个放过 kuma 的小技巧。
 
 
 
@@ -815,6 +523,298 @@ public-public.example.com {
 ## 另一种解决方案: 使用非网页资源进行监控
 
 既然遇到的问题是网页会需要资源，只放开网页的认证会加载不出资源，另一个思路就是监控资源而非网页（不一定是 js、css 这些，也可以是可以公开的 API，或者几乎不会被访问或访问时一定已经认证了的网页之类的）。这比较简单，就不多讲了。
+`},{title:F,tags:"busuanzi live2d JavaScript Web 问题解决记录",content:`昨天在一位网友的 Hexo 博客遇到了很诡异的 busuanzi 访问量统计不显示问题，经过一番研究发现是 busuanzi 代码的一处问题和 live2d 插件的一处问题凑在一起导致的。
+
+今天在写博客之前先搜了一下 “busuanzi live2d”，发现搜出来一堆结果，我还以为我白研究了..结果点进去一看，第一页结果里没有一个指出了问题的根本原因，而且修复方法基本上都是删 feature 或者换组件，但实际上只要知道问题的根本原因就可以在不妨碍正常功能运作的前提下进行修复。所以昨天晚上没白忙活，我这篇博客还是要写的。
+
+
+
+当然，我只看了第一页搜索结果，可能有更深入研究的文章被搜索引擎埋没了，我这篇文章说不定也不会被搜到，只不过既然第一页没有，就让我也来成为被搜索引擎埋没的一员，这样的话说不定被搜到的可能性就增加了（
+
+## 问题描述
+
+在一个同时启用了 busuanzi 访问量统计和 live2d 插件的 Hexo 博客里，访问或刷新博客时有大概率 busuanzi 会被隐藏。
+
+被隐藏的具体表现为，刷新的瞬间 id 为 \`busuanzi_container_*\` 的容器是显示的，然后容器的样式很快被设为 \`display: none\`。
+
+查看 F12 的 Network，busuanzi 相关请求正常返回；console 中没有报错。
+
+## 问题定位
+
+注：这个过程中我也走了一些弯路，就不写出来了。
+
+### 设置 \`display: none\` 的定位
+
+查看 [busuanzi.pure.mini.js](https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js)，发现 \`display: none\` 在 \`hides\` 函数中被设置：
+
+\`\`\`javascript
+hides: function() {
+  this.bszs.map(function(a) {
+    var b = document.getElementById("busuanzi_container_" + a);
+    b && (b.style.display = "none")
+  })
+},
+\`\`\`
+
+而 hides 函数仅在一处被调用：
+
+\`\`\`javascript
+try {
+  a(b), scriptTag.parentElement.removeChild(scriptTag)
+} catch (c) {
+  bszTag.hides()
+}
+\`\`\`
+
+所以是在 \`a(b), scriptTag.parentElement.removeChild(scriptTag)\` 抛出异常时容器被隐藏。
+
+### 异常原因的定位
+
+由于在其它地方的 busuanzi 不会出现这一问题，而问题的原因还完全不清楚，为了尽可能还原原始环境以复现问题，我选择了使用 [Firefox 的 Header Editor 插件](https://addons.mozilla.org/zh-CN/firefox/addon/header-editor/) 直接在原博客进行测试。具体来说，就是在本地复制一份 busuanzi 的代码，然后跑一个 http server，在 Header Editor 里把 busuanzi 代码的请求重定向到本地的 http server。
+
+首先，在 \`catch\` 中添加 \`console.error(c)\`，得到错误内容 \`TypeError: scriptTag.parentElement is null\`。
+
+查看代码中 \`scriptTag\` 相关的部分：
+
+\`\`\`javascript
+scriptTag = document.createElement("SCRIPT"), scriptTag.type = "text/javascript", scriptTag.defer = !0, scriptTag.src = a, scriptTag.referrerPolicy = "no-referrer-when-downgrade", document.getElementsByTagName("HEAD")[0].appendChild(scriptTag)
+\`\`\`
+
+所以，再在 \`catch\` 中添加 \`s = document.querySelector("[src*=BusuanziCallback]"); console.log(s.parentElement);\`，发现 \`s.parentElement\` 不是 \`null\`。
+
+再添加 \`console.log(s === scriptTag)\`，发现结果是 \`s\` 和 \`scriptTag\` 不同，所以原因在于此时的 \`scriptTag\` 变量已经不指向 DOM 中的这个元素了。
+
+### 定位到 live2d 插件
+
+此时我原本是没有任何头绪的，但我发现，并不是每次刷新页面都会触发这一问题，所以没有触发问题时和触发问题时的差别就成了问题的突破口。
+
+经过多次刷新，我发现，有一串 console 输出，在出现问题时总位于我在 \`catch\` 中添加的调试信息之前，而在没出现问题时则位于调试信息之后：
+
+\`\`\`
+Live2D 2.1.00_1 live2d.core.js:5925:16
+profile : Desktop live2d.core.js:5913:16
+  [PROFILE_NAME] = Desktop live2d.core.js:5918:20
+  [USE_ADJUST_TRANSLATION] = false live2d.core.js:5918:20
+  [USE_CACHED_POLYGON_IMAGE] = false live2d.core.js:5918:20
+  [EXPAND_W] = 2
+\`\`\`
+
+多亏了 live2d 的这串输出，我得以将问题定位到 live2d 插件上。
+
+实际上，如果没有这些 console 输出，也可以通过 \`<head>\` 中 \`L2Dwidget.0.min.js\` 和 \`busuanzi?jsonpCallback=BusuanziCallback\` 两个 \`<script>\` 的相对位置发现问题，只不过这样的话就更隐蔽更难发现了。
+
+### 在 live2d 插件中定位问题
+
+在 \`L2Dwidget.min.js\` 的第一行有源码地址以及时间：\`/*! https://github.com/xiazeyu/live2d-widget.js built@2019-4-6 09:38:17 */\`
+
+因为注释中给出的时间不是最新版本，先查看 git log 并 checkout 到相应时间的版本。
+
+既然问题在于 \`<script>\` 元素被重新创建而导致原变量不指向 DOM 中元素，就在代码中 grep \`head\`，然后发现 [问题代码](https://github.com/xiazeyu/live2d-widget.js/blob/fa8f2d831a1a9e96cd85bd1ef593a3336aeac720/src/dialog/index.js#L4-L38)：\`document.head.innerHTML += ……\`
+
+至此，问题原因已发现，就是 live2d 插件通过修改 \`document.head.innerHTML\` 来添加样式，导致 busuanzi 的 \`scriptTag\` 变量指向的不再是 DOM 中的 \`<script>\` 元素。
+
+实际上，live2d 插件的这一问题 [已经修复](https://github.com/xiazeyu/live2d-widget.js/pull/61)，但需要使用新版才行。
+
+## 解决方法
+
+### 修改 busuanzi 的解决方法
+
+因为 busuanzi 的代码较短，而且本来就是用的外部的代码，改起来比较容易。
+
+把 \`scriptTag.parentElement.removeChild(scriptTag)\` 修改为 \`s=document.querySelector('[src*=BusuanziCallback]'),s.parentElement.removeChild(s)\` 即可。可以把修改后的静态文件放在博客里，然后修改 busuanzi \`<script>\` 的 \`src\`。
+
+<Card title="相关代码" fold>
+
+修改后的 busuanzi 代码（还在 \`catch\` 里加了个 \`console.error\`）：
+
+\`\`\`javascript
+var bszCaller,bszTag;!function(){var c,d,e,a=!1,b=[];ready=function(c){return a||"interactive"===document.readyState||"complete"===document.readyState?c.call(document):b.push(function(){return c.call(this)}),this},d=function(){for(var a=0,c=b.length;c>a;a++)b[a].apply(document);b=[]},e=function(){a||(a=!0,d.call(window),document.removeEventListener?document.removeEventListener("DOMContentLoaded",e,!1):document.attachEvent&&(document.detachEvent("onreadystatechange",e),window==window.top&&(clearInterval(c),c=null)))},document.addEventListener?document.addEventListener("DOMContentLoaded",e,!1):document.attachEvent&&(document.attachEvent("onreadystatechange",function(){/loaded|complete/.test(document.readyState)&&e()}),window==window.top&&(c=setInterval(function(){try{a||document.documentElement.doScroll("left")}catch(b){return}e()},5)))}(),bszCaller={fetch:function(a,b){var c="BusuanziCallback_"+Math.floor(1099511627776*Math.random());window[c]=this.evalCall(b),a=a.replace("=BusuanziCallback","="+c),scriptTag=document.createElement("SCRIPT"),scriptTag.type="text/javascript",scriptTag.defer=!0,scriptTag.src=a,scriptTag.referrerPolicy="no-referrer-when-downgrade",document.getElementsByTagName("HEAD")[0].appendChild(scriptTag)},evalCall:function(a){return function(b){ready(function(){try{a(b),s=document.querySelector('[src*=BusuanziCallback]'),s.parentElement.removeChild(s)}catch(c){console.error(c),bszTag.hides()}})}}},bszCaller.fetch("//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback",function(a){bszTag.texts(a),bszTag.shows()}),bszTag={bszs:["site_pv","page_pv","site_uv"],texts:function(a){this.bszs.map(function(b){var c=document.getElementById("busuanzi_value_"+b);c&&(c.innerHTML=a[b])})},hides:function(){this.bszs.map(function(a){var b=document.getElementById("busuanzi_container_"+a);b&&(b.style.display="none")})},shows:function(){this.bszs.map(function(a){var b=document.getElementById("busuanzi_container_"+a);b&&(b.style.display="inline")})}};
+\`\`\`
+
+然后将
+
+\`\`\`html
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"><\/script>
+\`\`\`
+
+修改为（如果上面的代码放在了博客的 \`/js/busuanzi.pure.mini.js\`）
+
+\`\`\`html
+<script async src="/js/busuanzi.pure.mini.js"><\/script>
+\`\`\`
+
+</Card>
+
+网上搜到的很多解决办法是把 \`id="busuanzi_container_*"\` 删掉，这样当然就不会被隐藏了，只不过这个隐藏本意是在出错时不把错误或者无意义的内容显示给访客，保留这一行为还是挺好的。
+
+### 修改 live2d 的解决方法
+
+总之，就是把 \`innerHTML +=\` 换成 \`createElement\` 和 \`appendChild\`，按 [xiazeyu/live2d-widget.js#61](https://github.com/xiazeyu/live2d-widget.js/pull/61/files#diff-61426849230d9976d234f7c4ca195c623d9bb05a91d76b7ae51501e394f81860L10-R43) 改就行。
+
+live2d 的代码还是挺长的，直接修改 minify 后的代码不太好。如果是 hexo 插件的话，要修改应该也蛮麻烦的。总之，如果你知道怎么改比较好的话可以改，不然的话还是推荐改 busuanzi。
+
+## 问题启示
+
+### 不要修改原 DOM 中的 innerHTML
+
+直接修改 DOM 元素的 innerHTML 会让其中的元素都重新渲染（加载？创建？），不仅指向其中元素的变量会失效，也可能导致画面闪烁等问题（例如导致 live2d-widget 修复这一问题的不是 busuanzi 失效而是 [CSS 闪烁](https://github.com/EYHN/hexo-helper-live2d/issues/149)）。
+
+所以，如果是添加 DOM 元素，应当避免修改 \`innerHTML\`，而应当使用 [\`document.createElement\`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) 和 [\`Node.appendChild()\`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) 以及 \`removeChild\`、\`replaceChild\`、\`insertBefore\` 等 API。
+
+### 不要依赖于指向 DOM 元素的变量长时间不改变
+
+如果 DOM 因各种原因部分重建，指向 DOM 元素的变量很可能不再指向当前 DOM 中的元素。所以，最好不要在过了一段时间后（例如在 callback 中）再次使用指向 DOM 元素的变量，而应当再次获取这一元素。
+
+### 不要 silently fail
+
+在处理异常，尤其是未知的异常时，即使不 throw 出去，也最好用 \`console.error\` 等方法记录下来。记录在 console 中的错误信息并不会显示给普通用户，但可以给寻找问题所在的用户提供宝贵的提示信息。
+
+### 使用 Header Editor 在对原环境最小修改的情况下进行调试
+
+这次使用 Header Editor 调试还是我临时想到的（~~知道有这么个插件还是以前用 [mahjong-helper](https://github.com/EndlessCheng/mahjong-helper)，当然现在已经没在用了~~）。一开始还用 pastebin 上传代码，效率极低，后来才想起来本地跑个 http server 就可以了..用这个插件来调试还是挺方便的。
+
+### 留心依赖版本
+
+一开始我还在 GitHub 上搜到一个 [busuanzi.pure.js](https://github.com/JoeyBling/busuanzi.pure.js)，调了一会儿才发现这个代码和 https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js 不一样..
+
+live2d 的版本也要注意开头包含时间的注释，因为最新版本已经把问题修复了。
+`},{title:g,tags:"Rust 学习记录",content:`早就想学 Rust 了，但一直咕着。这次小学期的程设训练开了 Rust 课堂，就毫不犹豫地选了，也以此为契机学了 Rust。
+
+这篇就是简单记录一下大体上的学习过程，如果有什么心得体会、经验分享之类应该会开新的文章。
+
+顺便也算是程设训练的游记了（“游记”这个词来源于 OI 时期的习惯）。
+
+
+
+## 初学 —— The Rust Programming Language
+
+不同于 Python、JavaScript，这次学 Rust 更像是当初学 C++，不是先魔改代码、用啥搜啥、StackOverflow，而是在还没怎么接触过时就直接看书。
+
+虽然没有细看中文翻译的质量如何，但至少术语是不好翻译的，就直接看了英文版的 [The Rust Programming Language](https://doc.rust-lang.org/book/)。
+
+这本书看下来给我的感觉是，很多地方没有按知识点依赖关系的拓扑排序来讲，而似乎是以某种由浅入深的顺序来的，很多后面才学到的概念在前文就出现，而前面学的概念的完全不需要后面知识的扩展又在后面才补充，还有一些零碎的知识是在 project chapter 讲的。
+
+反正，每天看两三章，~~还能有不少时间摸鱼，摸个~~ 一两周就看得差不多了（
+
+## 初步练习 —— 洛谷
+
+看书的同时在 [洛谷](https://www.luogu.com.cn/) 上随便挑了点入门题和板子题写。只不过一开始没学 io 之类的，会再多语法也做不动题，~~但幸好有 GitHub Copilot~~。
+
+在这放个读入的例子：
+
+\`\`\`
+6 0
+1 1 4 5 1 4
+\`\`\`
+
+\`\`\`rust
+fn main() {
+    let stdin = std::io::stdin();
+    let mut input = String::new();
+
+    stdin.read_line(&mut input).unwrap();
+    let mut parts = input.split_whitespace();
+    let n = parts.next().unwrap().parse::<u32>().unwrap();
+    assert_eq!(n, 6);
+    let m = parts.next().unwrap().parse::<u32>().unwrap();
+    assert_eq!(m, 0);
+
+    input.clear();
+    stdin.read_line(&mut input).unwrap();
+    let a = input
+        .split_whitespace()
+        .map(|x| x.parse::<i32>().unwrap())
+        .collect::<Vec<_>>();
+    assert_eq!(a, vec![1, 1, 4, 5, 1, 4]);
+}
+\`\`\`
+
+## 复习 —— A half-hour to learn Rust
+
+之前在 Hacker News 上看到了 [A half-hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust) 这篇文章。如果真的是看这个东西来学 Rust，不说能不能学会，肯定是学不扎实的。但是，看完书之后很多语法也忘了，看这个用来复习还是非常不错的。（另外，我感觉这个的顺序貌似比书更有条理一些，虽然初学不一定友好 🤔）
+
+## 深入了解 —— The Rust Standard Library
+
+其实看书的时候就感觉到了，很多时候不懂一段代码不是不懂语法，而是不懂 [标准库](https://doc.rust-lang.org/stable/std/) 的实现，而把 API 理解成了没学过的语法。了解标准库，不仅是提升编码和运行的效率，也是能够看懂很多基础代码的关键。
+
+看文档的时候发现，不仅是学到了很多有用的 methods，也学到了很多其它东西。比如说：
+
+-   一般来说都可以用 [\`std::cmp::max\`](https://doc.rust-lang.org/stable/std/cmp/fn.max.html) 来取 max，但 [\`f32\` 专门有一个 \`pub fn max(self, other: f32) -> f32\`](https://doc.rust-lang.org/stable/std/primitive.f32.html#method.max)，这是因为浮点数有 NaN 这个特殊情况导致 \`f32\` 没有 impl [\`Ord\`](https://doc.rust-lang.org/stable/std/cmp/trait.Ord.html)，而 \`std::cmp::max\` 需要 \`Ord\`
+-   书里貌似没讲到的 [keyword \`ref\`](https://doc.rust-lang.org/stable/std/keyword.ref.html)（以及在 pattern matching 中和 \`&\` 的区别）
+-   引用之间进行比较时会自动转成指向的值，即实际进行比较的是指向的值（可以通过 [\`std::ptr::eq\`](https://doc.rust-lang.org/stable/std/ptr/fn.eq.html) 来比较地址）
+-   从标准库的 API 设计能领会到很多 trait 和 generic 的用法，体会到它们组合在一起的强大
+-   [\`Iterator\` 自动有 \`IntoIterator\`](https://doc.rust-lang.org/std/iter/index.html#for-loops-and-intoiterator)，所以用 \`IntoIterator\` 代替 \`Iterator\` 作为 trait bound 可以让函数更灵活
+-   ……
+
+简单看一看就能知道 the book 里涉及到的真的只是冰山一角，学 Rust 标准库的意义会比学 C++ 的 STL 大得多（个人感觉）（也可能是我 C++ 水平太低 / 没认真学 STL 😢）（或者 Primer Plus 讲的全一些）。
+
+## 上课
+
+### Class 1
+
+因为自学过了，所以上课就基本上是把老师的声音当作 bgm 偶尔听一下，然后继续看标准库文档（
+
+上课的时候老师提到 Rust 编译器可以提示如何修改，于是我顺势在课程群里发了个 [rust 程序员现状](https://twitter.com/st1page/status/1477168761744805891) 的截图（
+
+![rust程序员现状](rust-programmers-be-like.jpg)
+
+课后把 OJ 上的作业速通后发现榜不是公开的 😢
+
+后来还发现自己一道题写了个 \`collect\` 得到的 \`Vec\` 只用在一个 \`for\` 里（就是说可以直接把迭代器用在 \`for\` 不用先 \`collect\`）😵 想改过来，但虽然没有公开榜，还是不想承受可能的罚时（
+
+### Class 2
+
+第二节课前后共一天多的时间，写了 16h 左右，把 Wordle 大作业的基础功能写完了。（~~本来以为 Wordle 挺好写的，没想到需求这么多，需求文档模糊不清的地方还有的要问有的要自己设计。~~）
+
+感觉课上讲的又快，大作业需要的知识又没讲全，很难想象如果不自学该怎么应对这个课（
+
+### Class 3
+
+修了一些文档说明不清导致的 bug，然后研究了一下扩展功能怎么写。
+
+不知道为什么把单词按信息熵排序写了半天，明明挺简单的。可能是听着老师讲课没法专心想算法。
+
+后来试着用 [rayon](https://docs.rs/rayon/latest/rayon/) 把信息熵计算并行化了，在我本机除了第一次猜测基本上都能秒出结果，感觉很爽 ~~，甚至玩了半天意义不明的照着提示输入~~。
+
+再后来发现用 release 模式编译的优化比并行还大 🌚
+
+### 第一次大作业验收
+
+验收在 THUWC 去过的东主楼，但上大学后还是第一次去，结果走错了，迟到了 5min 😵 然后非常慌张地展示提高功能，都没太演示全，~~感觉白写了~~（
+
+### Class 4~8
+
+略（
+
+### 第二次大作业验收
+
+这次真的有比 pretests 强很多的 system test 了，还好没 FST（助教：这个点你为什么能过啊（x
+
+可能是因为这个课不是学前端的，而且助教只简单看了一下界面演示没看代码，槽点很多的前端被夸了很科学（
+
+可能是因为这个课不是学数据库的，而且听说有其他同学数据库里全是 JSON，普普通通的建表被夸了很科学（
+
+### 关于课上的一些翻译
+
+为什么什么都要翻译出来啊（虽然如果英语母语的话看原文应该也很尬 🤣
+
+![trait: 特型；panic: 恐慌；poisoned: 中毒；crate: 箱；library crate: 库箱](rust-translations.jpg)
+
+## Async Rust
+
+先是看了 [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)，感觉看得一知半解的（尤其是 \`Pin\`），好像大概知道 \`Future\` 在干什么又不完全知道（~~而且这本书好咕啊，\`TODO\` 的章节应该是有生之年了~~
+
+没看完 async book，直接去看 [Tokio Tutorial](https://tokio.rs/tokio/tutorial) 和 [Async programming in Rust with async-std](https://book.async.rs/) 了。作为 async runtime 的教程，它们涉及到的具体原理和实现少一些，更注重怎么实际使用，读起来会容易理解一些。因为 Tokio 更 popular，主要看的是 Tokio 的教程。
+
+## 数据库: Diesel
+
+感觉 [diesel 的教程](https://diesel.rs/guides/) 写的挺简略的，但对着 examples 硬查文档也勉强能看懂基本用法。ORM 看着就很“安全”，只不过实在是太类型体操了，不仅文档查起来有点小麻烦，代码复用也经常因为繁琐的 trait bounds 写不太动（也可能是我没学会）。
+
+[diesel-derive-enum](https://crates.io/crates/diesel-derive-enum) 是好用的。
+
+Sqlite 的 \`RETURNING\` 语句需要启用 \`returning_clauses_for_sqlite_3_35\` feature flag（并且需要至少 3.35 版本的 Sqlite）。没启用的时候对着一堆 trait bound 不满足的错误信息（就和 C++ 模板感觉差不多了..）根本发现不了错误原因，还是翻文档翻半天发现的。
+
+还遇到一个 Sqlite 锁死的坑，通过 [使用 r2d2 设定 \`busy_timeout\`](https://stackoverflow.com/a/57717533) 并 [使用 WAL mode 以及 immediate transaction](https://github.com/the-lean-crate/criner/issues/1) （hopefully）解决了。
 `},{title:b,tags:t,content:`[CS:APP](https://csapp.cs.cmu.edu/) 第二章 “Representing and Manipulating Information” 的学习笔记。
 
 这章的主要内容为 byte、整数和浮点数的存储及计算。
@@ -4817,7 +4817,7 @@ deploy 之后发现一堆锅，它们不影响我的小作业得分，只会影�
 之前一直随机报错 \`The "path" argument must be of type string. Received an instance of Array\`，后来发现是我直接用了最新最热的 [tsconfig 里 \`extends\` 写数组](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#supporting-multiple-configuration-files-in-extends)，然后 Nuxt 读取 tsconfig 的时候寄了。改成单个 \`extends\` 或者把 Nuxt 更新到 edge channel 就 ok 了。
 
 另外还碰到 [一个 bug](https://github.com/nuxt/nuxt/issues/15113)，只能把路径改成英文。
-`}],meta:[{frontmatter:{title:c,date:new Date(1543988421e3),tags:z,lastUpdated:new Date(1679706233e3),published:new Date(1658482129e3),visitor:2067},href:"/about",filename:"src/pages/about.mdx"},{frontmatter:{title:l,date:new Date(165966831e4),image:"/images/2022/08/busuanzi-and-live2d.png",tags:["busuanzi","live2d",j,i,a],lastUpdated:new Date(1659678915e3),published:new Date(1659678915e3),visitor:128},href:"/post/2022/08/busuanzi-and-live2d",filename:"src/pages/post/2022/08/busuanzi-and-live2d.mdx"},{frontmatter:{title:m,date:new Date(1660492135e3),image:"https://www.rust-lang.org/static/images/rust-social-wide.jpg",tags:["Rust",r],lastUpdated:new Date(1662783413e3),published:new Date(1660576305e3),visitor:217},href:"/post/2022/08/learn-rust",filename:"src/pages/post/2022/08/learn-rust.mdx"},{frontmatter:{title:d,date:new Date(1658549297e3),tags:["btrfs","Arch Linux",a],image:"/images/2022/07/btrfs-quota-timeshift-message-screenshot.png",lastUpdated:new Date(1658586466e3),published:new Date(1658552603e3),visitor:126},href:"/post/2022/07/btrfs-quota-timeshift-freeze",filename:"src/pages/post/2022/07/btrfs-quota-timeshift-freeze.mdx"},{frontmatter:{title:p,date:new Date(1658582944e3),image:"/images/2022/07/comments-loading-light.png",tags:[I,i,a],lastUpdated:new Date(1659536455e3),published:new Date(1658587665e3),visitor:71},href:"/post/2022/07/display-none-and-lazy-load",filename:"src/pages/post/2022/07/display-none-and-lazy-load.mdx"},{frontmatter:{title:F,date:new Date(1658728987e3),image:"/images/2022/07/all-in-wl.png",tags:["选课","THU",o],lastUpdated:new Date(1671169521e3),published:new Date(1658754332e3),visitor:699},href:"/post/2022/07/thu-course-selection-tips",filename:"src/pages/post/2022/07/thu-course-selection-tips.mdx"},{frontmatter:{title:g,date:new Date(1659161767e3),image:"/images/2022/07/uptime-kuma-list.png",tags:["caddy-security","uptime-kuma","caddy","server",a],lastUpdated:new Date(1659165466e3),published:new Date(1659165466e3),visitor:64},href:"/post/2022/07/uptime-monitoring-under-caddy-security",filename:"src/pages/post/2022/07/uptime-monitoring-under-caddy-security.mdx"},{frontmatter:{title:b,date:new Date(1663478897e3),image:"/images/2022/09/csapp-2.png",tags:[e,n],lastUpdated:new Date(166399937e4),published:new Date(166351913e4),visitor:92},href:"/post/2022/09/csapp-2",filename:"src/pages/post/2022/09/csapp-2.mdx"},{frontmatter:{title:h,date:new Date(1663553588e3),image:"/images/2022/09/csapp-3.png",tags:[e,n],lastUpdated:new Date(1673269583e3),published:new Date(166399937e4),visitor:132},href:"/post/2022/09/csapp-3",filename:"src/pages/post/2022/09/csapp-3.mdx"},{frontmatter:{title:f,date:new Date(1663478888e3),image:"https://csapp.cs.cmu.edu/3e/images/csapp3e-cover.jpg",tags:[e,n],lastUpdated:new Date(1665973845e3),published:new Date(166351913e4),visitor:110},href:"/post/2022/09/csapp",filename:"src/pages/post/2022/09/csapp.mdx"},{frontmatter:{title:x,date:new Date(1667202147e3),tags:["TeX","R","物理实验",o],lastUpdated:new Date(1679113234e3),published:new Date(1667211348e3),visitor:184},href:"/post/2022/10/basic-tex-and-r-for-physics-lab",filename:"src/pages/post/2022/10/basic-tex-and-R-for-physics-lab.mdx"},{frontmatter:{title:v,date:new Date(1664805493e3),image:"/images/2022/10/csapp-4.png",copyrightNotice:"本文包含截自 CS:APP 中的图片，文章作者对其不拥有版权。",tags:[e,n,"WIP"],lastUpdated:new Date(1673710372e3),published:new Date(1665973845e3),visitor:63},href:"/post/2022/10/csapp-4",filename:"src/pages/post/2022/10/csapp-4.mdx"},{frontmatter:{title:C,date:new Date(1665975415e3),image:"/images/2022/10/csapp-7.png",copyrightNotice:"本文包含少量直接从 CS:APP 中复制的代码、图片，本文作者对其不拥有版权。",tags:[e,n],lastUpdated:new Date(1671291937e3),published:new Date(1667212746e3),visitor:79},href:"/post/2022/10/csapp-7",filename:"src/pages/post/2022/10/csapp-7.mdx"},{frontmatter:{title:y,date:new Date(1666077048e3),image:"/images/2022/10/use_vector_fp_converts-test-results.png",tags:["gcc","性能优化",a],lastUpdated:new Date(166625156e4),published:new Date(1666197777e3),visitor:97},href:"/post/2022/10/gcc-use_vector_fp_converts",filename:"src/pages/post/2022/10/gcc-use_vector_fp_converts.mdx"},{frontmatter:{title:w,date:new Date(1668736861e3),image:"/images/2022/11/csapp-8.png",tags:[e,n],lastUpdated:new Date(1671350958e3),published:new Date(1671258446e3),visitor:23},href:"/post/2022/11/csapp-8",filename:"src/pages/post/2022/11/csapp-8.mdx"},{frontmatter:{title:E,date:new Date(1669198242e3),image:"/images/2022/11/csapp-9.png",copyrightNotice:N,tags:[e,n],lastUpdated:new Date(167370575e4),published:new Date(1672037059e3),visitor:44},href:"/post/2022/11/csapp-9",filename:"src/pages/post/2022/11/csapp-9.mdx"},{frontmatter:{title:k,date:new Date(1668050758e3),image:"/images/2022/11/swim.jpg",tags:["游泳",o],lastUpdated:new Date(1668053703e3),published:new Date(1668053703e3),visitor:150},href:"/post/2022/11/pitfalls-of-breaststroke-breathing",filename:"src/pages/post/2022/11/pitfalls-of-breaststroke-breathing.mdx"},{frontmatter:{title:S,date:new Date(1670046303e3),image:"/images/2022/12/csapp-6.png",copyrightNotice:N,tags:[e,n],lastUpdated:new Date(1670226463e3),published:new Date(1670226463e3),visitor:114},href:"/post/2022/12/csapp-6",filename:"src/pages/post/2022/12/csapp-6.mdx"},{frontmatter:{title:A,date:new Date(1674304358e3),image:"/images/2023/01/ddpp-2.png",copyrightNotice:"本文包含若干截自 DDPP 的图片，本文作者对其不拥有版权。",tags:[s,n],lastUpdated:new Date(1674571032e3),published:new Date(1674571032e3),visitor:41},href:"/post/2023/01/ddpp-2",filename:"src/pages/post/2023/01/ddpp-2.mdx"},{frontmatter:{title:P,date:new Date(167461137e4),image:"/images/2023/01/ddpp-3.png",tags:[s,n],lastUpdated:new Date(1674978752e3),published:new Date(1674978752e3),visitor:39},href:"/post/2023/01/ddpp-3",filename:"src/pages/post/2023/01/ddpp-3.mdx"},{frontmatter:{title:D,date:new Date(167513277e4),copyrightNotice:"本文包含若干截自 DDPP 的图片，本文作者对它们不拥有版权。",image:"/images/2023/01/ddpp-4.png",tags:[s,n],lastUpdated:new Date(1675756712e3),published:new Date(1675756712e3),visitor:68},href:"/post/2023/01/ddpp-4",filename:"src/pages/post/2023/01/ddpp-4.mdx"},{frontmatter:{title:$,date:new Date(1673779818e3),image:"/images/2023/01/ddpp-cover.png",tags:[s,n],lastUpdated:new Date(1674297595e3),published:new Date(1673783362e3),visitor:75},href:"/post/2023/01/ddpp",filename:"src/pages/post/2023/01/ddpp.mdx"},{frontmatter:{title:L,date:new Date(1674119026e3),image:"/images/2023/01/glyph-segregator.png",tags:[O,i,"项目开发"],lastUpdated:new Date(1675319173e3),published:new Date(1674134105e3),visitor:111},href:"/post/2023/01/glyph-segregator",filename:"src/pages/post/2023/01/glyph-segregator.mdx"},{frontmatter:{title:_,date:new Date(1674981968e3),image:z,tags:[j,a],lastUpdated:new Date(1674994592e3),published:new Date(1674994592e3),visitor:45},href:"/post/2023/01/string-prototype-replace",filename:"src/pages/post/2023/01/string-prototype-replace.mdx"},{frontmatter:{title:T,date:new Date(1675942597e3),image:"/images/2023/02/css-is-awesome.jpeg",tags:[O,I,i,o],lastUpdated:new Date(1677297669e3),published:new Date(1675955985e3),visitor:98},href:"/post/2023/02/typography-tricks",filename:"src/pages/post/2023/02/typography-tricks.mdx"},{frontmatter:{title:M,date:new Date(1677723446e3),image:"/images/2023/03/dd-dc.jpg",tags:["digital-design",r],lastUpdated:new Date(1679038253e3),published:new Date(1677728814e3),visitor:113},href:"/post/2023/03/digital-logic",filename:"src/pages/post/2023/03/digital-logic.mdx"},{frontmatter:{title:R,date:new Date(1677762549e3),image:"/images/2023/03/tech-stack.jpg",tags:[i,r],lastUpdated:new Date(1679586428e3),published:new Date(1677901349e3),visitor:228},href:"/post/2023/03/thuse",filename:"src/pages/post/2023/03/thuse.mdx"}]}}("学习笔记","csapp","csapp 学习笔记","问题解决记录","Web","ddpp 学习笔记","经验分享","ddpp","学习记录","关于","busuanzi 访问量统计与 live2d 插件同时使用导致 busuanzi 不显示的根本原因以及解决方法","初学 Rust","Btrfs Quota 以及 Timeshift 导致的系统无响应问题解决过程记录",'display: none 与 loading="lazy"',"有关 THU 选课的一些常见问题与注意事项","使用 Caddy Security 时的 Uptime 监控","CS:APP 第二章学习笔记","CS:APP 第三章学习笔记","CS:APP 学习笔记系列 序","普物实验 TeX & R 急救指北","CS:APP 第四章学习笔记","CS:APP 第七章学习笔记","探究 gcc 浮点数精度转换所使用的指令 —— use_vector_fp_converts 优化","CS:APP 第八章学习笔记","CS:APP 第九章学习笔记","蛙泳换气踩坑记录","CS:APP 第六章学习笔记","DDPP 第二章学习笔记","DDPP 第三章学习笔记","DDPP 第四章学习笔记","DDPP 学习笔记系列 序","另一种很新的中文字体网页嵌入方案","String.prototype.replace 与隐藏的“$”","一些博客排版优化小 trick","数字逻辑实验到底是数电实验还是数设实验（x","当你的技术栈与软工交集为空（x",null,"JavaScript","CSS","本文包含若干截自 CS:APP 中的图片，本文作者对其不拥有版权。","blog"),{});
+`}],meta:[{frontmatter:{title:c,date:new Date(1543988421e3),tags:z,lastUpdated:new Date(1679706233e3),published:new Date(1658482129e3),visitor:2069},href:"/about",filename:"src/pages/about.mdx"},{frontmatter:{title:l,date:new Date(1658549297e3),tags:["btrfs","Arch Linux",a],image:"/images/2022/07/btrfs-quota-timeshift-message-screenshot.png",lastUpdated:new Date(1658586466e3),published:new Date(1658552603e3),visitor:126},href:"/post/2022/07/btrfs-quota-timeshift-freeze",filename:"src/pages/post/2022/07/btrfs-quota-timeshift-freeze.mdx"},{frontmatter:{title:m,date:new Date(1658582944e3),image:"/images/2022/07/comments-loading-light.png",tags:[j,i,a],lastUpdated:new Date(1659536455e3),published:new Date(1658587665e3),visitor:71},href:"/post/2022/07/display-none-and-lazy-load",filename:"src/pages/post/2022/07/display-none-and-lazy-load.mdx"},{frontmatter:{title:d,date:new Date(1658728987e3),image:"/images/2022/07/all-in-wl.png",tags:["选课","THU",o],lastUpdated:new Date(1671169521e3),published:new Date(1658754332e3),visitor:699},href:"/post/2022/07/thu-course-selection-tips",filename:"src/pages/post/2022/07/thu-course-selection-tips.mdx"},{frontmatter:{title:p,date:new Date(1659161767e3),image:"/images/2022/07/uptime-kuma-list.png",tags:["caddy-security","uptime-kuma","caddy","server",a],lastUpdated:new Date(1659165466e3),published:new Date(1659165466e3),visitor:64},href:"/post/2022/07/uptime-monitoring-under-caddy-security",filename:"src/pages/post/2022/07/uptime-monitoring-under-caddy-security.mdx"},{frontmatter:{title:F,date:new Date(165966831e4),image:"/images/2022/08/busuanzi-and-live2d.png",tags:["busuanzi","live2d",I,i,a],lastUpdated:new Date(1659678915e3),published:new Date(1659678915e3),visitor:128},href:"/post/2022/08/busuanzi-and-live2d",filename:"src/pages/post/2022/08/busuanzi-and-live2d.mdx"},{frontmatter:{title:g,date:new Date(1660492135e3),image:"https://www.rust-lang.org/static/images/rust-social-wide.jpg",tags:["Rust",r],lastUpdated:new Date(1662783413e3),published:new Date(1660576305e3),visitor:217},href:"/post/2022/08/learn-rust",filename:"src/pages/post/2022/08/learn-rust.mdx"},{frontmatter:{title:b,date:new Date(1663478897e3),image:"/images/2022/09/csapp-2.png",tags:[e,n],lastUpdated:new Date(166399937e4),published:new Date(166351913e4),visitor:92},href:"/post/2022/09/csapp-2",filename:"src/pages/post/2022/09/csapp-2.mdx"},{frontmatter:{title:h,date:new Date(1663553588e3),image:"/images/2022/09/csapp-3.png",tags:[e,n],lastUpdated:new Date(1673269583e3),published:new Date(166399937e4),visitor:132},href:"/post/2022/09/csapp-3",filename:"src/pages/post/2022/09/csapp-3.mdx"},{frontmatter:{title:f,date:new Date(1663478888e3),image:"https://csapp.cs.cmu.edu/3e/images/csapp3e-cover.jpg",tags:[e,n],lastUpdated:new Date(1665973845e3),published:new Date(166351913e4),visitor:110},href:"/post/2022/09/csapp",filename:"src/pages/post/2022/09/csapp.mdx"},{frontmatter:{title:x,date:new Date(1667202147e3),tags:["TeX","R","物理实验",o],lastUpdated:new Date(1679113234e3),published:new Date(1667211348e3),visitor:185},href:"/post/2022/10/basic-tex-and-r-for-physics-lab",filename:"src/pages/post/2022/10/basic-tex-and-R-for-physics-lab.mdx"},{frontmatter:{title:v,date:new Date(1664805493e3),image:"/images/2022/10/csapp-4.png",copyrightNotice:"本文包含截自 CS:APP 中的图片，文章作者对其不拥有版权。",tags:[e,n,"WIP"],lastUpdated:new Date(1673710372e3),published:new Date(1665973845e3),visitor:63},href:"/post/2022/10/csapp-4",filename:"src/pages/post/2022/10/csapp-4.mdx"},{frontmatter:{title:C,date:new Date(1665975415e3),image:"/images/2022/10/csapp-7.png",copyrightNotice:"本文包含少量直接从 CS:APP 中复制的代码、图片，本文作者对其不拥有版权。",tags:[e,n],lastUpdated:new Date(1671291937e3),published:new Date(1667212746e3),visitor:79},href:"/post/2022/10/csapp-7",filename:"src/pages/post/2022/10/csapp-7.mdx"},{frontmatter:{title:y,date:new Date(1666077048e3),image:"/images/2022/10/use_vector_fp_converts-test-results.png",tags:["gcc","性能优化",a],lastUpdated:new Date(166625156e4),published:new Date(1666197777e3),visitor:97},href:"/post/2022/10/gcc-use_vector_fp_converts",filename:"src/pages/post/2022/10/gcc-use_vector_fp_converts.mdx"},{frontmatter:{title:w,date:new Date(1668736861e3),image:"/images/2022/11/csapp-8.png",tags:[e,n],lastUpdated:new Date(1671350958e3),published:new Date(1671258446e3),visitor:23},href:"/post/2022/11/csapp-8",filename:"src/pages/post/2022/11/csapp-8.mdx"},{frontmatter:{title:E,date:new Date(1669198242e3),image:"/images/2022/11/csapp-9.png",copyrightNotice:N,tags:[e,n],lastUpdated:new Date(167370575e4),published:new Date(1672037059e3),visitor:44},href:"/post/2022/11/csapp-9",filename:"src/pages/post/2022/11/csapp-9.mdx"},{frontmatter:{title:k,date:new Date(1668050758e3),image:"/images/2022/11/swim.jpg",tags:["游泳",o],lastUpdated:new Date(1668053703e3),published:new Date(1668053703e3),visitor:150},href:"/post/2022/11/pitfalls-of-breaststroke-breathing",filename:"src/pages/post/2022/11/pitfalls-of-breaststroke-breathing.mdx"},{frontmatter:{title:S,date:new Date(1670046303e3),image:"/images/2022/12/csapp-6.png",copyrightNotice:N,tags:[e,n],lastUpdated:new Date(1670226463e3),published:new Date(1670226463e3),visitor:114},href:"/post/2022/12/csapp-6",filename:"src/pages/post/2022/12/csapp-6.mdx"},{frontmatter:{title:A,date:new Date(1674304358e3),image:"/images/2023/01/ddpp-2.png",copyrightNotice:"本文包含若干截自 DDPP 的图片，本文作者对其不拥有版权。",tags:[s,n],lastUpdated:new Date(1674571032e3),published:new Date(1674571032e3),visitor:41},href:"/post/2023/01/ddpp-2",filename:"src/pages/post/2023/01/ddpp-2.mdx"},{frontmatter:{title:P,date:new Date(167461137e4),image:"/images/2023/01/ddpp-3.png",tags:[s,n],lastUpdated:new Date(1674978752e3),published:new Date(1674978752e3),visitor:39},href:"/post/2023/01/ddpp-3",filename:"src/pages/post/2023/01/ddpp-3.mdx"},{frontmatter:{title:D,date:new Date(167513277e4),copyrightNotice:"本文包含若干截自 DDPP 的图片，本文作者对它们不拥有版权。",image:"/images/2023/01/ddpp-4.png",tags:[s,n],lastUpdated:new Date(1675756712e3),published:new Date(1675756712e3),visitor:68},href:"/post/2023/01/ddpp-4",filename:"src/pages/post/2023/01/ddpp-4.mdx"},{frontmatter:{title:$,date:new Date(1673779818e3),image:"/images/2023/01/ddpp-cover.png",tags:[s,n],lastUpdated:new Date(1674297595e3),published:new Date(1673783362e3),visitor:75},href:"/post/2023/01/ddpp",filename:"src/pages/post/2023/01/ddpp.mdx"},{frontmatter:{title:L,date:new Date(1674119026e3),image:"/images/2023/01/glyph-segregator.png",tags:[O,i,"项目开发"],lastUpdated:new Date(1675319173e3),published:new Date(1674134105e3),visitor:111},href:"/post/2023/01/glyph-segregator",filename:"src/pages/post/2023/01/glyph-segregator.mdx"},{frontmatter:{title:_,date:new Date(1674981968e3),image:z,tags:[I,a],lastUpdated:new Date(1674994592e3),published:new Date(1674994592e3),visitor:45},href:"/post/2023/01/string-prototype-replace",filename:"src/pages/post/2023/01/string-prototype-replace.mdx"},{frontmatter:{title:T,date:new Date(1675942597e3),image:"/images/2023/02/css-is-awesome.jpeg",tags:[O,j,i,o],lastUpdated:new Date(1677297669e3),published:new Date(1675955985e3),visitor:98},href:"/post/2023/02/typography-tricks",filename:"src/pages/post/2023/02/typography-tricks.mdx"},{frontmatter:{title:M,date:new Date(1677723446e3),image:"/images/2023/03/dd-dc.jpg",tags:["digital-design",r],lastUpdated:new Date(1679038253e3),published:new Date(1677728814e3),visitor:113},href:"/post/2023/03/digital-logic",filename:"src/pages/post/2023/03/digital-logic.mdx"},{frontmatter:{title:R,date:new Date(1677762549e3),image:"/images/2023/03/tech-stack.jpg",tags:[i,r],lastUpdated:new Date(1679586428e3),published:new Date(1677901349e3),visitor:228},href:"/post/2023/03/thuse",filename:"src/pages/post/2023/03/thuse.mdx"}]}}("学习笔记","csapp","csapp 学习笔记","问题解决记录","Web","ddpp 学习笔记","经验分享","ddpp","学习记录","关于","Btrfs Quota 以及 Timeshift 导致的系统无响应问题解决过程记录",'display: none 与 loading="lazy"',"有关 THU 选课的一些常见问题与注意事项","使用 Caddy Security 时的 Uptime 监控","busuanzi 访问量统计与 live2d 插件同时使用导致 busuanzi 不显示的根本原因以及解决方法","初学 Rust","CS:APP 第二章学习笔记","CS:APP 第三章学习笔记","CS:APP 学习笔记系列 序","普物实验 TeX & R 急救指北","CS:APP 第四章学习笔记","CS:APP 第七章学习笔记","探究 gcc 浮点数精度转换所使用的指令 —— use_vector_fp_converts 优化","CS:APP 第八章学习笔记","CS:APP 第九章学习笔记","蛙泳换气踩坑记录","CS:APP 第六章学习笔记","DDPP 第二章学习笔记","DDPP 第三章学习笔记","DDPP 第四章学习笔记","DDPP 学习笔记系列 序","另一种很新的中文字体网页嵌入方案","String.prototype.replace 与隐藏的“$”","一些博客排版优化小 trick","数字逻辑实验到底是数电实验还是数设实验（x","当你的技术栈与软工交集为空（x",null,"CSS","JavaScript","本文包含若干截自 CS:APP 中的图片，本文作者对其不拥有版权。","blog"),{});
 </script></main><footer class="flex flex-col gap-1 bg-card p-6 text-footer" itemprop="hasPart" itemscope="" itemtype="https://schema.org/WPFooter"><div class="flex flex-wrap items-center justify-center gap-x-1"><span>Copyright ©</span><span>2022 - 2023</span><a class="flex items-center" href="/sponsor" title="赞赏支持"><span class="i-mdi-heart text-red dark:text-red-7"></span></a><span>ouuan</span><span class="i-mdi-circle-small"></span><span title="实际上，为了保护用户隐私，同一用户的多次访问只有在同一天内使用同一浏览器在同一ip下才会被算作同一人"> 共有 <ile-root id="ile-3"><span><span class="i-mdi-loading motion-safe:animate-spin"></span><span class="sr-only">加载中</span></span></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.189ada06.js";import"/assets/vendor-vue.6a98ea6c.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.189ada06.js").then(o=>o.v),["assets/iles.189ada06.js","assets/vendor-vue.6a98ea6c.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/VisitorCount.8df5b149.js"),["assets/VisitorCount.8df5b149.js","assets/VisitorCount.af7e583c.js","assets/vendor-vue.6a98ea6c.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-3",{},{})});export default E();
 </script> 人到访过这里 </span></div><div class="flex flex-wrap items-center justify-center gap-x-1"> 基于 <a class="underline" href="https://github.com/ElMassimo/iles">îles</a> 及 <a class="underline" href="https://github.com/ouuan/iles-blog/blob/master/package.json">很多其他项目</a><span class="i-mdi-circle-small"></span><span>由 ouuan 设计/制作</span><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog">源代码</a><span class="i-mdi-circle-small"></span><a class="underline" href="https://github.com/ouuan/iles-blog/discussions">Discussions</a></div></footer><meta itemprop="copyrightYear" content="2022 - 2023"><div class="hidden" itemscope="" itemtype="https://schema.org/Person" itemprop="copyrightHolder"><meta itemprop="name" content="ouuan"><meta itemprop="givenName" content="Yufan"><meta itemprop="familyName" content="You"><meta itemprop="url" content="https://github.com/ouuan"><link itemprop="gender" href="https://schema.org/Male"><meta itemprop="image" content="/android-chrome-512x512.png"></div><ile-root id="ile-4"><button class="group bottom-10 flex-col floating-button" title="前往底部"><div aria-hidden="true" class="flex justify-center"><span class="i-mdi-chevron-double-up motion-safe:transition-font-size text-0"></span></div><div aria-hidden="true" class="text-0 group-hover:text-3.5 motion-safe:transition-font-size"></div><div aria-hidden="false" class="flex justify-center"><span class="i-mdi-chevron-double-down motion-safe:transition-font-size text-5 group-hover:text-3"></span></div></button></ile-root><script></script><script type="module" async="">var p=(o,a)=>()=>(a||o((a={exports:{}}).exports,a),a.exports);var r=(o,a,_)=>new Promise((c,n)=>{var f=t=>{try{e(_.next(t))}catch(i){n(i)}},l=t=>{try{e(_.throw(t))}catch(i){n(i)}},e=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);e((_=_.apply(o,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.189ada06.js";import"/assets/vendor-vue.6a98ea6c.js";var E=p(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.189ada06.js").then(o=>o.v),["assets/iles.189ada06.js","assets/vendor-vue.6a98ea6c.js","assets/vite.5ce4fca4.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/BackToTop.fa309e4b.js"),["assets/BackToTop.fa309e4b.js","assets/vendor-vue.6a98ea6c.js","assets/vite.5ce4fca4.js"])).default});s(u,v,"ile-4",{},{})});export default E();
 </script><div class="hidden"></div><ile-root id="ile-5"></ile-root><script></script><script type="module" async="">var p=(t,a)=>()=>(a||t((a={exports:{}}).exports,a),a.exports);var e=(t,a,_)=>new Promise((c,n)=>{var f=o=>{try{i(_.next(o))}catch(r){n(r)}},l=o=>{try{i(_.throw(o))}catch(r){n(r)}},i=o=>o.done?c(o.value):Promise.resolve(o.value).then(f,l);i((_=_.apply(t,a)).next())});import{_ as d}from"/assets/vite.5ce4fca4.js";import{a as s}from"/assets/iles.189ada06.js";import"/assets/vendor-vue.6a98ea6c.js";var u=p(m=>{const E=()=>e(m,null,function*(){return(yield d(()=>import("/assets/iles.189ada06.js").then(t=>t.d),["assets/iles.189ada06.js","assets/vendor-vue.6a98ea6c.js","assets/vite.5ce4fca4.js"])).default}),h=()=>e(m,null,function*(){return(yield d(()=>import("/assets/PlausibleTrigger.34fb708e.js"),["assets/PlausibleTrigger.34fb708e.js","assets/plausible.57150b22.js","assets/vendor-vue.6a98ea6c.js","assets/vite.5ce4fca4.js"])).onLoad});s(E,h,"ile-5",{},{})});export default u();
