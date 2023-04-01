@@ -265,11 +265,13 @@ Licensed under CC BY-SA 4.0</rights>
         <updated>2023-03-02T03:46:54.000Z</updated>
         <summary type="html"><![CDATA[
 
+
 <p>谁会愿意天天用一个课六个字的全名来叫它呢<span class="mojikumi-line-end">，</span>但是数字逻辑电路是数电<span class="mojikumi-line-end">，</span>数字逻辑设计是数设<span class="mojikumi-line-end">，</span>数字逻辑实验总不能是 <code>/数[字逻]?实验?/</code><span class="mojikumi-line-end">，</span>但叫它数电实验或者数设实验好像都不太对<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
 <p>上课的时候也是<span class="mojikumi-line-end">，</span>老师一会儿一个<span class="mojikumi-line-start">“</span>如果你是数设的同学<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>一会儿一个<span class="mojikumi-line-start">“</span>如果你没报上数设但想把数电学成数设<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>这课也太乱了<span class="mojikumi-line-start">（</span></p>
 <p>我写游记都得把两个课放一起写<span class="mojikumi-line-end">，</span>课就不能合成一个吗<span class="mojikumi-line-start">（</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
+
 
 <p>谁会愿意天天用一个课六个字的全名来叫它呢<span class="mojikumi-line-end">，</span>但是数字逻辑电路是数电<span class="mojikumi-line-end">，</span>数字逻辑设计是数设<span class="mojikumi-line-end">，</span>数字逻辑实验总不能是 <code>/数[字逻]?实验?/</code><span class="mojikumi-line-end">，</span>但叫它数电实验或者数设实验好像都不太对<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
 <p>上课的时候也是<span class="mojikumi-line-end">，</span>老师一会儿一个<span class="mojikumi-line-start">“</span>如果你是数设的同学<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>一会儿一个<span class="mojikumi-line-start">“</span>如果你没报上数设但想把数电学成数设<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>这课也太乱了<span class="mojikumi-line-start">（</span></p>
@@ -338,6 +340,9 @@ Licensed under CC BY-SA 4.0</rights>
 <li>如果是分步骤<span class="mojikumi-line-start">（</span>模块<span class="mojikumi-line-end">）</span>接线<span class="mojikumi-line-start">（</span>比如先接全加器<span class="mojikumi-line-end">，</span>再改成减法器<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>过程中需要改线<span class="mojikumi-line-end">，</span>在两根线叠在一起时<span class="mojikumi-line-end">，</span>最好是把<span class="mojikumi-line-start">“</span>模块内部<span class="mojikumi-line-end">”</span>的线放在下面<span class="mojikumi-line-end">，</span>和<span class="mojikumi-line-start">“</span>外部<span class="mojikumi-line-end">”</span>连接的线放在上面<span class="mojikumi-line-end">，</span>这样的话修改和外部的连接时不用把两根线一起拔掉<span class="mojikumi-line-end">。</span></li>
 <li>把接好的线带到实验室是有一定难度的<span class="mojikumi-line-end">，</span>可以先只接 6 个模块<span class="mojikumi-line-end">，</span>就能放进实验箱了<span class="mojikumi-line-end">，</span>课上接剩下的两个模块<span class="mojikumi-line-end">。</span>接上线之后体积会变大<span class="mojikumi-line-end">，</span>可以把用不到的模块留在寝室<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>这节课上还发了 FPGA 模块<span class="mojikumi-line-end">，</span>为了能装下<span class="mojikumi-line-end">，</span>大家都上交了一些多余的模块<span class="mojikumi-line-end">，</span>我装得下而且本来就是把多余的放在寝室了<span class="mojikumi-line-end">，</span>就没上交<span class="mojikumi-line-end">；</span>但是这样一来我就长期有几个模块放不进实验箱了 🌚<span class="mojikumi-line-end">）</span></li>
 </ul>
+<p><s>如果你不知道怎么接线的话可以尝试对着下面这张图复刻</s></p>
+<p><picture><source type="image/webp" srcset="/assets/adder-circuit.daa72e66.webp"><img srcset="/assets/adder-circuit.0aa32cb4.jpeg" loading="lazy" src="/assets/adder-circuit.0aa32cb4.jpeg" width="2312" height="1736" alt="电路连接实物图"></picture></p>
+<p>后来看到有同学上面的线统一朝上<span class="mojikumi-line-end">，</span>下面的线统一朝下<span class="mojikumi-line-end">，</span>就整齐一些<span class="mojikumi-line-end">。</span></p>
 <p>最后收拾东西的时候分三次发现地上掉了 5 根线<span class="mojikumi-line-end">，</span>除此之外前后两排也能看到好多根线<span class="mojikumi-line-end">，</span>不知道哪些是我的<span class="mojikumi-line-end">，</span>哪些是隔壁的<span class="mojikumi-line-end">，</span>哪些是上午的<span class="mojikumi-line-start">（</span></p>
 <p>还听到助教吐槽同学<span class="mojikumi-line-end">，</span>然后老师说<span class="mojikumi-line-end">，</span>这都是正常的<span class="mojikumi-line-end">，</span>现在我们去搞大模型就可以了<span class="mojikumi-line-end">，</span>不用在意数电<span class="mojikumi-line-start">（</span></p>
 <h2 id="数设" class="heading"><a href="#数设" class="heading-anchor" aria-label="章节： 数设" tabindex="-1"></a><span>数设</span></h2>
