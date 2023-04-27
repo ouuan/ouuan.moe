@@ -277,7 +277,11 @@ Licensed under CC BY-SA 4.0</copyright>
 <p><a href="https://www.naiveui.com/zh-CN/os-theme/components/space"><code>&#x3C;n-space></code></a> 会给每个 child 套一个 <code>&#x3C;div></code><span class="mojikumi-line-end">，</span>于是 <code>key</code> 都失效了<span class="mojikumi-line-end">，</span>如果在 <code>&#x3C;n-space></code> 里面用 <code>v-for</code> 就可能不停地 remount<span class="mojikumi-line-end">，</span>调了一晚上<span class="mojikumi-line-start">（</span></p>
 <p>这东西是真不如手写 flex<span class="mojikumi-line-end">。</span></p>
 <h4 id="小例会-3" class="heading"><a href="#小例会-3" class="heading-anchor" aria-label="章节： 小例会 3" tabindex="-1"></a><span>小例会 3</span></h4>
-<p>比较水<span class="mojikumi-line-end">，</span>只不过助教说他当年搞了个云服务器<span class="mojikumi-line-end">，</span>出问题了就把反代换成云服务器<span class="mojikumi-line-end">，</span>感觉很有道理<span class="mojikumi-line-start">（</span></p>]]></content:encoded>
+<p>比较水<span class="mojikumi-line-end">，</span>只不过助教说他当年搞了个云服务器<span class="mojikumi-line-end">，</span>出问题了就把反代换成云服务器<span class="mojikumi-line-end">，</span>感觉很有道理<span class="mojikumi-line-start">（</span></p>
+<h3 id="大作业第六周" class="heading"><a href="#大作业第六周" class="heading-anchor" aria-label="章节： 大作业第六周" tabindex="-1"></a><span>大作业第六周</span></h3>
+<p>大家这周都比较摆<span class="mojikumi-line-end">，</span>我还去修了不少后端的锅<span class="mojikumi-line-end">。</span>太久没管后端<span class="mojikumi-line-end">，</span>对代码复用<span class="mojikumi-line-end">、</span>测试的完善程度<span class="mojikumi-line-end">、</span>QuerySet 的编写<span class="mojikumi-line-end">、</span>请求参数的校验等问题感到了一些震惊<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>但确实是没力气去修<span class="mojikumi-line-start">（</span></p>
+<p>响应式设计还作为自选需求被提了出来<span class="mojikumi-line-end">，</span>要是打算加这个需求一开始不就应该有吗<span class="mojikumi-line-end">，</span>这也不是什么需要由同学想到的功能<span class="mojikumi-line-end">，</span>我看需求列表没有就默认也不会作为自选需求了<span class="mojikumi-line-end">，</span>刚开课的时候还找助教吐槽没有响应式分数<span class="mojikumi-line-end">。</span>响应式设计要 mobile first<span class="mojikumi-line-end">，</span>能这么晚加吗<span class="mojikumi-line-end">。</span></p>
+<p>劝大家还是别太信需求列表<span class="mojikumi-line-end">，</span>该卷还得卷<span class="mojikumi-line-end">，</span>自己提自选需求总比快结束了被别人提强太多<span class="mojikumi-line-end">。</span></p>]]></content:encoded>
             <category domain="https://ouuan.moe/tag/Web">Web</category>
             <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
         </item>
