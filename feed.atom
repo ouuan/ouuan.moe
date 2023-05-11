@@ -923,7 +923,11 @@ Licensed under CC BY-SA 4.0</rights>
 <h3 id="大作业第六周" class="heading"><a href="#大作业第六周" class="heading-anchor" aria-label="章节： 大作业第六周" tabindex="-1"></a><span>大作业第六周</span></h3>
 <p>大家这周都比较摆<span class="mojikumi-line-end">，</span>我还去修了不少后端的锅<span class="mojikumi-line-end">。</span>太久没管后端<span class="mojikumi-line-end">，</span>对代码复用<span class="mojikumi-line-end">、</span>测试的完善程度<span class="mojikumi-line-end">、</span>QuerySet 的编写<span class="mojikumi-line-end">、</span>请求参数的校验等问题感到了一些震惊<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>但确实是没力气去修<span class="mojikumi-line-start">（</span></p>
 <p>响应式设计还作为自选需求被提了出来<span class="mojikumi-line-end">，</span>要是打算加这个需求一开始不就应该有吗<span class="mojikumi-line-end">，</span>这也不是什么需要由同学想到的功能<span class="mojikumi-line-end">，</span>我看需求列表没有就默认也不会作为自选需求了<span class="mojikumi-line-end">，</span>刚开课的时候还找助教吐槽没有响应式分数<span class="mojikumi-line-end">。</span>响应式设计要 mobile first<span class="mojikumi-line-end">，</span>能这么晚加吗<span class="mojikumi-line-end">。</span></p>
-<p>劝大家还是别太信需求列表<span class="mojikumi-line-end">，</span>该卷还得卷<span class="mojikumi-line-end">，</span>自己提自选需求总比快结束了被别人提强太多<span class="mojikumi-line-end">。</span></p>]]></content>
+<p>劝大家还是别太信需求列表<span class="mojikumi-line-end">，</span>该卷还得卷<span class="mojikumi-line-end">，</span>自己提自选需求总比快结束了被别人提强太多<span class="mojikumi-line-end">。</span></p>
+<h3 id="大作业第-79-周" class="heading"><a href="#大作业第-79-周" class="heading-anchor" aria-label="章节： 大作业第 7~9 周" tabindex="-1"></a><span>大作业第 7~9 周</span></h3>
+<p>草<span class="mojikumi-line-end">，</span>我有软工<span class="mojikumi-line-end">，</span>没有能加分的课<span class="mojikumi-line-end">，</span>为什么要打智能体<span class="mojikumi-line-start">（</span></p>
+<h4 id="《gif-图片搜索网站》" class="heading"><a href="#《gif-图片搜索网站》" class="heading-anchor" aria-label="章节： 《GIF 图片搜索网站》" tabindex="-1"></a><span><span class="mojikumi-line-start">《</span>GIF 图片搜索网站<span class="mojikumi-line-end">》</span></span></h4>
+<p>来点 PRJ2 笑话<span class="mojikumi-line-end">：</span>GIF 图片搜索网站<span class="mojikumi-line-end">，</span>每个队都是最后两三周才开始写搜索功能<span class="mojikumi-line-start">（</span></p>]]></content>
         <category label="Web" term="https://ouuan.moe/tag/Web"/>
         <category label="学习记录" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"/>
     </entry>
