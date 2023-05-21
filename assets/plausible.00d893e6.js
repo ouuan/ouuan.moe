@@ -1,1 +1,0 @@
-import{P as n}from"./vendor-vue.33f0ffe8.js";const e="ouuan.moe",s="https://plausible.ouuan.moe",{trackPageview:c,trackEvent:i}=n({domain:e,apiHost:s});function a(o){return(...t)=>{window.location.host===e?o(...t):console.log(o.name,t)}}const r=a(c),u=a(i);export{u as a,r as t};
