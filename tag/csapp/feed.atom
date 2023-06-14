@@ -155,6 +155,21 @@ Licensed under CC BY-SA 4.0</rights>
 <li>如果有 link 到共享库<span class="mojikumi-line-end">，</span>会进行动态链接<span class="mojikumi-line-end">，</span>将共享库 private, file-backed map</li>
 <li>修改 program counter</li>
 </ol>
+<a id="关于共享库的-map-方式" name="关于共享库的-map-方式" aria-hidden="true"></a>
+<aside role="note" data-v-a2ab257f><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-a2ab257f><h4 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-info-circle-outline text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Info: </span><span data-v-a2ab257f>关于共享库的 map 方式</span></h4><span class="details-icon text-5" data-v-a2ab257f></span></summary><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><p>下面是一封发送于 2022.12.18<span class="mojikumi-line-end">，</span>尚未收到回复的邮件<span class="mojikumi-line-end">：</span></p><blockquote>
+<p>Dear Drs. Randy Bryant and Dave O'Hallaron,</p>
+<p>I am a student at Tsinghua University and I am writing to ask a question about the book CS:APP3e.</p>
+<p>In <span class="mojikumi">“</span>9.8.3 The execve Function Revisited<span class="mojikumi">”</span> on page 837, it is stated that shared libraries are <span class="mojikumi">“</span>mapped into the shared region of the user<span class="mojikumi-narrow-left">’</span>s virtual address space<span class="mojikumi">”</span>. In Figure 9.31, it is stated that <span class="mojikumi">“</span>Memory-mapped region for shared libraries<span class="mojikumi">”</span> are <span class="mojikumi">“</span>Shared, file-backed<span class="mojikumi">”</span>.</p>
+<p>However, I believe that shared libraries are actually mapped as private objects rather than shared objects. I have come to this conclusion for the following reasons:</p>
+<ol>
+<li>If there is data in the shared library, it should be copy-on-write, and should not be shared among different processes.</li>
+<li>/proc/self/maps shows that all mappings to shared libraries of my shell are private.</li>
+<li>The source code and comments of dl-load indicate that the mapping should be private. (See <a href="https://github.com/bminor/glibc/blob/71e408e45dcacf429a94b2807f75aaadd8d37cb9/elf/dl-load.h#L32-L49" class="break-all">https://github.com/bminor/glibc/blob/71e408e45dcacf429a94b2807f75aaadd8d37cb9/elf/dl-load.h#L32-L49</a> and <a href="https://github.com/bminor/glibc/commit/9b8a44cd18fbf1aedeb03e19f4bcdb06b0ee409b" class="break-all">https://github.com/bminor/glibc/commit/9b8a44cd18fbf1aedeb03e19f4bcdb06b0ee409b</a>.)</li>
+</ol>
+<p>I have checked the errata but did not find this issue addressed. I am writing to you in the hope that you can provide an explanation of this statement or add it to the errata. Thank you for your attention to this matter.</p>
+<p>Sincerely,
+Yufan You</p>
+</blockquote></div></details></aside>
 <h3 id="mmap" class="heading"><a href="#mmap" class="heading-anchor" aria-label="章节： mmap" tabindex="-1"></a><span>mmap</span></h3>
 <p><code>void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)</code></p>
 <ul>

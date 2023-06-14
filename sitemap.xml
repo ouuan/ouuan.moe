@@ -10,6 +10,11 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/post/2022/11/csapp-9</loc>
+        <lastmod>2023-06-14T15:39:37.000Z</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/post/2023/03/digital-logic</loc>
         <lastmod>2023-06-09T15:25:57.000Z</lastmod>
         <priority>0.8</priority>
@@ -72,11 +77,6 @@
     <url>
         <loc>https://ouuan.moe/post/2022/10/csapp-4</loc>
         <lastmod>2023-01-14T15:32:52.000Z</lastmod>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://ouuan.moe/post/2022/11/csapp-9</loc>
-        <lastmod>2023-01-14T14:15:50.000Z</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
