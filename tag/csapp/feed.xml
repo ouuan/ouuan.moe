@@ -164,7 +164,7 @@ Licensed under CC BY-SA 4.0</copyright>
 <li>The source code and comments of dl-load indicate that the mapping should be private. (See <a href="https://github.com/bminor/glibc/blob/71e408e45dcacf429a94b2807f75aaadd8d37cb9/elf/dl-load.h#L32-L49" class="break-all">https://github.com/bminor/glibc/blob/71e408e45dcacf429a94b2807f75aaadd8d37cb9/elf/dl-load.h#L32-L49</a> and <a href="https://github.com/bminor/glibc/commit/9b8a44cd18fbf1aedeb03e19f4bcdb06b0ee409b" class="break-all">https://github.com/bminor/glibc/commit/9b8a44cd18fbf1aedeb03e19f4bcdb06b0ee409b</a>.)</li>
 </ol>
 <p>I have checked the errata but did not find this issue addressed. I am writing to you in the hope that you can provide an explanation of this statement or add it to the errata. Thank you for your attention to this matter.</p>
-<p>Sincerely,
+<p>Sincerely,<br>
 Yufan You</p>
 </blockquote></div></details></aside>
 <h3 id="mmap" class="heading"><a href="#mmap" class="heading-anchor" aria-label="章节： mmap" tabindex="-1"></a><span>mmap</span></h3>
