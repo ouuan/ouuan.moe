@@ -10,6 +10,11 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/post/2023/06/cnatda-2</loc>
+        <lastmod>2023-06-16T15:24:34.000Z</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/post/2022/11/csapp-9</loc>
         <lastmod>2023-06-14T15:39:37.000Z</lastmod>
         <priority>0.8</priority>
@@ -218,6 +223,10 @@
     </url>
     <url>
         <loc>https://ouuan.moe/tag/caddy-security</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/tag/cnatda</loc>
         <priority>0.5</priority>
     </url>
     <url>
