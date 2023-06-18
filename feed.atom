@@ -22,12 +22,12 @@ Licensed under CC BY-SA 4.0</rights>
         <summary type="html"><![CDATA[
 
 
-<p><span class="mojikumi-line-start">《</span>Computer Networking A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第二章 <span class="mojikumi">“</span>Application Layer<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第二章 <span class="mojikumi">“</span>Application Layer<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <content type="html"><![CDATA[
 
 
-<p><span class="mojikumi-line-start">《</span>Computer Networking A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第二章 <span class="mojikumi">“</span>Application Layer<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第二章 <span class="mojikumi">“</span>Application Layer<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
 
 <h2 id="principles-of-network-applications" class="heading"><a href="#principles-of-network-applications" class="heading-anchor" aria-label="章节： Principles of Network Applications" tabindex="-1"></a><span>Principles of Network Applications</span></h2>
 <p>application architecture 主要分为 client-server 和 P2P 两种<span class="mojikumi-line-end">。</span></p>
