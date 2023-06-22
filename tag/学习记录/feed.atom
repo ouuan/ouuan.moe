@@ -448,7 +448,9 @@ Licensed under CC BY-SA 4.0</rights>
 <h3 id="展示" class="heading"><a href="#展示" class="heading-anchor" aria-label="章节： 展示" tabindex="-1"></a><span>展示</span></h3>
 <p>最后一天改 slide 的时候一大半的时间花在了 p 这个图标<span class="mojikumi-line-end">，</span>好想用 StyleDrop<span class="mojikumi-line-start">（</span></p>
 <p><span class="mojikumi-line-start">（</span>这是个 <code>&#x3C;iframe></code><span class="mojikumi-line-end">，</span>可以翻页<span class="mojikumi-line-end">）</span></p>
-<iframe class="w-full aspect-video" style="color-scheme: light;" src="/static/digital-design/index.html"></iframe>]]></content>
+<iframe class="w-full aspect-video" style="color-scheme: light;" src="/static/digital-design/index.html"></iframe>
+<h3 id="视频" class="heading"><a href="#视频" class="heading-anchor" aria-label="章节： 视频" tabindex="-1"></a><span>视频</span></h3>
+<p><a href="https://www.bilibili.com/video/av230053693">https<wbr>://<wbr>www<wbr>.<wbr>bilibili<wbr>.<wbr>com<wbr>/<wbr>video<wbr>/<wbr>av230053693</a></p>]]></content>
         <category label="digital-design" term="https://ouuan.moe/tag/digital-design"/>
         <category label="学习记录" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"/>
     </entry>
