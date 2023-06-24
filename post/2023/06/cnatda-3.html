@@ -94,10 +94,10 @@
 <li>在发送方<span class="mojikumi-line-end">，</span>transport layer 从多个 socket 收集 message 并发送给 network layer 的过程被称作 multiplexing<span class="mojikumi-line-end">；</span></li>
 <li>在接收方<span class="mojikumi-line-end">，</span>transport layer 从 network layer 接收到 message 后传递给正确的 socket 的过程被称作 demultiplexing<span class="mojikumi-line-end">。</span></li>
 </ul>
-<p>multiplexing 以及 demultiplexing 需要每个 socket 有 unique identifier<span class="mojikumi-line-end">，</span>并且 segment 中需要包含这个 socket identifier<span class="mojikumi-line-end">。</span></p>
+<p>multiplexing 以及 demultiplexing 需要每个 socket 有 unique identifier<span class="mojikumi-line-end">：</span></p>
 <ul>
-<li>在 UDP 中<span class="mojikumi-line-end">，</span>只以 port 作为 socket identifier<span class="mojikumi-line-end">，</span>UDP datagram 中包含 source port 和 destination port<span class="mojikumi-line-end">；</span></li>
-<li>在 TCP 中<span class="mojikumi-line-end">，</span>以 destination port 和 source IP 作为 socket identifier<span class="mojikumi-line-end">，</span>TCP segment 中包含双方的 IP 和 port 以及表示是否是 connection-establishment 的 flag<span class="mojikumi-line-end">。</span></li>
+<li>在 UDP 中<span class="mojikumi-line-end">，</span>只以 port 作为 socket identifier</li>
+<li>在 TCP 中<span class="mojikumi-line-end">，</span>以 destination port 和 source IP 作为 socket identifier</li>
 </ul>
 <h2 id="connectionless-transport-udp" class="heading"><a href="#connectionless-transport-udp" class="heading-anchor" aria-label="章节： Connectionless Transport: UDP" tabindex="-1"></a><span>Connectionless Transport: UDP</span></h2>
 <p>UDP 仅提供 multiplexing and demultiplexing 以及 error checking<span class="mojikumi-line-end">，</span>但在一些 application 中它比 TCP 更加适合<span class="mojikumi-line-end">，</span>主要因为下列原因<span class="mojikumi-line-end">：</span></p>
