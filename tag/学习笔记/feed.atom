@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id>
     <title>ouuan's blog: 标签: 学习笔记</title>
-    <updated>2023-06-24T11:29:55.000Z</updated>
+    <updated>2023-07-05T14:31:33.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>ouuan</name>
@@ -14,6 +14,205 @@
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2023 ouuan
 Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[CNATDA 第四章学习笔记]]></title>
+        <id>https://ouuan.moe/post/2023/06/cnatda-4</id>
+        <link href="https://ouuan.moe/post/2023/06/cnatda-4"/>
+        <updated>2023-07-05T14:31:33.000Z</updated>
+        <summary type="html"><![CDATA[
+
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第四章 <span class="mojikumi">“</span>The Network Layer: Data Plane<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <content type="html"><![CDATA[
+
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第四章 <span class="mojikumi">“</span>The Network Layer: Data Plane<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+
+<h2 id="overview-of-network-layer" class="heading"><a href="#overview-of-network-layer" class="heading-anchor" aria-label="章节： Overview of Network Layer" tabindex="-1"></a><span>Overview of Network Layer</span></h2>
+<p>Network Layer 可以被细分为 data plane 和 control plane 两部分<span class="mojikumi-line-end">。</span></p>
+<p>data plane 的主要功能是 <i>forwarding</i><span class="mojikumi-line-start">（</span>也称作 <i>switching</i><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>即一个 router 将 input link 收到的数据转发到正确的 output link<span class="mojikumi-line-end">。</span></p>
+<p>control plane 的主要功能是 <i>routing</i><span class="mojikumi-line-end">，</span>即决定从 sending host 到 receiving host 的路径<span class="mojikumi-line-end">。</span></p>
+<p>router 中会有一个 <i>forwarding table</i><span class="mojikumi-line-end">，</span>从 packet header 中选取某些 field 用来 index forwarding table<span class="mojikumi-line-end">，</span>得到 outgoing link interface<span class="mojikumi-line-end">。</span></p>
+<p>计算 forwarding table 则是 control plane 的任务<span class="mojikumi-line-end">，</span>有两种实现方式<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>the traditional approach: router 之间根据 routing protocol 互相通信<span class="mojikumi-line-end">，</span>根据 routing algorithm 计算得到 forwarding table<span class="mojikumi-line-end">。</span></li>
+<li>the SDN approach: router 只实现 forwarding<span class="mojikumi-line-end">，</span>而 routing 由一个 remote controller 完成<span class="mojikumi-line-end">：</span>router 向 remote controller 发送信息<span class="mojikumi-line-end">，</span>由 remote controller 计算得到 forwarding table 发给 router<span class="mojikumi-line-end">。</span>这个 remote controller 通常是由软件实现的<span class="mojikumi-line-end">，</span>所以这种方法被称作 <i>software-defined networking</i> (SDN)<span class="mojikumi-line-end">。</span></li>
+</ul>
+<h2 id="what’s-inside-a-router" class="heading"><a href="#what’s-inside-a-router" class="heading-anchor" aria-label="章节： What’s Inside a Router?" tabindex="-1"></a><span>What<span class="mojikumi-narrow-left">’</span>s Inside a Router?</span></h2>
+<p>router 一般包含以下部分<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>
+<p>input ports</p>
+<ul>
+<li>incoming link 的 physical layer 和 link layer</li>
+<li>input queue</li>
+<li>lookup:
+<ul>
+<li>从 forwarding table 查 output port</li>
+<li>将 control packet<span class="mojikumi-line-start">（</span>例如包含 routing protocol information 的 packet<span class="mojikumi-line-end">）</span>forward 到 routing processor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>switching fabric: 连接 input ports 和 output ports</p>
+</li>
+<li>
+<p>output ports</p>
+<ul>
+<li>outgoing link 的 link layer 和 physical layer</li>
+<li>output queue</li>
+</ul>
+</li>
+<li>
+<p>routing processor: 得到 forwarding table<span class="mojikumi-line-end">，</span>进行 network management</p>
+<ul>
+<li>traditional: 执行 routing protocol</li>
+<li>SDN: 与 remote controller 通信</li>
+</ul>
+</li>
+</ul>
+<p>为了保证通信速度<span class="mojikumi-line-end">，</span>forwarding 的用时需要在 ns 级<span class="mojikumi-line-end">，</span>所以要用硬件实现<span class="mojikumi-line-end">；</span>而 control plane 的用时一般在 ms 或 s 级<span class="mojikumi-line-end">，</span>可以用软件实现<span class="mojikumi-line-end">。</span></p>
+<h3 id="input-port-processing-and-destination-based-forwarding" class="heading"><a href="#input-port-processing-and-destination-based-forwarding" class="heading-anchor" aria-label="章节： Input Port Processing and Destination-Based Forwarding" tabindex="-1"></a><span>Input Port Processing and Destination-Based Forwarding</span></h3>
+<p>多个 input port 可以合并到一个 line card 上<span class="mojikumi-line-end">。</span></p>
+<p>forwarding table 会从 routing processor 给每个 line card 都复制一份<span class="mojikumi-line-end">，</span>从而可以在每个局部分别计算<span class="mojikumi-line-end">，</span>不需要集中计算<span class="mojikumi-line-end">。</span></p>
+<p>对于 destination-based forwarding<span class="mojikumi-line-end">，</span>forwarding table 一般是 index 为 IP 地址前缀<span class="mojikumi-line-end">，</span>value 为 link interface<span class="mojikumi-line-end">，</span>采用 longest prefix matching<span class="mojikumi-line-end">。</span></p>
+<p>lookup 通常要在 ns 级别的时间内完成<span class="mojikumi-line-end">，</span>而 forwarding table 很大<span class="mojikumi-line-end">，</span>不仅需要通过硬件实现<span class="mojikumi-line-end">，</span>还需要使用特殊的算法或存储器<span class="mojikumi-line-end">，</span>例如使用 TCAM<span class="mojikumi-line-end">。</span></p>
+<p>input port processing 除了 lookup 还有 physical-layer 和 link-layer processing<span class="mojikumi-line-end">，</span>还需要检查/更新 packet version<span class="mojikumi-line-end">、</span>checksum<span class="mojikumi-line-end">、</span>TTL<span class="mojikumi-line-end">，</span>更新 network management 的 counter<span class="mojikumi-line-end">。</span></p>
+<h3 id="switching" class="heading"><a href="#switching" class="heading-anchor" aria-label="章节： Switching" tabindex="-1"></a><span>Switching</span></h3>
+<p>switching 有多种形式<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>via memory: packet 从 input port 复制到 memory 再复制到 output port<span class="mojikumi-line-end">，</span>如果使用集中的 memory 而非每个 line card 分别的 memory<span class="mojikumi-line-end">，</span>则传输速率会受 memory 的速率限制<span class="mojikumi-line-end">。</span></li>
+<li>via bus: 将 packet 加上一个 switch-internal label 再通过 bus 发送给所有 output port<span class="mojikumi-line-end">，</span>收到后根据 label 决定是否保留这个 packet<span class="mojikumi-line-end">，</span>传输速率会受 bus 的速率限制<span class="mojikumi-line-end">。</span></li>
+<li>via interconnection network: 每个 input port 对应一个 bus<span class="mojikumi-line-end">，</span>每个 output port 对应一个 bus<span class="mojikumi-line-end">，</span>每对 input port bus 和 output port bus 之间都有 crosspoint<span class="mojikumi-line-end">，</span>通过控制 crosspoint 来控制从哪传到哪<span class="mojikumi-line-start">（</span>结构和 ROM 类似<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>这是 non-blocking 的<span class="mojikumi-line-end">，</span>只要两个 packet 的 output port 不同就可以同时传输<span class="mojikumi-line-end">。</span></li>
+</ul>
+<h3 id="input-queuing" class="heading"><a href="#input-queuing" class="heading-anchor" aria-label="章节： Input Queuing" tabindex="-1"></a><span>Input Queuing</span></h3>
+<p>如果 switching fabric 的速率达到了所有 input port 的速率之和<span class="mojikumi-line-end">，</span>则不会发生 input queuing<span class="mojikumi-line-end">，</span>否则可能要等待其他 packet 在 switching fabric 上传输<span class="mojikumi-line-end">。</span></p>
+<p>以 switching via interconnection network 为例<span class="mojikumi-line-end">，</span>只有多个 packet 传输到同一个 output port 才会发生 input queuing<span class="mojikumi-line-end">，</span>但是一个 packet 即使没有和它 output port 相同的 packet 也可能因为 input queue 中在它前面的其他 packet 而被 block<span class="mojikumi-line-end">，</span>即 HOL blocking<span class="mojikumi-line-end">。</span></p>
+<h3 id="output-queuing" class="heading"><a href="#output-queuing" class="heading-anchor" aria-label="章节： Output Queuing" tabindex="-1"></a><span>Output Queuing</span></h3>
+<p>如果 packet 到达 output port 的速率超过了 output line 的速率<span class="mojikumi-line-end">，</span>则会发生 output queuing<span class="mojikumi-line-end">。</span></p>
+<p>若 packet 到达时 buffer 已经满了<span class="mojikumi-line-end">，</span>则需要决定 drop 哪个 packet<span class="mojikumi-line-end">。</span>在 buffer 满之前进行 packet dropping 或 marking 称作 active queue management (AQM)<span class="mojikumi-line-end">，</span>例如 <a href="/post/2023/06/cnatda-3#network-assisted-explicit-congestion-notification">ECN</a><span class="mojikumi-line-end">、</span>random early detection (RED) 等<span class="mojikumi-line-end">。</span></p>
+<h3 id="how-much-buffering-is-“enough”" class="heading"><a href="#how-much-buffering-is-“enough”" class="heading-anchor" aria-label="章节： How Much Buffering Is “Enough”?" tabindex="-1"></a><span>How Much Buffering Is <span class="mojikumi">“</span>Enough<span class="mojikumi-line-end">”</span>?</span></h3>
+<p>有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></span> 个 independent TCP flow 经过一个带宽为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span> 的 link 时<span class="mojikumi-line-end">，</span>buffer 需要有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">T</mi></mrow><mo>⋅</mo><mi>C</mi><mi mathvariant="normal">/</mi><msqrt><mi>N</mi></msqrt></mrow><annotation encoding="application/x-tex">\mathrm{RTT} \cdot C / \sqrt N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">RTT</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1767em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;padding-left:0.833em;">N</span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span></span></span></span></span><span class="mojikumi-line-end">。</span></p>
+<p>更大的 buffer 能减少 packet loss<span class="mojikumi-line-end">，</span>但可能会增加 delay<span class="mojikumi-line-end">。</span>TCP 可能会使得 buffer 一直不被清空<span class="mojikumi-line-end">，</span>从而导致 queuing delay 是 constant 且 persistent 的<span class="mojikumi-line-end">，</span>这被称作 <i>bufferbloat</i><span class="mojikumi-line-end">，</span>可以通过一些 AQM 措施来缓解<span class="mojikumi-line-end">。</span></p>
+<h3 id="packet-scheduling" class="heading"><a href="#packet-scheduling" class="heading-anchor" aria-label="章节： Packet Scheduling" tabindex="-1"></a><span>Packet Scheduling</span></h3>
+<ul>
+<li>FIFO (FCFS)</li>
+<li>priority queuing<br>
+<span class="mojikumi-line-start">（</span>在 non-preemptive priority queuing 中<span class="mojikumi-line-end">，</span>如果低优先级的 packet 已经开始传输<span class="mojikumi-line-end">，</span>高优先级的 packet 再到来不会打断传输<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></li>
+<li>weighted fair queuing (WFQ): 给每种 packet 类型一个 weight<span class="mojikumi-line-end">，</span>决定选择这种类型的频率<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>packet scheduling 可以根据 IP datagram header 中的各种信息优先传输或 block 某一类 packet<span class="mojikumi-line-end">。</span><i>Order on Protecting and Promoting an Open Internet</i> (2015) 规定了 net neutrality 的三条原则<span class="mojikumi-line-end">：</span>no blocking<span class="mojikumi-line-end">、</span>no throttling<span class="mojikumi-line-end">、</span>no paid prioritization<span class="mojikumi-line-end">。</span>而 <i>Restoring Internet Freedom Order</i> (2017) 则收回了这些限制<span class="mojikumi-line-end">，</span>而是注重于 ISP transparency<span class="mojikumi-line-end">。</span></p>
+<h2 id="the-internet-protocol-ip" class="heading"><a href="#the-internet-protocol-ip" class="heading-anchor" aria-label="章节： The Internet Protocol (IP)" tabindex="-1"></a><span>The Internet Protocol (IP)</span></h2>
+<h3 id="ipv4-datagram-format" class="heading"><a href="#ipv4-datagram-format" class="heading-anchor" aria-label="章节： IPv4 Datagram Format" tabindex="-1"></a><span>IPv4 Datagram Format</span></h3>
+<p>IPv4 datagram 的格式如下图所示<span class="mojikumi-line-end">：</span><sup><a href="#user-content-fn-fig-4.17" id="user-content-fnref-fig-4.17" data-footnote-ref aria-describedby="footnote-label">1</a></sup></p>
+<p><picture><source type="image/webp" srcset="/assets/cnatda-fig-4.17.68bb8fa1.webp"><img srcset="/assets/cnatda-fig-4.17.7354e07d.png" loading="lazy" src="/assets/cnatda-fig-4.17.7354e07d.png" width="757" height="553" alt="IPv4 datagram format"></picture></p>
+<ul>
+<li>version: 例如 IPv4<span class="mojikumi-line-end">、</span>IPv6</li>
+<li>header length: 因为可能有 options<span class="mojikumi-line-end">，</span>header 是不定长的</li>
+<li>type of service (TOS): 用来识别各种类型的流量<span class="mojikumi-line-end">，</span>例如 real-time datagram (对延时敏感)<span class="mojikumi-line-end">，</span>其中有 2 个 bit 用于 <a href="/post/2023/06/cnatda-3#network-assisted-explicit-congestion-notification">ECN</a></li>
+<li>datagram length: header + data 的长度<span class="mojikumi-line-end">，</span>为放入 Ethernet frame<span class="mojikumi-line-end">，</span>一般不超过 1500 bytes</li>
+<li>identifier<span class="mojikumi-line-end">、</span>flags<span class="mojikumi-line-end">、</span>fragmentation offset: 用于 IP fragmentation<span class="mojikumi-line-end">，</span>在 IPv6 中已被弃用</li>
+<li>TTL: 为了防止死循环<span class="mojikumi-line-end">，</span>TTL 每经过一个 router 会减一<span class="mojikumi-line-end">，</span>到 0 就会被 drop</li>
+<li>protocol: transport-layer protocol<span class="mojikumi-line-end">，</span>用来连接 network layer 和 transport layer</li>
+<li>header checksum: 只计算 header 不计算 data<span class="mojikumi-line-end">，</span>使用 ones<span class="mojikumi-narrow-left">’</span> complement sum<span class="mojikumi-line-end">；</span>header 每经过一个 router 都会更新<span class="mojikumi-line-end">，</span>checksum 也要相应地更新</li>
+<li>source and destination IP address</li>
+<li>options: 由于会影响性能<span class="mojikumi-line-end">，</span>在 IPv6 中已被弃用</li>
+<li>data: 一般是 transport-layer segment<span class="mojikumi-line-end">，</span>但也可能是 ICMP message 之类的其他数据</li>
+</ul>
+<h3 id="ipv4-addressing" class="heading"><a href="#ipv4-addressing" class="heading-anchor" aria-label="章节： IPv4 Addressing" tabindex="-1"></a><span>IPv4 Addressing</span></h3>
+<p>一般来说<span class="mojikumi-line-end">，</span>每个 host 有至少一个 interface 来接入网络<span class="mojikumi-line-end">，</span>每个 router 有多个 interface 来与其他 router 或 host 连接<span class="mojikumi-line-end">。</span>每个<span class="mojikumi-line-start">（</span>接入 Internet 而不在 NAT 后的<span class="mojikumi-line-end">）</span>interface 都有一个 IP address<span class="mojikumi-line-end">。</span></p>
+<p>多个 host 和 router 之间可以通过 Ethernet switch<span class="mojikumi-line-end">、</span>wireless access point 等方式互相连接<span class="mojikumi-line-end">，</span>构成一个 routerless network<span class="mojikumi-line-end">。</span>在 IP 中<span class="mojikumi-line-end">，</span>这被称作一个 <i>subnet</i><span class="mojikumi-line-end">，</span>即 interface 之间由 link 连接<span class="mojikumi-line-end">、</span>不经过 router 和 host 而构成的连通块<span class="mojikumi-line-end">。</span></p>
+<p>一个 subnet 会有一个 subnet address<span class="mojikumi-line-end">，</span>例如 223.1.1.0/24<span class="mojikumi-line-end">，</span>而其中的 IP address 包括 223.1.1.1<span class="mojikumi-line-end">、</span>223.1.1.2<span class="mojikumi-line-end">、</span>223.1.1.3 等<span class="mojikumi-line-end">。</span></p>
+<p>Internet 分配 IP address 的方案是 classless interdomain routing (CIDR)<span class="mojikumi-line-end">，</span>其规定了 subnet address 的格式<span class="mojikumi-line-end">，</span>例如 <code>/24</code> 表示前 24 位是这个 subnet 的地址<span class="mojikumi-line-start">（</span>network prefix<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>这个 subnet 中的 IP address 的后 8 位可以取其他值<span class="mojikumi-line-end">。</span>这样的地址分配方案和 router lookup 使用的 longest prefix matching 配合在一起可以减少 lookup table 的表项<span class="mojikumi-line-end">。</span></p>
+<p>在 CIDR 之前<span class="mojikumi-line-end">，</span>曾使用过 classful addressing<span class="mojikumi-line-end">，</span>相当于是 mask length 只能是 8<span class="mojikumi-line-end">、</span>16<span class="mojikumi-line-end">、</span>24<span class="mojikumi-line-end">，</span>分别被称作 class A, B, C network<span class="mojikumi-line-end">，</span>这使得不同 class 之间的 address 数量相差过大<span class="mojikumi-line-end">，</span>难以按需选择<span class="mojikumi-line-end">，</span>容易造成浪费<span class="mojikumi-line-end">，</span>最终促成了 classless 的 CIDR<span class="mojikumi-line-end">。</span></p>
+<p>longest prefix matching 也使得 address aggregation 成为可能<span class="mojikumi-line-end">：</span>可以在 lookup table 中将多个有 common prefix 的 subnet 合并为一个更大的 subnet address<span class="mojikumi-line-end">，</span>即使这些 subnet 并没有覆盖这个大的 subnet address 中的所有 address<span class="mojikumi-line-end">，</span>没覆盖到的部分还可以由更小的 subnet address<span class="mojikumi-line-start">（</span>更长的 prefix<span class="mojikumi-line-end">）</span>override<span class="mojikumi-line-end">。</span></p>
+<p>255.255.255.255 是一个特殊的 IP address<span class="mojikumi-line-end">，</span>表示 broadcast<span class="mojikumi-line-end">，</span>destination address 为 broadcast address 的 datagram 会发送给整个 subnet 内的所有 host<span class="mojikumi-line-end">，</span>还有可能发送给 neighbour<span class="mojikumi-line-end">。</span></p>
+<h3 id="obtaining-addresses" class="heading"><a href="#obtaining-addresses" class="heading-anchor" aria-label="章节： Obtaining Addresses" tabindex="-1"></a><span>Obtaining Addresses</span></h3>
+<h4 id="obtaining-a-block-of-addresses" class="heading"><a href="#obtaining-a-block-of-addresses" class="heading-anchor" aria-label="章节： Obtaining a Block of Addresses" tabindex="-1"></a><span>Obtaining a Block of Addresses</span></h4>
+<p>IP address 由 ICANN 管理<span class="mojikumi-line-end">，</span>ISP 以及 organization 可以从由 ICANN 管理的 Internet registry (Address Supporting Organization) 处获得 IP address block<span class="mojikumi-line-end">。</span></p>
+<p>ISP 可以将其拥有的 IP address block 再进行细分来提供给用户<span class="mojikumi-line-end">。</span></p>
+<h4 id="obtaining-a-host-address-dhcp" class="heading"><a href="#obtaining-a-host-address-dhcp" class="heading-anchor" aria-label="章节： Obtaining a Host Address: DHCP" tabindex="-1"></a><span>Obtaining a Host Address: DHCP</span></h4>
+<p>router 的 IP address 一般是手动<span class="mojikumi-line-start">（</span>半自动<span class="mojikumi-line-end">）</span>配置的<span class="mojikumi-line-end">，</span>而 host 的 IP address 通常是通过 Dynamic Host Configuration Protocol (DHCP) 自动进行的<span class="mojikumi-line-end">。</span></p>
+<p>使用 DHCP 能减少手动配置的工作量<span class="mojikumi-line-end">，</span>尤其是在 host 经常移动时<span class="mojikumi-line-start">（</span>例如笔记本电脑在教室和寝室之间移动<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>手动配置几乎是不可能的<span class="mojikumi-line-end">。</span></p>
+<p>DHCP 可以给 host 提供一个固定或临时的 IP address<span class="mojikumi-line-end">，</span>除此之外还能提供 subnet mask<span class="mojikumi-line-end">、</span>first-hop router address (default gateway)<span class="mojikumi-line-end">、</span>local DNS server address 等信息<span class="mojikumi-line-end">。</span></p>
+<p>每个 subnet 一般都会有至少一个 DHCP server<span class="mojikumi-line-end">，</span>或者一个知道 DHCP server address 的 DHCP relay agent<span class="mojikumi-line-start">（</span>一个 router<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<p>使用 DHCP 获取 IP address 的步骤如下<span class="mojikumi-line-end">：</span></p>
+<ol>
+<li>host 发送 DHCP discover message<span class="mojikumi-line-end">：</span>通过 UDP 发送到 255.255.255.255<span class="mojikumi-line-end">、</span>port 67<span class="mojikumi-line-end">，</span>包含一个 transaction ID<span class="mojikumi-line-start">（</span>由于 DHCP 使用 broadcast<span class="mojikumi-line-end">，</span>需要通过 transaction ID 区分不同 host<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></li>
+<li>DHCP server 收到 DHCP discover message 后发送 DHCP offer message<span class="mojikumi-line-end">，</span>是一个发送到 port 68 的 broadcast<span class="mojikumi-line-end">，</span>包含 transaction ID<span class="mojikumi-line-end">、</span>proposed IP address<span class="mojikumi-line-end">、</span>IP address lease time<span class="mojikumi-line-start">（</span>proposed IP address 的有效时间<span class="mojikumi-line-end">，</span>一般是几个小时或几天<span class="mojikumi">）</span><span class="mojikumi-line-end">、</span>DHCP server address 等信息<span class="mojikumi-line-end">。</span></li>
+<li>host 收到 DHCP offer message 后<span class="mojikumi-line-end">，</span>选择其中一个<span class="mojikumi-line-start">（</span>如果收到了多个<span class="mojikumi-line-end">）</span>发送 DHCP request message<span class="mojikumi-line-end">，</span>包含和 DHCP offer message 类似的信息<span class="mojikumi-line-end">，</span>也是一个 broadcast<span class="mojikumi-line-start">（</span>虽然此时已知 DHCP server address<span class="mojikumi-line-end">，</span>但可能有多个 DHCP server<span class="mojikumi-line-end">，</span>broadcast 可以让其他 server 知道可以取消 address reservation 了<sup><a href="#user-content-fn-dhcp-request-broadcast" id="user-content-fnref-dhcp-request-broadcast" data-footnote-ref aria-describedby="footnote-label">2</a></sup><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></li>
+<li>DHCP server 收到 DHCP request message 后回应 DHCP ACK message<span class="mojikumi-line-end">。</span></li>
+</ol>
+<p><span class="mojikumi-line-start">（</span>实际上<span class="mojikumi-line-end">，</span>DHCP offer 和 ACK 也可能不是 broadcast<span class="mojikumi-line-end">。</span><sup><a href="#user-content-fn-dhcp-offer-ack-broadcast" id="user-content-fnref-dhcp-offer-ack-broadcast" data-footnote-ref aria-describedby="footnote-label">3</a></sup><span class="mojikumi-line-end">）</span></p>
+<p>host 收到 DHCP ACK message 后就可以在 lease time 内使用这个 IP address 了<span class="mojikumi-line-end">。</span>DHCP 还提供了延长 lease time 的机制<span class="mojikumi-line-end">。</span></p>
+<h3 id="network-address-translation-nat" class="heading"><a href="#network-address-translation-nat" class="heading-anchor" aria-label="章节： Network Address Translation (NAT)" tabindex="-1"></a><span>Network Address Translation (NAT)</span></h3>
+<p>subnet 需要一段连续的 IP address<span class="mojikumi-line-end">，</span>如果设备数量增长超过了原来的 IP address block 大小<span class="mojikumi-line-end">，</span>新地址的分配将会变得困难<span class="mojikumi-line-end">。</span>而且<span class="mojikumi-line-end">，</span>每个设备都有一个 globally unique address 对于 IPv4 来说难以承担<span class="mojikumi-line-end">。</span>Network Address Translation (NAT) 可以解决<span class="mojikumi-line-start">（</span>缓解<span class="mojikumi-line-end">）</span>这些问题<span class="mojikumi-line-end">。</span></p>
+<p>使用 NAT 时<span class="mojikumi-line-end">，</span>subnet 内使用 IP address space reserved for private network<span class="mojikumi-line-start">（</span>10.0.0.0/8<span class="mojikumi-line-end">、</span>172.16.0.0/12<span class="mojikumi-line-end">、</span>192.168.0.0/16<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>有一个 router 与外界连接并进行 NAT<span class="mojikumi-line-end">，</span>这个 router 对外界表现为 a single device with a single IP address<span class="mojikumi-line-end">，</span>通过 NAT translation table 在 private address + port 和 WAN-side address + port 之间进行转换<span class="mojikumi-line-start">（</span>使用不同的 NAT port 来区分不同的 host 以及 application port<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>这个 router 的 public address 从 ISP<span class="mojikumi-line-start">（</span>可以通过 DHCP<span class="mojikumi-line-end">）</span>获得<span class="mojikumi-line-end">，</span>而它作为 DHCP server 为 subnet 内部提供 private address<span class="mojikumi-line-end">。</span></p>
+<p>NAT 一般会改变 port<span class="mojikumi-line-end">，</span>而有时需要使用特定的 port 不能改变<span class="mojikumi-line-end">，</span>可以通过 NAT traversal 来实现<span class="mojikumi-line-end">。</span><span class="heimu"><span class="mojikumi-line-start">（</span>勾起了一些远古的 MC 联机回忆<span class="mojikumi-line-end">，</span>虽然当时并没成功<span class="mojikumi-line-start">（</span></span></p>
+<h3 id="ipv6" class="heading"><a href="#ipv6" class="heading-anchor" aria-label="章节： IPv6" tabindex="-1"></a><span>IPv6</span></h3>
+<p>为了解决 IPv4 address 即将耗尽的问题<span class="mojikumi-line-end">，</span>IPv6 被研发了出来<span class="mojikumi-line-end">。</span>除了将 IP address 从 32 bits 扩展到 128 bits<span class="mojikumi-line-end">，</span>IPv6 还顺带解决了 IPv4 中的一些其他问题<span class="mojikumi-line-end">。</span></p>
+<p>IPv6 datagram 的格式如下图所示<span class="mojikumi-line-end">：</span><sup><a href="#user-content-fn-fig-4.26" id="user-content-fnref-fig-4.26" data-footnote-ref aria-describedby="footnote-label">4</a></sup></p>
+<p><picture><source type="image/webp" srcset="/assets/cnatda-fig-4.26.15f4647d.webp"><img srcset="/assets/cnatda-fig-4.26.7d119d85.png" loading="lazy" src="/assets/cnatda-fig-4.26.7d119d85.png" width="755" height="419" alt="IPv6 datagram format"></picture></p>
+<p>IPv6 的主要变化<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>在 unicast 和 broadcast 的基础上引入了 anycast<span class="mojikumi-line-end">，</span>即向多个地址之一发送信息<span class="mojikumi-line-end">，</span>例如可以用来向多个有相同内容的 server 发送 anycast 来获取其中最近的一个的 response<span class="mojikumi-line-end">。</span></li>
+<li>使用定长 (40 bytes) 的 header<span class="mojikumi-line-end">。</span></li>
+<li>引入了 <i>flow label</i> 使得 router 可以对 flow 进行特殊处理<span class="mojikumi-line-end">。</span></li>
+<li>删除了 fragmentation 功能以提高性能<span class="mojikumi-line-end">。</span></li>
+<li>删除了 checksum<span class="mojikumi-line-end">，</span>因为 transport-layer segment 一般已经有 checksum 了<span class="mojikumi-line-end">，</span>每次修改 TTL 都更新 checksum 也非常耗时<span class="mojikumi-line-end">。</span></li>
+<li>删除了 options<span class="mojikumi-line-end">，</span>而 next header 不一定是 transport-layer protocol<span class="mojikumi-line-end">，</span>也可以是 option<span class="mojikumi-line-end">。</span></li>
+<li>TOS 改为 traffic class<span class="mojikumi-line-end">，</span>TTL 改为 hop limit<span class="mojikumi-line-end">，</span>datagram length 改为 payload length<span class="mojikumi-line-start">（</span>不含 header length<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>protocol 改为 next header<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>network-layer protocol 的改动非常困难<span class="mojikumi-line-end">，</span>IPv4 到 IPv6 的转换至今仍在进行中<span class="mojikumi-line-end">。</span></p>
+<p>新的设备<span class="mojikumi-line-start">（</span>router<span class="mojikumi-line-end">）</span>可以同时支持 IPv4 和 IPv6<span class="mojikumi-line-end">，</span>但旧的设备只能支持 IPv4<span class="mojikumi-line-end">，</span>为了使它们共存<span class="mojikumi-line-end">，</span>可以采用 <i>tunneling</i><span class="mojikumi-line-end">，</span>即将 IPv6 datagram 作为 IPv4 的 payload 进行传输<span class="mojikumi-line-end">，</span>两个 IPv6 router 之间的一系列 IPv4 router 被称作 <i>tunnel</i><span class="mojikumi-line-end">。</span></p>
+<h3 id="generalized-forwarding-and-sdn" class="heading"><a href="#generalized-forwarding-and-sdn" class="heading-anchor" aria-label="章节： Generalized Forwarding and SDN" tabindex="-1"></a><span>Generalized Forwarding and SDN</span></h3>
+<p>generalized forwarding 基于<span class="mojikumi-line-start">“</span>match-plus-action<span class="mojikumi-line-end">”</span>的原则<span class="mojikumi-line-end">，</span>比起 destination-based forwarding<span class="mojikumi">，</span><wbr><span class="mojikumi-line-start">“</span>match<span class="mojikumi-line-end">”</span>时可以考虑 IP header 中 destination 以外的其他 field<span class="mojikumi-line-end">，</span>也可以考虑 link-layer header<span class="mojikumi-line-end">、</span>transport-layer header<span class="mojikumi-line-end">、</span>ingress port 等<span class="mojikumi">；</span><wbr><span class="mojikumi-line-start">“</span>action<span class="mojikumi-line-end">”</span>除了 forward 还可以是 drop<span class="mojikumi-line-end">、</span>修改 header field 等<span class="mojikumi-line-end">。</span></p>
+<p>OpenFlow 是一个 generalized forwarding 的协议<span class="mojikumi-line-end">，</span>规定了 match 时可以/不能使用哪些 field<span class="mojikumi-line-end">，</span>以及可以采取哪些 action<span class="mojikumi-line-end">。</span>设计一个 flow table<span class="mojikumi-line-end">，</span>就可以实现各种功能<span class="mojikumi-line-end">，</span>例如 forwarding<span class="mojikumi-line-end">、</span>load balancing<span class="mojikumi-line-end">、</span>NAT<span class="mojikumi-line-end">、</span>firewall 等<span class="mojikumi-line-end">。</span></p>
+<p>P4 (Programming Protocol-independent Packet Processors) 是一个用来实现 generalized forwarding 的 programming language<span class="mojikumi-line-end">，</span>可以比 flow table 更加灵活<span class="mojikumi-line-end">。</span></p>
+<h2 id="middleboxes" class="heading"><a href="#middleboxes" class="heading-anchor" aria-label="章节： Middleboxes" tabindex="-1"></a><span>Middleboxes</span></h2>
+<p>在 network 中<span class="mojikumi-line-end">，</span>除了基础的 forwarding<span class="mojikumi-line-end">，</span>还有一些用来实现其他功能的设施<span class="mojikumi-line-end">，</span>称作 <i>middlebox</i><span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>NAT translation</li>
+<li>security services<span class="mojikumi-line-end">，</span>例如 firewall<span class="mojikumi-line-end">、</span>email filter</li>
+<li>performance enhancement<span class="mojikumi-line-end">，</span>例如 Web cache<span class="mojikumi-line-end">、</span>load balancing<span class="mojikumi-line-end">、</span>TCP splitter</li>
+</ul>
+<p>为了降低运营维护的成本<span class="mojikumi-line-end">，</span>有的 middlebox 用软件甚至云服务代替硬件来实现<span class="mojikumi-line-end">，</span>称作 network function virtualization (NFV)<span class="mojikumi-line-end">。</span></p>
+<p>middlebox 在一定程度上破坏了 network 的 layered architecture<span class="mojikumi-line-end">：</span>很多 middlebox 位于 network layer<span class="mojikumi-line-end">，</span>却依赖于 transport layer 甚至 application layer 的信息<span class="mojikumi-line-end">。</span>例如 NAT 会修改 IP address 和 port<span class="mojikumi-line-end">，</span>firewall 可能依赖于 application message 的内容<span class="mojikumi-line-end">。</span></p>
+<p>Internet architecture 的基本原则是<span class="mojikumi-line-start">“</span>the goal is connectivity, the tool is the Internet Protocol, and the intelligence is end to end rather than hidden in the network<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span><sup><a href="#user-content-fn-rfc-1958" id="user-content-fnref-rfc-1958" data-footnote-ref aria-describedby="footnote-label">5</a></sup>在 network layer 中只有 IP 一个 protocol<span class="mojikumi-line-end">、</span>将 complexity 放在 end system<span class="mojikumi-line-end">，</span>可以简化 network layer 的功能<span class="mojikumi-line-end">，</span>保证 connectivity<span class="mojikumi-line-end">，</span>而 middlebox 在一定程度上破坏了这样的原则<span class="mojikumi-line-end">。</span></p>
+<p>尽管在架构上有些不完美<span class="mojikumi-line-end">，</span>但 middlebox 承担着非常重要的功能<span class="mojikumi-line-end">，</span>并不会消亡<span class="mojikumi-line-end">。</span></p>
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
+<ol>
+<li id="user-content-fn-fig-4.17">
+<p>p331, Figure 4.17: IPv4 datagram format <a href="#user-content-fnref-fig-4.17" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-dhcp-request-broadcast">
+<p><a href="https://networkengineering.stackexchange.com/a/48881">Why is broadcast used at the DHCPREQUEST step? - Network Engineering Stack Exchange</a> <a href="#user-content-fnref-dhcp-request-broadcast" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-dhcp-offer-ack-broadcast">
+<p><a href="https://stackoverflow.com/a/10757849">Why are DHCP Offer and Ack broadcasted? - Stack Overflow</a> <a href="#user-content-fnref-dhcp-offer-ack-broadcast" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-fig-4.26">
+<p>p349, Figure 4.26: IPv6 datagram format <a href="#user-content-fnref-fig-4.26" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-rfc-1958">
+<p><a href="https://datatracker.ietf.org/doc/html/rfc1958#section-2">2. Is there an Internet Architecture? - RFC1958</a> <a href="#user-content-fnref-rfc-1958" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+</ol>
+</section>]]></content>
+        <category label="cnatda" term="https://ouuan.moe/tag/cnatda"/>
+        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CNATDA 第三章学习笔记]]></title>
         <id>https://ouuan.moe/post/2023/06/cnatda-3</id>
@@ -217,6 +416,8 @@ Licensed under CC BY-SA 4.0</rights>
 <p>TCP congestion control 有多个版本<span class="mojikumi-line-end">，</span>上文描述的是 TCP Reno<span class="mojikumi-line-end">，</span>如果用 slow start 来代替 fast recovery 则是更古老的 TCP Tahoe<span class="mojikumi-line-end">。</span></p>
 <p>TCP Reno 的锯齿状 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">w</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mrow><annotation encoding="application/x-tex">\mathrm{cwnd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">cwnd</span></span></span></span></span></span> 变化曲线实际上没能快速恢复到导致 congestion 的临界值<span class="mojikumi-line-end">，</span>会产生较大的浪费<span class="mojikumi-line-end">。</span>一个优化后的版本是 TCP CUBIC<span class="mojikumi-line-end">，</span>它修改了 congestion avoidance 阶段的上升曲线<span class="mojikumi-line-end">，</span>使其是一个三次函数曲线<span class="mojikumi-line-end">，</span>如下图所示<span class="mojikumi-line-end">：</span><sup><a href="#user-content-fn-fig-3.54" id="user-content-fnref-fig-3.54" data-footnote-ref aria-describedby="footnote-label">7</a></sup></p>
 <p><picture><source type="image/webp" srcset="/assets/cnatda-fig-3.54.bd38af1d.webp"><img srcset="/assets/cnatda-fig-3.54.1d92cc88.png" loading="lazy" src="/assets/cnatda-fig-3.54.1d92cc88.png" width="934" height="632" alt="TCP congestion avoidance sending rates: TCP Reno and TCP CUBIC"></picture></p>
+<a id="tcp-splitting" name="tcp-splitting" aria-hidden="true"></a>
+<aside role="note" data-v-a2ab257f><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><div class="p-3 flex justify-between items-center" data-v-a2ab257f><h4 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-pencil text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Note: </span><span data-v-a2ab257f>TCP splitting</span></h4><!--v-if--></div><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><p>如果 RTT 过大<span class="mojikumi-line-end">，</span>slow start 可能导致初次连接时 response time 较大<span class="mojikumi-line-start">（</span>一般会有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">T</mi></mrow></mrow><annotation encoding="application/x-tex">4 \cdot \mathrm{RTT}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">RTT</span></span></span></span></span></span> 左右<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>TCP splitting 在 client 和 data center 之间增设了一个 frontend server 作为代理<span class="mojikumi-line-end">，</span>frontend server 与 data center 之间建立了 persistent TCP connection 来避免 slow start<span class="mojikumi-line-end">，</span>而 client 和 frontend server 之间的 RTT 较小<span class="mojikumi-line-end">，</span>slow start 的影响就较小<span class="mojikumi-line-end">。</span></p></div></div></aside>
 <h3 id="network-assisted-explicit-congestion-notification" class="heading"><a href="#network-assisted-explicit-congestion-notification" class="heading-anchor" aria-label="章节： Network-Assisted Explicit Congestion Notification" tabindex="-1"></a><span>Network-Assisted Explicit Congestion Notification</span></h3>
 <p><a href="https://datatracker.ietf.org/doc/html/rfc3168">Explicit Congestion Notification (ECN)</a> 是 network-assisted congestion control 的一种手段<span class="mojikumi-line-end">，</span>它对 TCP 和 IP 都进行了扩展<span class="mojikumi-line-end">。</span></p>
 <p>ECN 使用了 IP datagram header 的两个 bit<span class="mojikumi-line-end">，</span>一个用来告诉 router 通信双方是 ECN-capable 的<span class="mojikumi-line-end">，</span>另一个由 router 设置<span class="mojikumi-line-end">，</span>表示自己处于 congestion<span class="mojikumi-line-start">（</span>一般会在丢包实际发生前就设置<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
@@ -2126,366 +2327,12 @@ Yufan You</p>
 <h3 id="平衡树维护-free-block" class="heading"><a href="#平衡树维护-free-block" class="heading-anchor" aria-label="章节： 平衡树维护 free block" tabindex="-1"></a><span>平衡树维护 free block</span></h3>
 <p>CS:APP 中没有提到这种方式<span class="mojikumi-line-end">，</span>但只要理解了上面这几种 free list<span class="mojikumi-line-end">，</span>就很好理解<span class="mojikumi-line-end">，</span>free block 不一定要用链表维护<span class="mojikumi-line-end">，</span>也可以用平衡树维护<span class="mojikumi-line-end">：</span>在 free block 中存放树的节点所需的 children<span class="mojikumi-line-end">、</span>parent 等信息<span class="mojikumi-line-end">，</span>就可以高效实现严格的 best fit<span class="mojikumi-line-end">，</span>复杂度也不会像 segregated fit 一样在极端情况下发生退化<span class="mojikumi-line-end">。</span>但是树的节点需要的信息往往比链表多<span class="mojikumi-line-end">，</span>可能会让 minimum block size 增大到 6 个 word<span class="mojikumi-line-end">。</span></p>
 <p>我自己写 malloc lab 的时候试着写了个 Splay<span class="mojikumi-line-end">，</span>发现一般情况下还是比 segregated fit 慢不少<span class="mojikumi-line-end">，</span>内存利用率也不一定有明显提升<span class="mojikumi-line-end">，</span>不知道其他平衡树 / 特殊场景下性能如何<span class="mojikumi-line-end">。</span>倒是在网上看到有说红黑树可以在 malloc lab 拿高分<span class="mojikumi-line-start">（</span><s>谁用好的算法拿高分啊<span class="mojikumi-line-end">，</span>不是考验对着数据调参的能力吗<span class="mojikumi-line-end">，</span>我觉得我对数据过拟合的 segregated fit 分已经够高了</s><span class="mojikumi">）</span><wbr><span class="mojikumi-line-start">（</span><s>虚假的 segregated fit<span class="mojikumi-line-end">：</span>按 block size segregate 来寻找 fit<span class="mojikumi-line-end">；</span>真正的 segregated fit<span class="mojikumi-line-end">：</span>按测试数据 segregate 分别进行 fit</s><span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<h3 id="malloc-lab" class="heading"><a href="#malloc-lab" class="heading-anchor" aria-label="章节： malloc lab" tabindex="-1"></a><span>malloc lab</span></h3>
+<p>CS:APP 经典 lab 的代码似乎是可以公开的<span class="mojikumi-line-start">（</span></p>
+<p><a href="https://github.com/ouuan/course-assignments/tree/master/csapp/malloc-lab">https<wbr>://<wbr>github<wbr>.<wbr>com<wbr>/<wbr>ouuan<wbr>/<wbr>course<wbr>-<wbr>assignments<wbr>/<wbr>tree<wbr>/<wbr>master<wbr>/<wbr>csapp<wbr>/<wbr>malloc<wbr>-<wbr>lab</a></p>
 <h2 id="garbage-collection" class="heading"><a href="#garbage-collection" class="heading-anchor" aria-label="章节： Garbage Collection" tabindex="-1"></a><span>Garbage Collection</span></h2>
 <p>可以通过 block 之间以及 stack<span class="mojikumi-line-end">、</span>register<span class="mojikumi-line-end">、</span>global 变量对 block 的引用关系找到不可达的 block 而进行 garbage collection<span class="mojikumi-line-end">。</span></p>
 <p>在 C 中<span class="mojikumi-line-end">，</span>由于没有类型信息<span class="mojikumi-line-end">，</span>可能会将非指针类型的数据视作对 block 的引用<span class="mojikumi-line-end">，</span>导致不可达的 block 被视作可达<span class="mojikumi-line-end">，</span>所以 C 语言的 garbage collection 只能是 conservative 的<span class="mojikumi-line-end">。</span></p>]]></content>
-        <category label="csapp" term="https://ouuan.moe/tag/csapp"/>
-        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CS:APP 第八章学习笔记]]></title>
-        <id>https://ouuan.moe/post/2022/11/csapp-8</id>
-        <link href="https://ouuan.moe/post/2022/11/csapp-8"/>
-        <updated>2022-12-17T06:27:26.000Z</updated>
-        <summary type="html"><![CDATA[
-<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
-<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
-]]></summary>
-        <content type="html"><![CDATA[
-<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
-<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
-
-<p>在一般情况下<span class="mojikumi-line-end">，</span>PC 会按照指令的顺序以及跳转指令来变化<span class="mojikumi-line-end">。</span>但在很多时候<span class="mojikumi-line-end">，</span>这样的控制流是不能满足需要的<span class="mojikumi-line-end">，</span>需要 <i>exceptional control flow</i> (ECF) 作为跳转指令的补充<span class="mojikumi-line-end">，</span>以处理一些<span class="mojikumi-line-start">“</span>异常<span class="mojikumi-line-end">”</span>的或者来自<span class="mojikumi-line-start">“</span>外部<span class="mojikumi-line-end">”</span>的变化<span class="mojikumi-line-end">。</span></p>
-<p>ECF 存在于各个层次<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>硬件监测到事件发生时调用 exception handler</li>
-<li>操作系统在不同进程之间进行 <a href="#context-switch">context switch</a></li>
-<li>不同进程间通过发送 <a href="#signals">signal</a> 来调用接收者的 signal handler</li>
-<li>程序内部通过 <a href="#nonlocal-jumps">nonlocal jump</a> 来实现错误处理</li>
-</ul>
-<h2 id="exceptions" class="heading"><a href="#exceptions" class="heading-anchor" aria-label="章节： Exceptions" tabindex="-1"></a><span>Exceptions</span></h2>
-<p><i>exception</i> 是由某种<span class="mojikumi-line-start">“</span>状态改变<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span>可能是某条指令执行的结果<span class="mojikumi-line-end">，</span>或者来自外部 I/O 的变化等等<span class="mojikumi-line-end">）</span>导致的控制流的突变<span class="mojikumi-line-end">。</span></p>
-<p>处理器检测到这种状态改变后<span class="mojikumi-line-end">，</span>会调用 <i>exception handler</i><span class="mojikumi-line-end">，</span>然后跳转到触发前的指令或下一条指令<span class="mojikumi-line-end">，</span>或者终止整个程序<span class="mojikumi-line-end">。</span></p>
-<h3 id="exception-handling" class="heading"><a href="#exception-handling" class="heading-anchor" aria-label="章节： Exception Handling" tabindex="-1"></a><span>Exception Handling</span></h3>
-<p>每种 exception 都会有一个 <i>exception number</i><span class="mojikumi-line-end">，</span>某些 exception 的 number 由硬件决定<span class="mojikumi-line-end">，</span>另一些由操作系统决定<span class="mojikumi-line-end">。</span></p>
-<p>内存中会有一个 <i>exception table</i><span class="mojikumi-line-end">，</span>以 exception number 为索引<span class="mojikumi-line-end">，</span>每一项是对应的 exception handler<span class="mojikumi-line-end">。</span>处理器中有一个 <i>exception table base register</i><span class="mojikumi-line-end">，</span>用来存 exception table 的起始地址<span class="mojikumi-line-end">，</span>结合 exception number 就可以对每一项寻址<span class="mojikumi-line-end">。</span></p>
-<p>exception 与 procedure call 的主要区别有<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>procedure call 返回到栈顶存储的返回地址<span class="mojikumi-line-end">，</span>而 exception 返回到触发时的指令或下一条指令<span class="mojikumi-line-end">，</span>或终止程序<span class="mojikumi-line-end">。</span></li>
-<li>调用 exception handler 时<span class="mojikumi-line-end">，</span>会保存包括 condition codes 在内的一些处理器状态<span class="mojikumi-line-end">，</span>在返回时恢复<span class="mojikumi-line-end">。</span></li>
-<li>exception handler 在 <a href="#user-kernel-mode">kernel mode</a> 下运行<span class="mojikumi-line-end">，</span>使用的运行栈也是 kernel 的<span class="mojikumi-line-end">。</span></li>
-</ul>
-<h3 id="classes-of-exceptions" class="heading"><a href="#classes-of-exceptions" class="heading-anchor" aria-label="章节： Classes of Exceptions" tabindex="-1"></a><span>Classes of Exceptions</span></h3>
-<p>exception 一般有四种<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>interrupt: 异步触发<span class="mojikumi-line-start">（</span>不是某条指令的执行导致了 exception<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>返回到下一条指令<span class="mojikumi-line-end">。</span>一般是由外部 I/O 设备触发<span class="mojikumi-line-start">（</span>设备通过 interrupt pin 告诉处理器有 interrupt<span class="mojikumi-line-end">，</span>通过 system bus 发送 exception number<span class="mojikumi-line-end">，</span>处理器在每执行完一条指令后检查 interrupt pin<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>触发后调用 interrupt handler<span class="mojikumi-line-end">，</span>再回到原来的位置继续执行下一条指令<span class="mojikumi-line-end">。</span></li>
-<li>trap: 同步触发<span class="mojikumi-line-end">，</span>返回到下一条指令<span class="mojikumi-line-end">。</span>比如 <a href="#linux-%E4%B8%AD%E7%9A%84-system-call">system call</a> 是一种常见的 trap<span class="mojikumi-line-end">，</span>通过 <code>syscall</code> 指令主动触发 exception<span class="mojikumi-line-end">，</span>看上去和函数调用类似<span class="mojikumi-line-end">，</span>但可以在 kernel mode 下运行<span class="mojikumi-line-end">。</span></li>
-<li>fault: 同步触发<span class="mojikumi-line-end">，</span>返回到触发 exception 的指令或退出<span class="mojikumi-line-end">。</span>一般来说<span class="mojikumi-line-end">，</span>fault handler 会尝试解决导致 fault 发生的问题<span class="mojikumi-line-end">，</span>如果成功解决则返回到触发 exception 的指令<span class="mojikumi-line-end">，</span>并且能够不再次触发 exception 而继续执行下去<span class="mojikumi-line-end">；</span>如果没能成功解决<span class="mojikumi-line-end">，</span>则 abort<span class="mojikumi-line-end">。</span></li>
-<li>abort: 同步触发<span class="mojikumi-line-end">，</span>一定退出<span class="mojikumi-line-end">。</span>一般代表严重的不可恢复的错误<span class="mojikumi-line-end">。</span></li>
-</ul>
-<h3 id="exceptions-in-linuxx86-64-systems" class="heading"><a href="#exceptions-in-linuxx86-64-systems" class="heading-anchor" aria-label="章节： Exceptions in Linux/x86-64 Systems" tabindex="-1"></a><span>Exceptions in Linux/x86-64 Systems</span></h3>
-<h4 id="x86-64-中的-fault-abort" class="heading"><a href="#x86-64-中的-fault-abort" class="heading-anchor" aria-label="章节： x86-64 中的 fault / abort" tabindex="-1"></a><span>x86-64 中的 fault / abort</span></h4>
-<ul>
-<li>Divide Error Exception (Interrupt 0): 除以零<span class="mojikumi-line-end">。</span>它是 fault<span class="mojikumi-line-end">，</span>但实际上 Linux 不会尝试从 divide error 中恢复<span class="mojikumi-line-end">，</span>而是会直接 abort<span class="mojikumi-line-end">，</span>一般会显示为 <span class="mojikumi">“</span>floating point exception<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></li>
-<li>General Protection Exception (Interrupt 13): 有多种触发原因<span class="mojikumi-line-end">，</span>例如访问未定义的内存<span class="mojikumi-line-end">，</span>尝试写入只读的内存段<span class="mojikumi-line-end">。</span>Linux 也不会尝试从中恢复<span class="mojikumi-line-end">，</span>而是会直接 abort<span class="mojikumi-line-end">，</span>一般会显示为 <span class="mojikumi">“</span>segmentation fault<span class="mojikumi">”</span><span class="mojikumi-line-end">。</span></li>
-<li>Page-Fault Exception (Interrupt 14): page fault 是一个名副其实的 fault<span class="mojikumi-line-end">，</span>会尝试恢复<span class="mojikumi-line-end">，</span>详见<a href="/post/2022/11/csapp-9">第九章</a><span class="mojikumi-line-end">。</span></li>
-<li>Machine-Check Exception (Interrupt 18): 严重的硬件错误<span class="mojikumi-line-end">，</span>是 abort<span class="mojikumi-line-end">。</span></li>
-</ul>
-<p><span class="mojikumi-line-start">（</span>完整列表参见 <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html">Intel® 64 and IA-32 Architectures Software Developer Manuals</a> Volume 3A 的 <span class="mojikumi">“</span>6.15 EXCEPTION AND INTERRUPT REFERENCE<span class="mojikumi">”</span> 一节<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
-<h4 id="linux-中的-system-call" class="heading"><a href="#linux-中的-system-call" class="heading-anchor" aria-label="章节： Linux 中的 system call" tabindex="-1"></a><span>Linux 中的 system call</span></h4>
-<p>Linux 中常用的一些 system call 如 CS:APP Figure 8.10 所示<span class="mojikumi-line-end">：</span></p>
-<p><picture><source type="image/webp" srcset="/assets/csapp-fig8.10.f8581cd0.webp"><img srcset="/assets/csapp-fig8.10.9e132224.png" loading="lazy" src="/assets/csapp-fig8.10.9e132224.png" width="1094" height="320" alt="Linux 中常用的一些 system call"></picture></p>
-<p><span class="mojikumi-line-start">（</span>更多 system call 参见 <code>man syscalls</code><span class="mojikumi-line-end">）</span></p>
-<p>在 C 语言中<span class="mojikumi-line-end">，</span>可以使用 <code>syscall</code> 函数来调用 system call<span class="mojikumi-line-end">，</span>但一般不这样做<span class="mojikumi-line-end">，</span>而是使用每个 system call 对应的 wrapper function<span class="mojikumi-line-end">。</span><code>syscall</code> 和 wrapper function 统称为 <i>system-level function</i><span class="mojikumi-line-end">。</span></p>
-<h2 id="processes" class="heading"><a href="#processes" class="heading-anchor" aria-label="章节： Processes" tabindex="-1"></a><span>Processes</span></h2>
-<p>一个系统中会有很多进程同时运行<span class="mojikumi-line-end">，</span>但营造出了每个进程都独占了处理器和内存的假象<span class="mojikumi-line-end">。</span></p>
-<p>进程独占内存的假象是通过每个进程的 private address space 实现的<span class="mojikumi-line-end">，</span>详见<a href="/post/2022/11/csapp-9">第九章</a><span class="mojikumi-line-end">。</span></p>
-<h3 id="logical-concurrent-flow" class="heading"><a href="#logical-concurrent-flow" class="heading-anchor" aria-label="章节： Logical / Concurrent Flow" tabindex="-1"></a><span>Logical / Concurrent Flow</span></h3>
-<p>根据一个程序的指令得到的 control flow 称作 <i>logical (control) flow</i><span class="mojikumi-line-end">。</span>系统会在不同的进程间来回切换<span class="mojikumi-line-end">，</span>从一个进程切换出去称作将这个进程 <i>preempt</i><span class="mojikumi-line-end">。</span></p>
-<p>如果两个 control flow 的存活时间有重叠<span class="mojikumi-line-end">，</span>则称它们是 <i>concurrent flow</i> 或它们 <i>run concurrently</i><span class="mojikumi-line-end">。</span>这种现象被称作 <i>concurrency</i><span class="mojikumi-line-end">，</span>也被称作 <i>multitasking</i><span class="mojikumi-line-end">。</span>每次连续执行的同一个 logical flow 中的一段称作一个 <i>time slice</i><span class="mojikumi-line-end">，</span>所以 multitasking 也被称作 <i>time slicing</i><span class="mojikumi-line-end">。</span>如果两个 logical flow 在不同的 processor core 上运行<span class="mojikumi-line-end">，</span>则称它们是 <i>parallel flow</i><span class="mojikumi-line-end">，</span><i>run in parallel</i><span class="mojikumi-line-end">。</span></p>
-<h3 id="user-kernel-mode" class="heading"><a href="#user-kernel-mode" class="heading-anchor" aria-label="章节： User / Kernel Mode" tabindex="-1"></a><span>User / Kernel Mode</span></h3>
-<p>在处理器中存有一个 <i>mode bit</i><span class="mojikumi-line-end">，</span>表示当前是 user mode 还是 kernel mode<span class="mojikumi-line-end">。</span>只有在 kernel mode 下才能执行某些 <i>privileged instruction</i><span class="mojikumi-line-end">、</span>修改 mode bit<span class="mojikumi-line-end">、</span>访问地址空间中属于 kernel 的区域<span class="mojikumi-line-end">。</span></p>
-<p>user mode 的程序只能通过 exception 来进入 kernel mode<span class="mojikumi-line-end">，</span>以执行 privileged instruction 或者访问 kernel 的数据<span class="mojikumi-line-end">。</span>在 Linux 中<span class="mojikumi-line-end">，</span>也可以在 user mode 下访问 <code>/proc</code><span class="mojikumi-line-end">、</span><code>/sys</code> 来获得一些 kernel 的数据<span class="mojikumi-line-end">。</span></p>
-<h3 id="context-switch" class="heading"><a href="#context-switch" class="heading-anchor" aria-label="章节： Context Switch" tabindex="-1"></a><span>Context Switch</span></h3>
-<p>每个进程都有一个 <i>context</i><span class="mojikumi-line-end">，</span>包括寄存器内容<span class="mojikumi-line-end">、</span>PC<span class="mojikumi-line-end">、</span>user stack<span class="mojikumi-line-end">、</span>kernel stack<span class="mojikumi-line-end">、</span>condition codes<span class="mojikumi-line-end">、</span>page table<span class="mojikumi-line-end">、</span>process table<span class="mojikumi-line-end">、</span>file table 等等<span class="mojikumi-line-end">。</span></p>
-<p>操作系统通过 <i>context switch</i> 来在不同进程间切换<span class="mojikumi-line-end">，</span>即保存当前进程的 context<span class="mojikumi-line-end">，</span>恢复要切换到的进程的 context<span class="mojikumi-line-end">，</span>最后切换过去<span class="mojikumi-line-end">。</span>context switch 在 exception 中发生<span class="mojikumi-line-end">，</span>处理 exception 时操作系统中的 <i>scheduler</i> 会决定是否进行 context switch<span class="mojikumi-line-end">，</span>schedule 到哪个进程<span class="mojikumi-line-end">。</span>例如<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>在通过 system call 读取文件时进行 context switch<span class="mojikumi-line-end">，</span>以在等待读取文件时先执行其他进程<span class="mojikumi-line-end">；</span>读取到文件后在 interrupt 中再 context switch 回来<span class="mojikumi-line-end">。</span></li>
-<li>系统会周期性地<span class="mojikumi-line-start">（</span>例如每 1ms<span class="mojikumi-line-end">）</span>触发 interrupt<span class="mojikumi-line-end">，</span>从而可以在一个进程执行了一段时间后进行 context switch<span class="mojikumi-line-end">。</span></li>
-</ul>
-<p>因为程序不知道操作系统会如何 schedule<span class="mojikumi-line-end">，</span>一般来说<span class="mojikumi-line-end">，</span>不同进程的执行顺序是没有保证的<span class="mojikumi-line-end">。</span></p>
-<h2 id="system-call-error-handling" class="heading"><a href="#system-call-error-handling" class="heading-anchor" aria-label="章节： System Call Error Handling" tabindex="-1"></a><span>System Call Error Handling</span></h2>
-<p>system-level function 一般以返回 -1 代表出错<span class="mojikumi-line-end">，</span>而将具体的错误记录在全局整型变量 <code>errno</code> (<code>#include &#x3C;errno.h></code>)<span class="mojikumi-line-end">，</span>函数 <code>strerror</code> 可以用来根据 <code>errno</code> 得到文字错误信息<span class="mojikumi-line-end">。</span></p>
-<p>调用 system-level function 时应当检查错误<span class="mojikumi-line-end">。</span>为了使错误处理更加简便<span class="mojikumi-line-end">，</span>可以使用类似下面的 wrapper function<span class="mojikumi-line-end">：</span></p>
-<section class="code-block relative my-6 shadow" itemprop="hasPart" itemscope itemtype="https://schema.org/SoftwareSourceCode" data-v-ad49d235><div class="h-6 items-center rd-t-1 bg-area px-4 dark:bg-#2A313A media-screen:important-flex" style="display:none;" data-v-ad49d235><h3 class="text-3 text-footer" itemprop="programmingLanguage" aria-label="c 代码块" data-v-ad49d235>c</h3><ile-root id="ile-23"><button title="复制到剪贴板" class="copy-button b-footer text-footer" data-v-9288569d><span class="i-mdi-content-copy" data-v-9288569d></span><span class="sr-only" role="status" data-v-9288569d></span></button></ile-root><!--ISLAND_HYDRATION_PLACEHOLDER_ile-23--></div><div class="light:hidden" itemprop="text" data-v-ad49d235><pre class="shiki dark" style="background-color: #011627" tabindex="0"><code><span><span style="color: #C792EA">#include</span><span style="color: #D6DEEB"> </span><span style="color: #D9F5DD">&lt;</span><span style="color: #ECC48D">errno.h</span><span style="color: #D9F5DD">&gt;</span></span>
-<span><span style="color: #C792EA">#include</span><span style="color: #D6DEEB"> </span><span style="color: #D9F5DD">&lt;</span><span style="color: #ECC48D">stdio.h</span><span style="color: #D9F5DD">&gt;</span></span>
-<span><span style="color: #C792EA">#include</span><span style="color: #D6DEEB"> </span><span style="color: #D9F5DD">&lt;</span><span style="color: #ECC48D">stdlib.h</span><span style="color: #D9F5DD">&gt;</span></span>
-<span><span style="color: #C792EA">#include</span><span style="color: #D6DEEB"> </span><span style="color: #D9F5DD">&lt;</span><span style="color: #ECC48D">string.h</span><span style="color: #D9F5DD">&gt;</span></span>
-<span><span style="color: #C792EA">#include</span><span style="color: #D6DEEB"> </span><span style="color: #D9F5DD">&lt;</span><span style="color: #ECC48D">unistd.h</span><span style="color: #D9F5DD">&gt;</span></span>
-<span></span>
-<span><span style="color: #C792EA">void</span><span style="color: #D6DEEB"> </span><span style="color: #82AAFF">unix_error</span><span style="color: #D6DEEB">(</span><span style="color: #C792EA">char</span><span style="color: #D6DEEB"> </span><span style="color: #7FDBCA">*</span><span style="color: #D7DBE0">msg</span><span style="color: #D6DEEB">)</span></span>
-<span><span style="color: #D6DEEB">{</span></span>
-<span><span style="color: #D6DEEB">    </span><span style="color: #82AAFF">fprintf(stderr, </span><span style="color: #D9F5DD">&quot;</span><span style="color: #82AAFF">%s</span><span style="color: #ECC48D">: </span><span style="color: #82AAFF">%s</span><span style="color: #F78C6C">\n</span><span style="color: #D9F5DD">&quot;</span><span style="color: #82AAFF">, msg, strerror(errno))</span><span style="color: #D6DEEB">;</span></span>
-<span><span style="color: #D6DEEB">    </span><span style="color: #82AAFF">exit(errno)</span><span style="color: #D6DEEB">;</span></span>
-<span><span style="color: #D6DEEB">}</span></span>
-<span></span>
-<span><span style="color: #C792EA">pid_t</span><span style="color: #D6DEEB"> </span><span style="color: #82AAFF">Fork</span><span style="color: #D6DEEB">(</span><span style="color: #C792EA">void</span><span style="color: #D6DEEB">)</span></span>
-<span><span style="color: #D6DEEB">{</span></span>
-<span><span style="color: #D6DEEB">    </span><span style="color: #C792EA">pid_t</span><span style="color: #D6DEEB"> pid </span><span style="color: #C792EA">=</span><span style="color: #D6DEEB"> </span><span style="color: #82AAFF">fork()</span><span style="color: #D6DEEB">;</span></span>
-<span></span>
-<span><span style="color: #D6DEEB">    </span><span style="color: #C792EA">if</span><span style="color: #D6DEEB"> (pid </span><span style="color: #C792EA">&lt;</span><span style="color: #D6DEEB"> </span><span style="color: #F78C6C">0</span><span style="color: #D6DEEB">)</span></span>
-<span><span style="color: #D6DEEB">        </span><span style="color: #82AAFF">unix_error(</span><span style="color: #D9F5DD">&quot;</span><span style="color: #ECC48D">Fork error</span><span style="color: #D9F5DD">&quot;</span><span style="color: #82AAFF">)</span><span style="color: #D6DEEB">;</span></span>
-<span></span>
-<span><span style="color: #D6DEEB">    </span><span style="color: #C792EA">return</span><span style="color: #D6DEEB"> pid;</span></span>
-<span><span style="color: #D6DEEB">}</span></span></code></pre></div><div class="light:important-block" style="display:none;" data-v-ad49d235><pre class="shiki light" style="background-color: #FBFBFB" tabindex="0"><code><span><span style="color: #994CC3">#include</span><span style="color: #403F53"> </span><span style="color: #111111">&lt;</span><span style="color: #C96765">errno.h</span><span style="color: #111111">&gt;</span></span>
-<span><span style="color: #994CC3">#include</span><span style="color: #403F53"> </span><span style="color: #111111">&lt;</span><span style="color: #C96765">stdio.h</span><span style="color: #111111">&gt;</span></span>
-<span><span style="color: #994CC3">#include</span><span style="color: #403F53"> </span><span style="color: #111111">&lt;</span><span style="color: #C96765">stdlib.h</span><span style="color: #111111">&gt;</span></span>
-<span><span style="color: #994CC3">#include</span><span style="color: #403F53"> </span><span style="color: #111111">&lt;</span><span style="color: #C96765">string.h</span><span style="color: #111111">&gt;</span></span>
-<span><span style="color: #994CC3">#include</span><span style="color: #403F53"> </span><span style="color: #111111">&lt;</span><span style="color: #C96765">unistd.h</span><span style="color: #111111">&gt;</span></span>
-<span></span>
-<span><span style="color: #994CC3">void</span><span style="color: #403F53"> </span><span style="color: #4876D6">unix_error</span><span style="color: #403F53">(</span><span style="color: #994CC3">char</span><span style="color: #403F53"> </span><span style="color: #0C969B">*</span><span style="color: #403F53">msg)</span></span>
-<span><span style="color: #403F53">{</span></span>
-<span><span style="color: #403F53">    </span><span style="color: #4876D6">fprintf(stderr, </span><span style="color: #111111">&quot;</span><span style="color: #4876D6">%s</span><span style="color: #C96765">: </span><span style="color: #4876D6">%s</span><span style="color: #AA0982">\n</span><span style="color: #111111">&quot;</span><span style="color: #4876D6">, msg, strerror(errno))</span><span style="color: #403F53">;</span></span>
-<span><span style="color: #403F53">    </span><span style="color: #4876D6">exit(errno)</span><span style="color: #403F53">;</span></span>
-<span><span style="color: #403F53">}</span></span>
-<span></span>
-<span><span style="color: #994CC3">pid_t</span><span style="color: #403F53"> </span><span style="color: #4876D6">Fork</span><span style="color: #403F53">(</span><span style="color: #994CC3">void</span><span style="color: #403F53">)</span></span>
-<span><span style="color: #403F53">{</span></span>
-<span><span style="color: #403F53">    </span><span style="color: #994CC3">pid_t</span><span style="color: #403F53"> pid </span><span style="color: #994CC3">=</span><span style="color: #403F53"> </span><span style="color: #4876D6">fork()</span><span style="color: #403F53">;</span></span>
-<span></span>
-<span><span style="color: #403F53">    </span><span style="color: #994CC3">if</span><span style="color: #403F53"> (pid </span><span style="color: #994CC3">&lt;</span><span style="color: #403F53"> </span><span style="color: #AA0982">0</span><span style="color: #403F53">)</span></span>
-<span><span style="color: #403F53">        </span><span style="color: #4876D6">unix_error(</span><span style="color: #111111">&quot;</span><span style="color: #C96765">Fork error</span><span style="color: #111111">&quot;</span><span style="color: #4876D6">)</span><span style="color: #403F53">;</span></span>
-<span></span>
-<span><span style="color: #403F53">    </span><span style="color: #994CC3">return</span><span style="color: #403F53"> pid;</span></span>
-<span><span style="color: #403F53">}</span></span></code></pre></div></section>
-<h2 id="process-control" class="heading"><a href="#process-control" class="heading-anchor" aria-label="章节： Process Control" tabindex="-1"></a><span>Process Control</span></h2>
-<p>C 语言中有很多用来控制 Unix 进程的函数<span class="mojikumi-line-end">。</span></p>
-<h3 id="获取-pid" class="heading"><a href="#获取-pid" class="heading-anchor" aria-label="章节： 获取 PID" tabindex="-1"></a><span>获取 PID</span></h3>
-<p>每个进程都有一个 PID<span class="mojikumi-line-end">。</span></p>
-<ul>
-<li><code>pid_t<wbr> <wbr>getpid<wbr>(<wbr>void<wbr>)</code>: 返回当前进程的 PID</li>
-<li><code>pid_t<wbr> <wbr>getppid<wbr>(<wbr>void<wbr>)</code>: 返回当前进程的 parent 的 PID</li>
-</ul>
-<h3 id="进程的状态" class="heading"><a href="#进程的状态" class="heading-anchor" aria-label="章节： 进程的状态" tabindex="-1"></a><span>进程的状态</span></h3>
-<p>每个进程可能处于三种状态之一<span class="mojikumi-line-end">：</span></p>
-<ol>
-<li>Running: 正在运行中<span class="mojikumi-line-end">，</span>会被 schedule<span class="mojikumi-line-end">。</span></li>
-<li>Stopped: 被 suspend 了<span class="mojikumi-line-end">，</span>不会被 schedule<span class="mojikumi-line-end">。</span>Stopped 可能是 SIGSTOP<span class="mojikumi-line-end">、</span>SIGTSTP<span class="mojikumi-line-end">、</span>SIGTTIN<span class="mojikumi-line-end">、</span>SIGTTOU 导致的<span class="mojikumi-line-end">，</span>可以由 SIGCONT 恢复运行<span class="mojikumi-line-end">。</span></li>
-<li>Terminated: 进程永久地结束了<span class="mojikumi-line-end">，</span>可能是从 <code>main</code> 函数返回<span class="mojikumi-line-end">、</span>调用了 <code>exit</code> 函数或者收到了某些 signal<span class="mojikumi-line-end">。</span></li>
-</ol>
-<ul>
-<li><code>void exit(int status)</code>: 以某个 exit status 将当前进程 terminate</li>
-</ul>
-<h3 id="fork" class="heading"><a href="#fork" class="heading-anchor" aria-label="章节： fork" tabindex="-1"></a><span>fork</span></h3>
-<ul>
-<li><code>pid_t fork(void)</code>: 创建子进程</li>
-</ul>
-<p>fork 会将当前进程的所有状态复制一份创建一个新的进程<span class="mojikumi-line-end">，</span>新的进程有着和原来相同的代码<span class="mojikumi-line-end">、</span>数据<span class="mojikumi-line-end">、</span>文件<span class="mojikumi-line-start">（</span>例如 <code>stdout</code><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>但 PID 不同<span class="mojikumi-line-end">，</span>并且后续对数据的修改是和原进程独立的<span class="mojikumi-line-end">。</span></p>
-<p>fork 会调用一次<span class="mojikumi-line-end">，</span>返回两次<span class="mojikumi-line-end">，</span>分别在两个进程中返回<span class="mojikumi-line-end">，</span>在 parent 中返回 child 的 PID<span class="mojikumi-line-end">，</span>在 child 中返回 0<span class="mojikumi-line-end">，</span>出错则返回 -1<span class="mojikumi-line-end">。</span></p>
-<p>fork 出的进程和原进程在接下来会执行同一份代码<span class="mojikumi-line-end">，</span>所以一般会判断 <code>fork</code> 的返回值是否为 0 来让两个进程执行不同的分支<span class="mojikumi-line-end">。</span></p>
-<h3 id="process-group" class="heading"><a href="#process-group" class="heading-anchor" aria-label="章节： process group" tabindex="-1"></a><span>process group</span></h3>
-<p>每个进程会属于一个 process group<span class="mojikumi-line-end">，</span>每个 process group 有一个 ID<span class="mojikumi-line-end">。</span></p>
-<p>创建子进程时<span class="mojikumi-line-end">，</span>子进程会默认处于 parent 的 process group<span class="mojikumi-line-end">。</span></p>
-<ul>
-<li><code>pid_t<wbr> <wbr>getpgrp<wbr>(<wbr>void<wbr>)</code>: 返回当前进程的 process group ID</li>
-<li><code>int<wbr> <wbr>setpgid<wbr>(<wbr>pid_t<wbr> <wbr>pid<wbr>, <wbr>pid_t<wbr> <wbr>pgid<wbr>)</code>: 将 <code>pid</code> 对应的进程的 progress group ID 修改为 <code>pgid</code><span class="mojikumi-line-end">，</span><code>pid</code> 为 0 表示当前进程<span class="mojikumi-line-end">，</span><code>pgid</code> 为 0 表示修改为 <code>pid</code> 对应的进程的 PID</li>
-</ul>
-<h3 id="wait" class="heading"><a href="#wait" class="heading-anchor" aria-label="章节： wait" tabindex="-1"></a><span>wait</span></h3>
-<ul>
-<li><code>pid_t<wbr> <wbr>waitpid<wbr>(<wbr>pid_t<wbr> <wbr>pid<wbr>, <wbr>int<wbr> *<wbr>statusp<wbr>, <wbr>int<wbr> <wbr>options<wbr>)</code>: 等待子进程结束</li>
-<li><code>pid_t wait(int *statusp)</code>: <code>waitpid<wbr>(-<wbr>1<wbr>, <wbr>statusp<wbr>, <wbr>0<wbr>)</code></li>
-</ul>
-<h4 id="waitpid-的-pid-参数" class="heading"><a href="#waitpid-的-pid-参数" class="heading-anchor" aria-label="章节： waitpid 的 pid 参数" tabindex="-1"></a><span>waitpid 的 pid 参数</span></h4>
-<p>参数 <code>pid</code> 决定了要等待的是哪些子进程<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>-1: 所有子进程</li>
-<li>> 0: PID 为 <code>pid</code> 的子进程</li>
-<li>0: process group 与当前进程相同的子进程</li>
-<li>&#x3C; -1: process group ID 为 <code>-pid</code> 的子进程</li>
-</ul>
-<h4 id="waitpid-的行为-options" class="heading"><a href="#waitpid-的行为-options" class="heading-anchor" aria-label="章节： waitpid 的行为 (options)" tabindex="-1"></a><span>waitpid 的行为 (options)</span></h4>
-<p>默认情况下<span class="mojikumi-line-end">，</span><code>waitpid</code> 会等待到有某个被等待的子进程 terminate 再返回<span class="mojikumi-line-end">，</span><code>options</code> 可以改变这一行为<span class="mojikumi-line-end">，</span>其值可以包含下列 flag<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li><code>WNOHANG</code>: 立即返回<span class="mojikumi-line-end">，</span>如果没有符合条件的子进程则返回 0</li>
-<li><code>WUNTRACED</code>: 除了 terminate<span class="mojikumi-line-end">，</span>子进程 stop 也可以结束等待</li>
-<li><code>WCONTINUED</code>: 除了 terminate<span class="mojikumi-line-end">，</span>子进程从 stopped 中 continue 也可以结束等待</li>
-</ul>
-<h4 id="reap" class="heading"><a href="#reap" class="heading-anchor" aria-label="章节： reap" tabindex="-1"></a><span>reap</span></h4>
-<p>除了等待<span class="mojikumi-line-end">，</span>wait 还会将 terminated 的子进程 <i>reap</i><span class="mojikumi-line-end">，</span>即彻底清除掉<span class="mojikumi-line-end">。</span>没有被 reap 但 terminated 的进程被称作 <i>zombie</i><span class="mojikumi-line-end">，</span>会占用一定的系统资源<span class="mojikumi-line-end">。</span>在 <code>ps</code> 中<span class="mojikumi-line-end">，</span>zombie 显示为 <code>[defunct]</code><span class="mojikumi-line-end">。</span></p>
-<p>如果 parent terminate 了<span class="mojikumi-line-end">，</span>没有 terminate 的子进程会被设置为 PID 为 1 的 <code>init</code> 进程的子进程<span class="mojikumi-line-end">，</span>而 zombie 子进程则会被 <code>init</code> reap<span class="mojikumi-line-end">。</span></p>
-<h4 id="wait-获取子进程的-status" class="heading"><a href="#wait-获取子进程的-status" class="heading-anchor" aria-label="章节： wait 获取子进程的 status" tabindex="-1"></a><span>wait 获取子进程的 status</span></h4>
-<p>如果 <code>statusp</code> 参数不是 <code>NULL</code><span class="mojikumi-line-end">，</span>在 <code>waitpid</code> 返回时 <code>*statusp</code> 内就会存有引起等待结束的那个子进程的信息<span class="mojikumi-line-end">。</span></p>
-<p>有一系列 macro 可以用来提取 status 中的信息<span class="mojikumi-line-start">（</span>参数是 <code>*statusp</code><span class="mojikumi-line-end">，</span>不是指针<span class="mojikumi">）</span><span class="mojikumi-line-end">：</span></p>
-<ul>
-<li><code>WIFEXITED<wbr>(<wbr>status<wbr>)</code>: 是否正常退出 (从 <code>main</code> 函数返回或调用了 <code>exit</code> 函数)</li>
-<li><code>WEXITSTATUS<wbr>(<wbr>status<wbr>)</code>: 如果正常退出<span class="mojikumi-line-end">，</span>则返回 exit status (<code>main</code> 函数返回值 / <code>exit</code> 函数参数)</li>
-<li><code>WIFSIGNALED<wbr>(<wbr>status<wbr>)</code>: 是否由某个 signal terminate</li>
-<li><code>WTERMSIG<wbr>(<wbr>status<wbr>)</code>: 如果是由某个 signal terminate<span class="mojikumi-line-end">，</span>返回这个 signal</li>
-<li><code>WIFSTOPPED<wbr>(<wbr>status<wbr>)</code>: 是否被 stop</li>
-<li><code>WSTOPSIG<wbr>(<wbr>status<wbr>)</code>: 如果被 stop<span class="mojikumi-line-end">，</span>返回使其 stop 的 signal</li>
-<li><code>WIFCONTINUED<wbr>(<wbr>status<wbr>)</code>: 是否被 continue</li>
-</ul>
-<h4 id="wait-的报错" class="heading"><a href="#wait-的报错" class="heading-anchor" aria-label="章节： wait 的报错" tabindex="-1"></a><span>wait 的报错</span></h4>
-<p>出错时 wait 会返回 -1<span class="mojikumi-line-end">，</span><code>errno</code> 可能是 <code>ECHILD</code> 表示被等待的子进程集合为空<span class="mojikumi-line-end">，</span>可能是 <code>EINTR</code> 表示 wait 函数被某个 signal 中断了<span class="mojikumi-line-end">。</span></p>
-<p>wait 会在每有一个子进程结束时返回<span class="mojikumi-line-end">，</span>但子进程全部结束时会报错 <code>ECHILD</code><span class="mojikumi-line-end">，</span>可以利用这一点通过 <code>while</code> 循环来等待所有子进程全部结束<span class="mojikumi-line-end">。</span></p>
-<h3 id="sleep" class="heading"><a href="#sleep" class="heading-anchor" aria-label="章节： sleep" tabindex="-1"></a><span>sleep</span></h3>
-<ul>
-<li><code>unsigned<wbr> <wbr>int<wbr> <wbr>sleep<wbr>(<wbr>unsigned<wbr> <wbr>int<wbr> <wbr>secs<wbr>)</code>: sleep 若干秒<span class="mojikumi-line-end">，</span>返回剩余应当 sleep 的秒数<span class="mojikumi-line-start">（</span>正常情况下没被 interrupt 就是 0<span class="mojikumi-line-end">）</span></li>
-<li><code>int<wbr> <wbr>pause<wbr>(<wbr>void<wbr>)</code>: 一直 sleep<span class="mojikumi-line-end">，</span>直到被 signal interrupt<span class="mojikumi-line-end">，</span>总是返回 -1</li>
-</ul>
-<h3 id="execve" class="heading"><a href="#execve" class="heading-anchor" aria-label="章节： execve" tabindex="-1"></a><span>execve</span></h3>
-<ul>
-<li><code>int<wbr> <wbr>execve<wbr>(<wbr>const<wbr> <wbr>char<wbr> *<wbr>filename<wbr>, <wbr>char<wbr> *<wbr>const<wbr> <wbr>argv<wbr>[], <wbr>char<wbr> *<wbr>const<wbr> <wbr>envp<wbr>[])</code></li>
-</ul>
-<p><code>execve</code> 会以 <code>argv</code> 作为参数<span class="mojikumi-line-end">、</span><code>envp</code> 作为环境变量<span class="mojikumi-line-end">，</span>在当前进程内执行 executable object file <code>filename</code><span class="mojikumi-line-end">。</span>可以和 <code>fork</code> 配合来在子进程内执行其他程序<span class="mojikumi-line-end">。</span></p>
-<p><code>argv</code> 是一个以 <code>NULL</code> 为结尾的字符串数组<span class="mojikumi-line-end">，</span>表示各个参数<span class="mojikumi-line-end">，</span>其中第一个一般是程序的名称<span class="mojikumi-line-end">。</span></p>
-<p><code>envp</code> 也是以 <code>NULL</code> 为结尾的字符串数组<span class="mojikumi-line-end">，</span>每个字符串形如 <code>name=value</code><span class="mojikumi-line-end">。</span></p>
-<p>有一些函数可以用来获取<span class="mojikumi-line-end">、</span>设置环境变量<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li><code>char<wbr> *<wbr>getenv<wbr>(<wbr>const<wbr> <wbr>char<wbr> *<wbr>name<wbr>)</code>: 返回 <code>NULL</code> 或环境变量的值</li>
-<li><code>int<wbr> <wbr>setenv<wbr>(<wbr>const<wbr> <wbr>char<wbr> *<wbr>name<wbr>, <wbr>const<wbr> <wbr>char<wbr> *<wbr>newvalue<wbr>, <wbr>int<wbr> <wbr>overwrite<wbr>)</code>: 成功则返回 0<span class="mojikumi-line-end">，</span>失败<span class="mojikumi-line-start">（</span><code>overwrite</code> 为 0 而 <code>name</code> 已存在<span class="mojikumi-line-end">）</span>则返回 -1</li>
-<li><code>void<wbr> <wbr>unsetenv<wbr>(<wbr>const<wbr> <wbr>char<wbr> *<wbr>name<wbr>)</code></li>
-</ul>
-<h2 id="signals" class="heading"><a href="#signals" class="heading-anchor" aria-label="章节： Signals" tabindex="-1"></a><span>Signals</span></h2>
-<h3 id="signal-的种类" class="heading"><a href="#signal-的种类" class="heading-anchor" aria-label="章节： signal 的种类" tabindex="-1"></a><span>signal 的种类</span></h3>
-<p>可以用 <code>man signal.7</code> 查看 signal 的列表<span class="mojikumi-line-start">（</span>名称<span class="mojikumi-line-end">、</span>语义<span class="mojikumi-line-end">、</span>编号<span class="mojikumi-line-end">、</span>默认行为<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-<p>特别地<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>除以零时会被发送 SIGFPE</li>
-<li>执行非法指令时会被发送 SIGILL</li>
-<li>非法访问内存时会被发送 SIGSEGV</li>
-<li>按 Ctrl+C 时 foreground process group 会被发送 SIGINT</li>
-<li>子进程 terminate 时会向 parent 发送 SIGCHLD</li>
-<li>可以通过 SIGKILL 来强行 terminate 一个进程</li>
-</ul>
-<h3 id="signal-的工作流程" class="heading"><a href="#signal-的工作流程" class="heading-anchor" aria-label="章节： signal 的工作流程" tabindex="-1"></a><span>signal 的工作流程</span></h3>
-<ul>
-<li>每个进程会记录每个 signal 是否 <i>pending</i><span class="mojikumi-line-end">、</span>是否 <i>blocked</i></li>
-<li>发送 signal 会使接收者的这个 signal 变为 pending</li>
-<li>进程可以改变每个 signal 的 blocked 状态</li>
-<li>在切换到 user mode 执行进程时<span class="mojikumi-line-end">，</span>如果一个 signal 处于 pending 状态且没有被 blocked<span class="mojikumi-line-end">，</span>就会接收这个 signal<span class="mojikumi-line-end">，</span>并设为没有在 pending</li>
-</ul>
-<p>这意味着<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>signal 只记录是否 pending<span class="mojikumi-line-end">，</span>不会记录发送了几次<span class="mojikumi-line-end">，</span>在被接收前多次发送只会被接收一次</li>
-<li>在 blocked 状态下被发送 signal<span class="mojikumi-line-end">，</span>会在 unblock 时收到</li>
-</ul>
-<h3 id="发送-signal" class="heading"><a href="#发送-signal" class="heading-anchor" aria-label="章节： 发送 signal" tabindex="-1"></a><span>发送 signal</span></h3>
-<h4 id="kill-命令" class="heading"><a href="#kill-命令" class="heading-anchor" aria-label="章节： kill 命令" tabindex="-1"></a><span>kill 命令</span></h4>
-<p>可以用 <code>kill</code> 命令在 shell 中向指定的进程发送信号<span class="mojikumi-line-end">。</span>一般 shell 会有 builtin 的 <code>kill</code><span class="mojikumi-line-end">，</span>也有位于 <code>/<wbr>usr<wbr>/<wbr>bin<wbr>/<wbr>kill</code> 的 <code>kill</code><span class="mojikumi-line-end">，</span>可能有一定的区别<span class="mojikumi-line-end">。</span></p>
-<p>基础的 <code>kill</code> 命令形如 <code>kill -sig pid</code><span class="mojikumi-line-end">，</span>其中 <code>-sig</code> 可以形如 <code>-INT</code>/<code>-SIGINT</code>/<code>-2</code><span class="mojikumi-line-end">，</span>而 <code>pid</code> 表示要把信号发送给<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>> 0: PID 为 <code>pid</code> 的进程</li>
-<li>0: process group 和当前进程相同的进程</li>
-<li>-1: 除 PID 为 1 的 <code>init</code> 外的所有进程</li>
-<li>&#x3C; 0: process group ID 为 <code>-pid</code> 的进程</li>
-</ul>
-<p>这与 <a href="#waitpid-%E7%9A%84-pid-%E5%8F%82%E6%95%B0">waitpid 的 pid 参数</a> 是类似的<span class="mojikumi-line-end">。</span></p>
-<h4 id="在-shell-中使用键盘发送-sigint-sigtstp" class="heading"><a href="#在-shell-中使用键盘发送-sigint-sigtstp" class="heading-anchor" aria-label="章节： 在 shell 中使用键盘发送 SIGINT / SIGTSTP" tabindex="-1"></a><span>在 shell 中使用键盘发送 SIGINT / SIGTSTP</span></h4>
-<p>shell 中会有至多一个 foreground job 和零个或若干个 background job<span class="mojikumi-line-end">。</span>shell 会给每个 job 中的所有进程指定同样的 process group<span class="mojikumi-line-end">。</span></p>
-<p>Ctrl+C 会向 foreground group 发送 SIGINT<span class="mojikumi-line-end">，</span>Ctrl+Z 会向 foreground group 发送 SIGTSTP<span class="mojikumi-line-end">。</span></p>
-<h4 id="使用函数发送-signal" class="heading"><a href="#使用函数发送-signal" class="heading-anchor" aria-label="章节： 使用函数发送 signal" tabindex="-1"></a><span>使用函数发送 signal</span></h4>
-<ul>
-<li><code>int kill(pid_t pid, int sig)</code>: 与 <a href="#kill-%E5%91%BD%E4%BB%A4">kill 命令</a>类似</li>
-<li><code>unsigned<wbr> <wbr>int<wbr> <wbr>alarm<wbr>(<wbr>unsigned<wbr> <wbr>int<wbr> <wbr>secs<wbr>)</code>: 让 kernel 在 <code>secs</code> 秒后向当前进程发送 SIGALRM<span class="mojikumi-line-end">；</span>如果有尚未发送的 alarm 则取消掉<span class="mojikumi-line-end">，</span>如果 <code>secs</code> 为 0 则取消后不会发送新的 SIGALRM<span class="mojikumi-line-end">；</span>没有尚未发送的 alarm 则返回值是 0<span class="mojikumi-line-end">，</span>否则是被取消的 alarm 还剩的秒数</li>
-</ul>
-<h3 id="设置-signal-handler" class="heading"><a href="#设置-signal-handler" class="heading-anchor" aria-label="章节： 设置 signal handler" tabindex="-1"></a><span>设置 signal handler</span></h3>
-<p>除了 SIGKILL 和 SIGSTOP<span class="mojikumi-line-end">，</span>其他 signal 的行为可以被改变<span class="mojikumi-line-end">。</span></p>
-<section class="code-block relative my-6 shadow" itemprop="hasPart" itemscope itemtype="https://schema.org/SoftwareSourceCode" data-v-ad49d235><div class="h-6 items-center rd-t-1 bg-area px-4 dark:bg-#2A313A media-screen:important-flex" style="display:none;" data-v-ad49d235><h4 class="text-3 text-footer" itemprop="programmingLanguage" aria-label="c 代码块" data-v-ad49d235>c</h4><ile-root id="ile-24"><button title="复制到剪贴板" class="copy-button b-footer text-footer" data-v-9288569d><span class="i-mdi-content-copy" data-v-9288569d></span><span class="sr-only" role="status" data-v-9288569d></span></button></ile-root><!--ISLAND_HYDRATION_PLACEHOLDER_ile-24--></div><div class="light:hidden" itemprop="text" data-v-ad49d235><pre class="shiki dark" style="background-color: #011627" tabindex="0"><code><span><span style="color: #C792EA">#include</span><span style="color: #D6DEEB"> </span><span style="color: #D9F5DD">&lt;</span><span style="color: #ECC48D">signal.h</span><span style="color: #D9F5DD">&gt;</span></span>
-<span><span style="color: #C792EA">typedef</span><span style="color: #D6DEEB"> </span><span style="color: #C792EA">void</span><span style="color: #D6DEEB"> (</span><span style="color: #7FDBCA">*</span><span style="color: #C5E478">sighandler_t</span><span style="color: #D6DEEB">)(</span><span style="color: #C792EA">int</span><span style="color: #D6DEEB">);</span></span>
-<span><span style="color: #C5E478">sighandler_t</span><span style="color: #D6DEEB"> </span><span style="color: #82AAFF">signal</span><span style="color: #D6DEEB">(</span><span style="color: #C792EA">int</span><span style="color: #D6DEEB"> </span><span style="color: #D7DBE0">signum</span><span style="color: #D6DEEB">, </span><span style="color: #C5E478">sighandler_t</span><span style="color: #D6DEEB"> </span><span style="color: #D7DBE0">handler</span><span style="color: #D6DEEB">);</span></span></code></pre></div><div class="light:important-block" style="display:none;" data-v-ad49d235><pre class="shiki light" style="background-color: #FBFBFB" tabindex="0"><code><span><span style="color: #994CC3">#include</span><span style="color: #403F53"> </span><span style="color: #111111">&lt;</span><span style="color: #C96765">signal.h</span><span style="color: #111111">&gt;</span></span>
-<span><span style="color: #994CC3">typedef</span><span style="color: #403F53"> </span><span style="color: #994CC3">void</span><span style="color: #403F53"> (</span><span style="color: #0C969B">*</span><span style="color: #4876D6">sighandler_t</span><span style="color: #403F53">)(</span><span style="color: #994CC3">int</span><span style="color: #403F53">);</span></span>
-<span><span style="color: #4876D6">sighandler_t</span><span style="color: #403F53"> </span><span style="color: #4876D6">signal</span><span style="color: #403F53">(</span><span style="color: #994CC3">int</span><span style="color: #403F53"> signum, </span><span style="color: #4876D6">sighandler_t</span><span style="color: #403F53"> handler);</span></span></code></pre></div></section>
-<p>函数 <code>signal</code> 用来改变处理 signal <code>signum</code> 的方式<span class="mojikumi-line-end">。</span><code>handler</code> 可以是一个函数指针<span class="mojikumi-line-end">，</span>也可以是 <code>SIG_IGN</code> 表示无视这个 signal<span class="mojikumi-line-end">，</span>或者 <code>SIG_DFL</code> 表示使用这个 signal 的默认行为<span class="mojikumi-line-end">。</span></p>
-<p>有 handler 时<span class="mojikumi-line-end">，</span>接收到一个 signal 就会触发 exception 来执行 handler<span class="mojikumi-line-end">，</span>在 handler 结束时一般会返回到原来的指令<span class="mojikumi-line-end">。</span></p>
-<p>在执行 handler 的过程中<span class="mojikumi-line-end">，</span>相应的 signal 会被 block<span class="mojikumi-line-end">，</span>但 handler 可以被其他类型的 signal interrupt<span class="mojikumi-line-end">，</span>在处理完这另一个 signal 后返回到一开始的 handler<span class="mojikumi-line-end">。</span></p>
-<h3 id="block-unblock-signal" class="heading"><a href="#block-unblock-signal" class="heading-anchor" aria-label="章节： block / unblock signal" tabindex="-1"></a><span>block / unblock signal</span></h3>
-<p>进程可以主动 block / unblock 指定的 signal<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li><code>int<wbr> <wbr>sigprocmask<wbr>(<wbr>int<wbr> <wbr>how<wbr>, <wbr>const<wbr> <wbr>sigset_t<wbr> *<wbr>set<wbr>, <wbr>sigset_t<wbr> *<wbr>oldset<wbr>)</code></li>
-</ul>
-<p>其中 <code>how</code> 是 <code>SIG_BLOCK</code> / <code>SIG_UNBLOCK</code> / <code>SIG_SETMASK</code><span class="mojikumi-line-end">，</span>分别表示 block <code>set</code> 里的 signal / unblock <code>set</code> 里的 signal / 将 blocked set 设为 <code>set</code><span class="mojikumi-line-end">。</span></p>
-<p>若 <code>oldset</code> 不是 <code>NULL</code><span class="mojikumi-line-end">，</span>则会将修改前的 blocked set 存下来<span class="mojikumi-line-end">。</span></p>
-<p>还有一些用来设置 <code>sigset_t</code> 的函数<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li><code>int<wbr> <wbr>sigemptyset<wbr>(<wbr>sigset_t<wbr> *<wbr>set<wbr>)</code>: 将 <code>set</code> 设为空</li>
-<li><code>int<wbr> <wbr>sigfillset<wbr>(<wbr>sigset_t<wbr> *<wbr>set<wbr>)</code>: 将 <code>set</code> 设为所有 signal</li>
-<li><code>int<wbr> <wbr>sigaddset<wbr>(<wbr>sigset_t<wbr> *<wbr>set<wbr>, <wbr>int<wbr> <wbr>signum<wbr>)</code>: 将 <code>signum</code> 加入 <code>set</code></li>
-<li><code>int<wbr> <wbr>sigdelset<wbr>(<wbr>sigset_t<wbr> *<wbr>set<wbr>, <wbr>int<wbr> <wbr>signum<wbr>)</code>: 将 <code>signum</code> 从 <code>set</code> 中删去</li>
-<li><code>int<wbr> <wbr>sigismember<wbr>(<wbr>const<wbr> <wbr>sigset_t<wbr> *<wbr>set<wbr>, <wbr>int<wbr> <wbr>signum<wbr>)</code>: 检查 <code>signum</code> 是否在 <code>set</code> 中<span class="mojikumi-line-end">，</span>返回 0/1 或出错返回 -1</li>
-</ul>
-<h3 id="编写、使用-signal-handler" class="heading"><a href="#编写、使用-signal-handler" class="heading-anchor" aria-label="章节： 编写、使用 signal handler" tabindex="-1"></a><span>编写<span class="mojikumi-line-end">、</span>使用 signal handler</span></h3>
-<h4 id="编写安全的-signal-handler" class="heading"><a href="#编写安全的-signal-handler" class="heading-anchor" aria-label="章节： 编写安全的 signal handler" tabindex="-1"></a><span>编写安全的 signal handler</span></h4>
-<p>由于 signal handler 和主程序并行运行<span class="mojikumi-line-end">、</span>共享数据<span class="mojikumi-line-end">，</span>并且主程序可能在意想不到的地方接收到 signal 而被 interrupt<span class="mojikumi-line-end">，</span>编写安全的 signal handler 是困难的<span class="mojikumi-line-end">，</span>一般要遵循下面的守则<span class="mojikumi-line-end">：</span></p>
-<ol start="0">
-<li>handler 应当尽量简单<span class="mojikumi-line-end">，</span>例如可以设置一个 flag 而在主程序中检查 flag 并进行处理<span class="mojikumi-line-end">，</span>而非直接在 handler 中处理</li>
-<li>在 handler 中只调用 async-signal-safe 的函数<span class="mojikumi-line-start">（</span>函数列表参见 <code>man<wbr> <wbr>signal<wbr>-<wbr>safety</code><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>常用的 <code>printf</code><span class="mojikumi-line-end">、</span><code>sprintf</code><span class="mojikumi-line-end">、</span><code>malloc</code><span class="mojikumi-line-end">、</span><code>exit</code> 都不是 async-signal-safe 的</li>
-<li>存储并恢复 <code>errno</code><span class="mojikumi-line-end">，</span>保证调用 handler 前后 <code>errno</code> 不变</li>
-<li>访问 handler 与主程序共享的数据时<span class="mojikumi-line-end">，</span>block signal 以防止在访问的中途被 interrupt</li>
-<li>把在 handler 中修改而在主程序中访问的的全局变量声明为 <code>volatile</code> 的<span class="mojikumi-line-end">，</span>防止编译器误认为变量没有被修改而错误地进行优化</li>
-<li>将 flag 声明为 <code>sig_atomic_t</code> 类型<span class="mojikumi-line-end">，</span>它的单次访问是 atomic 的<span class="mojikumi-line-end">，</span>不会被 interrupt<span class="mojikumi-line-start">（</span>但先读后写是两次访问<span class="mojikumi-line-end">，</span>可能被 interrupt<span class="mojikumi-line-end">）</span></li>
-</ol>
-<a id="为什么函数会不-async-signal-safe" name="为什么函数会不-async-signal-safe" aria-hidden="true"></a>
-<aside role="note" data-v-a2ab257f><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><div class="p-3 flex justify-between items-center" data-v-a2ab257f><h5 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-pencil text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Note: </span><span data-v-a2ab257f>为什么函数会不 async-signal-safe</span></h5><!--v-if--></div><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><p>以 <code>printf</code> 为例<span class="mojikumi-line-end">，</span><code>printf</code> 会使用一个 statically allocated buffer<span class="mojikumi-line-end">，</span>如果在中途被 interrupt<span class="mojikumi-line-end">，</span>而在返回到被 interrupt 的位置前的这段时间里<span class="mojikumi-line-end">，</span><code>printf</code> 再次被调用<span class="mojikumi-line-end">，</span>那么这个 buffer 就会处于一个 inconsistent 的中间态<span class="mojikumi-line-end">，</span>导致 UB<span class="mojikumi-line-end">。</span></p><p>也就是说<span class="mojikumi-line-end">，</span>一个函数不 async-signal-safe 一般是因为使用了一些全局变量并且可能在执行过程中被 interrupt<span class="mojikumi-line-end">。</span>要安全地调用这样的函数<span class="mojikumi-line-end">，</span>在其被 interrupt 后<span class="mojikumi-line-end">，</span>下次执行必须要是从被 interrupt 的地方继续<span class="mojikumi-line-end">，</span>而不能从头开始<span class="mojikumi-line-end">。</span></p><p>除了在 handler 中只调用 async-signal-safe 的函数<span class="mojikumi-line-end">，</span>也可以选择在主程序中调用非 async-signal-safe 函数时 block 掉 handler 使用了这一函数的 signal<span class="mojikumi-line-end">，</span>但这很难做到<span class="mojikumi-line-end">。</span></p></div></div></aside>
-<h4 id="正确处理多次发送的-signal" class="heading"><a href="#正确处理多次发送的-signal" class="heading-anchor" aria-label="章节： 正确处理多次发送的 signal" tabindex="-1"></a><span>正确处理多次发送的 signal</span></h4>
-<p>多次发送 signal 可能只会收到一次<span class="mojikumi-line-end">，</span>所以处理 signal 时不能误以为收到的次数与发送的次数相同<span class="mojikumi-line-end">。</span></p>
-<p>例如<span class="mojikumi-line-end">，</span>接收 SIGCHLD 来 reap child 时<span class="mojikumi-line-end">，</span>应当在 handler 中 reap 掉所有已 terminate 的子进程<span class="mojikumi-line-end">，</span>而非只 reap 一个子进程<span class="mojikumi-line-end">。</span></p>
-<h4 id="不同系统上-signal-handling-的差异" class="heading"><a href="#不同系统上-signal-handling-的差异" class="heading-anchor" aria-label="章节： 不同系统上 signal handling 的差异" tabindex="-1"></a><span>不同系统上 signal handling 的差异</span></h4>
-<p>在一些系统上<span class="mojikumi-line-end">，</span>signal handling 的语义会有区别<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>
-<p>在一些系统上<span class="mojikumi-line-end">，</span>调用了 handler 后这个 signal 就会恢复默认行为<span class="mojikumi-line-end">，</span>需要在 handler 中重新调用 <code>signal</code> 才能一直使用这个 handler<span class="mojikumi-line-end">。</span></p>
-</li>
-<li>
-<p>在一些系统上<span class="mojikumi-line-end">，</span>需要执行较长时间的 system call 会在被 interrupt 后报错 EINTR<span class="mojikumi-line-end">，</span>而在现代系统上会尽可能地自动重新执行这个 system call<span class="mojikumi-line-end">，</span>详见 <code>man signal.7</code> 的 <span class="mojikumi">“</span>Interruption of system calls and library functions by signal handlers<span class="mojikumi">”</span> 一节<span class="mojikumi-line-end">。</span></p>
-<p><span class="mojikumi-line-start">（</span>P.S. 这就是 <a href="https://www.dreamsongs.com/RiseOfWorseIsBetter.html">Rise of Worse Is Better</a> 中用来举例的 <span class="mojikumi">“</span>PC loser-ing problem<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>原本采用 worse-is-better 的 Unix 现在也进化成了 the right thing<span class="mojikumi-line-end">）</span>
-<span class="mojikumi-line-start">（</span>P.P.S. 当时读这篇的时候我完全没看懂这一段<span class="mojikumi-line-end">，</span>没想到现在竟然还能记起来<span class="mojikumi-line-end">）</span></p>
-</li>
-</ul>
-<p>可以通过 <code>sigaction</code> 函数来设置想要的 signal handling 语义<span class="mojikumi-line-end">。</span></p>
-<h4 id="注意-handler-被调用的时机" class="heading"><a href="#注意-handler-被调用的时机" class="heading-anchor" aria-label="章节： 注意 handler 被调用的时机" tabindex="-1"></a><span>注意 handler 被调用的时机</span></h4>
-<p>handler 可能会在意想不到的时机被调用<span class="mojikumi-line-end">，</span>为了避免出错<span class="mojikumi-line-start">（</span>race<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>可能会需要暂时 block signal 来确保 handler 在正确的时机被调用<span class="mojikumi-line-end">。</span>详见 CS:APP 上的例子<span class="mojikumi-line-end">。</span></p>
-<h3 id="等待-signal" class="heading"><a href="#等待-signal" class="heading-anchor" aria-label="章节： 等待 signal" tabindex="-1"></a><span>等待 signal</span></h3>
-<ul>
-<li><code>int<wbr> <wbr>sigsuspend<wbr>(<wbr>const<wbr> <wbr>sigset_t<wbr> *<wbr>mask<wbr>)</code>: 将 blocked set 设为 <code>mask</code><span class="mojikumi-line-end">，</span>在接收到任何 signal 后返回</li>
-</ul>
-<p>可以在程序的其他部分 block 掉某个 signal<span class="mojikumi-line-end">，</span>然后在 <code>sigsuspend</code> 的参数中将其 unblock<span class="mojikumi-line-end">，</span>以达到等待该 signal 的目的<span class="mojikumi-line-end">。</span>因为 <code>sigsuspend</code> 等待的不是某个特定的 signal<span class="mojikumi-line-end">，</span>可以配合 <code>while</code> 循环来检查由 handler 设置的某个 flag<span class="mojikumi-line-end">。</span></p>
-<p><code>sigsuspend</code> 的效果类似于下面的这段代码<span class="mojikumi-line-end">：</span></p>
-<section class="code-block relative my-6 shadow" itemprop="hasPart" itemscope itemtype="https://schema.org/SoftwareSourceCode" data-v-ad49d235><div class="h-6 items-center rd-t-1 bg-area px-4 dark:bg-#2A313A media-screen:important-flex" style="display:none;" data-v-ad49d235><h4 class="text-3 text-footer" itemprop="programmingLanguage" aria-label="c 代码块" data-v-ad49d235>c</h4><ile-root id="ile-25"><button title="复制到剪贴板" class="copy-button b-footer text-footer" data-v-9288569d><span class="i-mdi-content-copy" data-v-9288569d></span><span class="sr-only" role="status" data-v-9288569d></span></button></ile-root><!--ISLAND_HYDRATION_PLACEHOLDER_ile-25--></div><div class="light:hidden" itemprop="text" data-v-ad49d235><pre class="shiki dark" style="background-color: #011627" tabindex="0"><code><span><span style="color: #82AAFF">sigprocmask</span><span style="color: #D6DEEB">(SIG_SETMASK, </span><span style="color: #7FDBCA">&amp;</span><span style="color: #D7DBE0">mask</span><span style="color: #D6DEEB">, </span><span style="color: #7FDBCA">&amp;</span><span style="color: #D7DBE0">prev</span><span style="color: #D6DEEB">);</span></span>
-<span><span style="color: #82AAFF">pause</span><span style="color: #D6DEEB">();</span></span>
-<span><span style="color: #82AAFF">sigprocmask</span><span style="color: #D6DEEB">(SIG_SETMASK, </span><span style="color: #7FDBCA">&amp;</span><span style="color: #D7DBE0">prev</span><span style="color: #D6DEEB">, </span><span style="color: #82AAFF">NULL</span><span style="color: #D6DEEB">);</span></span></code></pre></div><div class="light:important-block" style="display:none;" data-v-ad49d235><pre class="shiki light" style="background-color: #FBFBFB" tabindex="0"><code><span><span style="color: #4876D6">sigprocmask</span><span style="color: #403F53">(SIG_SETMASK, </span><span style="color: #0C969B">&amp;</span><span style="color: #403F53">mask, </span><span style="color: #0C969B">&amp;</span><span style="color: #403F53">prev);</span></span>
-<span><span style="color: #4876D6">pause</span><span style="color: #403F53">();</span></span>
-<span><span style="color: #4876D6">sigprocmask</span><span style="color: #403F53">(SIG_SETMASK, </span><span style="color: #0C969B">&amp;</span><span style="color: #403F53">prev, </span><span style="color: #4876D6">NULL</span><span style="color: #403F53">);</span></span></code></pre></div></section>
-<p>不同的是<span class="mojikumi-line-end">，</span>上面这段代码有可能会恰好在 <code>sigprocmask</code> 之后<span class="mojikumi-line-end">、</span><code>pause</code> 之前接收到 signal<span class="mojikumi-line-end">，</span>导致这个 signal 没有将 <code>pause</code> interrupt 而一直 sleep 下去<span class="mojikumi-line-end">。</span><code>sigsuspend</code> 是 atomic 的<span class="mojikumi-line-end">，</span>就不存在这样的问题<span class="mojikumi-line-end">。</span></p>
-<h2 id="nonlocal-jumps" class="heading"><a href="#nonlocal-jumps" class="heading-anchor" aria-label="章节： Nonlocal Jumps" tabindex="-1"></a><span>Nonlocal Jumps</span></h2>
-<ul>
-<li><code>int<wbr> <wbr>setjmp<wbr>(<wbr>jmp_buf<wbr> <wbr>env<wbr>)</code></li>
-<li><code>void<wbr> <wbr>longjmp<wbr>(<wbr>jmp_buf<wbr> <wbr>env<wbr>, <wbr>int<wbr> <wbr>val<wbr>)</code></li>
-</ul>
-<p><code>setjmp</code> 会将当前的 PC 和寄存器等信息存在 <code>env</code> 中<span class="mojikumi-line-end">，</span>而 <code>longjmp</code> 会恢复 <code>env</code> 中保存的信息<span class="mojikumi-line-end">，</span>跳转到 <code>setjmp</code> 的位置<span class="mojikumi-line-end">。</span></p>
-<p>这意味着 <code>setjmp</code> 可能返回多次<span class="mojikumi-line-end">，</span>而 <code>longjmp</code> 不会返回<span class="mojikumi-line-end">。</span>第一次调用 <code>setjmp</code> 会返回 0<span class="mojikumi-line-end">，</span>而之后调用 <code>longjmp</code> 时会在 <code>setjmp</code> 的位置返回参数 <code>val</code> 的值<span class="mojikumi-line-start">（</span>特别地<span class="mojikumi-line-end">，</span>如果 <code>val</code> 的值是 0<span class="mojikumi-line-end">，</span>会返回 1<span class="mojikumi-line-end">，</span>强制和首次返回区分开<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
-<p>因为 <code>setjmp</code> / <code>longjmp</code> 只是恢复 PC 和寄存器<span class="mojikumi-line-start">（</span>包括 <code>%rsp</code><span class="mojikumi">）</span><span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>调用 <code>longjmp</code> 时 <code>setjmp</code> 所在的函数必须还没有返回<span class="mojikumi-line-end">，</span>否则 <code>setjmp</code> 所在的 stack frame 就失效了<span class="mojikumi-line-end">。</span></li>
-<li><code>setjmp</code> 的返回值只应出现在<a href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/setjmp.html">一些简单的表达式中</a><span class="mojikumi-line-end">，</span>否则是 UB<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span>不应将 <code>setjmp</code> 的返回值赋给一个变量<span class="mojikumi-line-end">，</span>但可以放在 <code>if</code> 或 <code>switch</code> 里<span class="mojikumi-line-end">。</span>这是考虑到<span class="mojikumi-line-end">，</span>计算一个复杂的表达式可能会有一些中间量以及 dynamic stack allocation<span class="mojikumi-line-end">，</span>而 <code>longjmp</code> 回来时这些中间量<span class="mojikumi-line-end">、</span>dynamic stack allocation 不一定能被正确恢复<span class="mojikumi-line-end">，</span>导致表达式不一定能被正确计算<span class="mojikumi-line-end">。</span></li>
-<li>如果修改了存放在内存中的局部变量<span class="mojikumi-line-end">，</span>跳转后会是被修改过的值而不是原来的值<span class="mojikumi-line-end">，</span>而存放在寄存器中的值则会被恢复<span class="mojikumi-line-end">。</span>要确保变量不被存在寄存器中<span class="mojikumi-line-end">，</span>必须使用 <code>volatile</code> 声明变量<span class="mojikumi-line-end">，</span>否则<span class="mojikumi-line-start">（</span>即便使用了 <code>register</code> 或 <code>auto</code> 来声明变量<span class="mojikumi-line-end">）</span>编译器可能任意地把变量放在内存或寄存器中<span class="mojikumi-line-end">，</span>造成跳转后变量的值不确定<span class="mojikumi-line-end">。</span></li>
-</ul>
-<a id="volatile-vs-取地址" name="volatile-vs-取地址" aria-hidden="true"></a>
-<aside role="note" data-v-a2ab257f><div class="shadow-md rd-1 b-l-6 my-6 bg-purple-2 dark:bg-purple-9 b-purple-5" data-v-a2ab257f><div class="p-3 flex justify-between items-center" data-v-a2ab257f><h3 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-help-circle-outline text-purple" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Question: </span><span data-v-a2ab257f>volatile vs 取地址</span></h3><!--v-if--></div><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><p>C99 rationale 和 <code>man setjmp</code> 都说要用 <code>volatile</code> 才能确保局部变量存在栈上<span class="mojikumi-line-end">，</span>那如果一个局部变量被取了地址<span class="mojikumi-line-end">，</span>还有可能存在寄存器中吗？如果有可能的话<span class="mojikumi-line-end">，</span>是标准允许这样但事实上不会<span class="mojikumi-line-end">，</span>还是真的可以在 gcc 中做到？</p></div></div></aside>
-<ul>
-<li><code>int<wbr> <wbr>sigsetjmp<wbr>(<wbr>sigjmp_buf<wbr> <wbr>env<wbr>, <wbr>int<wbr> <wbr>savesigs<wbr>)</code></li>
-<li><code>void<wbr> <wbr>siglongjmp<wbr>(<wbr>sigjmp_buf<wbr> <wbr>env<wbr>, <wbr>int<wbr> <wbr>val<wbr>)</code></li>
-</ul>
-<p><code>sigsetjmp</code> / <code>siglongjmp</code> 会额外存储<span class="mojikumi-line-end">、</span>恢复 pending / blocked signal 的信息<span class="mojikumi-line-start">（</span>需要以非 0 <code>savesigs</code> 调用 <code>sigsetjmp</code><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>可以用于 signal handler<span class="mojikumi-line-end">。</span></p>
-<p>nonlocal jump 主要有两种用途<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>出错时直接跳转到一个集中的位置来处理错误<span class="mojikumi-line-end">，</span>而不用一层层往上返回</li>
-<li>处理 signal 时不返回到被 interrupt 的位置<span class="mojikumi-line-end">，</span>而跳转到指定的位置</li>
-</ul>
-<p>在 signal handler 中使用 nonlocal jump 时需要注意<span class="mojikumi-line-end">：</span></p>
-<ul>
-<li>先 <code>sigsetjmp</code> 再 install signal handler<span class="mojikumi-line-end">，</span>否则可能 race</li>
-<li><code>siglongjmp</code> 跳转到的后续代码中只能调用 async-signal-safe 的函数</li>
-</ul>
-<p>nonlocal jump 可能造成可读性的问题<span class="mojikumi-line-end">，</span>也可能因为跳过了中间很多函数的返回<span class="mojikumi-line-end">，</span>造成内存泄露等后果<span class="mojikumi-line-end">，</span>要谨慎使用<span class="mojikumi-line-end">。</span></p>
-<h2 id="tools-for-manipulating-processes" class="heading"><a href="#tools-for-manipulating-processes" class="heading-anchor" aria-label="章节： Tools for Manipulating Processes" tabindex="-1"></a><span>Tools for Manipulating Processes</span></h2>
-<ul>
-<li><code>strace</code>: 显示程序调用的所有 system call<span class="mojikumi-line-end">，</span>可以静态链接来避免看到大量共享库相关的输出</li>
-<li><code>ps</code>: 列出进程信息</li>
-<li><code>top</code>: 列出进程的资源使用<span class="mojikumi-line-start">（</span>可以用 <code>htop</code><span class="mojikumi-line-end">）</span></li>
-<li><code>pmap</code>: 查看进程的 memory map</li>
-<li><code>/proc</code>: 查看各种进程相关的信息 (<code>man proc.5</code>)</li>
-</ul>]]></content>
         <category label="csapp" term="https://ouuan.moe/tag/csapp"/>
         <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
     </entry>
