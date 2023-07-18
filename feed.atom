@@ -135,7 +135,7 @@ Licensed under CC BY-SA 4.0</rights>
 <ul>
 <li>padding (for encryption block size requirement)</li>
 <li>padding length</li>
-<li>next header <span class="mojikumi">（</span><span class="mojikumi-line-start">“</span>4<span class="mojikumi">”</span> for <span class="mojikumi">“</span>IP Encapsulation within IP<span class="mojikumi">”</span> in tunnel mode<span class="mojikumi-line-end">）</span><sup><a href="#user-content-fn-esp-next-header" id="user-content-fnref-esp-next-header" data-footnote-ref aria-describedby="footnote-label">3</a></sup></li>
+<li>next header <span class="mojikumi">（</span><span class="mojikumi">“</span>4<span class="mojikumi">”</span> for <span class="mojikumi">“</span>IP Encapsulation within IP<span class="mojikumi">”</span> in tunnel mode<span class="mojikumi-line-end">）</span><sup><a href="#user-content-fn-esp-next-header" id="user-content-fnref-esp-next-header" data-footnote-ref aria-describedby="footnote-label">3</a></sup></li>
 </ul>
 </li>
 </ul>
