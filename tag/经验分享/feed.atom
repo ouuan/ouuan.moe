@@ -424,7 +424,11 @@ Licensed under CC BY-SA 4.0</rights>
 <span><span style="color: #994CC3">include</span><span style="color: #403F53">=~~home/conf.d/playmode.conf</span></span>
 <span><span style="color: #994CC3">include</span><span style="color: #403F53">=~~home/conf.d/osc.conf</span></span>
 <span><span style="color: #403F53">...</span></span></code></pre></div></section>
-<p>注意 <code>~~home/</code> 是 mpv home<span class="mojikumi-line-end">，</span><code>~/</code> 才是 <code>$HOME</code><span class="mojikumi-line-end">。</span></p>]]></content>
+<p>注意 <code>~~home/</code> 是 mpv home<span class="mojikumi-line-end">，</span><code>~/</code> 才是 <code>$HOME</code><span class="mojikumi-line-end">。</span></p>
+<h4 id="directory-specific-config" class="heading"><a href="#directory-specific-config" class="heading-anchor" aria-label="章节： directory-specific config" tabindex="-1"></a><span>directory-specific config</span></h4>
+<p><a href="https://github.com/ouuan/dotfiles/blob/master/.config/mpv/scripts/exrc.lua"><code>exrc.lua</code></a><span class="mojikumi-line-start">（</span>写得比较粗糙<span class="mojikumi-line-end">，</span>能用就行<span class="mojikumi-line-start">（</span></p>
+<p>mpv 提供了 <a href="https://mpv.io/manual/stable/#file-specific-configuration-files"><span class="mojikumi-line-start">“</span>File-specific Configuration Files<span class="mojikumi-line-end">”</span></a> 功能<span class="mojikumi-line-end">，</span>但是它不安全<span class="mojikumi-line-end">。</span>受 <a href="https://github.com/neovim/neovim/issues/20911">More secure .exrc (.nvimrc) handling · Issue #20911 · neovim/neovim</a> 启发<span class="mojikumi-line-end">，</span>可以在加载 exrc 前询问用户<span class="mojikumi-line-end">。</span></p>
+<p><span class="mojikumi-line-start">（</span>我是学日语的时候听教材音频<span class="mojikumi-line-end">，</span>想自动切成单曲循环<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>]]></content>
         <category label="mpv" term="https://ouuan.moe/tag/mpv"/>
         <category label="Arch Linux" term="https://ouuan.moe/tag/Arch%20Linux"/>
         <category label="经验分享" term="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB"/>
