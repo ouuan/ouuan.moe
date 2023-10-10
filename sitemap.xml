@@ -10,6 +10,11 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/post/2023/09/cod-2</loc>
+        <lastmod>2023-10-10T15:35:55.000Z</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/post/2023/07/cnatda-8</loc>
         <lastmod>2023-10-08T14:26:26.000Z</lastmod>
         <priority>0.8</priority>
@@ -287,6 +292,10 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/tag/cod</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/tag/csapp</loc>
         <priority>0.5</priority>
     </url>
@@ -376,6 +385,10 @@
     </url>
     <url>
         <loc>https://ouuan.moe/posts/visitor-desc/page/2</loc>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/2</loc>
         <priority>0.4</priority>
     </url>
     <url>
