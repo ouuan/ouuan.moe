@@ -10,6 +10,11 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/post/2023/10/thuctf2023-writeup</loc>
+        <lastmod>2023-10-22T14:14:06.000Z</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/post/2023/09/cod-2</loc>
         <lastmod>2023-10-10T15:35:55.000Z</lastmod>
         <priority>0.8</priority>
@@ -304,6 +309,10 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/tag/ctf</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/tag/ddpp</loc>
         <priority>0.5</priority>
     </url>
@@ -365,6 +374,10 @@
     </url>
     <url>
         <loc>https://ouuan.moe/tag/WIP</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/tag/writeup</loc>
         <priority>0.5</priority>
     </url>
     <url>
