@@ -12,7 +12,7 @@
     <link rel="self" href="https://ouuan.moe/tag/live2d/feed.atom"/>
     <subtitle>标签: live2d - ouuan 的博客。</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
-    <rights>Copyright © 2022 - 2023 ouuan
+    <rights>Copyright © 2022 - 2024 ouuan
 Licensed under CC BY-SA 4.0</rights>
     <entry>
         <title type="html"><![CDATA[busuanzi 访问量统计与 live2d 插件同时使用导致 busuanzi 不显示的根本原因以及解决方法]]></title>

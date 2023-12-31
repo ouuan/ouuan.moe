@@ -12,7 +12,7 @@
     <link rel="self" href="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/feed.atom"/>
     <subtitle>标签: 问题解决记录 - ouuan 的博客。</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
-    <rights>Copyright © 2022 - 2023 ouuan
+    <rights>Copyright © 2022 - 2024 ouuan
 Licensed under CC BY-SA 4.0</rights>
     <entry>
         <title type="html"><![CDATA[String.prototype.replace 与隐藏的“$”]]></title>

@@ -12,7 +12,7 @@
     <link rel="self" href="https://ouuan.moe/tag/btrfs/feed.atom"/>
     <subtitle>标签: btrfs - ouuan 的博客。</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
-    <rights>Copyright © 2022 - 2023 ouuan
+    <rights>Copyright © 2022 - 2024 ouuan
 Licensed under CC BY-SA 4.0</rights>
     <entry>
         <title type="html"><![CDATA[Btrfs Quota 以及 Timeshift 导致的系统无响应问题解决过程记录]]></title>
