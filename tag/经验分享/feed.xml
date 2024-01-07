@@ -578,7 +578,16 @@ Licensed under CC BY-SA 4.0</copyright>
 <span></span>
 <span><span style="color: #4876D6">:root</span><span style="color: #403F53"> {</span></span>
 <span><span style="color: #403F53">  </span><span style="color: #4876D6">--default-mono-font</span><span style="color: #403F53">: </span><span style="color: #0C969B">ui-monospace</span><span style="color: #403F53">, DejaVu Sans Mono, Noto Sans Mono, SFMono-Regular, Menlo, Monaco, Consolas, </span><span style="color: #111111">&quot;</span><span style="color: #C96765">Monospace Unicode Fallback</span><span style="color: #111111">&quot;</span><span style="color: #403F53">, </span><span style="color: #0C969B">monospace</span><span style="color: #403F53">, </span><span style="color: #4876D6">var</span><span style="color: #403F53">(</span><span style="color: #4876D6">--default-emoji-font</span><span style="color: #403F53">);</span></span>
-<span><span style="color: #403F53">}</span></span></code></pre></div></section>]]></content:encoded>
+<span><span style="color: #403F53">}</span></span></code></pre></div></section>
+<h2 id="为不同语言设置不同字体" class="heading"><a href="#为不同语言设置不同字体" class="heading-anchor" aria-label="章节： 为不同语言设置不同字体" tabindex="-1"></a><span>为不同语言设置不同字体</span></h2>
+<p>其实我感觉我的做法有点丑<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>还好有 UnoCSS 稍微强一点<span class="mojikumi-line-start">（</span></p>
+<ul>
+<li>为每个样式<span class="mojikumi-line-start">（</span>例如宋/<span class="font-kai">楷</span><span class="mojikumi-line-end">）</span>和每个语言分别用一个 CSS 变量记录当前字体<span class="mojikumi-line-end">。</span></li>
+<li>改变样式时修改 <code>font<wbr>-<wbr>family</code> 为这个样式的字体<span class="mojikumi-line-end">，</span>修改每个语言的字体为这个样式<span class="mojikumi-line-end">。</span></li>
+<li>改变语言时修改 <code>font<wbr>-<wbr>family</code> 为这个语言的字体<span class="mojikumi-line-end">，</span>修改每个样式的字体为这个语言<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>语言通过 <code>lang</code> 属性标识<span class="mojikumi-line-end">。</span></p>
+<p>详见 <a href="https://github.com/ouuan/iles-blog/commit/e8df882f4a550bfd5db50f837f0a9ab376262dc4">commit</a><span class="mojikumi-line-end">。</span></p>]]></content:encoded>
             <category domain="https://ouuan.moe/tag/blog">blog</category>
             <category domain="https://ouuan.moe/tag/CSS">CSS</category>
             <category domain="https://ouuan.moe/tag/Web">Web</category>
