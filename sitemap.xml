@@ -10,6 +10,11 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/post/2024/02/dicectf-2024-quals</loc>
+        <lastmod>2024-02-05T04:24:27.000Z</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/post/2023/10/xuetang-roadside</loc>
         <lastmod>2024-01-16T15:00:42.000Z</lastmod>
         <priority>0.8</priority>
@@ -222,6 +227,10 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/page/5</loc>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/sponsor</loc>
         <priority>0.6</priority>
     </url>
@@ -390,6 +399,10 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/posts/created-desc/page/3</loc>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/posts/updated-desc/page/1</loc>
         <priority>0.4</priority>
     </url>
@@ -398,11 +411,19 @@
         <priority>0.4</priority>
     </url>
     <url>
+        <loc>https://ouuan.moe/posts/updated-desc/page/3</loc>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://ouuan.moe/posts/visitor-desc/page/1</loc>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://ouuan.moe/posts/visitor-desc/page/2</loc>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/posts/visitor-desc/page/3</loc>
         <priority>0.4</priority>
     </url>
     <url>
