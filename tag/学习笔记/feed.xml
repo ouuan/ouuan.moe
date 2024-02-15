@@ -134,11 +134,84 @@ Licensed under CC BY-SA 4.0</copyright>
 <li>protection / isolation: 每个 process 只能访问自己的 address space<span class="mojikumi-line-end">，</span>不能访问其他 process 或者 OS 自身的 memory<span class="mojikumi-line-end">。</span></li>
 </ul>
 <p>user-level program 使用的所有 address 都是 virtual address<span class="mojikumi-line-end">，</span>只有 OS<span class="mojikumi-line-start">（</span>以及 hardware<span class="mojikumi-line-end">）</span>能接触到 physical address<span class="mojikumi-line-end">。</span></p>
+<h2 id="interlude-memory-api" class="heading"><a href="#interlude-memory-api" class="heading-anchor" aria-label="章节： Interlude: Memory API" tabindex="-1"></a><span>Interlude: Memory API</span></h2>
+<p>C program 可以使用 stack memory 或 heap memory<span class="mojikumi-line-end">。</span></p>
+<p>stack memory 的 allocation 和 deallocation 都是 implicit 的<span class="mojikumi-line-end">，</span>又称作 <i>automatic</i> memory<span class="mojikumi-line-end">。</span></p>
+<p>heap memory 需要使用 <code>malloc()</code> allocate<span class="mojikumi-line-end">，</span>使用 <code>free()</code> deallocate<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li><code>double<wbr> *<wbr>d<wbr> = (<wbr>double<wbr> *) <wbr>malloc<wbr>(<wbr>sizeof<wbr>(<wbr>double<wbr>))</code></li>
+<li><code>int<wbr> *<wbr>x<wbr> = <wbr>malloc<wbr>(<wbr>10<wbr> * <wbr>sizeof<wbr>(<wbr>int<wbr>))</code></li>
+<li><code>char<wbr> *<wbr>s<wbr> = (<wbr>char<wbr> *) <wbr>malloc<wbr>(<wbr>strlen<wbr>(<wbr>buf<wbr>) + <wbr>1<wbr>)</code></li>
+<li><code>free(x)</code></li>
+</ul>
+<p>heap memory 的使用很容易出错<span class="mojikumi-line-end">，</span>例如<span class="mojikumi-line-end">：</span></p>
+<dl>
+<dt>null pointer dereference</dt>
+<dd>使用前没有 allocate
+</dd>
+<dt>uninitialized read</dt>
+<dd>没有初始化内容就读取<span class="mojikumi-line-start">（</span>以为内容会是 0<span class="mojikumi-line-end">）</span>
+</dd>
+<dt>buffer overflow</dt>
+<dd>allocate 的 memory 不够大<span class="mojikumi-line-end">，</span>例如字符串没有在长度的基础上加一
+</dd>
+<dt>memory leak</dt>
+<dd>long-running program 的 heap memory 使用完毕后没有 free
+</dd>
+<dt>use after free</dt>
+<dd>在 free 之后继续使用 <i>dangling pointer</i>
+</dd>
+<dt>double free</dt>
+<dd>free 之后再次 free
+</dd>
+</dl>
+<a id="tip-if-it-compiles-it-works" name="tip-if-it-compiles-it-works" aria-hidden="true"></a>
+<aside role="note" data-v-a2ab257f><details class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><summary class="p-3 flex justify-between items-center cursor-pointer" data-v-a2ab257f><h3 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-info-circle-outline text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Info: </span><span data-v-a2ab257f>Tip: if it compiles it works</span></h3><span class="details-icon text-5" data-v-a2ab257f></span></summary><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><blockquote>
+<p>Just because a program compiled(!) or even ran once or many times correctly does not mean the program is correct.</p>
+</blockquote><blockquote>
+<p>Get to work and debug it before you blame those other components.</p>
+</blockquote><p><s>这边建议您用 Rust<span class="mojikumi-line-start">（</span></s></p></div></details></aside>
+<p><code>malloc()</code> 和 <code>free()</code> 不是 system call<span class="mojikumi-line-end">，</span>而是 library call<span class="mojikumi-line-end">。</span>malloc library 使用 system call <code>brk</code>/<code>sbrk</code> 设置 program 的 <i>break</i><span class="mojikumi-line-start">（</span>heap 末尾的 address<span class="mojikumi-line-end">）</span>来获取 memory<span class="mojikumi-line-end">，</span>进而分配给用户<span class="mojikumi-line-end">。</span></p>
+<p>另外还有 <code>calloc</code> 可以用来初始化 malloc 得到的 memory<span class="mojikumi-line-end">，</span><code>realloc</code> 可以用来调整一块已分配的 heap memory 的大小<span class="mojikumi-line-end">。</span></p>
+<p>可以用 <code>mmap</code> 进行 memory mapping<span class="mojikumi-line-end">，</span>例如可以 map 到 anonymous file 来获取一块 memory<span class="mojikumi-line-end">。</span></p>
+<h2 id="mechanism-address-translation" class="heading"><a href="#mechanism-address-translation" class="heading-anchor" aria-label="章节： Mechanism: Address Translation" tabindex="-1"></a><span>Mechanism: Address Translation</span></h2>
+<p>为了高效且灵活地 virtualize memory<span class="mojikumi-line-end">，</span>基本思想是 <i>(hardware-based) address translation</i><span class="mojikumi-line-end">，</span>将 memory access 从 virtual address 翻译为 physical address<span class="mojikumi-line-end">。</span>OS 会管理 memory<span class="mojikumi-line-end">，</span>配置 hardware<span class="mojikumi-line-end">，</span>最终由 hardware 高效地进行 address translation<span class="mojikumi-line-end">。</span></p>
+<p>我们先做一些简化<span class="mojikumi-line-end">，</span>假设每个 process 的 address space 都映射到了 physical memory 中连续的一段<span class="mojikumi-line-end">，</span>且各个 process 的 address space 都一样大<span class="mojikumi-line-start">（</span>比 physical memory 小<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<a id="software-based-relocation" name="software-based-relocation" aria-hidden="true"></a>
+<aside role="note" data-v-a2ab257f><div class="shadow-md rd-1 b-l-6 my-6 bg-blue-1 dark:bg-blue-9 b-blue" data-v-a2ab257f><div class="p-3 flex justify-between items-center" data-v-a2ab257f><h3 class="flex items-center gap-1 font-bold" data-v-a2ab257f><span class="text-5 i-mdi-pencil text-blue" data-v-a2ab257f></span><span class="sr-only" data-v-a2ab257f>Note: </span><span data-v-a2ab257f>Software-based Relocation</span></h3><!--v-if--></div><div class="overflow-auto rd-br-1 bg-card px-6 dark:bg-bghover" data-v-a2ab257f><p>在早期还没有 hardware support 时<span class="mojikumi-line-end">，</span>有的系统使用了一种 software-based relocation<span class="mojikumi-line-end">，</span>其原理是在 load program 时进行 address translation<span class="mojikumi-line-end">。</span></p><p>这样做不能提供 protection<span class="mojikumi-line-start">（</span>没有限制可以访问的 address<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>而且很难再次 relocate<span class="mojikumi-line-start">（</span>移动 address space 对应的 physical memory<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>所以后来被抛弃了<span class="mojikumi-line-end">。</span></p></div></div></aside>
+<h3 id="base-and-bounds" class="heading"><a href="#base-and-bounds" class="heading-anchor" aria-label="章节： Base and Bounds" tabindex="-1"></a><span>Base and Bounds</span></h3>
+<p>在 1950<span class="mojikumi-narrow-left">’</span>s<span class="mojikumi-line-end">，</span>当时的计算机使用了被称作 <i>base and bounds</i><sup><a href="#user-content-fn-bounds" id="user-content-fnref-bounds" data-footnote-ref aria-describedby="footnote-label">2</a></sup> / <i>dynamic relocation</i> 的技术实现简单高效且能提供 protection 的 VM<span class="mojikumi-line-end">。</span></p>
+<p>CPU 中添加两个 register<span class="mojikumi-line-end">，</span><i>base</i> 和 <i>bounds</i><span class="mojikumi-line-end">。</span>base 即 virtual address 0 对应的 physical address<span class="mojikumi-line-end">，</span>在 access memory 时进行 address translation<span class="mojikumi-line-end">，</span>用 base 加上 virtual address 计算 physical address<span class="mojikumi-line-end">。</span>bounds 是 address space 的大小<span class="mojikumi-line-end">，</span>会检查 virtual address 不超过 bounds<span class="mojikumi-line-end">。</span></p>
+<h3 id="hardware-support" class="heading"><a href="#hardware-support" class="heading-anchor" aria-label="章节： Hardware Support" tabindex="-1"></a><span>Hardware Support</span></h3>
+<p>为了实现 base and bounds<span class="mojikumi-line-end">，</span>需要若干 hardware support<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>支持 kernel mode 和 user mode<span class="mojikumi-line-end">。</span></li>
+<li>在 <i>memory management unit</i> (MMU) 中提供 base register 和 bounds register<span class="mojikumi-line-end">。</span></li>
+<li>提供特殊的 privileged instruction 来修改 base 和 bounds<span class="mojikumi-line-end">，</span>只有 OS 能修改它们<span class="mojikumi-line-end">，</span>否则一个 user process 将可以 wreak havoc<sup><a href="#user-content-fn-wreak" id="user-content-fnref-wreak" data-footnote-ref aria-describedby="footnote-label">3</a></sup><span class="mojikumi-line-end">。</span></li>
+<li>在 memory access 超出 bounds 时 generate exception<span class="mojikumi-line-end">，</span>调用 exception handler<span class="mojikumi-line-end">。</span></li>
+</ul>
+<h3 id="operating-system-issues" class="heading"><a href="#operating-system-issues" class="heading-anchor" aria-label="章节： Operating System Issues" tabindex="-1"></a><span>Operating System Issues</span></h3>
+<p>OS 需要做的工作有<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>在 create process 时为其分配 memory<span class="mojikumi-line-end">。</span></li>
+<li>在 terminate process 时回收 memory<span class="mojikumi-line-end">。</span></li>
+<li>在 context switch 时存储<span class="mojikumi-line-end">、</span>设置 base 和 bounds<span class="mojikumi-line-end">。</span>此时可以进行 relocate<span class="mojikumi-line-end">，</span>将 base 修改为与上次 schedule 到这个 process 时不同的位置<span class="mojikumi-line-end">。</span></li>
+<li>提供 out-of-bounds memory access 的 exception handler<span class="mojikumi-line-end">，</span>一般会 kill 掉这个 process<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>在我们简单的假设下<span class="mojikumi-line-end">，</span>可以使用一个 <i>free list</i> 维护空闲的 memory slots<span class="mojikumi-line-end">。</span></p>
 <section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-cake">
 <p>作者推荐阅读<span class="mojikumi-line-end">：</span><a href="https://en.wikipedia.org/wiki/You_can%27t_have_your_cake_and_eat_it">You can't have your cake and eat it - Wikipedia</a><br>
 <span class="mojikumi-line-start">“</span>The best part of this page is reading all the similar idioms from other languages.<span class="mojikumi-line-end">”</span> <a href="#user-content-fnref-cake" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-bounds">
+<p><strong>bound</strong> noun (formal) 蹦跳<span class="mojikumi-line-end">；</span>跳跃<br>
+<strong>bounds</strong> noun [pl.] 限制范围<span class="mojikumi-line-end">；</span>极限 <a href="#user-content-fnref-bounds" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-wreak">
+<p><span class="mojikumi-line-start">“</span>Is there anything other than <span class="mojikumi">“</span>havoc<span class="mojikumi">”</span> that can be <span class="mojikumi-narrow-right">‘</span>wreaked<span class="mojikumi">’</span>?<span class="mojikumi-line-end">”</span><br>
+我想作者可能需要一本牛津词典或者 <a href="http://www.just-the-word.com/">http<wbr>://<wbr>www<wbr>.<wbr>just<wbr>-<wbr>the<wbr>-<wbr>word<wbr>.<wbr>com<wbr>/</a> <span class="mojikumi">（</span> <a href="#user-content-fnref-wreak" data-footnote-backref class="data-footnote-backref" aria-label="Back to content">↩</a></p>
 </li>
 </ol>
 </section>]]></content:encoded>
@@ -1162,7 +1235,7 @@ any 16-bit boundary to improve code density. <sup><a href="#user-content-fn-rvc"
 <h3 id="output-queuing" class="heading"><a href="#output-queuing" class="heading-anchor" aria-label="章节： Output Queuing" tabindex="-1"></a><span>Output Queuing</span></h3>
 <p>如果 packet 到达 output port 的速率超过了 output line 的速率<span class="mojikumi-line-end">，</span>则会发生 output queuing<span class="mojikumi-line-end">。</span></p>
 <p>若 packet 到达时 buffer 已经满了<span class="mojikumi-line-end">，</span>则需要决定 drop 哪个 packet<span class="mojikumi-line-end">。</span>在 buffer 满之前进行 packet dropping 或 marking 称作 active queue management (AQM)<span class="mojikumi-line-end">，</span>例如 <a href="/post/2023/06/cnatda-3#network-assisted-explicit-congestion-notification">ECN</a><span class="mojikumi-line-end">、</span>random early detection (RED) 等<span class="mojikumi-line-end">。</span></p>
-<h3 id="how-much-buffering-is-“enough”" class="heading"><a href="#how-much-buffering-is-“enough”" class="heading-anchor" aria-label="章节： How Much Buffering Is “Enough”?" tabindex="-1"></a><span>How Much Buffering Is <span class="mojikumi">“</span>Enough<span class="mojikumi-line-end">”</span>?</span></h3>
+<h3 id="how-much-buffering-is-“enough”" class="heading"><a href="#how-much-buffering-is-“enough”" class="heading-anchor" aria-label="章节： How Much Buffering Is “Enough”?" tabindex="-1"></a><span>How Much Buffering Is <span class="mojikumi">“</span>Enough<span class="mojikumi">”</span>?</span></h3>
 <p>有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></span> 个 independent TCP flow 经过一个带宽为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span> 的 link 时<span class="mojikumi-line-end">，</span>buffer 需要有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">T</mi></mrow><mo>⋅</mo><mi>C</mi><mi mathvariant="normal">/</mi><msqrt><mi>N</mi></msqrt></mrow><annotation encoding="application/x-tex">\mathrm{RTT} \cdot C / \sqrt N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">RTT</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1767em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;padding-left:0.833em;">N</span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
 c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
 c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
