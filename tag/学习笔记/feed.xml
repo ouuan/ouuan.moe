@@ -338,6 +338,48 @@ Licensed under CC BY-SA 4.0</copyright>
 <p>早期的系统 physical memory 较小<span class="mojikumi-line-end">，</span>出现这种情况比较正常<span class="mojikumi-line-end">，</span>可以使用 <i>admission control</i><span class="mojikumi-line-end">，</span>暂停一部分 process 的运行<span class="mojikumi-line-end">，</span>以减小 working set<span class="mojikumi-line-end">。</span></p>
 <p>现在的系统则一般会使用 <i>out-of-memory killer</i><span class="mojikumi-line-end">，</span>在 memory 占用过高时 kill 掉一些 process<span class="mojikumi-line-end">。</span></p>
 <h2 id="complete-virtual-memory-systems" class="heading"><a href="#complete-virtual-memory-systems" class="heading-anchor" aria-label="章节： Complete Virtual Memory Systems" tabindex="-1"></a><span>Complete Virtual Memory Systems</span></h2>
+<h3 id="vaxvms-virtual-memory" class="heading"><a href="#vaxvms-virtual-memory" class="heading-anchor" aria-label="章节： VAX/VMS Virtual Memory" tabindex="-1"></a><span>VAX/VMS Virtual Memory</span></h3>
+<p>VAX/VMS 是 1970/80 年代的系统<span class="mojikumi-line-end">，</span>有很多 idea 延续至今<span class="mojikumi-line-end">。</span></p>
+<p>address space 被分成 <i>process space</i> 和 <i>system space</i> 两部分<span class="mojikumi-line-end">。</span>process space 又被分成 <i>P0</i> 用来放 code 和 heap<span class="mojikumi-line-end">，</span>以及 <i>P1</i> 用来放 stack<span class="mojikumi-line-end">，</span>而 system space <i>(S)</i> 用来放 OS code 和 data<span class="mojikumi-line-end">，</span>在 protection bits 中设置了更高的 privilege level<span class="mojikumi-line-end">。</span></p>
+<p>page size 只有 512B<span class="mojikumi-line-end">，</span>因此优化 page table 占用的空间非常重要<span class="mojikumi-line-end">。</span>它使用的是 <a href="#hybrid-approach-paging-and-segments">hybrid of paging and segmentation</a><span class="mojikumi-line-end">，</span>并且 page table 放在 kernel virtual memory 中<span class="mojikumi-line-end">，</span>可以 swap 到 disk 上<span class="mojikumi-line-end">。</span></p>
+<p>code segment 的 address 并非从 0 开始<span class="mojikumi-line-end">，</span>从而可以检测到 null-pointer access<span class="mojikumi-line-end">。</span></p>
+<p>kernel address space 是 user address space 的一部分<span class="mojikumi-line-end">，</span>在 context switch 时只更改 P0 和 P1 的 base and bounds<span class="mojikumi-line-end">，</span>不更改 S<span class="mojikumi-line-end">。</span>为 kernel 使用 virtual address 便于 swap page table to disk<span class="mojikumi-line-end">，</span>也便于在 kernel 和 user program 之间 copy data<span class="mojikumi-line-end">。</span></p>
+<p>VAX 的 hardware 不维护 reference bit<span class="mojikumi-line-end">，</span>VMS 实现的也不是 LRU<span class="mojikumi-line-end">，</span>而是 <i>segmented FIFO</i><span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>每个 process 有自己的 FIFO list<span class="mojikumi-line-end">，</span>另有 global 的 clean page list 和 dirty page list<span class="mojikumi-line-end">。</span></li>
+<li>对每个 process 限制了 <i>resident set size</i> (RSS)<span class="mojikumi-line-end">，</span>以防止单个 process 占用过多 memory<span class="mojikumi-line-end">。</span></li>
+<li>一个 process 使用的 page 数量超过 RSS 之后<span class="mojikumi-line-end">，</span>会将 process FIFO list 里的 page 移到 global list<span class="mojikumi-line-start">（</span>保留在 physical memory 中不 evict<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></li>
+<li>需要进行 page replacement 时从 global clean page list 取<span class="mojikumi-line-end">。</span></li>
+<li>如果 access 了一个在 global list 的 page<span class="mojikumi-line-end">，</span>则将其移回 process FIFO list<span class="mojikumi-line-end">。</span></li>
+<li>定期将 dirty page list 批量写回到 disk<span class="mojikumi-line-end">，</span>然后移动到 clean page list<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>有两个 lazy optimization<span class="mojikumi-line-end">：</span></p>
+<dl>
+<dt>demand zeroing</dt>
+<dd>request 一个 page 时<span class="mojikumi-line-end">，</span>为了 security 需要将其内容清空<span class="mojikumi-line-end">，</span>但不需要立即清空<span class="mojikumi-line-end">，</span>而是可以等到真正被使用了再清空<span class="mojikumi-line-end">，</span>如果最后没被使用就不用清空了<span class="mojikumi-line-end">。</span>
+</dd>
+<dt>copy-on-write</dt>
+<dd>复制 page 时先将两边都设为 read-only 并指向相同的 physical memory<span class="mojikumi-line-end">，</span>写入时会触发 trap<span class="mojikumi-line-end">，</span>然后再真的进行 copy 并设为 writable<span class="mojikumi-line-end">。</span>这对 <code>fork()</code> 尤其有用<span class="mojikumi-line-end">。</span>
+</dd>
+</dl>
+<h3 id="the-linux-virtual-memory-system" class="heading"><a href="#the-linux-virtual-memory-system" class="heading-anchor" aria-label="章节： The Linux Virtual Memory System" tabindex="-1"></a><span>The Linux Virtual Memory System</span></h3>
+<p>Linux address space 分为 user portion 和 kernel portion<span class="mojikumi-line-end">。</span></p>
+<p>kernel virtual address 分为两种<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li><i>kernel logical address</i><span class="mojikumi-line-end">，</span>使用 <code>kmalloc</code> 获取<span class="mojikumi-line-end">，</span>不能 swap to disk<span class="mojikumi-line-end">，</span>和 physical address 是相差固定 offset 的简单对应关系<span class="mojikumi-line-end">，</span>所以对应的 physical address 是连续的<span class="mojikumi-line-end">，</span>适用于 direct memory access 等场景<span class="mojikumi-line-end">。</span></li>
+<li><i>kernel virtual address</i><span class="mojikumi-line-end">，</span>使用 <code>vmalloc</code> 获取<span class="mojikumi-line-end">，</span>更容易分配大块的 memory<span class="mojikumi-line-end">，</span>对应的 physical address 不一定是连续的<span class="mojikumi-line-end">。</span></li>
+</ul>
+<p>Linux 支持 <i>huge page</i><span class="mojikumi-line-end">。</span>以前需要 program 主动请求使用 huge page<span class="mojikumi-line-end">，</span>后来又有了 <i>transparent huge page</i><span class="mojikumi-line-end">，</span>可以自动使用更大的 page size<span class="mojikumi-line-end">，</span>以在 working set 很大时减少 TLB miss<span class="mojikumi-line-end">。</span>只不过更大的 page size 也可能造成更严重的 internal fragmentation<span class="mojikumi-line-end">。</span></p>
+<p>Linux 中有两种 memory mapping<span class="mojikumi-line-end">：</span>memory-mapped file 和 anonymous memory<span class="mojikumi-line-end">。</span>前者可以 map file to memory<span class="mojikumi-line-end">，</span>常用于 load program 以及 shared library<span class="mojikumi-line-end">，</span>从而一个 page 等到真正使用才会从 disk 读取<span class="mojikumi-line-end">，</span>称作 <i>depand paging</i><span class="mojikumi-line-end">；</span>后者用于 heap 和 stack<span class="mojikumi-line-end">。</span></p>
+<p>Linux 使用 <i>2Q</i> replacement policy<span class="mojikumi-line-end">，</span>以解决 LRU 的 worst-case behavior<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li>有两个 queue<span class="mojikumi-line-end">，</span><i>inactive list</i> 和 <i>active list</i><span class="mojikumi-line-end">，</span>分别近似 LRU</li>
+<li>首次访问 page 会进入 inactive list<span class="mojikumi-line-end">，</span>再次访问则进入 active list</li>
+<li>定期将一些 page 从 active list 移入 inactive list</li>
+<li>evict 时优先选择 inactive list</li>
+</ul>
+<p>这样的话<span class="mojikumi-line-end">，</span>inactive page 就不会将 active page 挤出 physical memory<span class="mojikumi-line-end">。</span></p>
+<p>为了缓解 buffer overflow attack<span class="mojikumi-line-end">，</span>permission bits 中需要添加 <i>NX bit</i> (no-execute)<span class="mojikumi-line-end">，</span>并且使用 <i>address space layout randomization</i> (ASLR)<span class="mojikumi-line-end">。</span></p>
 <section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-cake">
@@ -365,7 +407,6 @@ Licensed under CC BY-SA 4.0</copyright>
 </section>]]></content:encoded>
             <category domain="https://ouuan.moe/tag/ostep">ostep</category>
             <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
-            <category domain="https://ouuan.moe/tag/WIP">WIP</category>
         </item>
         <item>
             <title><![CDATA[Computer Organization and Design 第二章学习笔记]]></title>
