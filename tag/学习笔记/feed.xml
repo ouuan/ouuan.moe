@@ -380,6 +380,7 @@ Licensed under CC BY-SA 4.0</copyright>
 </ul>
 <p>这样的话<span class="mojikumi-line-end">，</span>inactive page 就不会将 active page 挤出 physical memory<span class="mojikumi-line-end">。</span></p>
 <p>为了缓解 buffer overflow attack<span class="mojikumi-line-end">，</span>permission bits 中需要添加 <i>NX bit</i> (no-execute)<span class="mojikumi-line-end">，</span>并且使用 <i>address space layout randomization</i> (ASLR)<span class="mojikumi-line-end">。</span></p>
+<p>为了缓解 <a href="https://spectreattack.com">Meltdown/Spectre attack</a><span class="mojikumi-line-end">，</span>可以创建单独的 kernel address space<span class="mojikumi-line-end">，</span>称作 <i>kernel page-table isolation</i> (KPTI)<span class="mojikumi-line-end">，</span>在切换到 kernel mode 时需要切换 page table<span class="mojikumi-line-end">，</span>这对性能有一定的影响<span class="mojikumi-line-end">。</span></p>
 <section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-cake">
