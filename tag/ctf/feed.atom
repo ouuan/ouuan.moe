@@ -23,7 +23,7 @@ Licensed under CC BY-SA 4.0</rights>
 ]]></summary>
         <content type="html"><![CDATA[<p>Write-up for <a href="https://ctftime.org/event/2284">DownUnderCTF 2024</a> challenges solved by me.</p>
 
-<p>Problems and official solutions are available at <a href="https://github.com/DownUnderCTF/Challenges_2024_Public">DownUnderCTF/Challenges_2024_Public</a>.</p>
+<p>Challenges and official solutions are available at <a href="https://github.com/DownUnderCTF/Challenges_2024_Public">DownUnderCTF/Challenges_2024_Public</a>.</p>
 <h2 id="pwn" class="heading"><a href="#pwn" class="heading-anchor" aria-label="章节： pwn" tabindex="-1"></a><span>pwn</span></h2>
 <h3 id="vector-overflow-239-solves" class="heading"><a href="#vector-overflow-239-solves" class="heading-anchor" aria-label="章节： vector overflow (239 solves)" tabindex="-1"></a><span>vector overflow (239 solves)</span></h3>
 <p>See the source code of <code>vector</code>:</p>
