@@ -1255,9 +1255,9 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
 <span><span style="color: #994CC3">Content-Length:</span><span style="color: #403F53"> </span><span style="color: #4876D6">81</span></span>
 <span><span style="color: #994CC3">Content-Type:</span><span style="color: #403F53"> </span><span style="color: #4876D6">text/html; charset=UTF-8</span></span>
 <span></span>
-<span><span style="color: #403F53">&lt;html&gt;</span></span>
+<span><span style="color: #994CC3">&lt;html&gt;</span></span>
 <span><span style="color: #403F53">Congratulations!  You&#39;ve downloaded the first Wireshark lab file!</span></span>
-<span><span style="color: #403F53">&lt;/html&gt;</span></span></code></pre></div><div class="dark:important-block" style="display:none;" data-v-c675dba6><pre class="shiki dark" style="background-color: #011627" tabindex="0"><code><span><span style="color: #D6DEEB">HTTP/1.1 200 OK</span></span>
+<span><span style="color: #994CC3">&lt;/html&gt;</span></span></code></pre></div><div class="dark:important-block" style="display:none;" data-v-c675dba6><pre class="shiki dark" style="background-color: #011627" tabindex="0"><code><span><span style="color: #D6DEEB">HTTP/1.1 200 OK</span></span>
 <span><span style="color: #CAECE6">Date</span><span style="color: #C792EA">:</span><span style="color: #D6DEEB"> </span><span style="color: #ECC48D">Tue, 13 Jun 2023 11:14:57 GMT</span></span>
 <span><span style="color: #CAECE6">Server</span><span style="color: #C792EA">:</span><span style="color: #D6DEEB"> </span><span style="color: #ECC48D">Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.33 mod_perl/2.0.11 Perl/v5.16.3</span></span>
 <span><span style="color: #CAECE6">Last-Modified</span><span style="color: #C792EA">:</span><span style="color: #D6DEEB"> </span><span style="color: #ECC48D">Tue, 13 Jun 2023 05:59:01 GMT</span></span>
@@ -1266,9 +1266,9 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
 <span><span style="color: #CAECE6">Content-Length</span><span style="color: #C792EA">:</span><span style="color: #D6DEEB"> </span><span style="color: #ECC48D">81</span></span>
 <span><span style="color: #CAECE6">Content-Type</span><span style="color: #C792EA">:</span><span style="color: #D6DEEB"> </span><span style="color: #ECC48D">text/html; charset=UTF-8</span></span>
 <span></span>
-<span><span style="color: #D6DEEB">&lt;html&gt;</span></span>
+<span><span style="color: #7FDBCA">&lt;</span><span style="color: #CAECE6">html</span><span style="color: #7FDBCA">&gt;</span></span>
 <span><span style="color: #D6DEEB">Congratulations!  You&#39;ve downloaded the first Wireshark lab file!</span></span>
-<span><span style="color: #D6DEEB">&lt;/html&gt;</span></span></code></pre></div></section>
+<span><span style="color: #7FDBCA">&lt;/</span><span style="color: #CAECE6">html</span><span style="color: #7FDBCA">&gt;</span></span></code></pre></div></section>
 <p>server 可以通过 Cookie 识别用户<span class="mojikumi-line-end">，</span>cookie 通过 response 中的 <code>Set-Cookie</code> header 设置<span class="mojikumi-line-end">，</span>在之后的每次 request 中通过 <code>Cookie</code> header 发给 server<span class="mojikumi-line-end">。</span></p>
 <p>机构可以设置 Web cache<span class="mojikumi-line-end">，</span>使用户先向 Web cache 发送请求<span class="mojikumi-line-end">，</span>若 cache hit 则直接由 Web cache 发给用户<span class="mojikumi-line-end">，</span>若 cache miss 则 Web cache 向 origin server 发送请求再返回给用户<span class="mojikumi-line-end">。</span>Web cache 可以减小延迟<span class="mojikumi-line-end">，</span>降低带宽压力<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>与之类似的 CDN 则在<a href="#content-distribution-networks">后文</a>有详细讲解<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
 <p>可以通过 <code>If<wbr>-<wbr>Modified<wbr>-<wbr>Since</code> header 进行 <i>conditional GET</i><span class="mojikumi-line-end">，</span>若没有修改则会返回 body 为空的 304 Not Modified<span class="mojikumi-line-end">。</span></p>
