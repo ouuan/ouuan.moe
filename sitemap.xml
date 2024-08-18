@@ -10,13 +10,18 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://ouuan.moe/post/2024/07/ductf-2024</loc>
-        <lastmod>2024-07-10T02:17:57.000Z</lastmod>
+        <loc>https://ouuan.moe/post/2024/07/outlier</loc>
+        <lastmod>2024-08-18T17:39:44.000Z</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://ouuan.moe/post/2023/10/xuetang-roadside</loc>
-        <lastmod>2024-06-14T16:00:53.000Z</lastmod>
+        <lastmod>2024-08-18T17:14:00.000Z</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/post/2024/07/ductf-2024</loc>
+        <lastmod>2024-07-10T02:17:57.000Z</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
@@ -251,6 +256,10 @@
     </url>
     <url>
         <loc>https://ouuan.moe/posts</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/tag/%E5%9B%9E%E5%BF%86</loc>
         <priority>0.5</priority>
     </url>
     <url>
