@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: WIP</title>
+        <link>https://ouuan.moe/tag/WIP</link>
+        <description>标签: WIP - ouuan 的博客。</description>
+        <lastBuildDate>Mon, 17 Oct 2022 02:30:45 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/WIP/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[CS:APP 第四章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2022/10/csapp-4</link>
+            <guid>https://ouuan.moe/post/2022/10/csapp-4</guid>
+            <pubDate>Mon, 17 Oct 2022 02:30:45 GMT</pubDate>
+            <description><![CDATA[
+
+
+
+
+
+
+
+
+
+<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第四章 <span class="mojikumi">“</span>Processor Architecture<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>这章的主要内容为一个简化的指令集 Y86-64 的设计以及 Y86-64 处理器的实现<span class="mojikumi-line-start">（</span>顺序实现和 pipeline 实现<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/csapp">csapp</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+            <category domain="https://ouuan.moe/tag/WIP">WIP</category>
+        </item>
+    </channel>
+</rss>

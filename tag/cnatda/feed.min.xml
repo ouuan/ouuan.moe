@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: cnatda</title>
+        <link>https://ouuan.moe/tag/cnatda</link>
+        <description>标签: cnatda - ouuan 的博客。</description>
+        <lastBuildDate>Sun, 08 Oct 2023 09:32:15 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/cnatda/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[CNATDA 第七章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2023/09/cnatda-7</link>
+            <guid>https://ouuan.moe/post/2023/09/cnatda-7</guid>
+            <pubDate>Sun, 08 Oct 2023 09:32:15 GMT</pubDate>
+            <description><![CDATA[
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第七章 <span class="mojikumi">“</span>Wireless and Mobile Networks<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/cnatda">cnatda</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CNATDA 第八章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2023/07/cnatda-8</link>
+            <guid>https://ouuan.moe/post/2023/07/cnatda-8</guid>
+            <pubDate>Tue, 18 Jul 2023 14:32:44 GMT</pubDate>
+            <description><![CDATA[<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第八章 <span class="mojikumi">“</span>Security in Computer Networks<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/cnatda">cnatda</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CNATDA 第六章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2023/07/cnatda-6</link>
+            <guid>https://ouuan.moe/post/2023/07/cnatda-6</guid>
+            <pubDate>Sat, 15 Jul 2023 09:18:30 GMT</pubDate>
+            <description><![CDATA[
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第六章 <span class="mojikumi">“</span>The Link Layer and LANs<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/cnatda">cnatda</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CNATDA 第五章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2023/07/cnatda-5</link>
+            <guid>https://ouuan.moe/post/2023/07/cnatda-5</guid>
+            <pubDate>Sat, 08 Jul 2023 12:37:49 GMT</pubDate>
+            <description><![CDATA[
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第五章 <span class="mojikumi">“</span>The Network Layer: Control Plane<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/cnatda">cnatda</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CNATDA 第四章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2023/06/cnatda-4</link>
+            <guid>https://ouuan.moe/post/2023/06/cnatda-4</guid>
+            <pubDate>Wed, 05 Jul 2023 14:31:33 GMT</pubDate>
+            <description><![CDATA[
+
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第四章 <span class="mojikumi">“</span>The Network Layer: Data Plane<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/cnatda">cnatda</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+    </channel>
+</rss>

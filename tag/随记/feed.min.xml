@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: 随记</title>
+        <link>https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0</link>
+        <description>标签: 随记 - ouuan 的博客。</description>
+        <lastBuildDate>Sun, 08 Oct 2023 12:24:35 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[学堂路畔]]></title>
+            <link>https://ouuan.moe/post/2023/10/xuetang-roadside</link>
+            <guid>https://ouuan.moe/post/2023/10/xuetang-roadside</guid>
+            <pubDate>Sun, 08 Oct 2023 12:24:35 GMT</pubDate>
+            <description><![CDATA[<p>在学堂路畔<span class="mojikumi-line-end">，</span>与形形色色的路人擦肩而过<span class="mojikumi-line-end">，</span>总能偶然听到一些有趣的只言片语<span class="mojikumi-line-end">；</span>感觉可以记下来专门开一篇了<span class="mojikumi-line-start">（</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0">随记</category>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,1 @@
+function n(){document.fonts.ready.then(()=>{Array.from(document.getElementsByClassName("math-inline")).forEach(t=>{t.parentElement&&getComputedStyle(t.parentElement).textAlign==="justify"&&(t.getBoundingClientRect().width<t.parentElement.getBoundingClientRect().width/3||(t.parentElement.style.textAlign="initial"))})})}export{n as onLoad};

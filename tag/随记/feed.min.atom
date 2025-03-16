@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0</id>
+    <title>ouuan's blog: 标签: 随记</title>
+    <updated>2023-10-08T12:24:35.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>ouuan</name>
+        <uri>https://github.com/ouuan</uri>
+    </author>
+    <link rel="alternate" href="https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0"/>
+    <link rel="self" href="https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0/feed.min.atom"/>
+    <subtitle>标签: 随记 - ouuan 的博客。</subtitle>
+    <icon>https://ouuan.moe/favicon.ico</icon>
+    <rights>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[学堂路畔]]></title>
+        <id>https://ouuan.moe/post/2023/10/xuetang-roadside</id>
+        <link href="https://ouuan.moe/post/2023/10/xuetang-roadside"/>
+        <updated>2023-10-08T12:24:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>在学堂路畔<span class="mojikumi-line-end">，</span>与形形色色的路人擦肩而过<span class="mojikumi-line-end">，</span>总能偶然听到一些有趣的只言片语<span class="mojikumi-line-end">；</span>感觉可以记下来专门开一篇了<span class="mojikumi-line-start">（</span></p>
+]]></summary>
+        <category label="随记" term="https://ouuan.moe/tag/%E9%9A%8F%E8%AE%B0"/>
+    </entry>
+</feed>

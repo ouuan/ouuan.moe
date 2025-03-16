@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: csapp</title>
+        <link>https://ouuan.moe/tag/csapp</link>
+        <description>标签: csapp - ouuan 的博客。</description>
+        <lastBuildDate>Mon, 26 Dec 2022 06:44:19 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/csapp/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[CS:APP 第九章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2022/11/csapp-9</link>
+            <guid>https://ouuan.moe/post/2022/11/csapp-9</guid>
+            <pubDate>Mon, 26 Dec 2022 06:44:19 GMT</pubDate>
+            <description><![CDATA[
+
+<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第九章 <span class="mojikumi">“</span>Virtual Memory<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 page table<span class="mojikumi-line-end">、</span>address translation<span class="mojikumi-line-end">、</span>memory mapping<span class="mojikumi-line-end">、</span>dynamic allocation<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/csapp">csapp</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CS:APP 第八章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2022/11/csapp-8</link>
+            <guid>https://ouuan.moe/post/2022/11/csapp-8</guid>
+            <pubDate>Sat, 17 Dec 2022 06:27:26 GMT</pubDate>
+            <description><![CDATA[
+<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第八章 <span class="mojikumi">“</span>Exceptional Control Flow<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>本章的主要内容为 exception<span class="mojikumi-line-end">、</span>system call<span class="mojikumi-line-end">、</span>process<span class="mojikumi-line-end">、</span>signal<span class="mojikumi-line-end">、</span>longjmp<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/csapp">csapp</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CS:APP 第六章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2022/12/csapp-6</link>
+            <guid>https://ouuan.moe/post/2022/12/csapp-6</guid>
+            <pubDate>Mon, 05 Dec 2022 07:47:43 GMT</pubDate>
+            <description><![CDATA[
+
+
+
+
+
+<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第六章 <span class="mojikumi">“</span>The Memory Hierarchy<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>这章的主要内容有<span class="mojikumi-line-end">：</span>各种存储设备<span class="mojikumi-line-start">（</span>RAM<span class="mojikumi-line-end">、</span>ROM<span class="mojikumi-line-end">、</span>HDD<span class="mojikumi-line-end">、</span>SSD<span class="mojikumi-line-end">）</span>的特点<span class="mojikumi-line-end">、</span>程序的局部性<span class="mojikumi-line-end">、</span>缓存的结构以及原理<span class="mojikumi-line-end">、</span>缓存对程序性能的影响<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/csapp">csapp</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CS:APP 第七章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2022/10/csapp-7</link>
+            <guid>https://ouuan.moe/post/2022/10/csapp-7</guid>
+            <pubDate>Mon, 31 Oct 2022 10:39:06 GMT</pubDate>
+            <description><![CDATA[
+
+<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第七章 <span class="mojikumi">“</span>Linking<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>这章的主要内容为程序的链接<span class="mojikumi-line-end">。</span>学习链接有助于<span class="mojikumi-line-end">：</span>理解链接报错<span class="mojikumi-line-end">，</span>避免链接相关的 bug<span class="mojikumi-line-end">，</span>理解变量<span class="mojikumi-line-start">（</span>函数<span class="mojikumi-line-end">）</span>的作用域<span class="mojikumi-line-end">，</span>理解程序运行过程中与链接相关的步骤<span class="mojikumi-line-end">，</span>了解如何使用共享库<span class="mojikumi-line-start">（</span>动态链接库<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/csapp">csapp</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+        </item>
+        <item>
+            <title><![CDATA[CS:APP 第四章学习笔记]]></title>
+            <link>https://ouuan.moe/post/2022/10/csapp-4</link>
+            <guid>https://ouuan.moe/post/2022/10/csapp-4</guid>
+            <pubDate>Mon, 17 Oct 2022 02:30:45 GMT</pubDate>
+            <description><![CDATA[
+
+
+
+
+
+
+
+
+
+<p><a href="https://csapp.cs.cmu.edu/">CS:APP</a> 第四章 <span class="mojikumi">“</span>Processor Architecture<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+<p>这章的主要内容为一个简化的指令集 Y86-64 的设计以及 Y86-64 处理器的实现<span class="mojikumi-line-start">（</span>顺序实现和 pipeline 实现<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/csapp">csapp</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</category>
+            <category domain="https://ouuan.moe/tag/WIP">WIP</category>
+        </item>
+    </channel>
+</rss>

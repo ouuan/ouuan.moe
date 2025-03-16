@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: Rust</title>
+        <link>https://ouuan.moe/tag/Rust</link>
+        <description>标签: Rust - ouuan 的博客。</description>
+        <lastBuildDate>Mon, 15 Aug 2022 15:11:45 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/Rust/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[初学 Rust]]></title>
+            <link>https://ouuan.moe/post/2022/08/learn-rust</link>
+            <guid>https://ouuan.moe/post/2022/08/learn-rust</guid>
+            <pubDate>Mon, 15 Aug 2022 15:11:45 GMT</pubDate>
+            <description><![CDATA[
+
+<p>早就想学 Rust 了<span class="mojikumi-line-end">，</span>但一直咕着<span class="mojikumi-line-end">。</span>这次小学期的程设训练开了 Rust 课堂<span class="mojikumi-line-end">，</span>就毫不犹豫地选了<span class="mojikumi-line-end">，</span>也以此为契机学了 Rust<span class="mojikumi-line-end">。</span></p>
+<p>这篇就是简单记录一下大体上的学习过程<span class="mojikumi-line-end">，</span>如果有什么心得体会<span class="mojikumi-line-end">、</span>经验分享之类应该会开新的文章<span class="mojikumi-line-end">。</span></p>
+<p>顺便也算是程设训练的游记了（<span class="mojikumi">“</span>游记<span class="mojikumi-line-end">”</span>这个词来源于 OI 时期的习惯<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/Rust">Rust</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
+        </item>
+    </channel>
+</rss>

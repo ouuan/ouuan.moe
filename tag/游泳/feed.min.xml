@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: 游泳</title>
+        <link>https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3</link>
+        <description>标签: 游泳 - ouuan 的博客。</description>
+        <lastBuildDate>Thu, 10 Nov 2022 04:15:03 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[蛙泳换气踩坑记录]]></title>
+            <link>https://ouuan.moe/post/2022/11/pitfalls-of-breaststroke-breathing</link>
+            <guid>https://ouuan.moe/post/2022/11/pitfalls-of-breaststroke-breathing</guid>
+            <pubDate>Thu, 10 Nov 2022 04:15:03 GMT</pubDate>
+            <description><![CDATA[<p>这学期选了游泳零基础班作为体育课<span class="mojikumi-line-end">。</span>一开始的时候只是略低于平均水平<span class="mojikumi-line-end">，</span>但到后来学习换气的时候<span class="mojikumi-line-end">，</span>在 20~40m 左右卡了很久<span class="mojikumi-line-end">，</span>最后能连续游 50m 比班上倒数第二晚了三节课<span class="mojikumi-line-end">。</span></p>
+<p>在体育方面会垫底是我预料之中的<span class="mojikumi-line-end">，</span>但比倒数第二差太多<span class="mojikumi-line-end">，</span>长期和班上同学分开上课<span class="mojikumi-line-end">，</span>还是挺难受的<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>这段经历也让我有了丰富的失败经验<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>可以水一篇踩坑记录<span class="mojikumi-line-end">，</span>幸运的话可能还能在未来帮到某人<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3">游泳</category>
+            <category domain="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB">经验分享</category>
+        </item>
+    </channel>
+</rss>

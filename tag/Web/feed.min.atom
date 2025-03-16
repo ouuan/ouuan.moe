@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ouuan.moe/tag/Web</id>
+    <title>ouuan's blog: 标签: Web</title>
+    <updated>2023-03-04T03:42:29.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>ouuan</name>
+        <uri>https://github.com/ouuan</uri>
+    </author>
+    <link rel="alternate" href="https://ouuan.moe/tag/Web"/>
+    <link rel="self" href="https://ouuan.moe/tag/Web/feed.min.atom"/>
+    <subtitle>标签: Web - ouuan 的博客。</subtitle>
+    <icon>https://ouuan.moe/favicon.ico</icon>
+    <rights>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[当你的技术栈与软工交集为空（x]]></title>
+        <id>https://ouuan.moe/post/2023/03/thuse</id>
+        <link href="https://ouuan.moe/post/2023/03/thuse"/>
+        <updated>2023-03-04T03:42:29.000Z</updated>
+        <summary type="html"><![CDATA[
+
+
+<p>很好<span class="mojikumi-line-end">，</span>你已经学会了 Vue<span class="mojikumi-line-end">、</span>Rust<span class="mojikumi-line-end">、</span>Actix<span class="mojikumi-line-end">、</span>GitHub Actions<span class="mojikumi-line-end">、</span>pnpm<span class="mojikumi-line-end">、</span>Vitest<span class="mojikumi-line-end">、</span>Caddy</p>
+<p>现在你可以使用 React<span class="mojikumi-line-end">、</span>Python<span class="mojikumi-line-end">、</span>Django<span class="mojikumi-line-end">、</span>GitLab CI<span class="mojikumi-line-end">、</span>yarn<span class="mojikumi-line-end">、</span>Jest<span class="mojikumi-line-end">、</span>Nginx 来完成软工作业了<span class="mojikumi-line-start">（</span></p>
+]]></summary>
+        <category label="Web" term="https://ouuan.moe/tag/Web"/>
+        <category label="学习记录" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些博客排版优化小 trick]]></title>
+        <id>https://ouuan.moe/post/2023/02/typography-tricks</id>
+        <link href="https://ouuan.moe/post/2023/02/typography-tricks"/>
+        <updated>2023-02-09T15:19:45.000Z</updated>
+        <summary type="html"><![CDATA[
+
+<p>我的博客好像还用了不少奇怪的小 trick 来优化 <span class="mojikumi">（</span><s>hopefully</s><span class="mojikumi">）</span> 排版<span class="mojikumi-line-end">，</span>在这整理一下<span class="mojikumi-line-end">，</span>分享出来<span class="mojikumi-line-end">，</span>也是怕几年<span class="mojikumi-line-start">（</span><s>几天</s><span class="mojikumi-line-end">）</span>后想不起来这些奇怪的东西是在干什么<span class="mojikumi-line-end">。</span></p>
+<p>主要是 text justify 相关和标点挤压相关<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="blog" term="https://ouuan.moe/tag/blog"/>
+        <category label="CSS" term="https://ouuan.moe/tag/CSS"/>
+        <category label="Web" term="https://ouuan.moe/tag/Web"/>
+        <category label="经验分享" term="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[另一种很新的中文字体网页嵌入方案]]></title>
+        <id>https://ouuan.moe/post/2023/01/glyph-segregator</id>
+        <link href="https://ouuan.moe/post/2023/01/glyph-segregator"/>
+        <updated>2023-01-19T13:15:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>当你看到 <a href="https://ayu.land/webfont">一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-end">，</span>但是懒得优化 DP<span class="mojikumi-line-end">，</span>也不会进化算法<span class="mojikumi-line-end">，</span>你可以……</p>
+<p>整一个<a href="https://github.com/ouuan/glyph-segregator"><em>另</em>一种很新的中文字体网页嵌入方案</a><span class="mojikumi-line-start">（</span></p>
+]]></summary>
+        <category label="blog" term="https://ouuan.moe/tag/blog"/>
+        <category label="Web" term="https://ouuan.moe/tag/Web"/>
+        <category label="项目开发" term="https://ouuan.moe/tag/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[busuanzi 访问量统计与 live2d 插件同时使用导致 busuanzi 不显示的根本原因以及解决方法]]></title>
+        <id>https://ouuan.moe/post/2022/08/busuanzi-and-live2d</id>
+        <link href="https://ouuan.moe/post/2022/08/busuanzi-and-live2d"/>
+        <updated>2022-08-05T05:55:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>昨天在一位网友的 Hexo 博客遇到了很诡异的 busuanzi 访问量统计不显示问题<span class="mojikumi-line-end">，</span>经过一番研究发现是 busuanzi 代码的一处问题和 live2d 插件的一处问题凑在一起导致的<span class="mojikumi-line-end">。</span></p>
+<p>今天在写博客之前先搜了一下 <span class="mojikumi">“</span>busuanzi live2d<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>发现搜出来一堆结果<span class="mojikumi-line-end">，</span>我还以为我白研究了..结果点进去一看<span class="mojikumi-line-end">，</span>第一页结果里没有一个指出了问题的根本原因<span class="mojikumi-line-end">，</span>而且修复方法基本上都是删 feature 或者换组件<span class="mojikumi-line-end">，</span>但实际上只要知道问题的根本原因就可以在不妨碍正常功能运作的前提下进行修复<span class="mojikumi-line-end">。</span>所以昨天晚上没白忙活<span class="mojikumi-line-end">，</span>我这篇博客还是要写的<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="busuanzi" term="https://ouuan.moe/tag/busuanzi"/>
+        <category label="live2d" term="https://ouuan.moe/tag/live2d"/>
+        <category label="JavaScript" term="https://ouuan.moe/tag/JavaScript"/>
+        <category label="Web" term="https://ouuan.moe/tag/Web"/>
+        <category label="问题解决记录" term="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[display: none 与 loading="lazy"]]></title>
+        <id>https://ouuan.moe/post/2022/07/display-none-and-lazy-load</id>
+        <link href="https://ouuan.moe/post/2022/07/display-none-and-lazy-load"/>
+        <updated>2022-07-23T14:47:45.000Z</updated>
+        <summary type="html"><![CDATA[
+
+
+<p>同时使用 <code>display: none</code> 和 <code>loading<wbr>="<wbr>lazy<wbr>"</code> 可能会让内容永远加载不出来<span class="mojikumi-line-end">。</span></p>
+<p class="dark:hidden"><picture><img type="image/webp" srcset="/assets/comments-loading-light.53816492.webp" loading="lazy" src="/assets/comments-loading-light.53816492.webp" width="353" height="153" alt="截图：评论加载中"></picture></p>
+
+
+<p class="hidden dark:block"><picture><img type="image/webp" srcset="/assets/comments-loading-dark.93a651f2.webp" loading="lazy" src="/assets/comments-loading-dark.93a651f2.webp" width="375" height="147" alt="截图：评论加载中"></picture></p>
+]]></summary>
+        <category label="CSS" term="https://ouuan.moe/tag/CSS"/>
+        <category label="Web" term="https://ouuan.moe/tag/Web"/>
+        <category label="问题解决记录" term="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"/>
+    </entry>
+</feed>

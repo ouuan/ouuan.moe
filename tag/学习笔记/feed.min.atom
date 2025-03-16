@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id>
+    <title>ouuan's blog: 标签: 学习笔记</title>
+    <updated>2024-02-06T16:51:36.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>ouuan</name>
+        <uri>https://github.com/ouuan</uri>
+    </author>
+    <link rel="alternate" href="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    <link rel="self" href="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/feed.min.atom"/>
+    <subtitle>标签: 学习笔记 - ouuan 的博客。</subtitle>
+    <icon>https://ouuan.moe/favicon.ico</icon>
+    <rights>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[OSTEP 学习笔记 —— Virtualization]]></title>
+        <id>https://ouuan.moe/post/2024/01/ostep-virtualization</id>
+        <link href="https://ouuan.moe/post/2024/01/ostep-virtualization"/>
+        <updated>2024-02-06T16:51:36.000Z</updated>
+        <summary type="html"><![CDATA[
+
+
+
+<p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/"><span class="mojikumi-line-start">《</span>Operating Systems: Three Easy Pieces<span class="mojikumi-line-end">》</span></a>第一部分 Virtualization 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="ostep" term="https://ouuan.moe/tag/ostep"/>
+        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Computer Organization and Design 第二章学习笔记]]></title>
+        <id>https://ouuan.moe/post/2023/09/cod-2</id>
+        <link href="https://ouuan.moe/post/2023/09/cod-2"/>
+        <updated>2023-10-10T15:35:55.000Z</updated>
+        <summary type="html"><![CDATA[<p><span class="mojikumi-line-start">《</span>Computer Organization and Design RISC-V Edition: The Hardware/Software Interface (2nd Edition)<span class="mojikumi-line-end">》</span>第二章 <span class="mojikumi">“</span>Instructions: Language of the Computer<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="cod" term="https://ouuan.moe/tag/cod"/>
+        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CNATDA 第七章学习笔记]]></title>
+        <id>https://ouuan.moe/post/2023/09/cnatda-7</id>
+        <link href="https://ouuan.moe/post/2023/09/cnatda-7"/>
+        <updated>2023-10-08T09:32:15.000Z</updated>
+        <summary type="html"><![CDATA[
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第七章 <span class="mojikumi">“</span>Wireless and Mobile Networks<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="cnatda" term="https://ouuan.moe/tag/cnatda"/>
+        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CNATDA 第八章学习笔记]]></title>
+        <id>https://ouuan.moe/post/2023/07/cnatda-8</id>
+        <link href="https://ouuan.moe/post/2023/07/cnatda-8"/>
+        <updated>2023-07-18T14:32:44.000Z</updated>
+        <summary type="html"><![CDATA[<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第八章 <span class="mojikumi">“</span>Security in Computer Networks<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="cnatda" term="https://ouuan.moe/tag/cnatda"/>
+        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CNATDA 第六章学习笔记]]></title>
+        <id>https://ouuan.moe/post/2023/07/cnatda-6</id>
+        <link href="https://ouuan.moe/post/2023/07/cnatda-6"/>
+        <updated>2023-07-15T09:18:30.000Z</updated>
+        <summary type="html"><![CDATA[
+<p><span class="mojikumi-line-start">《</span>Computer Networking: A Top-Down Approach (8th Edition)<span class="mojikumi-line-end">》</span>第六章 <span class="mojikumi">“</span>The Link Layer and LANs<span class="mojikumi">”</span> 的学习笔记<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="cnatda" term="https://ouuan.moe/tag/cnatda"/>
+        <category label="学习笔记" term="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"/>
+    </entry>
+</feed>

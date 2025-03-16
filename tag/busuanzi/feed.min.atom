@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ouuan.moe/tag/busuanzi</id>
+    <title>ouuan's blog: 标签: busuanzi</title>
+    <updated>2022-08-05T05:55:15.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>ouuan</name>
+        <uri>https://github.com/ouuan</uri>
+    </author>
+    <link rel="alternate" href="https://ouuan.moe/tag/busuanzi"/>
+    <link rel="self" href="https://ouuan.moe/tag/busuanzi/feed.min.atom"/>
+    <subtitle>标签: busuanzi - ouuan 的博客。</subtitle>
+    <icon>https://ouuan.moe/favicon.ico</icon>
+    <rights>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[busuanzi 访问量统计与 live2d 插件同时使用导致 busuanzi 不显示的根本原因以及解决方法]]></title>
+        <id>https://ouuan.moe/post/2022/08/busuanzi-and-live2d</id>
+        <link href="https://ouuan.moe/post/2022/08/busuanzi-and-live2d"/>
+        <updated>2022-08-05T05:55:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>昨天在一位网友的 Hexo 博客遇到了很诡异的 busuanzi 访问量统计不显示问题<span class="mojikumi-line-end">，</span>经过一番研究发现是 busuanzi 代码的一处问题和 live2d 插件的一处问题凑在一起导致的<span class="mojikumi-line-end">。</span></p>
+<p>今天在写博客之前先搜了一下 <span class="mojikumi">“</span>busuanzi live2d<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>发现搜出来一堆结果<span class="mojikumi-line-end">，</span>我还以为我白研究了..结果点进去一看<span class="mojikumi-line-end">，</span>第一页结果里没有一个指出了问题的根本原因<span class="mojikumi-line-end">，</span>而且修复方法基本上都是删 feature 或者换组件<span class="mojikumi-line-end">，</span>但实际上只要知道问题的根本原因就可以在不妨碍正常功能运作的前提下进行修复<span class="mojikumi-line-end">。</span>所以昨天晚上没白忙活<span class="mojikumi-line-end">，</span>我这篇博客还是要写的<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="busuanzi" term="https://ouuan.moe/tag/busuanzi"/>
+        <category label="live2d" term="https://ouuan.moe/tag/live2d"/>
+        <category label="JavaScript" term="https://ouuan.moe/tag/JavaScript"/>
+        <category label="Web" term="https://ouuan.moe/tag/Web"/>
+        <category label="问题解决记录" term="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"/>
+    </entry>
+</feed>

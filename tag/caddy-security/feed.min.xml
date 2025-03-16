@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: caddy-security</title>
+        <link>https://ouuan.moe/tag/caddy-security</link>
+        <description>标签: caddy-security - ouuan 的博客。</description>
+        <lastBuildDate>Sat, 30 Jul 2022 07:17:46 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/caddy-security/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[使用 Caddy Security 时的 Uptime 监控]]></title>
+            <link>https://ouuan.moe/post/2022/07/uptime-monitoring-under-caddy-security</link>
+            <guid>https://ouuan.moe/post/2022/07/uptime-monitoring-under-caddy-security</guid>
+            <pubDate>Sat, 30 Jul 2022 07:17:46 GMT</pubDate>
+            <description><![CDATA[<p><a href="https://authp.github.io/">Caddy Security</a> 不仅会将未经认证的访问者拒之门外<span class="mojikumi-line-end">，</span>也会拦住 <a href="https://uptime.kuma.pet/"><s>可爱的 kuma 酱</s> Uptime Kuma</a><span class="mojikumi-line-end">。</span>这里会分享一下我的一个放过 kuma 的小技巧<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/caddy-security">caddy-security</category>
+            <category domain="https://ouuan.moe/tag/uptime-kuma">uptime-kuma</category>
+            <category domain="https://ouuan.moe/tag/caddy">caddy</category>
+            <category domain="https://ouuan.moe/tag/server">server</category>
+            <category domain="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95">问题解决记录</category>
+        </item>
+    </channel>
+</rss>

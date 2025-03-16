@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ouuan.moe/tag/btrfs</id>
+    <title>ouuan's blog: 标签: btrfs</title>
+    <updated>2022-07-23T05:03:23.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>ouuan</name>
+        <uri>https://github.com/ouuan</uri>
+    </author>
+    <link rel="alternate" href="https://ouuan.moe/tag/btrfs"/>
+    <link rel="self" href="https://ouuan.moe/tag/btrfs/feed.min.atom"/>
+    <subtitle>标签: btrfs - ouuan 的博客。</subtitle>
+    <icon>https://ouuan.moe/favicon.ico</icon>
+    <rights>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[Btrfs Quota 以及 Timeshift 导致的系统无响应问题解决过程记录]]></title>
+        <id>https://ouuan.moe/post/2022/07/btrfs-quota-timeshift-freeze</id>
+        <link href="https://ouuan.moe/post/2022/07/btrfs-quota-timeshift-freeze"/>
+        <updated>2022-07-23T05:03:23.000Z</updated>
+        <summary type="html"><![CDATA[
+<p>记录一下之前困扰我近一年的 <a href="https://wiki.archlinux.org/title/Btrfs">Btrfs</a> 快照导致的系统无响应问题<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="btrfs" term="https://ouuan.moe/tag/btrfs"/>
+        <category label="Arch Linux" term="https://ouuan.moe/tag/Arch%20Linux"/>
+        <category label="问题解决记录" term="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"/>
+    </entry>
+</feed>

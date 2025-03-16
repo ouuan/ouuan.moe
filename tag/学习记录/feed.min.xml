@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: 学习记录</title>
+        <link>https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95</link>
+        <description>标签: 学习记录 - ouuan 的博客。</description>
+        <lastBuildDate>Sat, 04 Mar 2023 03:42:29 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[当你的技术栈与软工交集为空（x]]></title>
+            <link>https://ouuan.moe/post/2023/03/thuse</link>
+            <guid>https://ouuan.moe/post/2023/03/thuse</guid>
+            <pubDate>Sat, 04 Mar 2023 03:42:29 GMT</pubDate>
+            <description><![CDATA[
+
+
+<p>很好<span class="mojikumi-line-end">，</span>你已经学会了 Vue<span class="mojikumi-line-end">、</span>Rust<span class="mojikumi-line-end">、</span>Actix<span class="mojikumi-line-end">、</span>GitHub Actions<span class="mojikumi-line-end">、</span>pnpm<span class="mojikumi-line-end">、</span>Vitest<span class="mojikumi-line-end">、</span>Caddy</p>
+<p>现在你可以使用 React<span class="mojikumi-line-end">、</span>Python<span class="mojikumi-line-end">、</span>Django<span class="mojikumi-line-end">、</span>GitLab CI<span class="mojikumi-line-end">、</span>yarn<span class="mojikumi-line-end">、</span>Jest<span class="mojikumi-line-end">、</span>Nginx 来完成软工作业了<span class="mojikumi-line-start">（</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/Web">Web</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
+        </item>
+        <item>
+            <title><![CDATA[数字逻辑实验到底是数电实验还是数设实验（x]]></title>
+            <link>https://ouuan.moe/post/2023/03/digital-logic</link>
+            <guid>https://ouuan.moe/post/2023/03/digital-logic</guid>
+            <pubDate>Thu, 02 Mar 2023 03:46:54 GMT</pubDate>
+            <description><![CDATA[
+
+
+
+
+<p>谁会愿意天天用一个课六个字的全名来叫它呢<span class="mojikumi-line-end">，</span>但是数字逻辑电路是数电<span class="mojikumi-line-end">，</span>数字逻辑设计是数设<span class="mojikumi-line-end">，</span>数字逻辑实验总不能是 <code>/数[字逻]?实验?/</code><span class="mojikumi-line-end">，</span>但叫它数电实验或者数设实验好像都不太对<span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-start">（</span></p>
+<p>上课的时候也是<span class="mojikumi-line-end">，</span>老师一会儿一个<span class="mojikumi-line-start">“</span>如果你是数设的同学<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>一会儿一个<span class="mojikumi-line-start">“</span>如果你没报上数设但想把数电学成数设<span class="mojikumi">”</span><span class="mojikumi-line-end">，</span>这课也太乱了<span class="mojikumi-line-start">（</span></p>
+<p>我写游记都得把两个课放一起写<span class="mojikumi-line-end">，</span>课就不能合成一个吗<span class="mojikumi-line-start">（</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/digital-design">digital-design</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
+        </item>
+        <item>
+            <title><![CDATA[初学 Rust]]></title>
+            <link>https://ouuan.moe/post/2022/08/learn-rust</link>
+            <guid>https://ouuan.moe/post/2022/08/learn-rust</guid>
+            <pubDate>Mon, 15 Aug 2022 15:11:45 GMT</pubDate>
+            <description><![CDATA[
+
+<p>早就想学 Rust 了<span class="mojikumi-line-end">，</span>但一直咕着<span class="mojikumi-line-end">。</span>这次小学期的程设训练开了 Rust 课堂<span class="mojikumi-line-end">，</span>就毫不犹豫地选了<span class="mojikumi-line-end">，</span>也以此为契机学了 Rust<span class="mojikumi-line-end">。</span></p>
+<p>这篇就是简单记录一下大体上的学习过程<span class="mojikumi-line-end">，</span>如果有什么心得体会<span class="mojikumi-line-end">、</span>经验分享之类应该会开新的文章<span class="mojikumi-line-end">。</span></p>
+<p>顺便也算是程设训练的游记了（<span class="mojikumi">“</span>游记<span class="mojikumi-line-end">”</span>这个词来源于 OI 时期的习惯<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/Rust">Rust</category>
+            <category domain="https://ouuan.moe/tag/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</category>
+        </item>
+    </channel>
+</rss>

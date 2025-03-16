@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ouuan's blog: 标签: 经验分享</title>
+        <link>https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB</link>
+        <description>标签: 经验分享 - ouuan 的博客。</description>
+        <lastBuildDate>Tue, 15 Oct 2024 17:07:34 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <copyright>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</copyright>
+        <atom:link href="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[在 i3 中使用多显示器]]></title>
+            <link>https://ouuan.moe/post/2024/10/i3-multi-monitor</link>
+            <guid>https://ouuan.moe/post/2024/10/i3-multi-monitor</guid>
+            <pubDate>Tue, 15 Oct 2024 17:07:34 GMT</pubDate>
+            <description><![CDATA[<p>之前我以为大家用多屏都是因为没有 tiling window manager 不会切屏<span class="mojikumi-line-end">，</span>用了才知道竖屏好<span class="mojikumi-line-start">（</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/i3">i3</category>
+            <category domain="https://ouuan.moe/tag/Arch%20Linux">Arch Linux</category>
+            <category domain="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB">经验分享</category>
+        </item>
+        <item>
+            <title><![CDATA[配一下 mpv]]></title>
+            <link>https://ouuan.moe/post/2023/08/mpv-tweaks</link>
+            <guid>https://ouuan.moe/post/2023/08/mpv-tweaks</guid>
+            <pubDate>Tue, 08 Aug 2023 13:26:50 GMT</pubDate>
+            <description><![CDATA[<p>mpv 是一款 <s>神似 vim 的</s> 媒体播放器<span class="mojikumi-line-end">，</span>就是说第一眼有点劝退<span class="mojikumi-line-end">，</span>配置项很多<span class="mojikumi-line-end">，</span>但如果能花点时间进行配置还是挺香的<span class="mojikumi-line-end">，</span>而且可以写脚本实现各种功能<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/mpv">mpv</category>
+            <category domain="https://ouuan.moe/tag/Arch%20Linux">Arch Linux</category>
+            <category domain="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB">经验分享</category>
+        </item>
+        <item>
+            <title><![CDATA[一些博客排版优化小 trick]]></title>
+            <link>https://ouuan.moe/post/2023/02/typography-tricks</link>
+            <guid>https://ouuan.moe/post/2023/02/typography-tricks</guid>
+            <pubDate>Thu, 09 Feb 2023 15:19:45 GMT</pubDate>
+            <description><![CDATA[
+
+<p>我的博客好像还用了不少奇怪的小 trick 来优化 <span class="mojikumi">（</span><s>hopefully</s><span class="mojikumi">）</span> 排版<span class="mojikumi-line-end">，</span>在这整理一下<span class="mojikumi-line-end">，</span>分享出来<span class="mojikumi-line-end">，</span>也是怕几年<span class="mojikumi-line-start">（</span><s>几天</s><span class="mojikumi-line-end">）</span>后想不起来这些奇怪的东西是在干什么<span class="mojikumi-line-end">。</span></p>
+<p>主要是 text justify 相关和标点挤压相关<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/blog">blog</category>
+            <category domain="https://ouuan.moe/tag/CSS">CSS</category>
+            <category domain="https://ouuan.moe/tag/Web">Web</category>
+            <category domain="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB">经验分享</category>
+        </item>
+        <item>
+            <title><![CDATA[蛙泳换气踩坑记录]]></title>
+            <link>https://ouuan.moe/post/2022/11/pitfalls-of-breaststroke-breathing</link>
+            <guid>https://ouuan.moe/post/2022/11/pitfalls-of-breaststroke-breathing</guid>
+            <pubDate>Thu, 10 Nov 2022 04:15:03 GMT</pubDate>
+            <description><![CDATA[<p>这学期选了游泳零基础班作为体育课<span class="mojikumi-line-end">。</span>一开始的时候只是略低于平均水平<span class="mojikumi-line-end">，</span>但到后来学习换气的时候<span class="mojikumi-line-end">，</span>在 20~40m 左右卡了很久<span class="mojikumi-line-end">，</span>最后能连续游 50m 比班上倒数第二晚了三节课<span class="mojikumi-line-end">。</span></p>
+<p>在体育方面会垫底是我预料之中的<span class="mojikumi-line-end">，</span>但比倒数第二差太多<span class="mojikumi-line-end">，</span>长期和班上同学分开上课<span class="mojikumi-line-end">，</span>还是挺难受的<span class="mojikumi-line-end">。</span>但是<span class="mojikumi-line-end">，</span>这段经历也让我有了丰富的失败经验<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>可以水一篇踩坑记录<span class="mojikumi-line-end">，</span>幸运的话可能还能在未来帮到某人<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3">游泳</category>
+            <category domain="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB">经验分享</category>
+        </item>
+        <item>
+            <title><![CDATA[普物实验 TeX & R 急救指北]]></title>
+            <link>https://ouuan.moe/post/2022/10/basic-tex-and-r-for-physics-lab</link>
+            <guid>https://ouuan.moe/post/2022/10/basic-tex-and-r-for-physics-lab</guid>
+            <pubDate>Mon, 31 Oct 2022 10:15:48 GMT</pubDate>
+            <description><![CDATA[<p>这学期选了物理实验B<span class="mojikumi-line-end">。</span></p>
+<p>以前基本上只在 Markdown 里写 LaTeX<span class="mojikumi-line-end">，</span>没怎么写过 <code>.tex</code><span class="mojikumi-line-end">，</span>R 则完全没有接触过<span class="mojikumi-line-end">。</span>理论上我应该好好学一学再用<span class="mojikumi-line-end">，</span>但实际上没时间好好学<span class="mojikumi-line-end">。</span>总不能用 Word 写实验报告并且手算吧<span class="mojikumi-line-start">（</span></p>
+<p>这里总结一下我写实验报告用到的 TeX 和 R<span class="mojikumi-line-end">。</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/TeX">TeX</category>
+            <category domain="https://ouuan.moe/tag/R">R</category>
+            <category domain="https://ouuan.moe/tag/%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C">物理实验</category>
+            <category domain="https://ouuan.moe/tag/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB">经验分享</category>
+        </item>
+    </channel>
+</rss>
