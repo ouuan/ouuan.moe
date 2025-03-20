@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/</id>
     <title>ouuan's blog</title>
-    <updated>2025-03-11T05:32:30.000Z</updated>
+    <updated>2025-03-20T14:18:09.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>ouuan</name>
@@ -14,6 +14,16 @@
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[修复 XeTeX 更新导致编译错误]]></title>
+        <id>https://ouuan.moe/post/2025/03/fix-xetex-update</id>
+        <link href="https://ouuan.moe/post/2025/03/fix-xetex-update"/>
+        <updated>2025-03-20T14:18:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>毕设又咕了几周<span class="mojikumi-line-end">，</span>今天一看编译出错<span class="mojikumi-line-start">（</span></p>
+]]></summary>
+        <category label="Arch Linux" term="https://ouuan.moe/tag/Arch%20Linux"/>
+        <category label="问题解决记录" term="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[TPCTF 2025 Official Write-Up (6 challenges)]]></title>
         <id>https://ouuan.moe/post/2025/03/tpctf-2025</id>
@@ -158,17 +168,6 @@ Licensed under CC BY-SA 4.0</rights>
         <link href="https://ouuan.moe/post/2024/12/tsgctf-2024-web"/>
         <updated>2024-12-17T03:39:37.000Z</updated>
         <summary type="html"><![CDATA[<p>Write-up for all <a href="https://ctftime.org/event/2424/">TSG CTF 2024</a> Web challenges (solved by me and blue-lotus team members).</p>
-]]></summary>
-        <category label="writeup" term="https://ouuan.moe/tag/writeup"/>
-        <category label="ctf" term="https://ouuan.moe/tag/ctf"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[GeekGame 2024 Write-Up]]></title>
-        <id>https://ouuan.moe/post/2024/10/geekgame-2024</id>
-        <link href="https://ouuan.moe/post/2024/10/geekgame-2024"/>
-        <updated>2024-10-20T15:16:06.000Z</updated>
-        <summary type="html"><![CDATA[
-<p>我一直以为奖项也会跳过往届选手<span class="mojikumi-line-start">（</span></p>
 ]]></summary>
         <category label="writeup" term="https://ouuan.moe/tag/writeup"/>
         <category label="ctf" term="https://ouuan.moe/tag/ctf"/>

@@ -4,13 +4,23 @@
         <title>ouuan's blog</title>
         <link>https://ouuan.moe/</link>
         <description>ouuan 的博客。</description>
-        <lastBuildDate>Tue, 11 Mar 2025 05:32:30 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 20 Mar 2025 14:18:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</copyright>
         <atom:link href="https://ouuan.moe/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[修复 XeTeX 更新导致编译错误]]></title>
+            <link>https://ouuan.moe/post/2025/03/fix-xetex-update</link>
+            <guid>https://ouuan.moe/post/2025/03/fix-xetex-update</guid>
+            <pubDate>Thu, 20 Mar 2025 14:18:09 GMT</pubDate>
+            <description><![CDATA[<p>毕设又咕了几周<span class="mojikumi-line-end">，</span>今天一看编译出错<span class="mojikumi-line-start">（</span></p>
+]]></description>
+            <category domain="https://ouuan.moe/tag/Arch%20Linux">Arch Linux</category>
+            <category domain="https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95">问题解决记录</category>
+        </item>
         <item>
             <title><![CDATA[TPCTF 2025 Official Write-Up (6 challenges)]]></title>
             <link>https://ouuan.moe/post/2025/03/tpctf-2025</link>
@@ -155,17 +165,6 @@ Licensed under CC BY-SA 4.0</copyright>
             <guid>https://ouuan.moe/post/2024/12/tsgctf-2024-web</guid>
             <pubDate>Tue, 17 Dec 2024 03:39:37 GMT</pubDate>
             <description><![CDATA[<p>Write-up for all <a href="https://ctftime.org/event/2424/">TSG CTF 2024</a> Web challenges (solved by me and blue-lotus team members).</p>
-]]></description>
-            <category domain="https://ouuan.moe/tag/writeup">writeup</category>
-            <category domain="https://ouuan.moe/tag/ctf">ctf</category>
-        </item>
-        <item>
-            <title><![CDATA[GeekGame 2024 Write-Up]]></title>
-            <link>https://ouuan.moe/post/2024/10/geekgame-2024</link>
-            <guid>https://ouuan.moe/post/2024/10/geekgame-2024</guid>
-            <pubDate>Sun, 20 Oct 2024 15:16:06 GMT</pubDate>
-            <description><![CDATA[
-<p>我一直以为奖项也会跳过往届选手<span class="mojikumi-line-start">（</span></p>
 ]]></description>
             <category domain="https://ouuan.moe/tag/writeup">writeup</category>
             <category domain="https://ouuan.moe/tag/ctf">ctf</category>
