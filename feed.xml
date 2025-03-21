@@ -343,6 +343,7 @@ Licensed under CC BY-SA 4.0</copyright>
 ]]></description>
             <content:encoded><![CDATA[<p>TPCTF 2025 official write-up for my challenges: baby/safe layout (revenge), Are you incognito, encrypted chat, and verified toolbox.</p>
 
+<p><a href="https://github.com/tp-ctf/TPCTF2025">Official repository with write-up and source code</a></p>
 <p>This is my first time to write challenges in a public CTF. Feel free to leave a comment or add a reaction below if you have unintended solutions / suggestions / anything to say.</p>
 <h2 id="baby-layout-81-solves" class="heading"><a href="#baby-layout-81-solves" class="heading-anchor" aria-label="章节： baby layout (81 solves)" tabindex="-1"></a><span>baby layout (81 solves)</span></h2>
 <p>One solution is to put <code>{{<wbr>content<wbr>}}</code> inside an attribute and to close the quote in the inner payload:</p>
