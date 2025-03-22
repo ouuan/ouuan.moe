@@ -15,7 +15,7 @@
             "url": "https://ouuan.moe/post/2022/10/gcc-use_vector_fp_converts",
             "title": "探究 gcc 浮点数精度转换所使用的指令 —— use_vector_fp_converts 优化",
             "summary": "<p>在学习 <a href=\"/post/2022/09/csapp-3#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E8%BD%AC%E6%8D%A2\">浮点数精度转换指令</a> 时<span class=\"mojikumi-line-end\">，</span>CS:APP 里提到 gcc 并不使用 <code>vcvtss2sd</code>/<code>vcvtsd2ss</code><span class=\"mojikumi-line-end\">，</span>而是使用 <code>vunpcklps</code> &#x26; <code>vcvtps2pd</code> / <code>vmovddup</code> &#x26; <code>vcvtpd2psx</code><span class=\"mojikumi-line-end\">，</span>但是我使用 gcc 12.2.0 编译得到的结果就是 <code>vcvtss2sd</code>/<code>vcvtsd2ss</code><span class=\"mojikumi-line-end\">。</span>对此<span class=\"mojikumi-line-end\">，</span>CS:APP 没有深究<span class=\"mojikumi-line-end\">：</span></p>\n<blockquote>\n<p>It is unclear why GCC generates this code. There is neither benefit nor need to have the value duplicated within the XMM register.</p>\n</blockquote>\n<p>但是 CS:APP 选择放弃反而会激发读者的斗志啊<span class=\"mojikumi-line-start\">（</span></p>\n<p>虽然但是<span class=\"mojikumi-line-end\">，</span>我确实没想到这玩意会让我断断续续搞了三天<span class=\"mojikumi-line-end\">，</span>ddl 又要寄了 🌚</p>\n",
-            "date_modified": "2022-10-20T07:39:20.000Z",
+            "date_modified": "2022-10-19T16:42:57.000Z",
             "tags": [
                 "gcc",
                 "性能优化",
