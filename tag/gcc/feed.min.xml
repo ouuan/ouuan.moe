@@ -4,7 +4,7 @@
         <title>ouuan's blog: 标签: gcc</title>
         <link>https://ouuan.moe/tag/gcc</link>
         <description>标签: gcc - ouuan 的博客。</description>
-        <lastBuildDate>Thu, 20 Oct 2022 07:39:20 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 19 Oct 2022 16:42:57 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -15,7 +15,7 @@ Licensed under CC BY-SA 4.0</copyright>
             <title><![CDATA[探究 gcc 浮点数精度转换所使用的指令 —— use_vector_fp_converts 优化]]></title>
             <link>https://ouuan.moe/post/2022/10/gcc-use_vector_fp_converts</link>
             <guid>https://ouuan.moe/post/2022/10/gcc-use_vector_fp_converts</guid>
-            <pubDate>Thu, 20 Oct 2022 07:39:20 GMT</pubDate>
+            <pubDate>Wed, 19 Oct 2022 16:42:57 GMT</pubDate>
             <description><![CDATA[<p>在学习 <a href="/post/2022/09/csapp-3#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E8%BD%AC%E6%8D%A2">浮点数精度转换指令</a> 时<span class="mojikumi-line-end">，</span>CS:APP 里提到 gcc 并不使用 <code>vcvtss2sd</code>/<code>vcvtsd2ss</code><span class="mojikumi-line-end">，</span>而是使用 <code>vunpcklps</code> &#x26; <code>vcvtps2pd</code> / <code>vmovddup</code> &#x26; <code>vcvtpd2psx</code><span class="mojikumi-line-end">，</span>但是我使用 gcc 12.2.0 编译得到的结果就是 <code>vcvtss2sd</code>/<code>vcvtsd2ss</code><span class="mojikumi-line-end">。</span>对此<span class="mojikumi-line-end">，</span>CS:APP 没有深究<span class="mojikumi-line-end">：</span></p>
 <blockquote>
 <p>It is unclear why GCC generates this code. There is neither benefit nor need to have the value duplicated within the XMM register.</p>
