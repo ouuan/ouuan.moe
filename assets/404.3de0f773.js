@@ -1,0 +1,1 @@
+import{a as o}from"./plausible.cec775c6.js";import"./vendor-vue.bd9aeaf8.js";import"./vite.1299367e.js";function r(){o("404",{props:{path:window.location.pathname,href:window.location.href}})}export{r as onLoad};
