@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3</id>
-    <title>ouuan's blog: 标签: 游泳</title>
+    <title>标签: 游泳 - ouuan's blog</title>
     <updated>2022-11-10T04:15:03.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
@@ -10,7 +10,7 @@
     </author>
     <link rel="alternate" href="https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3"/>
     <link rel="self" href="https://ouuan.moe/tag/%E6%B8%B8%E6%B3%B3/feed.atom"/>
-    <subtitle>标签: 游泳 - ouuan 的博客。</subtitle>
+    <subtitle>标签为 游泳 的文章 - ouuan 的博客</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</rights>

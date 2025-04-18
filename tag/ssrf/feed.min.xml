@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: ssrf</title>
+        <title>标签: ssrf - ouuan's blog</title>
         <link>https://ouuan.moe/tag/ssrf</link>
-        <description>标签: ssrf - ouuan 的博客。</description>
+        <description>标签为 ssrf 的文章 - ouuan 的博客</description>
         <lastBuildDate>Tue, 05 Sep 2023 16:11:15 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

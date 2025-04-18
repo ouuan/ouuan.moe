@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: csapp</title>
+        <title>标签: csapp - ouuan's blog</title>
         <link>https://ouuan.moe/tag/csapp</link>
-        <description>标签: csapp - ouuan 的博客。</description>
+        <description>标签为 csapp 的文章 - ouuan 的博客</description>
         <lastBuildDate>Mon, 26 Dec 2022 06:44:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

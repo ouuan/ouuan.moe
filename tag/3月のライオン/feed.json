@@ -1,9 +1,9 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "ouuan's blog: 标签: 3月のライオン",
+    "title": "标签: 3月のライオン - ouuan's blog",
     "home_page_url": "https://ouuan.moe/tag/3%E6%9C%88%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3",
     "feed_url": "https://ouuan.moe/tag/3%E6%9C%88%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3/feed.json",
-    "description": "标签: 3月のライオン - ouuan 的博客。",
+    "description": "标签为 3月のライオン 的文章 - ouuan 的博客",
     "author": {
         "name": "ouuan",
         "url": "https://github.com/ouuan"

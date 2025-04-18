@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: 回忆</title>
+        <title>标签: 回忆 - ouuan's blog</title>
         <link>https://ouuan.moe/tag/%E5%9B%9E%E5%BF%86</link>
-        <description>标签: 回忆 - ouuan 的博客。</description>
+        <description>标签为 回忆 的文章 - ouuan 的博客</description>
         <lastBuildDate>Sun, 18 Aug 2024 17:39:44 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

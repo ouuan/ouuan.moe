@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: 选课</title>
+        <title>标签: 选课 - ouuan's blog</title>
         <link>https://ouuan.moe/tag/%E9%80%89%E8%AF%BE</link>
-        <description>标签: 选课 - ouuan 的博客。</description>
+        <description>标签为 选课 的文章 - ouuan 的博客</description>
         <lastBuildDate>Mon, 25 Jul 2022 13:05:32 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

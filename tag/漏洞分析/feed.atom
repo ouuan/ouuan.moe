@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/tag/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90</id>
-    <title>ouuan's blog: 标签: 漏洞分析</title>
+    <title>标签: 漏洞分析 - ouuan's blog</title>
     <updated>2023-09-05T16:11:15.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
@@ -10,7 +10,7 @@
     </author>
     <link rel="alternate" href="https://ouuan.moe/tag/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"/>
     <link rel="self" href="https://ouuan.moe/tag/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/feed.atom"/>
-    <subtitle>标签: 漏洞分析 - ouuan 的博客。</subtitle>
+    <subtitle>标签为 漏洞分析 的文章 - ouuan 的博客</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</rights>

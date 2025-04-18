@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: i3</title>
+        <title>标签: i3 - ouuan's blog</title>
         <link>https://ouuan.moe/tag/i3</link>
-        <description>标签: i3 - ouuan 的博客。</description>
+        <description>标签为 i3 的文章 - ouuan 的博客</description>
         <lastBuildDate>Tue, 15 Oct 2024 17:07:34 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

@@ -3,7 +3,7 @@
     <channel>
         <title>ouuan's blog</title>
         <link>https://ouuan.moe/</link>
-        <description>ouuan 的博客。</description>
+        <description>ouuan 的博客</description>
         <lastBuildDate>Thu, 20 Mar 2025 14:18:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

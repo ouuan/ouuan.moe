@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/tag/writeup</id>
-    <title>ouuan's blog: 标签: writeup</title>
+    <title>标签: writeup - ouuan's blog</title>
     <updated>2025-03-11T05:32:30.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
@@ -10,7 +10,7 @@
     </author>
     <link rel="alternate" href="https://ouuan.moe/tag/writeup"/>
     <link rel="self" href="https://ouuan.moe/tag/writeup/feed.atom"/>
-    <subtitle>标签: writeup - ouuan 的博客。</subtitle>
+    <subtitle>标签为 writeup 的文章 - ouuan 的博客</subtitle>
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</rights>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: 问题解决记录</title>
+        <title>标签: 问题解决记录 - ouuan's blog</title>
         <link>https://ouuan.moe/tag/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95</link>
-        <description>标签: 问题解决记录 - ouuan 的博客。</description>
+        <description>标签为 问题解决记录 的文章 - ouuan 的博客</description>
         <lastBuildDate>Thu, 20 Mar 2025 14:18:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

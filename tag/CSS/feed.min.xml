@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ouuan's blog: 标签: CSS</title>
+        <title>标签: CSS - ouuan's blog</title>
         <link>https://ouuan.moe/tag/CSS</link>
-        <description>标签: CSS - ouuan 的博客。</description>
+        <description>标签为 CSS 的文章 - ouuan 的博客</description>
         <lastBuildDate>Thu, 09 Feb 2023 15:19:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>

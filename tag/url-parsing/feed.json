@@ -1,9 +1,9 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "ouuan's blog: 标签: url-parsing",
+    "title": "标签: url-parsing - ouuan's blog",
     "home_page_url": "https://ouuan.moe/tag/url-parsing",
     "feed_url": "https://ouuan.moe/tag/url-parsing/feed.json",
-    "description": "标签: url-parsing - ouuan 的博客。",
+    "description": "标签为 url-parsing 的文章 - ouuan 的博客",
     "author": {
         "name": "ouuan",
         "url": "https://github.com/ouuan"
