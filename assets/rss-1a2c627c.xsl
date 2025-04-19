@@ -187,7 +187,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="isoDateTime" select="concat($formattedDate, 'T', $time, $isoTimezone)"/>
-    <time datetime="{$isoDateTime}">
+    <time datetime="{$isoDateTime}" title="发布于 {$isoDateTime}">
       <xsl:value-of select="$formattedDate"/>
     </time>
   </xsl:template>
