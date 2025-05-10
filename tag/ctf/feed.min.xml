@@ -4,13 +4,31 @@
         <title>标签: ctf - ouuan's blog</title>
         <link>https://ouuan.moe/tag/ctf</link>
         <description>标签为 ctf 的文章 - ouuan 的博客</description>
-        <lastBuildDate>Tue, 11 Mar 2025 05:32:30 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 10 May 2025 07:49:30 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</copyright>
         <atom:link href="https://ouuan.moe/tag/ctf/feed.min.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[DEF CON CTF Quals 2025 memorybank Write-Up: Investigating V8 Garbage Collector]]></title>
+            <link>https://ouuan.moe/post/2025/04/memorybank</link>
+            <guid>https://ouuan.moe/post/2025/04/memorybank</guid>
+            <pubDate>Sat, 10 May 2025 07:49:30 GMT</pubDate>
+            <description><![CDATA[
+
+<p>Write-up for <a href="https://github.com/Nautilus-Institute/quals-2025/tree/main/memorybank">memorybank</a> in DEF CON CTF Quals 2025. Particularly:</p>
+<ul>
+<li>Why random username?</li>
+<li>Why <code>setTimeout</code>?</li>
+<li>Why large signature?</li>
+<li>Why <code>Uint8Array</code>?</li>
+</ul>
+]]></description>
+            <category domain="https://ouuan.moe/tag/writeup">writeup</category>
+            <category domain="https://ouuan.moe/tag/ctf">ctf</category>
+        </item>
         <item>
             <title><![CDATA[TPCTF 2025 Official Write-Up (6 challenges)]]></title>
             <link>https://ouuan.moe/post/2025/03/tpctf-2025</link>
@@ -155,17 +173,6 @@ Licensed under CC BY-SA 4.0</copyright>
             <guid>https://ouuan.moe/post/2024/12/tsgctf-2024-web</guid>
             <pubDate>Tue, 17 Dec 2024 03:39:37 GMT</pubDate>
             <description><![CDATA[<p>Write-up for all <a href="https://ctftime.org/event/2424/">TSG CTF 2024</a> Web challenges (solved by me and blue-lotus team members).</p>
-]]></description>
-            <category domain="https://ouuan.moe/tag/writeup">writeup</category>
-            <category domain="https://ouuan.moe/tag/ctf">ctf</category>
-        </item>
-        <item>
-            <title><![CDATA[GeekGame 2024 Write-Up]]></title>
-            <link>https://ouuan.moe/post/2024/10/geekgame-2024</link>
-            <guid>https://ouuan.moe/post/2024/10/geekgame-2024</guid>
-            <pubDate>Sun, 20 Oct 2024 15:16:06 GMT</pubDate>
-            <description><![CDATA[
-<p>我一直以为奖项也会跳过往届选手<span class="mojikumi-line-start">（</span></p>
 ]]></description>
             <category domain="https://ouuan.moe/tag/writeup">writeup</category>
             <category domain="https://ouuan.moe/tag/ctf">ctf</category>
