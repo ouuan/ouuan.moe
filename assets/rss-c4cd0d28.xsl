@@ -6,7 +6,7 @@
       <head>
         <meta charset="UTF-8"/>
         <title>RSS Feed - <xsl:value-of select="channel/title"/></title>
-        <link rel="stylesheet" href="/assets/style-18378f0f.css"/>
+        <link rel="stylesheet" href="/assets/style-89e80056.css"/>
         <noscript>
           <style>
           @media (prefers-color-scheme: light) { :root:not(.dark):not(.light) { color-scheme: light; --text-color: #232637; --bg-color: #DEE6EE; --card-color: #EFF3F7; --link-color: #1E66B8; --hover-color: #2E80DD; --active-color: #164C89; --bghover-color: #D6E0EA; --popup-color: #F7F9FB; --footer-color: #5F627B; --area-color: #E1E2E8; --nested-color: #F0F0F3; } } @media (prefers-color-scheme: dark) { :root:not(.dark):not(.light) { color-scheme: dark; --text-color: #E6EDF2; --bg-color: #0D0E15; --card-color: #1F2130; --link-color: #8BB8EC; --hover-color: #A2C6F0; --active-color: #74AAE8; --bghover-color: #353853; --popup-color: #2C2F45; --footer-color: #9699AE; --area-color: #2F313D; --nested-color: #3C3E4E; } } html { visibility:visible !important; }
@@ -53,32 +53,32 @@
             </nav>
             <div class="sm:basis-full"></div>
             <ul class="flex">
-              <li class="flex items-stretch">
+              <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="/search" title="搜索">
                   <span class="i-mdi-magnify text-xl"></span>
                 </a>
               </li>
-              <li class="flex items-stretch">
+              <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="/feed.xml" title="RSS 订阅">
                   <span class="i-mdi-rss text-xl"></span>
                 </a>
               </li>
-              <li class="flex items-stretch">
+              <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="https://taxodium.ink/about-feeds.html" title="About Feeds">
                   <span class="i-mdi-information-variant-circle text-lg"></span>
                 </a>
               </li>
-              <li class="flex items-stretch">
+              <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="https://app.folo.is/share/feeds/58094016632728586" title="Folo 订阅">
-                  <span class="i-simple-icons-folo mx-1"></span>
+                  <span class="i-simple-icons-folo"></span>
                 </a>
               </li>
-              <li class="flex items-stretch">
+              <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fouuan.moe%2Ffeed.xml" title="Feedly 订阅">
-                  <span class="i-simple-icons-feedly mx-1"></span>
+                  <span class="i-simple-icons-feedly text-lg"></span>
                 </a>
               </li>
-              <li class="flex items-stretch">
+              <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="https://www.inoreader.com/feed/https%3A%2F%2Fouuan.moe%2Ffeed.xml" title="Inoreader 订阅">
                   <span class="i-simple-icons-inoreader"></span>
                 </a>
