@@ -65,7 +65,7 @@
               </li>
               <li class="flex justify-center items-stretch w-10">
                 <a class="flex items-center p-2 bghover" href="https://taxodium.ink/about-feeds.html" title="About Feeds">
-                  <span class="i-mdi-information-variant-circle text-lg"></span>
+                  <span class="i-mdi-information-variant-circle text-xl"></span>
                 </a>
               </li>
               <li class="flex justify-center items-stretch w-10">
