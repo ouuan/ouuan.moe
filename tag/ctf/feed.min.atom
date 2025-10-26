@@ -19,7 +19,7 @@ Licensed under CC BY-SA 4.0</rights>
         <id>https://ouuan.moe/post/2025/10/geekgame-2025-graphauth-ransomware</id>
         <link href="https://ouuan.moe/post/2025/10/geekgame-2025-graphauth-ransomware"/>
         <updated>2025-10-26T04:32:03.000Z</updated>
-        <summary type="html"><![CDATA[<p>GeekGame 2025 <span class="mojikumi">【</span>统一身份认证<span class="mojikumi">】</span><wbr><span class="mojikumi-line-start">（</span>web-graphauth<span class="mojikumi-line-end">）</span>和<span class="mojikumi-line-start">【</span>勒索病毒<span class="mojikumi">】</span><wbr><span class="mojikumi-line-start">（</span>misc-ransomware<span class="mojikumi-line-end">）</span>的出题人题解<span class="mojikumi-line-end">。</span></p>
+        <summary type="html"><![CDATA[<p>GeekGame 2025<a href="https://github.com/PKU-GeekGame/geekgame-5th/tree/master/official_writeup/web-graphauth"><span class="mojikumi-line-start">【</span>统一身份认证<span class="mojikumi">】</span><wbr><span class="mojikumi-line-start">（</span>web-graphauth<span class="mojikumi-line-end">）</span></a>和<a href="https://github.com/PKU-GeekGame/geekgame-5th/tree/master/official_writeup/misc-ransomware"><span class="mojikumi-line-start">【</span>勒索病毒<span class="mojikumi">】</span><wbr><span class="mojikumi-line-start">（</span>misc-ransomware<span class="mojikumi-line-end">）</span></a>的出题人题解<span class="mojikumi-line-end">。</span></p>
 ]]></summary>
         <category label="writeup" term="https://ouuan.moe/tag/writeup"/>
         <category label="ctf" term="https://ouuan.moe/tag/ctf"/>
