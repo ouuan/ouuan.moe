@@ -6,8 +6,13 @@
     </url>
     <url>
         <loc>https://ouuan.moe/about</loc>
-        <lastmod>2025-08-11T04:18:45.000Z</lastmod>
+        <lastmod>2025-10-11T08:55:48.000Z</lastmod>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/post/2025/10/geekgame-2025-graphauth-ransomware</loc>
+        <lastmod>2025-10-26T04:32:03.000Z</lastmod>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://ouuan.moe/post/2025/04/memorybank</loc>
@@ -316,6 +321,10 @@
     </url>
     <url>
         <loc>https://ouuan.moe/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96</loc>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/tag/%E6%97%A5%E6%9C%AC</loc>
         <priority>0.5</priority>
     </url>
     <url>

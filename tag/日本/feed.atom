@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ouuan.moe/tag/%E6%97%A5%E6%9C%AC</id>
+    <title>标签: 日本 - ouuan's blog</title>
+    <updated>2025-03-04T13:37:49.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>ouuan</name>
+        <uri>https://github.com/ouuan</uri>
+    </author>
+    <link rel="alternate" href="https://ouuan.moe/tag/%E6%97%A5%E6%9C%AC"/>
+    <link rel="self" href="https://ouuan.moe/tag/%E6%97%A5%E6%9C%AC/feed.atom"/>
+    <subtitle>标签为 日本 的文章 - ouuan 的博客</subtitle>
+    <icon>https://ouuan.moe/favicon.ico</icon>
+    <rights>Copyright © 2022 - 2025 ouuan
+Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[SECCON CTF 13 Finals 游记]]></title>
+        <id>https://ouuan.moe/post/2025/02/seccon-13-finals</id>
+        <link href="https://ouuan.moe/post/2025/02/seccon-13-finals"/>
+        <updated>2025-03-04T13:37:49.000Z</updated>
+        <summary type="html"><![CDATA[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><s>能不能润日住在月岛<span class="mojikumi-line-start">（</span>不是</s></p>
+]]></summary>
+        <content type="html"><![CDATA[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><s>能不能润日住在月岛<span class="mojikumi-line-start">（</span>不是</s></p>
+
+<p><span class="mojikumi-line-start">（</span>107 图预警<span class="mojikumi-line-end">，</span>webp 总大小 97MB<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p><span class="mojikumi-line-start">（</span>文中所有拍摄于日本的照片都可以从 <a href="https://github.com/ouuan/blog-images/tree/master/2025/02">GitHub 上</a>下载带 GPS 信息<span class="mojikumi-line-start">（</span><code>exiftool -all= --gps:all -ext jpg .</code><span class="mojikumi-line-end">）</span>的原图<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<h2 id="day-0" class="heading"><a href="#day-0" class="heading-anchor" aria-label="章节： Day 0" tabindex="-1"></a><span>Day 0</span></h2>
+<h3 id="出发" class="heading"><a href="#出发" class="heading-anchor" aria-label="章节： 出发" tabindex="-1"></a><span>出发</span></h3>
+<p>离上次坐飞机已经五年半了<span class="mojikumi-line-end">，</span>这次还是国际<span class="mojikumi-line-end">，</span>本来还有点担心会不会不熟地方<span class="mojikumi-line-end">，</span>但实际上非常顺利<span class="mojikumi-line-end">，</span>除了一开始没带行李箱还排了 10min 托运的队然后被提醒直接找值班经理打印登机牌就行<span class="mojikumi-line-end">，</span>后面半小时就到登机口了<span class="mojikumi-line-end">，</span>过海关中国护照走快捷通道只用刷一下护照录个指纹<span class="mojikumi-line-end">，</span>所以不托运的话最极限 70min 到就够了<span class="mojikumi-line-start">（</span></p>
+<p>航旅纵横的舱位图显示 18 排起是机翼<span class="mojikumi-line-end">，</span>选的 16 排<span class="mojikumi-line-end">，</span>身边的窗外是引擎<span class="mojikumi-line-end">，</span>还是挡到了一点<span class="mojikumi-line-end">，</span>靠前的那个窗户基本没挡到<span class="mojikumi-line-end">，</span>但不仅不方便看而且还有很明显的划痕<span class="mojikumi-line-end">。</span>可惜没看到富士山<span class="mojikumi-line-end">，</span>好像是没注意观察航线<span class="mojikumi-line-end">，</span>开始注意窗外的时候可能已经过了<span class="mojikumi-line-end">，</span>也可能是被云挡住了<span class="mojikumi-line-start">（</span>？<span class="mojikumi-line-end">，</span>但是上午走的大家拍到了<span class="mojikumi-line-end">；</span>反正我是来看月岛的不是来看山的<span class="mojikumi-line-start">（</span></p>
+<p>听说国航有机上 Wi-Fi<span class="mojikumi-line-end">，</span>提供各种功能服务<span class="mojikumi-line-end">，</span>我还以为有互联网<span class="mojikumi-line-end">，</span>结果真的是只提供这些服务<span class="mojikumi-line-end">，</span>只有部分机型<span class="mojikumi-line-start">（</span>A350<span class="mojikumi-line-end">）</span>提供互联网<span class="mojikumi-line-end">。</span></p>
+<p>到了之后先去买了 Welcome Suica<span class="mojikumi-line-end">，</span>只能选整千还不能退款<span class="mojikumi-line-end">，</span>本来觉得 2000 应该差不多了<span class="mojikumi-line-end">，</span>但是一害怕不够用就选了 3000<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">；</span>但之后才知道酒店早餐收费<span class="mojikumi-line-end">，</span>要去便利店买早餐<span class="mojikumi-line-end">，</span>也能用一点<span class="mojikumi-line-end">。</span></p>
+<p>然后找了半天接水的地方<span class="mojikumi-line-end">，</span>这里差不多每个厕所都有直饮水<span class="mojikumi-line-end">，</span>但接水的地方很少<span class="mojikumi-line-end">。</span>找到之后看到它有个外盖<span class="mojikumi-line-end">，</span>感觉很迷惑<span class="mojikumi-line-end">，</span>轻轻拉了一下<span class="mojikumi-line-end">，</span>拉不开<span class="mojikumi-line-end">，</span>差点想去问 staff 了<span class="mojikumi-line-end">，</span>在小红书确认了一下<span class="mojikumi-line-end">，</span>这是正常的<span class="mojikumi-line-end">，</span>打开就行<span class="mojikumi-line-end">，</span>然后再稍微用了一点点力拉<span class="mojikumi-line-end">，</span>开了<span class="mojikumi-line-end">，</span>是磁吸的<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/hot-water.5f317702.webp" loading="lazy" src="/assets/hot-water.5f317702.webp" width="3072" height="4096" alt="有外盖的饮水机"></picture></p>
+<p>因为懒直接买的移动的漫游套餐<span class="mojikumi-line-end">，</span>连上漫游后先试了下 google.com 可以访问<span class="mojikumi-line-end">，</span>还以为真的出国了<span class="mojikumi-line-end">，</span>结果 YouTube<span class="mojikumi-line-end">、</span>X<span class="mojikumi-line-end">、</span>Telegram 什么的都不行<span class="mojikumi-line-end">，</span>只能在 4G 下双倍延迟<span class="mojikumi-line-end">，</span>大概是不如流量卡<span class="mojikumi-line-end">；</span>在机场看到 Google Maps 加载不出来<span class="mojikumi-line-end">，</span>以为也是漫游的问题<span class="mojikumi-line-end">，</span>直到几个小时后才发现<span class="mojikumi-line-end">，</span>Google 的各种服务似乎都可以直连<span class="mojikumi-line-end">，</span>而之前没加载出来是因为 GPS 信号差<span class="mojikumi-line-end">，</span>没加载出起点的<span class="mojikumi-line-start">“</span>您的位置<span class="mojikumi">”</span><wbr><span class="mojikumi-line-start">（</span></p>
+<p>好不容易加载出 Google Maps<span class="mojikumi-line-end">，</span>就见识到了东京轨道交通的神秘<span class="mojikumi-line-end">，</span>入口处写的品川·东银座·浅草·横滨方向<span class="mojikumi-line-end">，</span>我需要坐的是成田机场方向<span class="mojikumi-line-end">，</span>还以为走错了<span class="mojikumi-line-end">，</span>怀疑了一下人生之后决定先到站台再说<span class="mojikumi-line-end">，</span>结果发现没走错<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">。</span>没坐错真是太好了<span class="mojikumi-line-end">，</span>但还是 6 点才到月岛<span class="mojikumi-line-end">，</span>已经完全日落了<span class="mojikumi-line-start">（</span></p>
+<h3 id="月岛（夜）" class="heading"><a href="#月岛（夜）" class="heading-anchor" aria-label="章节： 月岛（夜）" tabindex="-1"></a><span>月岛<span class="mojikumi-line-start">（</span>夜<span class="mojikumi-line-end">）</span></span></h3>
+<p>部分参考资料<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/58128674"><span class="mojikumi-line-start">「</span>圣地巡礼<span class="mojikumi-line-end">」</span>三月的狮子——住在河边年轻棋士的故事 - 知乎</a></li>
+<li><a href="https://goumolife.home.blog/2019/11/15/march-comes-in-like-a-lion-1-2/">[巡禮] 三月的獅子(1)-中央大橋<span class="mojikumi-line-end">、</span>佃島<span class="mojikumi-line-end">、</span>月島︱東京 – 狗摸生活札記</a></li>
+<li><a href="https://www.bilibili.com/opus/180342275145689076">三月的狮子<span lang="ja">(三月のライオン)聖地巡礼</span> - 哔哩哔哩</a></li>
+<li>
+<span lang="ja"><span class="mojikumi-line-start">『</span>3月のライオン おさらい読本 初級編<span class="mojikumi-line-end">』</span></span>
+</li>
+</ul>
+<p>本来想直接去<span lang="ja">もんじゃ太郎</span><span class="mojikumi-line-end">，</span>结果看到里面其乐融融一起吃饭的大家<span class="mojikumi-line-end">，</span>压力太大了<span class="mojikumi-line-end">，</span>就想晚点人少了再去<span class="mojikumi-line-end">，</span>先去巡礼<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/monja-taro.19fc9f77.webp" loading="lazy" src="/assets/monja-taro.19fc9f77.webp" width="3072" height="4096" alt="もんじゃ太郎"></picture></p>
+<p>MOS &#x26; CAFE<span class="mojikumi-line-end">，</span>112 话零和三姐妹一起睡觉起来后就是去的这里吃<span class="mojikumi-line-end">，</span>而第 12 话遇到高桥那家是麦当劳<span class="mojikumi-line-end">，</span>这是两个不同的地方<span class="mojikumi-line-start">（</span>之前在一些游记看到说误以为自己搞错了原型<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/mos-cafe.a0604bde.webp" loading="lazy" src="/assets/mos-cafe.a0604bde.webp" width="3072" height="4096" alt="MOS &amp; CAFE"></picture></p>
+<p>儿童乐园<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/children-park-1.5c7e0149.webp" loading="lazy" src="/assets/children-park-1.5c7e0149.webp" width="3072" height="4096" alt="月島三丁目児童遊園"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/children-park-2.05b1202d.webp" loading="lazy" src="/assets/children-park-2.05b1202d.webp" width="4096" height="3072" alt="月島三丁目児童遊園"></picture></p>
+<p>一开始在商店街还没啥感觉<span class="mojikumi-line-end">，</span>走到河畔<span class="mojikumi-line-end">，</span>看到河面<span class="mojikumi-line-end">、</span>步道和中央大桥<span class="mojikumi-line-end">，</span>一下子非常感动<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukishima-riverside-1.ddcc305d.webp" loading="lazy" src="/assets/tsukishima-riverside-1.ddcc305d.webp" width="4096" height="3072" alt="月岛河畔"></picture></p>
+<p><span class="mojikumi-line-start">（</span>较近的那个是佃大桥<span class="mojikumi-line-end">，</span>后面是中央大桥的桥塔<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukishima-riverside-2.7c2a14f9.webp" loading="lazy" src="/assets/tsukishima-riverside-2.7c2a14f9.webp" width="4096" height="3072" alt="月岛河畔"></picture></p>
+<p>住吉水门<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/watergate.ebbf652d.webp" loading="lazy" src="/assets/watergate.ebbf652d.webp" width="3072" height="4096" alt="住吉水门"></picture></p>
+<p>三日月堂的原型<span class="mojikumi-line-end">，</span>天安<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tenyasu.a2ae4876.webp" loading="lazy" src="/assets/tenyasu.a2ae4876.webp" width="3072" height="4096" alt="天安"></picture></p>
+<p>从天安门口沿河岸走 100m 就到了鸟居<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tori-1.422015fb.webp" loading="lazy" src="/assets/tori-1.422015fb.webp" width="3072" height="4096" alt="鸟居"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tori-2.6a2e6574.webp" loading="lazy" src="/assets/tori-2.6a2e6574.webp" width="4096" height="3072" alt="鸟居"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tori-3.40e1f2ca.webp" loading="lazy" src="/assets/tori-3.40e1f2ca.webp" width="3072" height="4096" alt="鸟居"></picture></p>
+<p>旁边这个眼熟的建筑其实<span class="mojikumi-line-start">（</span>下面<span class="mojikumi-line-end">）</span>是厕所<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/wc.be95f120.webp" loading="lazy" src="/assets/wc.be95f120.webp" width="3072" height="4096" alt="公共厕所"></picture></p>
+<p>佃公园<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukuda-park.649aa601.webp" loading="lazy" src="/assets/tsukuda-park.649aa601.webp" width="4096" height="3072" alt="佃公园"></picture></p>
+<p>住吉神社<span class="mojikumi-line-end">。</span>后来才想起来忘记进去看一眼绘马了<span class="mojikumi-line-end">，</span>可惜<span class="mojikumi-line-end">，</span>大概是第一次来神社还有点过度地敬畏<span class="mojikumi-line-end">，</span>不敢随便进去看<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>之后又去了几个神社就习惯了<span class="mojikumi-line-end">。</span>而且我印象中 3 狮里这个神社似乎没什么剧情<span class="mojikumi-line-start">（</span>？<span class="mojikumi-line-end">，</span>起码比将棋会馆旁边的鸠森八幡神社以及 μ's<span class="mojikumi-line-end">、</span>Liella! 的神社少出现很多<span class="mojikumi-line-end">，</span>但忘记了起码可以看一下绘马有没有 3 狮<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/sumiyoshi-jinja.b2532590.webp" loading="lazy" src="/assets/sumiyoshi-jinja.b2532590.webp" width="3072" height="4096" alt="住吉神社"></picture></p>
+<p>佃小桥<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukudako-bridge-1.58ea70ab.webp" loading="lazy" src="/assets/tsukudako-bridge-1.58ea70ab.webp" width="4096" height="3072" alt="佃小桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukudako-bridge-2.4b192cbd.webp" loading="lazy" src="/assets/tsukudako-bridge-2.4b192cbd.webp" width="4096" height="3072" alt="佃小桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukudako-bridge-3.82a2809d.webp" loading="lazy" src="/assets/tsukudako-bridge-3.82a2809d.webp" width="3072" height="4096" alt="佃小桥北侧"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukudako-bridge-4.86e565f5.webp" loading="lazy" src="/assets/tsukudako-bridge-4.86e565f5.webp" width="3072" height="4096" alt="佃小桥南侧"></picture></p>
+<p>逛了半天回来一看<span class="mojikumi-line-end">，</span>店里人也没有变少<span class="mojikumi-line-end">，</span>只能去吃了<span class="mojikumi-line-end">。</span>进去之后才意识到<span class="mojikumi-line-end">，</span>比起人少<span class="mojikumi-line-end">，</span>其实更需要的是一个靠窗的桌<span class="mojikumi-line-end">，</span>我最后进去的时候只有靠墙的桌了<span class="mojikumi-line-end">，</span>而墙上有插画和签名！不知道为什么在外面看里面有多少人的时候没注意<span class="mojikumi-line-end">，</span>本来可以看着吃的<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">；</span>店里人多也不方便拍照<span class="mojikumi-line-end">，</span>最后也实在是不敢拍<span class="mojikumi-line-end">，</span>反正这个网上也有照片<span class="mojikumi-line-end">，</span>我自己也亲眼看到了就完事了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">。</span>高桥<span class="mojikumi-line-end">、</span>日向和零吃的<span lang="ja">鲑もんじゃ</span>和<span lang="ja">明太もちチーズもんじゃ</span><span class="mojikumi-line-end">，</span>而我要吃肉<span class="mojikumi-line-end">，</span>就鲑了<span class="mojikumi-line-end">。</span>之前在小红书上看到很多避雷文字烧的<span class="mojikumi-line-end">，</span>还有点担心<span class="mojikumi-line-end">，</span>但我觉得味道还可以<span class="mojikumi-line-end">，</span>外观和小红书相比也没那么呕吐物<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>唯一的问题是<span class="mojikumi-line-end">，</span>这个小铲从一整块里铲一口还好<span class="mojikumi-line-end">，</span>把单独的一小块铲起来就有点难了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">。</span>另外<span class="mojikumi-line-end">，</span>在我之后还来了一个一个人吃的男生<span class="mojikumi-line-end">，</span>感动<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/monja-1.66ac693a.webp" loading="lazy" src="/assets/monja-1.66ac693a.webp" width="3072" height="4096" alt="文字烧最初的样子"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/monja-2.86056280.webp" loading="lazy" src="/assets/monja-2.86056280.webp" width="3072" height="4096" alt="飞舞的铲子"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/monja-3.6008fc1d.webp" loading="lazy" src="/assets/monja-3.6008fc1d.webp" width="3072" height="4096" alt="文字烧成品"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/monja-4.bb81e88c.webp" loading="lazy" src="/assets/monja-4.bb81e88c.webp" width="3072" height="4096" alt="吃完后 &amp; 桌牌 &amp; 调料"></picture></p>
+<p>吃完文字烧之后<span class="mojikumi-line-end">，</span>沿河岸一直走到了月岛的北端<span class="mojikumi-line-end">。</span>东侧的河岸是一些石滩<span class="mojikumi-line-end">，</span>我印象中<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">）</span>是没有出现过这边的场景<span class="mojikumi-line-end">，</span>就没拍<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-1.e41f3a9f.webp" loading="lazy" src="/assets/chuoohashi-1.e41f3a9f.webp" width="4096" height="3072" alt="中央大桥西侧"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-2.a491464f.webp" loading="lazy" src="/assets/chuoohashi-2.a491464f.webp" width="3264" height="2448" alt="中央大桥东侧"></picture></p>
+<p><span lang="ja">マルエツ</span>超市<span class="mojikumi-line-end">，</span>下了中央大桥后就能望到它的绿色<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/maruetsu.372e17cd.webp" loading="lazy" src="/assets/maruetsu.372e17cd.webp" width="3072" height="4096" alt="マルエツ"></picture></p>
+<p>一路上我都并不抱期待地希望能看到什么 3 狮元素<span class="mojikumi-line-end">，</span>除了<span lang="ja">もんじゃ太郎</span>也没看到别的<span class="mojikumi-line-end">，</span>结果在中央大桥脚下有个意外收获<span class="mojikumi-line-start">（</span>这边是一家 Natural Lawson<span class="mojikumi-line-end">，</span>不知道为啥出现在这<span class="mojikumi">）</span><span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/kio.66cd2d65.webp" loading="lazy" src="/assets/kio.66cd2d65.webp" width="3072" height="4096" alt="棋王战海报"></picture></p>
+<p>中央大桥的近景<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-3.2fdee197.webp" loading="lazy" src="/assets/chuoohashi-3.2fdee197.webp" width="3072" height="4096" alt="中央大桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-4.1a4668dc.webp" loading="lazy" src="/assets/chuoohashi-4.1a4668dc.webp" width="4096" height="3072" alt="中央大桥铭牌"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-5.92a53410.webp" loading="lazy" src="/assets/chuoohashi-5.92a53410.webp" width="3072" height="4096" alt="中央大桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-6.50a93dad.webp" loading="lazy" src="/assets/chuoohashi-6.50a93dad.webp" width="3072" height="4096" alt="中央大桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-7.adcc53f4.webp" loading="lazy" src="/assets/chuoohashi-7.adcc53f4.webp" width="3072" height="4096" alt="中央大桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-8.7ec607f7.webp" loading="lazy" src="/assets/chuoohashi-8.7ec607f7.webp" width="3072" height="4096" alt="中央大桥上桥处"></picture></p>
+<p>灵岸岛水位观测所<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/water-level-1.52808707.webp" loading="lazy" src="/assets/water-level-1.52808707.webp" width="3072" height="4096" alt="灵岸岛水位观测所"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/water-level-2.56a52753.webp" loading="lazy" src="/assets/water-level-2.56a52753.webp" width="3072" height="4096" alt="灵岸岛水位观测所"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/water-level-3.2943b963.webp" loading="lazy" src="/assets/water-level-3.2943b963.webp" width="4096" height="3072" alt="灵岸岛水位观测所"></picture></p>
+<p>零去将棋会馆时前往车站经过的高桥<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/takahashi-1.8f3c9cfc.webp" loading="lazy" src="/assets/takahashi-1.8f3c9cfc.webp" width="3072" height="4096" alt="高桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/takahashi-2.4640c72d.webp" loading="lazy" src="/assets/takahashi-2.4640c72d.webp" width="4096" height="3072" alt="高桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/takahashi-3.7f6aa36e.webp" loading="lazy" src="/assets/takahashi-3.7f6aa36e.webp" width="3072" height="4096" alt="高桥铭牌"></picture></p>
+<h2 id="day-1" class="heading"><a href="#day-1" class="heading-anchor" aria-label="章节： Day 1" tabindex="-1"></a><span>Day 1</span></h2>
+<h3 id="月岛（昼）" class="heading"><a href="#月岛（昼）" class="heading-anchor" aria-label="章节： 月岛（昼）" tabindex="-1"></a><span>月岛<span class="mojikumi-line-start">（</span>昼<span class="mojikumi-line-end">）</span></span></h3>
+<p>半夜醒了一次<span class="mojikumi-line-end">，</span>突然觉得早上应该去月岛走走<span class="mojikumi-line-end">，</span>而且后面两天可能也没机会再去了<span class="mojikumi-line-end">，</span>尤其是白天去<span class="mojikumi-line-end">，</span>于是把闹钟调早了<span class="mojikumi-line-start">（</span></p>
+<p>早上很匆忙地走了一趟<span class="mojikumi-line-end">，</span>连中央大桥的远景都忘记拍了<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/takahashi-day.85107c09.webp" loading="lazy" src="/assets/takahashi-day.85107c09.webp" width="3072" height="4096" alt="高桥（白天）"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-day-1.b93d7e61.webp" loading="lazy" src="/assets/chuoohashi-day-1.b93d7e61.webp" width="3072" height="4096" alt="中央大桥（白天）"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/chuoohashi-day-2.487f0023.webp" loading="lazy" src="/assets/chuoohashi-day-2.487f0023.webp" width="4096" height="3072" alt="中央大桥（白天）"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukishima-riverside-day-1.94f6844e.webp" loading="lazy" src="/assets/tsukishima-riverside-day-1.94f6844e.webp" width="3072" height="4096" alt="河岸（白天）"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukishima-riverside-day-2.7c77088f.webp" loading="lazy" src="/assets/tsukishima-riverside-day-2.7c77088f.webp" width="4096" height="3072" alt="河岸（白天）"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukishima-riverside-day-3.914f59fd.webp" loading="lazy" src="/assets/tsukishima-riverside-day-3.914f59fd.webp" width="4096" height="3072" alt="河岸（白天）"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/sumiyoshiko-bridge-day-1.b9ef15ab.webp" loading="lazy" src="/assets/sumiyoshiko-bridge-day-1.b9ef15ab.webp" width="4096" height="3072" alt="住吉小桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/sumiyoshiko-bridge-day-2.1ba2ead5.webp" loading="lazy" src="/assets/sumiyoshiko-bridge-day-2.1ba2ead5.webp" width="3072" height="4096" alt="住吉小桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tsukishima-riverside-day-4.bd71b8fc.webp" loading="lazy" src="/assets/tsukishima-riverside-day-4.bd71b8fc.webp" width="4096" height="3072" alt="河岸（白天）"></picture></p>
+<p>回来的时候 Google Maps 说新宿线比浅草线快<span class="mojikumi-line-end">，</span>并且说出站口在 1 车厢<span class="mojikumi-line-end">，</span>而进站的时候在 10 车厢<span class="mojikumi-line-end">，</span>走了半天走过去<span class="mojikumi-line-end">，</span>结果下车一看<span class="mojikumi-line-end">，</span>旁边没有出站口<span class="mojikumi-line-end">，</span>只有一个 JR 换乘口<span class="mojikumi-line-end">，</span>而出站口在 5 车厢<span class="mojikumi-line-end">，</span>并且要地下走很远<span class="mojikumi-line-end">，</span>怀疑是之前有一个更快的走到出站口的路线而现在没了<span class="mojikumi-line-end">，</span>最后赶得非常急<span class="mojikumi-line-start">（</span></p>
+<h3 id="ctf" class="heading"><a href="#ctf" class="heading-anchor" aria-label="章节： CTF" tabindex="-1"></a><span>CTF</span></h3>
+<p>开场之后<span class="mojikumi-line-end">，</span>用了一会儿搞明白这个 KotH 是在干什么<span class="mojikumi-line-end">，</span>原来只是按排名每 5min 记一次分<span class="mojikumi-line-end">，</span>而不是攻防渗透什么的<span class="mojikumi-line-end">。</span>phase 1 是一个矩阵快速幂优化递推<span class="mojikumi-line-end">，</span>怀念<span class="mojikumi-line-end">，</span>但是事后得知这个递推有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span> 的公式<span class="mojikumi-line-start">（</span>不需要算幂<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>草<span class="mojikumi-line-end">，</span>学 OI 学的<span class="mojikumi-line-start">（</span></p>
+<p>Web 有三个 HTML sanitize<span class="mojikumi-line-end">，</span>我研究过 HTML sanitize<span class="mojikumi-line-end">，</span>但三个题都不会<span class="mojikumi-line-start">（</span></p>
+<p>KotH phase 3 一开始想到了做法但以为不对就没写<span class="mojikumi-line-end">，</span>最后很晚才开始写<span class="mojikumi-line-end">，</span>最后 20min 才写完<span class="mojikumi-line-end">，</span>没拿到几分<span class="mojikumi-line-end">，</span>血亏<span class="mojikumi-line-end">，</span>本来可以 rk3 的<span class="mojikumi-line-start">（</span></p>
+<p>结束后被老师带去吃了回转寿司<span class="mojikumi-line-end">，</span>甚至先坐地铁到了浅草寺<span class="mojikumi-line-end">，</span>我非常疑惑<span class="mojikumi-line-end">，</span>今天不是比赛日吗<span class="mojikumi-line-end">，</span>不应该在旁边随便吃点吗<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">；</span>而且<span class="mojikumi-line-end">，</span>有了今天早上和今天晚上<span class="mojikumi-line-end">，</span>suica 除去京急线的使用量已经快达到三日通票价了<span class="mojikumi-line-end">，</span>之前还算的肯定到不了<span class="mojikumi-line-start">（</span></p>
+<p>晚上本来想早点睡<span class="mojikumi-line-end">，</span>day 2 大力 KotH<span class="mojikumi-line-end">，</span>结果一直在看 Web<span class="mojikumi-line-start">（</span></p>
+<h2 id="day-2" class="heading"><a href="#day-2" class="heading-anchor" aria-label="章节： Day 2" tabindex="-1"></a><span>Day 2</span></h2>
+<h3 id="ctf-2" class="heading"><a href="#ctf-2" class="heading-anchor" aria-label="章节： CTF" tabindex="-1"></a><span>CTF</span></h3>
+<p>有了昨天的经验<span class="mojikumi-line-end">，</span>今天 KotH 比较顺利<span class="mojikumi-line-end">，</span>赶回了很多分<span class="mojikumi-line-end">；</span>出新题的间隙看 Web<span class="mojikumi-line-end">，</span>但到最后也没搞出来<span class="mojikumi-line-end">，</span>而且我非常不明白<span class="mojikumi-line-end">，</span>说好的 BOM 优先于 Content-Type 呢<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">。</span>最后成功 rk3<span class="mojikumi-line-end">，</span>离 rk2 就差 52 分<span class="mojikumi-line-end">，</span>只要 day 1 phase 3 早半小时开始写就有了<span class="mojikumi-line-end">，</span>唉<span class="mojikumi-line-end">；</span>只不过我硬是把 CTF 打成了 HPC<span class="mojikumi-line-end">，</span>还能 rk3<span class="mojikumi-line-end">，</span>也不亏了<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/medal.550b1d49.webp" loading="lazy" src="/assets/medal.550b1d49.webp" width="3675" height="2190" alt="奖牌"></picture></p>
+<p>结束后有个 after party 可以吃饭<span class="mojikumi-line-end">，</span>但是看上去要搞很久的样子<span class="mojikumi-line-end">，</span>我就先溜了<span class="mojikumi-line-start">（</span></p>
+<h3 id="秋叶原（μs）" class="heading"><a href="#秋叶原（μs）" class="heading-anchor" aria-label="章节： 秋叶原（μ&#x27;s）" tabindex="-1"></a><span>秋叶原<span class="mojikumi-line-start">（</span>μ's<span class="mojikumi-line-end">）</span></span></h3>
+<p>因为周一下雨<span class="mojikumi-line-end">，</span>就把圣地巡礼提前到今天了<span class="mojikumi-line-end">。</span>本来想周一去逛逛秋叶原顺便简单巡礼一下 μ's<span class="mojikumi-line-end">，</span>也拆成了今天先巡礼明天再逛<span class="mojikumi-line-end">，</span>反正秋叶原离酒店就 1km<span class="mojikumi-line-end">。</span></p>
+<p>UDX<span class="mojikumi-line-start">（</span>正好没拍到广告<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/udx.34e8df2b.webp" loading="lazy" src="/assets/udx.34e8df2b.webp" width="3072" height="4096" alt="UDX"></picture></p>
+<p>从 UDX 下来的时候看到帽的广告<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/cinderella-ad.a2c009a8.webp" loading="lazy" src="/assets/cinderella-ad.a2c009a8.webp" width="3072" height="4096" alt="ウマ娘 シンデレラグレイ 4.6 开始放送"></picture></p>
+<p>然后<span class="mojikumi-line-end">，</span>在去神田明神的路上<span class="mojikumi-line-end">，</span>经过了一家店<span class="mojikumi-line-start">（</span>店名是<span class="mojikumi-line-start">「</span>X<span class="mojikumi-line-end">」</span>？<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>虽然应该明天再逛的<span class="mojikumi-line-end">，</span>但还是进去了<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/akibanoekkusu.f43b3bad.webp" loading="lazy" src="/assets/akibanoekkusu.f43b3bad.webp" width="3072" height="4096" alt="店门口的 LL 趴趴"></picture></p>
+<p>看到了非常厉害的帽<span class="mojikumi-line-end">，</span>为什么呢<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/cinderella-9980.9aa6bfb0.webp" loading="lazy" src="/assets/cinderella-9980.9aa6bfb0.webp" width="4096" height="3072" alt="帽 9980，其他大多在 3/4000 左右，还有 980 的"></picture></p>
+<p>也没什么想买的<span class="mojikumi-line-end">，</span>但又觉得都进来了总得买点什么<span class="mojikumi-line-end">，</span>可是一方面价格有点劝退<span class="mojikumi-line-end">，</span>另一方面<span class="mojikumi-line-end">，</span>我在趴趴那边翻了一下<span class="mojikumi-line-end">，</span>怎么没有艾玛<span class="mojikumi-line-start">（</span>？<span class="mojikumi-line-end">，</span>于是没买<span class="mojikumi-line-start">（</span></p>
+<p>μ's 练习的明神男坂<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-stair-1.47b5503a.webp" loading="lazy" src="/assets/myojin-stair-1.47b5503a.webp" width="3072" height="4096" alt="明神男坂"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-stair-2.a7499b07.webp" loading="lazy" src="/assets/myojin-stair-2.a7499b07.webp" width="3072" height="4096" alt="明神男坂"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-stair-3.1927fc52.webp" loading="lazy" src="/assets/myojin-stair-3.1927fc52.webp" width="4096" height="3072" alt="明神男坂门"></picture></p>
+<p>神田明神<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-1.fad7b996.webp" loading="lazy" src="/assets/myojin-1.fad7b996.webp" width="4096" height="3072" alt="神田明神"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-2.ff585039.webp" loading="lazy" src="/assets/myojin-2.ff585039.webp" width="4096" height="3072" alt="神田明神"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-3.3f312fc3.webp" loading="lazy" src="/assets/myojin-3.3f312fc3.webp" width="4096" height="3072" alt="神田明神"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-tori.a61149e3.webp" loading="lazy" src="/assets/myojin-tori.a61149e3.webp" width="3072" height="4096" alt="神田明神"></picture></p>
+<p>绘马的 LL 浓度不如别人多年前巡礼时<span class="mojikumi-line-end">，</span>但还是有不少<span class="mojikumi-line-end">，</span>很多都是水 final<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-1.3d99f26c.webp" loading="lazy" src="/assets/myojin-ema-1.3d99f26c.webp" width="4096" height="3072" alt="神田明神绘马"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-2.ee4d6798.webp" loading="lazy" src="/assets/myojin-ema-2.ee4d6798.webp" width="4096" height="3072" alt="神田明神绘马"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-3.2c07f926.webp" loading="lazy" src="/assets/myojin-ema-3.2c07f926.webp" width="4096" height="3072" alt="神田明神绘马"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-4.071ddec2.webp" loading="lazy" src="/assets/myojin-ema-4.071ddec2.webp" width="4096" height="3072" alt="神田明神绘马"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-5.d9c7f43a.webp" loading="lazy" src="/assets/myojin-ema-5.d9c7f43a.webp" width="4096" height="3072" alt="神田明神绘马"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-6.c419f572.webp" loading="lazy" src="/assets/myojin-ema-6.c419f572.webp" width="4096" height="3072" alt="神田明神绘马"></picture></p>
+<p>给个特写<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/myojin-ema-emma.7b83c636.webp" loading="lazy" src="/assets/myojin-ema-emma.7b83c636.webp" width="4096" height="3072" alt="艾玛生日/亚巡横浜公演缭乱绘马"></picture></p>
+<p>昌平桥<span class="mojikumi-line-end">，</span>μ's 动画的一个圣地<span class="mojikumi-line-end">，</span>有点眼熟但毕竟对 μ's 的印象不太深了<span class="mojikumi-line-end">，</span>主要是这边顺路<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/shohei-bridge.d0eb0df7.webp" loading="lazy" src="/assets/shohei-bridge.d0eb0df7.webp" width="3965" height="3072" alt="昌平桥"></picture></p>
+<p>竹村<span class="mojikumi-line-end">，</span>果皇家的原型<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/honoka-home.7d7a8256.webp" loading="lazy" src="/assets/honoka-home.7d7a8256.webp" width="4096" height="3072" alt="竹村"></picture></p>
+<h3 id="将棋会馆" class="heading"><a href="#将棋会馆" class="heading-anchor" aria-label="章节： 将棋会馆" tabindex="-1"></a><span>将棋会馆</span></h3>
+<p>然后坐 JR 去千駄谷将棋会馆<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/sendagaya.a80b6f10.webp" loading="lazy" src="/assets/sendagaya.a80b6f10.webp" width="4096" height="3072" alt="千駄谷站"></picture></p>
+<p>出站后没走两步就看见一个将棋会馆<span class="mojikumi-line-end">，</span>应该更远的<span class="mojikumi-line-end">，</span>我知道的那个将棋会馆也不长这样<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/shogi-hall-new.0b774c65.webp" loading="lazy" src="/assets/shogi-hall-new.0b774c65.webp" width="4096" height="3072" alt="新将棋会馆"></picture></p>
+<p>再往前走就到了鸠森八幡神社<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/hatamori-hachiman-1.1c9d70b4.webp" loading="lazy" src="/assets/hatamori-hachiman-1.1c9d70b4.webp" width="4096" height="3072" alt="鸠森八幡神社"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/hatamori-hachiman-2.21140e42.webp" loading="lazy" src="/assets/hatamori-hachiman-2.21140e42.webp" width="3072" height="4096" alt="鸠森八幡神社"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/hatamori-hachiman-3.a8c6328f.webp" loading="lazy" src="/assets/hatamori-hachiman-3.a8c6328f.webp" width="4096" height="3072" alt="鸠森八幡神社"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/hatamori-hachiman-4.ab026fe4.webp" loading="lazy" src="/assets/hatamori-hachiman-4.ab026fe4.webp" width="4096" height="3072" alt="鸠森八幡神社"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/hatamori-hachiman-5.d28c47df.webp" loading="lazy" src="/assets/hatamori-hachiman-5.d28c47df.webp" width="3072" height="4096" alt="鸠森八幡神社"></picture></p>
+<p>绘马竟然有星<span class="mojikumi-line-end">，</span>甚至还是冬玛香<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/hatamori-hachiman-ema.5c94b413.webp" loading="lazy" src="/assets/hatamori-hachiman-ema.5c94b413.webp" width="4096" height="3072" alt="鸠森八幡神社的绘马"></picture></p>
+<p>出了神社旁边就是将棋会馆<span class="mojikumi-line-end">，</span>但是转了一会儿没找到门在哪<span class="mojikumi-line-end">，</span>仔细一看才发现<span class="mojikumi-line-end">，</span>原来这个将棋会馆在施工<span class="mojikumi-line-end">，</span>之前出千駄谷站看到的那个应该是现在使用的会馆<span class="mojikumi-line-end">，</span>可惜<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/shogi-hall-construction.4525c97c.webp" loading="lazy" src="/assets/shogi-hall-construction.4525c97c.webp" width="4096" height="3072" alt="在施工的原将棋会馆"></picture></p>
+<p>从将棋会馆沿观音坂到明治公园<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/kannonzaka.47921930.webp" loading="lazy" src="/assets/kannonzaka.47921930.webp" width="3072" height="4096" alt="观音坂"></picture></p>
+<p>明治公园不知道是不是变样了<span class="mojikumi-line-end">，</span>没找到作品里的景<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/meiji-park.0ca7f9c3.webp" loading="lazy" src="/assets/meiji-park.0ca7f9c3.webp" width="4096" height="3072" alt="明治公园"></picture></p>
+<h3 id="原宿（liella）" class="heading"><a href="#原宿（liella）" class="heading-anchor" aria-label="章节： 原宿（Liella!）" tabindex="-1"></a><span>原宿<span class="mojikumi-line-start">（</span>Liella!<span class="mojikumi-line-end">）</span></span></h3>
+<p>到这里就离原宿很近了<span class="mojikumi-line-end">，</span>绘马上都有星<span class="mojikumi-line-end">，</span>事已至此<span class="mojikumi-line-end">，</span>只能巡礼一下星了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>只不过也只是一些比较经典的加上顺路的<span class="mojikumi-line-end">，</span>比较细的地方就没去了<span class="mojikumi-line-end">。</span></p>
+<p>部分参考资料<span class="mojikumi-line-end">：</span></p>
+<ul>
+<li><a href="https://www.bilibili.com/video/av422401658/"><span class="mojikumi-line-start">【</span>圣地巡礼<span class="mojikumi-line-end">】</span>LoveLive!SuperStar!!原宿地区超级完整版 - 江東弱角蒼天君</a></li>
+<li><a href="https://home.gamer.com.tw/artwork.php?sn=5997135">2024.08.23｜聖地巡禮｜Love Live! Superstar!! - oopo320s的創作 - 巴哈姆特</a></li>
+<li><a href="https://www.motsu-tanbou.com/entry/pilgrimage-lovelive-yuigaoka"><span lang="ja"><span class="mojikumi-line-start">【</span>舞台探訪・聖地巡礼<span class="mojikumi-line-end">】</span>ラブライブ! スーパースター!!結ケ丘の舞台を駆け抜ける - もつの雑記帳-日常ときどき探訪記-</span></a></li>
+</ul>
+<p>从明治公园直接往南正好到秋叶神社<span class="mojikumi-line-end">，</span>在路边<span class="mojikumi-line-end">，</span>很小的神社<span class="mojikumi-line-end">。</span><s>小百和香香报了同一家幼儿园.jpg<span class="mojikumi-line-start">（</span></s></p>
+<p><picture><img type="image/webp" srcset="/assets/akiba-jinja.32819c1b.webp" loading="lazy" src="/assets/akiba-jinja.32819c1b.webp" width="3072" height="4096" alt="秋叶神社"></picture></p>
+<p>沿表参道往西就到了可可家<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/kuku-home.47d16c24.webp" loading="lazy" src="/assets/kuku-home.47d16c24.webp" width="3072" height="4096" alt="可可家的原型"></picture></p>
+<p>再走一段就是可香天桥<span class="mojikumi-line-start">（</span>神宫前步道桥<span class="mojikumi">）</span><span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/kuka-footbridge-1.be4ae235.webp" loading="lazy" src="/assets/kuka-footbridge-1.be4ae235.webp" width="4096" height="3072" alt="可香天桥"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/kuka-footbridge-2.d4062030.webp" loading="lazy" src="/assets/kuka-footbridge-2.d4062030.webp" width="4096" height="3072" alt="可香天桥"></picture></p>
+<p>我大概规划了一下<span class="mojikumi-line-end">，</span>后面的路程绕个圈应该比折返好<span class="mojikumi-line-end">，</span>于是下天桥直走<span class="mojikumi-line-end">，</span>就到了稳田神社<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/onden-jinja-1.36acda67.webp" loading="lazy" src="/assets/onden-jinja-1.36acda67.webp" width="3072" height="4096" alt="稳田神社"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/onden-jinja-2.908d075c.webp" loading="lazy" src="/assets/onden-jinja-2.908d075c.webp" width="4096" height="3072" alt="稳田神社"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/onden-jinja-3.1c6f0430.webp" loading="lazy" src="/assets/onden-jinja-3.1c6f0430.webp" width="4096" height="3072" alt="稳田神社"></picture></p>
+<p>这边的绘马不知道为什么都是斜着的..</p>
+<p><picture><img type="image/webp" srcset="/assets/onden-jinja-ema-1.fe2ec853.webp" loading="lazy" src="/assets/onden-jinja-ema-1.fe2ec853.webp" width="3072" height="4096" alt="稳田神社绘马"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/onden-jinja-ema-2.fe09b592.webp" loading="lazy" src="/assets/onden-jinja-ema-2.fe09b592.webp" width="3072" height="4096" alt="稳田神社绘马"></picture></p>
+<p>给个特写<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/onden-jinja-ema-kuka.4eee07e2.webp" loading="lazy" src="/assets/onden-jinja-ema-kuka.4eee07e2.webp" width="4096" height="3072" alt="稳田神社可香绘马"></picture></p>
+<p>然后去代代木公园<span class="mojikumi-line-end">。</span>到了之后发现林荫道这边人非常多<span class="mojikumi-line-start">（</span>照片这里不算多<span class="mojikumi-line-end">，</span>特意避开了一下人群<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>不知道这是日常还是有什么活动<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/yoyogi-trees.fc2a95fb.webp" loading="lazy" src="/assets/yoyogi-trees.fc2a95fb.webp" width="3072" height="4096" alt="代代木公园林荫道"></picture></p>
+<p>本来还担心舞台这边也会人多<span class="mojikumi-line-end">，</span>结果完全没人<span class="mojikumi-line-end">，</span>可能是这边不方便坐<span class="mojikumi-line-start">（</span>？<span class="mojikumi-line-end">，</span>于是外放 Tiny Stars<span class="mojikumi-line-end">，</span>还学苍天用台上视角拍了一张<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/yoyogi-stage-1.cbf0b27b.webp" loading="lazy" src="/assets/yoyogi-stage-1.cbf0b27b.webp" width="4096" height="3072" alt="代代木公园舞台"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/yoyogi-stage-2.ea6335a3.webp" loading="lazy" src="/assets/yoyogi-stage-2.ea6335a3.webp" width="4096" height="3072" alt="代代木公园舞台"></picture></p>
+<p>然后是未来如风的封面<span class="mojikumi-line-end">，</span>五轮桥<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/olympic-bridge.5bcac5f3.webp" loading="lazy" src="/assets/olympic-bridge.5bcac5f3.webp" width="4096" height="3072" alt="五轮桥"></picture></p>
+<p>最后是第一集香音的上学路<span class="mojikumi-line-end">，</span>从竹下通沿小路走到表参道<span class="mojikumi-line-end">：</span></p>
+<p><picture><img type="image/webp" srcset="/assets/road-to-school-1.9a02f3bd.webp" loading="lazy" src="/assets/road-to-school-1.9a02f3bd.webp" width="3072" height="4096" alt="香音上学路"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/road-to-school-2.5459cbe0.webp" loading="lazy" src="/assets/road-to-school-2.5459cbe0.webp" width="3072" height="4096" alt="香音上学路"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/road-to-school-3.aff957ca.webp" loading="lazy" src="/assets/road-to-school-3.aff957ca.webp" width="3072" height="4096" alt="香音上学路"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/road-to-school-4.9f1e535a.webp" loading="lazy" src="/assets/road-to-school-4.9f1e535a.webp" width="4096" height="3072" alt="香音上学路"></picture></p>
+<p>太好听了吧！</p>
+<p><picture><img type="image/webp" srcset="/assets/thtlb.142c4865.webp" loading="lazy" src="/assets/thtlb.142c4865.webp" width="3072" height="4096" alt="太好听了吧！"></picture></p>
+<p>结果最后差点就要坐末班车了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>回来后摸了一会儿再整理游记<span class="mojikumi-line-end">，</span>又不能好好睡了<span class="mojikumi-line-end">，</span>这几天都睡好少<span class="mojikumi-line-end">。</span>虽然只走了 10km<span class="mojikumi-line-start">（</span>绕了一些路<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>但中间经常停下来拍照<span class="mojikumi-line-end">、</span>确认方向<span class="mojikumi-line-end">、</span>等红灯之类的<span class="mojikumi-line-end">，</span>只有坐 JR 的时候休息了一下<span class="mojikumi-line-end">，</span>一共花了接近 5h<span class="mojikumi-line-end">，</span>比拉练还久<span class="mojikumi-line-end">，</span>还没有踩屎鞋垫<span class="mojikumi-line-end">，</span>周五又刚走过 10km<span class="mojikumi-line-end">，</span>脚要死掉了<span class="mojikumi-line-start">（</span></p>
+<p>总的来说<span class="mojikumi-line-end">，</span><s>不如再去一次月岛吧</s><span class="mojikumi-line-end">，</span>本来主要也是去将棋会馆的<span class="mojikumi-line-end">，</span>结果还施工了<span class="mojikumi-line-end">，</span><s>原宿还不如看苍天的视频<span class="mojikumi-line-end">，</span>也就最新的绘马值得看了<span class="mojikumi-line-start">（</span></s></p>
+<h2 id="day-3" class="heading"><a href="#day-3" class="heading-anchor" aria-label="章节： Day 3" tabindex="-1"></a><span>Day 3</span></h2>
+<h3 id="秋叶原" class="heading"><a href="#秋叶原" class="heading-anchor" aria-label="章节： 秋叶原" tabindex="-1"></a><span>秋叶原</span></h3>
+<p>APA 早上 10 点就得退房<span class="mojikumi-line-end">，</span>然后直接去了秋叶原<span class="mojikumi-line-end">，</span>看 animate 11 点开门而 gamers 10 点开门<span class="mojikumi-line-end">，</span>先去 gamers 看了一眼<span class="mojikumi-line-end">，</span>结果是 10 点只开一楼<span class="mojikumi-line-end">，</span>11 点才开其他地方<span class="mojikumi-line-end">。</span>一楼还在放甲子园 live<span class="mojikumi-line-end">，</span>但也没啥想买的<span class="mojikumi-line-end">。</span>到了 11 点上去看了之后<span class="mojikumi-line-end">，</span>发现 LL 全在一楼<span class="mojikumi-line-end">，</span>上面更没啥能买的<span class="mojikumi-line-end">，</span>虽然看到了 Ave Mujica <span lang="ja">の世界</span><span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/gamers-live.68b0ddee.webp" loading="lazy" src="/assets/gamers-live.68b0ddee.webp" width="3072" height="4096" alt="甲子园 live"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/gamers-mujica.bb9837ef.webp" loading="lazy" src="/assets/gamers-mujica.bb9837ef.webp" width="4096" height="3072" alt="Ave Mujica"></picture></p>
+<p>中午紧急找了一下厕所<span class="mojikumi-line-end">，</span>先是去 JR 秋叶原站没找到<span class="mojikumi-line-end">，</span>不知道是不是要其他出口或者进站后才行<span class="mojikumi-line-end">，</span>搜了一个公厕结果发现它所在的公园关门了<span class="mojikumi-line-end">，</span>最后去的 Tokyo Metro 秋叶原站<span class="mojikumi-line-end">。</span></p>
+<p>之后去了 animate<span class="mojikumi-line-end">，</span>进门先看到了艾玛的月度单曲<span class="mojikumi-line-end">，</span>就拿了<span class="mojikumi-line-end">，</span>然后全看了一遍<span class="mojikumi-line-end">，</span>发现也只有五楼有能买的<span class="mojikumi-line-end">。</span>小红书上说得不是很清楚<span class="mojikumi-line-end">，</span>就找店员确认了一下<span class="mojikumi-line-end">，</span>是不含税满 5000 可以免税<span class="mojikumi-line-end">，</span>所有楼层一起在 B1 结<span class="mojikumi-line-end">，</span>但 2 号馆不能一起付<span class="mojikumi-line-end">。</span>凑了半天发现还是凑不到免税<span class="mojikumi-line-end">，</span>想放弃了<span class="mojikumi-line-end">。</span>到了 B1 才意识到<span class="mojikumi-line-end">，</span>我在其他地方看了半天<span class="mojikumi-line-end">，</span>但把 B1 当成只有个收银台了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">，</span>实际上 B1 是一堆 CD<span class="mojikumi-line-end">，</span>于是买了一盘 Tiny Stars<span class="mojikumi-line-start">（</span><s>感觉星已经没有别的我想要的了</s><span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>然后只差 450 了<span class="mojikumi-line-end">，</span>就又上楼补了个侑<span class="mojikumi-line-start">（</span>这套没有璃奈<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>最后买了两盘 CD<span class="mojikumi-line-end">，</span>一对毫无疑问钥匙扣<span class="mojikumi-line-end">，</span>一个帽贴纸和一套芦灰明信片<span class="mojikumi-line-end">。</span>animate 似乎还不支持免税二维码<span class="mojikumi-line-end">，</span>让我拿了护照<span class="mojikumi-line-end">。</span></p>
+<p><picture><img type="image/webp" srcset="/assets/animate-starry-night-serenade.bcdccb1a.webp" loading="lazy" src="/assets/animate-starry-night-serenade.bcdccb1a.webp" width="4096" height="3072" alt="Starry Night Serenade"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/animate-tiny-stars.7e56f6fe.webp" loading="lazy" src="/assets/animate-tiny-stars.7e56f6fe.webp" width="4096" height="3072" alt="Tiny Stars"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/animate-machigainaku.71a880a8.webp" loading="lazy" src="/assets/animate-machigainaku.71a880a8.webp" width="4096" height="3072" alt="間違いなく"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/animate-oguri-cap.f2ffe149.webp" loading="lazy" src="/assets/animate-oguri-cap.f2ffe149.webp" width="4096" height="3072" alt="帽"></picture></p>
+<p>拆封后发现<span class="mojikumi-line-end">，</span>虽然分别是 2 月限定特典和初回限定特典<span class="mojikumi-line-end">，</span>但都是内封了的<span class="mojikumi-line-start">（</span>应该是有这个贴纸就代表有？<span class="mojikumi">）</span><span class="mojikumi-line-end">。</span>2 月限定到了 3.3 还有也很合理<span class="mojikumi-line-end">，</span>但 Tiny Stars 已经发售三年半了啊<span class="mojikumi-line-end">，</span>怎么还是初回<span class="mojikumi-line-start">（</span>P.S. 后来发现其实说的是期间限定特典的 2 月日历<span class="mojikumi-line-end">，</span>并不是 2 月限定特典<span class="mojikumi-line-start">（</span></p>
+<p><picture><img type="image/webp" srcset="/assets/tokuten-starry-night-serenade.90c40909.webp" loading="lazy" src="/assets/tokuten-starry-night-serenade.90c40909.webp" width="4096" height="3072" alt="Starry Night Serenade 的期间限定特典以及 animate 店铺特典"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/tokuten-tiny-stars.0786419c.webp" loading="lazy" src="/assets/tokuten-tiny-stars.0786419c.webp" width="2556" height="2500" alt="Tiny Stars 的初回限定特典"></picture></p>
+<p>中午吃的吉野家<span class="mojikumi-line-end">，</span>之前听说日本的菜单和国内不一样<span class="mojikumi-line-end">，</span>确实<span class="mojikumi-line-end">，</span>但怎么是没有汉堡肉<span class="mojikumi-line-start">（</span></p>
+<h3 id="返程" class="heading"><a href="#返程" class="heading-anchor" aria-label="章节： 返程" tabindex="-1"></a><span>返程</span></h3>
+<p>本来还在想要不要最后去一下台场<span class="mojikumi-line-end">，</span>但发现到台场的票价和台场到机场的票价都比直接去机场贵<span class="mojikumi-line-end">，</span>实在没必要<span class="mojikumi-line-end">。</span>而且虹咲的圣地看起来就像是网红景点打卡<span class="mojikumi-line-end">，</span>也没有什么想去的<span class="mojikumi-line-start">（</span></p>
+<p>到机场后在便利店买了个价格正好的面包把 suica 余额花完<span class="mojikumi-line-end">，</span>最后地铁除去京急线应该是差不多花了三日通票的价<span class="mojikumi-line-end">，</span>只不过如果买了通票去秋叶原应该也不用走路了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">。</span>安检排了很长的队<span class="mojikumi-line-end">，</span>过安检的时候还被要求把水倒掉把鞋脱掉<span class="mojikumi-line-end">，</span>但电脑不需要单独拿出来<span class="mojikumi-line-end">，</span>最后安检就花了 30min<span class="mojikumi-line-end">，</span>只不过不用坐小火车<span class="mojikumi-line-end">。</span>过了安检后可以再去接水<span class="mojikumi-line-end">，</span>这次在那个神秘外盖饮水机碰到一个路人把杯面放进去盖上外盖把杯面关在里面然后不知所措<span class="mojikumi-line-start">（</span></p>
+<p>落地后想办空轨联运<span class="mojikumi-line-end">，</span>才知道这个要起飞前办<span class="mojikumi-line-end">，</span>为啥呢<span class="mojikumi-line-start">（</span></p>
+<h3 id="尾声" class="heading"><a href="#尾声" class="heading-anchor" aria-label="章节： 尾声" tabindex="-1"></a><span>尾声</span></h3>
+<p>这几天和店员交流的时候<span class="mojikumi-line-end">，</span>感觉是<span class="mojikumi-line-end">，</span>日语听半懂<span class="mojikumi-line-end">，</span>英语听不清<span class="mojikumi-line-end">，</span>脑子里第一反应是想日语怎么说<span class="mojikumi-line-end">，</span>但是不会说<span class="mojikumi-line-end">，</span>反而让英语模块也变得混乱<span class="mojikumi-line-end">，</span>用 VoiceTra 又手忙脚乱又说不出普通话<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">；</span>反而是比划一下最靠谱<span class="mojikumi-line-end">，</span>仿佛是我完全不会日语和英语<span class="mojikumi-line-end">，</span>但或许如果我真的完全不会日语就能会英语了<span class="mojikumi-line-start">（</span><span class="mojikumi-line-end">。</span>现金也备多了<span class="mojikumi-line-end">，</span>其实也就买 Suica 和一部分饭店需要<span class="mojikumi-line-end">，</span>很多地方都支持微信支付宝<span class="mojikumi-line-end">。</span>移动的漫游套餐一直查不到用量<span class="mojikumi-line-end">，</span>根据手机统计的<span class="mojikumi-line-end">，</span>应该就用了 1G 左右<span class="mojikumi-line-end">，</span>但查不到还是无法安心<span class="mojikumi-line-end">。</span>轨道交通和国内很不一样<span class="mojikumi-line-end">，</span>但是也挺容易适应的<span class="mojikumi-line-end">，</span>就是一条线可能中途改名<span class="mojikumi-line-end">，</span>换一条线可能需要下车换乘可能不需要<span class="mojikumi-line-start">（</span>看 Google Maps 有没有写<span class="mojikumi-line-start">“</span>无需换乘<span class="mojikumi-line-end">”</span>和步行几分钟<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>同一个站台可能来不同速度的车<span class="mojikumi-line-end">，</span>比起看驶往哪个方向不如直接看站台号<span class="mojikumi-line-end">，</span>同一个站不同线可能有不互通的入口<span class="mojikumi-line-end">；</span>来之前在小红书看到了<span class="mojikumi-line-end">，</span>但还是要坐两次才明白<span class="mojikumi-line-end">；</span>回来坐国内地铁的时候反而有点不习惯了<span class="mojikumi-line-start">（</span></p>
+<p>有机会的话<span class="mojikumi-line-end">，</span>下次还来月岛<span class="mojikumi-line-end">，</span>最好能去鸭川<span class="mojikumi-line-end">，</span><s>我是精神<span lang="ja">三月町の子</span><span class="mojikumi-line-end">，</span>别的地方是啥<span class="mojikumi-line-end">，</span>可以待在酒店吗<span class="mojikumi-line-start">（</span>并不</s></p>]]></content>
+        <category label="ctf" term="https://ouuan.moe/tag/ctf"/>
+        <category label="3月のライオン" term="https://ouuan.moe/tag/3%E6%9C%88%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3"/>
+        <category label="日本" term="https://ouuan.moe/tag/%E6%97%A5%E6%9C%AC"/>
+        <category label="游记" term="https://ouuan.moe/tag/%E6%B8%B8%E8%AE%B0"/>
+    </entry>
+</feed>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouuan.moe/</id>
     <title>ouuan's blog</title>
-    <updated>2025-05-10T07:49:30.000Z</updated>
+    <updated>2025-10-26T04:32:03.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>ouuan</name>
@@ -14,6 +14,16 @@
     <icon>https://ouuan.moe/favicon.ico</icon>
     <rights>Copyright © 2022 - 2025 ouuan
 Licensed under CC BY-SA 4.0</rights>
+    <entry>
+        <title type="html"><![CDATA[GeekGame 2025 出题人题解：统一身份认证、勒索病毒]]></title>
+        <id>https://ouuan.moe/post/2025/10/geekgame-2025-graphauth-ransomware</id>
+        <link href="https://ouuan.moe/post/2025/10/geekgame-2025-graphauth-ransomware"/>
+        <updated>2025-10-26T04:32:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>GeekGame 2025 <span class="mojikumi">【</span>统一身份认证<span class="mojikumi">】</span><wbr><span class="mojikumi-line-start">（</span>web-graphauth<span class="mojikumi-line-end">）</span>和<span class="mojikumi-line-start">【</span>勒索病毒<span class="mojikumi">】</span><wbr><span class="mojikumi-line-start">（</span>misc-ransomware<span class="mojikumi-line-end">）</span>的出题人题解<span class="mojikumi-line-end">。</span></p>
+]]></summary>
+        <category label="writeup" term="https://ouuan.moe/tag/writeup"/>
+        <category label="ctf" term="https://ouuan.moe/tag/ctf"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[DEF CON CTF Quals 2025 memorybank Write-Up: Investigating V8 Garbage Collector]]></title>
         <id>https://ouuan.moe/post/2025/04/memorybank</id>
@@ -168,16 +178,7 @@ Licensed under CC BY-SA 4.0</rights>
 ]]></summary>
         <category label="ctf" term="https://ouuan.moe/tag/ctf"/>
         <category label="3月のライオン" term="https://ouuan.moe/tag/3%E6%9C%88%E3%81%AE%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3"/>
+        <category label="日本" term="https://ouuan.moe/tag/%E6%97%A5%E6%9C%AC"/>
         <category label="游记" term="https://ouuan.moe/tag/%E6%B8%B8%E8%AE%B0"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ASIS CTF Finals 2024 Write-Up]]></title>
-        <id>https://ouuan.moe/post/2024/12/asis-ctf-finals-2024</id>
-        <link href="https://ouuan.moe/post/2024/12/asis-ctf-finals-2024"/>
-        <updated>2024-12-29T14:17:41.000Z</updated>
-        <summary type="html"><![CDATA[<p>Write-up for <a href="https://ctftime.org/event/2403">ASIS CTF Finals 2024</a> — Web challenges fetch-box and gitmails.</p>
-]]></summary>
-        <category label="writeup" term="https://ouuan.moe/tag/writeup"/>
-        <category label="ctf" term="https://ouuan.moe/tag/ctf"/>
     </entry>
 </feed>
