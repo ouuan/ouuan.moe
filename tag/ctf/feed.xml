@@ -1784,12 +1784,12 @@ Licensed under CC BY-SA 4.0</copyright>
 <h2 id="梗指南" class="heading"><a href="#梗指南" class="heading-anchor" aria-label="章节： 梗指南" tabindex="-1"></a><span>梗指南</span></h2>
 <p>这次我自己的两道题没什么梗<span class="mojikumi-line-start">（</span>除了稍微模仿了一下某电子身份服务系统<span class="mojikumi">）</span><span class="mojikumi-line-end">，</span>但我参与了一些其他题面编写<span class="mojikumi-line-end">：</span></p>
 <ul>
-<li><span class="mojikumi-line-start">【</span>开源论文太少了！<span class="mojikumi-line-end">】</span>的八岐大蛇部分</li>
-<li><span class="mojikumi-line-start">【</span>提权潜兵 · 新指导版<span class="mojikumi-line-end">】</span>彩蛋的光敏性癫痫警告</li>
-<li><span class="mojikumi-line-start">【</span>传统 C 语言核易危<span class="mojikumi-line-end">】</span>的题目名<span class="mojikumi">、</span><wbr><span class="mojikumi-line-start">“</span>核已畏<span class="mojikumi-line-end">”</span>图片<span class="mojikumi-line-end">、</span>技能五子棋</li>
-<li><span class="mojikumi-line-start">【</span>我放弃了一 key 到底<span class="mojikumi-line-end">】</span>的梗是出题人选的<span class="mojikumi-line-end">，</span>我改了一下缝法</li>
-<li><span class="mojikumi-line-start">【</span>千年讲堂的方形轮子 II<span class="mojikumi-line-end">】</span>的整个题面</li>
-<li><span class="mojikumi-line-start">【</span>高级剪切几何<span class="mojikumi-line-end">】</span>修改了一下出题人一开始的表述</li>
+<li><a href="https://github.com/PKU-GeekGame/geekgame-5th/blob/master/official_writeup/misc-paper"><span class="mojikumi-line-start">【</span>开源论文太少了！<span class="mojikumi-line-end">】</span></a>的八岐大蛇部分</li>
+<li><a href="https://github.com/PKU-GeekGame/geekgame-5th/blob/master/official_writeup/web-clash"><span class="mojikumi-line-start">【</span>提权潜兵 · 新指导版<span class="mojikumi-line-end">】</span></a>彩蛋的光敏性癫痫警告</li>
+<li><a href="https://github.com/PKU-GeekGame/geekgame-5th/blob/master/official_writeup/binary-safekernel"><span class="mojikumi-line-start">【</span>传统 C 语言核易危<span class="mojikumi-line-end">】</span></a>的题目名<span class="mojikumi">、</span><wbr><span class="mojikumi-line-start">“</span>核已畏<span class="mojikumi-line-end">”</span>图片<span class="mojikumi-line-end">、</span>技能五子棋</li>
+<li><a href="https://github.com/PKU-GeekGame/geekgame-5th/blob/master/official_writeup/algo-tree"><span class="mojikumi-line-start">【</span>我放弃了一 key 到底<span class="mojikumi-line-end">】</span></a>的梗是出题人选的<span class="mojikumi-line-end">，</span>我改了一下缝法</li>
+<li><a href="https://github.com/PKU-GeekGame/geekgame-5th/blob/master/official_writeup/algo-oracle2"><span class="mojikumi-line-start">【</span>千年讲堂的方形轮子 II<span class="mojikumi-line-end">】</span></a>的整个题面</li>
+<li><a href="https://github.com/PKU-GeekGame/geekgame-5th/blob/master/official_writeup/algo-ACG"><span class="mojikumi-line-start">【</span>高级剪切几何<span class="mojikumi-line-end">】</span></a>修改了一下出题人一开始的表述</li>
 </ul>
 <p>其中<span class="mojikumi">，</span><wbr><span class="mojikumi-line-start">【</span>千年讲堂的方形轮子 II<span class="mojikumi-line-end">】</span>缝了一些<span class="text-nijigasaki">虹</span>梗<span class="mojikumi-line-end">：</span></p>
 <style>
