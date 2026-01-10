@@ -240,11 +240,6 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://ouuan.moe/post/2022/11/pitfalls-of-breaststroke-breathing</loc>
-        <lastmod>2022-11-10T04:15:03.000Z</lastmod>
-        <priority>0.6</priority>
-    </url>
-    <url>
         <loc>https://ouuan.moe/page/2</loc>
         <priority>0.6</priority>
     </url>
@@ -266,6 +261,11 @@
     </url>
     <url>
         <loc>https://ouuan.moe/sponsor</loc>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ouuan.moe/post/2022/11/pitfalls-of-breaststroke-breathing</loc>
+        <lastmod>2022-11-10T04:15:03.000Z</lastmod>
         <priority>0.6</priority>
     </url>
     <url>
