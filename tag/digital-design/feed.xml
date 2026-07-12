@@ -56,7 +56,7 @@ Licensed under CC BY-SA 4.0</copyright>
 </ul><p>好在第二天又说报名 ddl 延长半天<span class="mojikumi-line-end">，</span>然后中午的时候竟然就报满了<span class="mojikumi-line-end">。</span>5-3 的 28 人有 10 个是信计的<span class="mojikumi-line-end">，</span><s>简单估计一下<span class="mojikumi-line-end">，</span>信计有 28/30 想报 sv</s><span class="mojikumi-line-end">，</span>实际上 5-1 的 sv 班只有两个信计<span class="mojikumi-line-end">，</span>只不过群里 5-4 求换课的还有好几个信计<span class="mojikumi-line-end">，</span>可惜都没换上<span class="mojikumi-line-end">，</span><s>再简单估计一下<span class="mojikumi-line-end">，</span>sv 班 12/56 是信计<span class="mojikumi-line-end">，</span>信计应该一共有 52 人</s><span class="mojikumi-line-start">（</span></p></div></details></aside>
 <h3 id="sv-班课程文档" class="heading"><a href="#sv-班课程文档" class="heading-anchor" aria-label="章节： sv 班课程文档" tabindex="-1"></a><span>sv 班课程文档</span></h3>
 <h4 id="本课程只有一学分！！" class="heading"><a href="#本课程只有一学分！！" class="heading-anchor" aria-label="章节： 本课程只有一学分！！" tabindex="-1"></a><span>本课程只有一学分！！</span></h4>
-<p><picture><img type="image/webp" srcset="/assets/1-credit.4c4db750.webp" loading="lazy" src="/assets/1-credit.4c4db750.webp" width="219" height="88" alt="本课程只有一学分！！"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/1-credit.e381573a.webp" loading="lazy" src="/assets/1-credit.e381573a.webp" width="219" height="88" alt="本课程只有一学分！！"></picture></p>
 <p>开头第一句<span class="mojikumi-line-end">，</span>绷不住了<span class="mojikumi-line-start">（</span></p>
 <h4 id="按钮详细功能" class="heading"><a href="#按钮详细功能" class="heading-anchor" aria-label="章节： 按钮详细功能" tabindex="-1"></a><span>按钮详细功能</span></h4>
 <p>一般来说 admonition 经常是比较长的会折叠起来防止刷屏<span class="mojikumi-line-end">，</span>但在示波器的<span class="mojikumi-line-start">“</span>按钮详细功能<span class="mojikumi-line-end">”</span>一节<span class="mojikumi-line-end">，</span>被折叠的都是最短的那些<span class="mojikumi-line-end">，</span>比如<span class="mojikumi-line-end">：</span></p>
@@ -66,7 +66,7 @@ Licensed under CC BY-SA 4.0</copyright>
 <p>非常地理所当然<span class="mojikumi-line-end">，</span>但感觉这个事实莫名地很有意思<span class="mojikumi-line-start">（</span><s>而且把电源开关写出来再折起来就莫名喜感<span class="mojikumi-line-start">（</span>按一次打开 <code>&#x3C;details></code><span class="mojikumi-line-end">，</span>再按一次关闭 <code>&#x3C;details></code></s></p>
 <h4 id="git-conflict" class="heading"><a href="#git-conflict" class="heading-anchor" aria-label="章节： git conflict" tabindex="-1"></a><span>git conflict</span></h4>
 <p>虽说是敏捷开发课程文档<span class="mojikumi-line-end">，</span>但这个 git conflict 也太<span class="mojikumi-line-start">（</span></p>
-<p><picture><img type="image/webp" srcset="/assets/git-conflict-in-doc.5d6c1b24.webp" loading="lazy" src="/assets/git-conflict-in-doc.5d6c1b24.webp" width="680" height="265" alt="课程文档中出现了 git conflict 标记"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/git-conflict-in-doc.4b9bb721.webp" loading="lazy" src="/assets/git-conflict-in-doc.4b9bb721.webp" width="680" height="265" alt="课程文档中出现了 git conflict 标记"></picture></p>
 <h3 id="把人忽悠进来之后" class="heading"><a href="#把人忽悠进来之后" class="heading-anchor" aria-label="章节： 把人忽悠进来之后" tabindex="-1"></a><span><s>把人忽悠进来之后</s></span></h3>
 <p>下面是两个课件的 diff<span class="mojikumi-line-end">，</span>虽然这个优势的意思实际上没变<span class="mojikumi-line-end">，</span>从 sv 班苛刻的开设条件基本上就能猜到没法随时退出<span class="mojikumi-line-end">，</span>但是<span class="mojikumi-line-start">（</span></p>
 <blockquote>

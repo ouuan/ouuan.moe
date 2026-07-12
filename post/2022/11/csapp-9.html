@@ -121,7 +121,7 @@
 <p>地址空间往往很大<span class="mojikumi-line-end">，</span>如果只用一张 page table<span class="mojikumi-line-end">，</span>那么 page table 本身就会占用大量的空间<span class="mojikumi-line-end">，</span>所以可以将 page table 分层<span class="mojikumi-line-end">，</span>每层 page table 指向下一层 page table<span class="mojikumi-line-end">，</span>直到最后一层指向 VP / PP<span class="mojikumi-line-end">。</span></p>
 <h2 id="case-study-core-i7-address-translation" class="heading"><a href="#case-study-core-i7-address-translation" class="heading-anchor" aria-label="章节： Case Study: Core i7 Address Translation" tabindex="-1"></a><span>Case Study: Core i7 Address Translation</span></h2>
 <p>Core i7 memory system 如 CS:APP Figure 9.21 所示<span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig9.21.282f25d8.webp" loading="lazy" src="/assets/csapp-fig9.21.282f25d8.webp" width="1207" height="934" alt="The Core i7 memory system"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig9.21.4c579c94.webp" loading="lazy" src="/assets/csapp-fig9.21.4c579c94.webp" width="1207" height="934" alt="The Core i7 memory system"></picture></p>
 <p>Core i7 使用 48-bit 的虚拟地址空间和 52-bit 的物理地址空间<span class="mojikumi-line-end">，</span>page size 可以设置为 4KB 或 4MB<span class="mojikumi-line-end">，</span>有四级 page table<span class="mojikumi-line-end">。</span></p>
 <p>每个 PTE 有以下内容<span class="mojikumi">：</span><wbr><span class="mojikumi-line-start">（</span>还有一些其他内容<span class="mojikumi-line-end">）</span></p>
 <ul>

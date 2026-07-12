@@ -100,7 +100,7 @@
 <h3 id="y86-64-指令编码" class="heading"><a href="#y86-64-指令编码" class="heading-anchor" aria-label="章节： Y86-64 指令编码" tabindex="-1"></a><span>Y86-64 指令编码</span></h3>
 <p>Y86-64 通过对指令的简化<span class="mojikumi-line-end">，</span>同时也使编码得到了简化<span class="mojikumi-line-end">，</span>但相应地使得编码不紧凑<span class="mojikumi-line-end">，</span>会有浪费<span class="mojikumi-line-end">。</span></p>
 <p>CS:APP Figure 4.2 简明地展示了 Y86-64 的指令编码<span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.2.429f9e8d.webp" loading="lazy" src="/assets/csapp-fig4.2.429f9e8d.webp" width="976" height="730" alt="Y86-64 指令编码示意图"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.2.2fbbae5e.webp" loading="lazy" src="/assets/csapp-fig4.2.2fbbae5e.webp" width="976" height="730" alt="Y86-64 指令编码示意图"></picture></p>
 <h4 id="指令类型的编码" class="heading"><a href="#指令类型的编码" class="heading-anchor" aria-label="章节： 指令类型的编码" tabindex="-1"></a><span>指令类型的编码</span></h4>
 <p>指令编码的第一个 byte 表示指令的类型<span class="mojikumi-line-end">。</span>这个 byte 的高位叫做 <i>code</i><span class="mojikumi-line-end">，</span>低位叫做 <i>function</i><span class="mojikumi-line-end">，</span>其中 function 只在某几个指令有用<span class="mojikumi-line-end">。</span>特别地<span class="mojikumi-line-end">，</span><code>rrmovq</code> 和 <code>cmovXX</code> 的 code 是相同的<span class="mojikumi-line-end">，</span>这表示 <code>rrmovq</code> 可以看作一种特殊的 <code>cmovXX</code><span class="mojikumi-line-end">。</span></p>
 <p>算术运算的 function: <code>add</code> 0, <code>sub</code> 1, <code>and</code> 2, <code>xor</code> 3</p>
@@ -121,7 +121,7 @@
 <p>在 Y86-64 中<span class="mojikumi-line-end">，</span>遇到异常后处理器会立即停止运行<span class="mojikumi-line-end">。</span></p>
 <h3 id="y86-64-程序" class="heading"><a href="#y86-64-程序" class="heading-anchor" aria-label="章节： Y86-64 程序" tabindex="-1"></a><span>Y86-64 程序</span></h3>
 <p>CS:APP Figure 4.8 展示了一个完整的 Y86-64 程序<span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.8.7c8b0ffb.webp" loading="lazy" src="/assets/csapp-fig4.8.7c8b0ffb.webp" width="930" height="1075" alt="完整 Y86-64 程序的汇编与机器码"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.8.40219a67.webp" loading="lazy" src="/assets/csapp-fig4.8.40219a67.webp" width="930" height="1075" alt="完整 Y86-64 程序的汇编与机器码"></picture></p>
 <p>可以下载 <a href="http://csapp.cs.cmu.edu/3e/sim.tar">Y86-64 tools</a> 并使用 <code>yas</code> 进行汇编<span class="mojikumi-line-end">，</span>使用 <code>yis</code> 模拟运行<span class="mojikumi-line-end">。</span>编译 <code>yas</code> 时 <a href="https://stackoverflow.com/questions/63152352/fail-to-compile-the-y86-simulatur-csapp">需要添加 <code>-fcommon</code> 编译选项</a><span class="mojikumi-line-end">。</span></p>
 <h3 id="对-rsp-进行-pushpop" class="heading"><a href="#对-rsp-进行-pushpop" class="heading-anchor" aria-label="章节： 对 %rsp 进行 push/pop" tabindex="-1"></a><span>对 %rsp 进行 push/pop</span></h3>
 <p><code>pushq %rsp</code><span class="mojikumi-line-end">、</span><code>popq %rsp</code> 这两条指令虽然没什么用<span class="mojikumi-line-end">，</span>但它们的行为可能有歧义<span class="mojikumi-line-end">，</span>所以在设计 ISA 时明确规定它们的行为是有必要的<span class="mojikumi-line-end">。</span></p>
@@ -130,7 +130,7 @@
 <p>这一章中使用玩具语言 HCL (hardware control language) 来描述 Y86-64 处理器的逻辑设计<span class="mojikumi">。</span><wbr><span class="mojikumi-line-start">（</span>与之类似但不是玩具的语言<span class="mojikumi-line-end">，</span>例如 VHDL<span class="mojikumi-line-end">、</span>Verilog 等<span class="mojikumi-line-end">，</span>叫做 <span class="mojikumi">“</span><a href="https://en.wikipedia.org/wiki/Hardware_description_language">hardware description language (HDL)</a><span class="mojikumi">”</span><span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
 <h3 id="逻辑门" class="heading"><a href="#逻辑门" class="heading-anchor" aria-label="章节： 逻辑门" tabindex="-1"></a><span>逻辑门</span></h3>
 <p>CSAPP Figure 4.9:</p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.9.15f29f6a.webp" loading="lazy" src="/assets/csapp-fig4.9.15f29f6a.webp" width="546" height="168" alt="与或非逻辑门"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.9.8b542ce4.webp" loading="lazy" src="/assets/csapp-fig4.9.8b542ce4.webp" width="546" height="168" alt="与或非逻辑门"></picture></p>
 <ul>
 <li>图中只展示了输入个数为 2 的 AND 和 OR<span class="mojikumi-line-end">，</span>但可以有更多输入</li>
 <li>一旦输入改变<span class="mojikumi-line-end">，</span>逻辑门的输出很快就会随之改变</li>
@@ -143,7 +143,7 @@
 <p>在 HCL 中<span class="mojikumi-line-end">，</span>一般使用大写的名称表示 word<span class="mojikumi-line-end">，</span>例如: <code>bool Eq = (A == B)</code> 表示计算 word <code>A</code><span class="mojikumi-line-end">、</span><code>B</code> 是否相等的电路<span class="mojikumi-line-end">，</span>可以实现为判断每个 bit 是否相等再 AND<span class="mojikumi-line-end">。</span></p>
 <h3 id="multiplexor-mux" class="heading"><a href="#multiplexor-mux" class="heading-anchor" aria-label="章节： Multiplexor (MUX)" tabindex="-1"></a><span>Multiplexor (MUX)</span></h3>
 <p>multiplexor (MUX) 的功能是通过信号输入的值来在其它输入中选择一个作为输出<span class="mojikumi-line-end">，</span>word-level 的 MUX 电路如图 (CSAPP Figure 4.13)<span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.13.47e7678b.webp" loading="lazy" src="/assets/csapp-fig4.13.47e7678b.webp" width="886" height="759" alt="word-level MUX 电路"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.13.3830dc0c.webp" loading="lazy" src="/assets/csapp-fig4.13.3830dc0c.webp" width="886" height="759" alt="word-level MUX 电路"></picture></p>
 <p>在 HCL 中<span class="mojikumi-line-end">，</span>使用 <i>case expressions</i> 表示 MUX<span class="mojikumi-line-end">，</span>例如</p>
 <section class="code-block relative my-6 shadow" itemprop="hasPart" itemscope="" itemtype="https://schema.org/SoftwareSourceCode" data-v-c675dba6=""><div class="h-6 items-center rd-t-1 bg-area px-4 dark:bg-#2A313A media-screen:important-flex" style="display:none;" data-v-c675dba6=""><h4 class="text-3 text-footer" itemprop="programmingLanguage" aria-label="HCL (CS:APP) 代码块" data-v-c675dba6="">HCL (CS:APP)</h4><ile-root id="ile-4"><button title="复制到剪贴板" class="copy-button b-footer text-footer" data-v-63dfb2af=""><span class="i-mdi-content-copy" data-v-63dfb2af=""></span><span class="sr-only" role="status" data-v-63dfb2af=""></span></button></ile-root><script></script><script type="module" async="">var s=(i,a)=>()=>(a||i((a={exports:{}}).exports,a),a.exports);var r=(i,a,o)=>new Promise((c,n)=>{var f=t=>{try{_(o.next(t))}catch(e){n(e)}},l=t=>{try{_(o.throw(t))}catch(e){n(e)}},_=t=>t.done?c(t.value):Promise.resolve(t.value).then(f,l);_((o=o.apply(i,a)).next())});import{_ as d}from"/assets/vite.1299367e.js";import{b as p}from"/assets/iles.f9561c92.js";import"/assets/vendor-vue.bd9aeaf8.js";var E=s(m=>{const u=()=>r(m,null,function*(){return(yield d(()=>import("/assets/iles.f9561c92.js").then(i=>i.v),["assets/iles.f9561c92.js","assets/vendor-vue.bd9aeaf8.js","assets/vite.1299367e.js"])).default}),v=()=>r(m,null,function*(){return(yield d(()=>import("/assets/CopyButton.34943739.js"),["assets/CopyButton.34943739.js","assets/vendor-vue.bd9aeaf8.js","assets/vite.1299367e.js"])).default});p(u,v,"ile-4",{},{})});export default E();
 </script></div><div class="dark:hidden" itemprop="text" data-v-c675dba6=""><pre class="shiki light" style="background-color: #FBFBFB" tabindex="0"><code><span><span style="color: #994CC3">word</span><span style="color: #403F53"> </span><span style="color: #4876D6">Mux</span><span style="color: #403F53"> = [</span></span>
@@ -222,14 +222,14 @@
 <li>PC update: 更新 program counter</li>
 </ol>
 <p>每个指令每阶段的具体操作如图<span class="mojikumi-line-start">（</span>CS:APP Figure 4.18~4.21<span class="mojikumi-line-end">、</span>Solution 4.17<span class="mojikumi">）</span><span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.18.1d452c61.webp" loading="lazy" src="/assets/csapp-fig4.18.1d452c61.webp" width="1091" height="613" alt="OPq, rrmovq, irmovq"></picture></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.19.9f043a86.webp" loading="lazy" src="/assets/csapp-fig4.19.9f043a86.webp" width="773" height="611" alt="rmmovq, mrmovq"></picture></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.20.3d7b8ab1.webp" loading="lazy" src="/assets/csapp-fig4.20.3d7b8ab1.webp" width="782" height="619" alt="pushq, popq"></picture></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.21.304f2868.webp" loading="lazy" src="/assets/csapp-fig4.21.304f2868.webp" width="1113" height="562" alt="jXX, call, ret"></picture></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-sol4.17.4eb57d44.webp" loading="lazy" src="/assets/csapp-sol4.17.4eb57d44.webp" width="461" height="432" alt="cmovXX"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.18.d80ff934.webp" loading="lazy" src="/assets/csapp-fig4.18.d80ff934.webp" width="1091" height="613" alt="OPq, rrmovq, irmovq"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.19.d0874a32.webp" loading="lazy" src="/assets/csapp-fig4.19.d0874a32.webp" width="773" height="611" alt="rmmovq, mrmovq"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.20.bd459856.webp" loading="lazy" src="/assets/csapp-fig4.20.bd459856.webp" width="782" height="619" alt="pushq, popq"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.21.67090676.webp" loading="lazy" src="/assets/csapp-fig4.21.67090676.webp" width="1113" height="562" alt="jXX, call, ret"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-sol4.17.ffc676b8.webp" loading="lazy" src="/assets/csapp-sol4.17.ffc676b8.webp" width="461" height="432" alt="cmovXX"></picture></p>
 <h3 id="seq-的主体电路" class="heading"><a href="#seq-的主体电路" class="heading-anchor" aria-label="章节： SEQ 的主体电路" tabindex="-1"></a><span>SEQ 的主体电路</span></h3>
 <p>CS:APP Figure 4.23 大致展示了 SEQ 的主体电路<span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.23.ed95a333.webp" loading="lazy" src="/assets/csapp-fig4.23.ed95a333.webp" width="798" height="1065" alt="SEQ 主体电路"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig4.23.3b77d885.webp" loading="lazy" src="/assets/csapp-fig4.23.3b77d885.webp" width="798" height="1065" alt="SEQ 主体电路"></picture></p>
 <p>其中蓝色的元件是 black box<span class="mojikumi-line-end">，</span>灰色的元件会在后面进行设计<span class="mojikumi-line-end">，</span>还有部分电路连接没有画出来<span class="mojikumi-line-end">。</span></p>
 <p>这个电路大概看着有个印象即可<span class="mojikumi-line-end">，</span>细节会在后面说明<span class="mojikumi-line-end">。</span></p>
 <h3 id="seq-的时序控制" class="heading"><a href="#seq-的时序控制" class="heading-anchor" aria-label="章节： SEQ 的时序控制" tabindex="-1"></a><span>SEQ 的时序控制</span></h3>

@@ -97,7 +97,7 @@
 <p><span class="mojikumi-line-start">（</span>完整列表参见 <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html">Intel® 64 and IA-32 Architectures Software Developer Manuals</a> Volume 3A 的 <span class="mojikumi">“</span>6.15 EXCEPTION AND INTERRUPT REFERENCE<span class="mojikumi">”</span> 一节<span class="mojikumi">。</span><span class="mojikumi-line-end">）</span></p>
 <h4 id="linux-中的-system-call" class="heading"><a href="#linux-中的-system-call" class="heading-anchor" aria-label="章节： Linux 中的 system call" tabindex="-1"></a><span>Linux 中的 system call</span></h4>
 <p>Linux 中常用的一些 system call 如 CS:APP Figure 8.10 所示<span class="mojikumi-line-end">：</span></p>
-<p><picture><img type="image/webp" srcset="/assets/csapp-fig8.10.f8581cd0.webp" loading="lazy" src="/assets/csapp-fig8.10.f8581cd0.webp" width="1094" height="320" alt="Linux 中常用的一些 system call"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/csapp-fig8.10.26b6ad98.webp" loading="lazy" src="/assets/csapp-fig8.10.26b6ad98.webp" width="1094" height="320" alt="Linux 中常用的一些 system call"></picture></p>
 <p><span class="mojikumi-line-start">（</span>更多 system call 参见 <code>man syscalls</code><span class="mojikumi-line-end">）</span></p>
 <p>在 C 语言中<span class="mojikumi-line-end">，</span>可以使用 <code>syscall</code> 函数来调用 system call<span class="mojikumi-line-end">，</span>但一般不这样做<span class="mojikumi-line-end">，</span>而是使用每个 system call 对应的 wrapper function<span class="mojikumi-line-end">。</span><code>syscall</code> 和 wrapper function 统称为 <i>system-level function</i><span class="mojikumi-line-end">。</span></p>
 <h2 id="processes" class="heading"><a href="#processes" class="heading-anchor" aria-label="章节： Processes" tabindex="-1"></a><span>Processes</span></h2>

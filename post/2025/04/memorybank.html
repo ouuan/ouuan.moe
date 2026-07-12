@@ -301,9 +301,9 @@ Why Uint8Array?`}},{});
 </ol>
 <p>There are two <code>User</code> objects, the bank manager and the current user. In the <span class="mojikumi">“</span>Retainers<span class="mojikumi">”</span> tab, we can see why the selected object is not garbage collected.</p>
 <p>The current user is of course retained, as it<span class="mojikumi-narrow-left">’</span>s referenced by the <code>currentUser</code> variable:</p>
-<p><picture><img type="image/webp" srcset="/assets/currentUser.b6ac9601.webp" loading="lazy" src="/assets/currentUser.b6ac9601.webp" width="407" height="326" alt="current user’s retainers, including the currentUser variable"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/currentUser.e76135fe.webp" loading="lazy" src="/assets/currentUser.e76135fe.webp" width="407" height="326" alt="current user’s retainers, including the currentUser variable"></picture></p>
 <p>What about the bank manager?</p>
-<p><picture><img type="image/webp" srcset="/assets/weak_refs_keep_during_job.198bfc1c.webp" loading="lazy" src="/assets/weak_refs_keep_during_job.198bfc1c.webp" width="463" height="304" alt="bank manager’s only retainer is weak_refs_keep_during_job"></picture></p>
+<p><picture><img type="image/webp" srcset="/assets/weak_refs_keep_during_job.ed997056.webp" loading="lazy" src="/assets/weak_refs_keep_during_job.ed997056.webp" width="463" height="304" alt="bank manager’s only retainer is weak_refs_keep_during_job"></picture></p>
 <p>The only retainer of the bank manager is something called <code>weak_<wbr>refs_<wbr>keep_<wbr>during_<wbr>job</code>. With this hint, we can find the answer in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef#notes_on_weakrefs">WeakRef - JavaScript | MDN</a>:</p>
 <blockquote>
 <p>If your code has just created a <code>WeakRef</code> for a target object, or has gotten a target object from a <code>WeakRef</code>'s <code>deref</code> method, that target object will not be reclaimed until the end of the current JavaScript job (including any promise reaction jobs that run at the end of a script job). That is, you can only "see" an object get reclaimed between turns of the event loop.</p>
